@@ -661,6 +661,69 @@ textarea#my-sentence::placeholder { color:#3a384a; }
 }
 .vocab-hl:hover, .vocab-hl:active { background:#2a1f44; }
 
+/* ── STREAK ── */
+.streak-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:12px; font-weight:600; color:#f0a040;
+  background:#2a1a08; border:1px solid #4a3010;
+  border-radius:20px; padding:3px 10px;
+  margin-bottom:6px; cursor:default;
+}
+.streak-badge.dead { color:#5a5870; background:#1a1a20; border-color:#2e2c3e; }
+
+/* ── SEARCH MODAL ── */
+#search-modal .modal-box { border-radius:20px; max-height:85dvh; }
+.search-input-wrap { padding:12px 16px; border-bottom:1px solid #2e2c3e; flex-shrink:0; }
+#search-input {
+  width:100%; padding:12px 14px;
+  background:#0f0f14; border:1px solid #3a3650;
+  border-radius:12px; color:#e8e6f0; font-size:16px;
+  outline:none; font-family:inherit;
+}
+#search-input:focus { border-color:#7c5cbf; }
+#search-input::placeholder { color:#3a384a; }
+.search-results { overflow-y:auto; max-height:60dvh; padding:8px 0; }
+.search-result-item {
+  display:flex; align-items:center; gap:10px;
+  padding:11px 16px; cursor:pointer; transition:background .12s;
+}
+.search-result-item:hover { background:#1a1828; }
+.sr-hanzi  { font-size:22px; color:#f0eeff; min-width:46px; }
+.sr-py     { font-size:12px; color:#7c5cbf; }
+.sr-en     { font-size:12px; color:#5a5870; flex:1; }
+.sr-ch     { font-size:10px; color:#3a384a; background:#1e1c2e; padding:2px 6px; border-radius:4px; flex-none; }
+.search-empty { text-align:center; padding:24px 16px; font-size:13px; color:#4e4c5e; }
+
+/* ── CONFETTI ── */
+#confetti-canvas {
+  position:fixed; inset:0; pointer-events:none; z-index:9998;
+  width:100%; height:100%;
+}
+
+/* ── EXPORT/IMPORT ── */
+.backup-row { display:flex; gap:8px; padding:0 16px 14px; }
+.backup-btn {
+  flex:1; padding:10px 14px; background:#2e2c3e; border:none;
+  border-radius:8px; color:#c9b8ff; font-size:13px; cursor:pointer;
+  touch-action:manipulation; min-height:40px; transition:all .15s;
+}
+.backup-btn:hover { background:#3a3850; }
+.backup-btn.danger { color:#f08080; background:#3a1a1a; }
+.backup-btn.danger:hover { background:#4a2020; }
+
+/* ── LESSON PINYIN TOGGLE ── */
+.lesson-modal-toolbar {
+  display:flex; gap:6px; padding:4px 16px 8px; flex-shrink:0;
+}
+.lmt-btn {
+  padding:5px 12px; background:#2e2c3e; border:none;
+  border-radius:7px; color:#7a6aaa; font-size:12px; cursor:pointer;
+  touch-action:manipulation; transition:all .15s;
+}
+.lmt-btn:hover { background:#3a3850; color:#c9b8ff; }
+.lmt-btn.active { background:#1e1a2e; border:1px solid #7c5cbf; color:#c9b8ff; }
+.hide-py .text-para-py { display:none !important; }
+
 /* ── VOCAB POPUP ── */
 .vocab-popup {
   position:fixed; z-index:9999;
@@ -680,7 +743,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
 </head>
 <body>
 
-<h1 id="page-title">Chinese Practice</h1>
+<div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;margin-top:8px;">
+  <h1 id="page-title" style="margin:0">Chinese Practice</h1>
+  <div id="streak-badge" class="streak-badge" title="Study streak"></div>
+</div>
 
 <div class="chapter-switcher">
   <button class="ch-btn" id="ch-btn-1" onclick="switchChapter(1)">
@@ -780,14 +846,16 @@ textarea#my-sentence::placeholder { color:#3a384a; }
 </div>
 
 <div class="controls">
-  <button class="ctrl-btn" id="btn-shuffle" onclick="toggleShuffle()">⇄ Shuffle</button>
-  <button class="ctrl-btn" id="btn-hint"    onclick="toggleHint()">💡 Hide English</button>
-  <button class="ctrl-btn"                  onclick="openWordList()">☰ Word List</button>
-  <button class="ctrl-btn"                  onclick="location.reload()">↺ Restart All</button>
-  <button class="ctrl-btn" id="btn-mode"    onclick="toggleMode()">🔄 Reverse</button>
-  <button class="ctrl-btn" id="btn-type"    onclick="toggleTypingMode()">✍️ Type</button>
-  <button class="ctrl-btn"                  onclick="openStats()">📊 Stats</button>
-  <button class="ctrl-btn"                  onclick="openLesson()">📖 Lesson</button>
+  <button class="ctrl-btn" id="btn-shuffle"    onclick="toggleShuffle()">⇄ Shuffle</button>
+  <button class="ctrl-btn" id="btn-hint"       onclick="toggleHint()">💡 Hide English</button>
+  <button class="ctrl-btn"                     onclick="openWordList()">☰ Word List</button>
+  <button class="ctrl-btn"                     onclick="startDueReview()">📅 Due Review</button>
+  <button class="ctrl-btn"                     onclick="location.reload()">↺ Restart All</button>
+  <button class="ctrl-btn" id="btn-mode"       onclick="toggleMode()">🔄 Reverse</button>
+  <button class="ctrl-btn" id="btn-type"       onclick="toggleTypingMode()">✍️ Type</button>
+  <button class="ctrl-btn"                     onclick="openSearch()">🔍 Search</button>
+  <button class="ctrl-btn"                     onclick="openStats()">📊 Stats</button>
+  <button class="ctrl-btn"                     onclick="openLesson()">📖 Lesson</button>
 </div>
 
 <!-- WORD LIST MODAL -->
@@ -851,6 +919,9 @@ textarea#my-sentence::placeholder { color:#3a384a; }
       <button class="lesson-tab-btn active" id="ltab-texts"     onclick="lessonTab('texts')">📖 课文</button>
       <button class="lesson-tab-btn"        id="ltab-grammar"   onclick="lessonTab('grammar')">✏️ 语言点</button>
       <button class="lesson-tab-btn"        id="ltab-exercises" onclick="lessonTab('exercises')">💪 练习</button>
+    </div>
+    <div class="lesson-modal-toolbar" id="lesson-modal-toolbar">
+      <button class="lmt-btn" id="btn-hide-py" onclick="toggleLessonPinyin()">🈲 Hide Pinyin</button>
     </div>
     <div id="lesson-content" class="lesson-content"></div>
   </div>
@@ -2520,7 +2591,7 @@ function reveal() {
     if (_br) _br.textContent = 'Hide Answer';
     document.getElementById('rating-row').classList.add('visible');
     document.getElementById('tab-bar').classList.add('visible');
-    document.getElementById('key-hint').textContent = '← Again   → Got it';
+    document.getElementById('key-hint').textContent = '1/← Again  ·  2/→ Got it  ·  F Search';
     const _exs = EXAMPLES()[queue[idx]];
     const _cep = document.getElementById('card-ex-preview');
     if (_exs && _exs.length > 0 && _cep) {
@@ -3299,7 +3370,7 @@ function checkTypedAnswer() {
   speak(w.hanzi);
   document.getElementById('rating-row').classList.add('visible');
   document.getElementById('tab-bar').classList.add('visible');
-  document.getElementById('key-hint').textContent = '← Again   → Got it';
+  document.getElementById('key-hint').textContent = '1/← Again  ·  2/→ Got it  ·  F Search';
 }
 
 /* ─────────────────── STATS MODAL ─────────────────── */
@@ -3359,7 +3430,13 @@ function buildStats() {
       <span style="font-size:11px;color:#7a6aaa;display:flex;align-items:center;gap:5px;"><span style="width:9px;height:9px;background:#7c5cbf;border-radius:50%;display:inline-block"></span>Mastered</span>
       <span style="font-size:11px;color:#7a6aaa;display:flex;align-items:center;gap:5px;"><span style="width:9px;height:9px;background:#4aad7a;border-radius:50%;display:inline-block"></span>Review</span>
       <span style="font-size:11px;color:#7a6aaa;display:flex;align-items:center;gap:5px;"><span style="width:9px;height:9px;background:#d4943a;border-radius:50%;display:inline-block"></span>Learning</span>
-    </div>`;
+    </div>
+    <div class="backup-row">
+      <button class="backup-btn" onclick="exportSRS()">⬇ Export Progress</button>
+      <button class="backup-btn" onclick="document.getElementById('srs-import-file').click()">⬆ Import Progress</button>
+    </div>
+    <input type="file" id="srs-import-file" accept=".json" style="display:none" onchange="importSRS(event)">
+    `;
 }
 
 /* ─────────────────── LESSON ─────────────────── */
@@ -3524,6 +3601,10 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeStats();
     return;
   }
+  if (document.getElementById('search-modal').classList.contains('open')) {
+    if (e.key === 'Escape') closeSearch();
+    return;
+  }
   if (activeTab === 'draw') return;
   if (e.key === ' ' || e.key === 'Enter') {
     if (typingMode) return;
@@ -3531,6 +3612,9 @@ document.addEventListener('keydown', e => {
   }
   if (e.key === 'ArrowRight' && revealed) rate('good');
   if (e.key === 'ArrowLeft'  && revealed) rate('again');
+  if (e.key === '1' && revealed) rate('again');
+  if (e.key === '2' && revealed) rate('good');
+  if (e.key === 'f' || e.key === 'F') { if (!typingMode) { e.preventDefault(); openSearch(); } }
 });
 
 /* ─────────────────── INIT ─────────────────── */
@@ -3625,7 +3709,235 @@ document.addEventListener('click', e => {
     pop.classList.remove('show');
   }
 });
+
+/* ─────────────────── STREAK ─────────────────── */
+function todayStr() { return new Date().toISOString().slice(0,10); }
+function loadStreak() {
+  const last  = localStorage.getItem('streak_last')  || '';
+  const count = parseInt(localStorage.getItem('streak_count') || '0', 10);
+  const today = todayStr();
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+  if (last === today) return count;
+  if (last === yesterday) return count; // still alive, will increment on next study
+  if (last === '') return 0;
+  return 0; // broken
+}
+function bumpStreak() {
+  const today = todayStr();
+  const last  = localStorage.getItem('streak_last') || '';
+  if (last === today) return;
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+  const cur = parseInt(localStorage.getItem('streak_count') || '0', 10);
+  const next = (last === yesterday || last === '') ? cur + 1 : 1;
+  localStorage.setItem('streak_count', next);
+  localStorage.setItem('streak_last', today);
+  renderStreak();
+}
+function renderStreak() {
+  const el = document.getElementById('streak-badge');
+  if (!el) return;
+  const count = loadStreak();
+  if (count === 0) { el.style.display = 'none'; return; }
+  el.style.display = 'inline-flex';
+  el.classList.toggle('dead', count === 0);
+  el.innerHTML = `🔥 ${count} day${count !== 1 ? 's' : ''}`;
+}
+
+/* ─────────────────── DUE REVIEW MODE ─────────────────── */
+function startDueReview() {
+  const now = Date.now(), all = WORDS().map((_,i) => i);
+  const due = all.filter(i => { const s = getSRS(i); return s.reps > 0 && s.due <= now; });
+  if (due.length === 0) {
+    const nxt = all.map(i => getSRS(i).due).filter(d => d > now).sort((a,b)=>a-b);
+    const msg = nxt.length
+      ? `No cards due — next review in ${Math.ceil((nxt[0]-now)/3600000)}h`
+      : 'No reviewed cards yet — keep studying!';
+    alert(msg); return;
+  }
+  againWords = []; goodCount = 0; idx = 0;
+  buildQueue(due);
+  resetCardHTML();
+  loadCard();
+}
+
+/* ─────────────────── SEARCH ─────────────────── */
+const ALL_CHAPTERS_DATA = [
+  { ch:1, words: WORDS_CH1 }, { ch:2, words: WORDS_CH2 },
+  { ch:3, words: WORDS_CH3 }, { ch:4, words: WORDS_CH4 },
+  { ch:5, words: WORDS_CH5 }, { ch:6, words: WORDS_CH6 },
+];
+function openSearch() {
+  document.getElementById('search-modal').classList.add('open');
+  setTimeout(() => document.getElementById('search-input').focus(), 80);
+}
+function closeSearch() {
+  document.getElementById('search-modal').classList.remove('open');
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 6 chapters</div>';
+}
+function doSearch() {
+  const q = document.getElementById('search-input').value.trim().toLowerCase();
+  const res = document.getElementById('search-results');
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 6 chapters</div>'; return; }
+  const hits = [];
+  ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
+    words.forEach((w, i) => {
+      const py = (w.py || w.pinyin || '').toLowerCase();
+      const en = (w.en || w.english || '').toLowerCase();
+      if (w.hanzi.includes(q) || py.includes(q) || en.includes(q)) {
+        hits.push({ ch, i, w });
+      }
+    });
+  });
+  if (hits.length === 0) { res.innerHTML = '<div class="search-empty">No results found</div>'; return; }
+  res.innerHTML = hits.map(({ch, i, w}) => {
+    const py = w.py || w.pinyin || '';
+    const en = w.en || w.english || '';
+    const pos = w.pos || '';
+    return `<div class="search-result-item" onclick="jumpToWord(${ch},${i})">
+      <span class="sr-hanzi">${w.hanzi}</span>
+      <span style="flex:1;min-width:0">
+        <div class="sr-py">${py}</div>
+        <div class="sr-en">${pos} ${en}</div>
+      </span>
+      <span class="sr-ch">Ch ${ch}</span>
+    </div>`;
+  }).join('');
+}
+function jumpToWord(ch, wi) {
+  closeSearch();
+  if (ch !== currentChapter) switchChapter(ch);
+  // find wi in queue and jump
+  const pos = queue.indexOf(wi);
+  if (pos !== -1) { idx = pos; }
+  else { queue.unshift(wi); idx = 0; }
+  resetCardHTML(); loadCard();
+}
+
+/* ─────────────────── SRS EXPORT / IMPORT ─────────────────── */
+function exportSRS() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k.startsWith('srs_')) data[k] = localStorage.getItem(k);
+  }
+  data['streak_count'] = localStorage.getItem('streak_count') || '0';
+  data['streak_last']  = localStorage.getItem('streak_last')  || '';
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `chinese-srs-backup-${todayStr()}.json`;
+  a.click();
+}
+function importSRS(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      let count = 0;
+      Object.entries(data).forEach(([k, v]) => {
+        if (k.startsWith('srs_') || k === 'streak_count' || k === 'streak_last') {
+          localStorage.setItem(k, v); count++;
+        }
+      });
+      updateSrsStats(); renderStreak(); buildStats();
+      alert(`Imported ${count} entries successfully!`);
+    } catch { alert('Invalid backup file.'); }
+    e.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+/* ─────────────────── LESSON PINYIN TOGGLE ─────────────────── */
+let lessonPinyinHidden = false;
+function toggleLessonPinyin() {
+  lessonPinyinHidden = !lessonPinyinHidden;
+  const content = document.getElementById('lesson-content');
+  const btn = document.getElementById('btn-hide-py');
+  content.classList.toggle('hide-py', lessonPinyinHidden);
+  btn.classList.toggle('active', lessonPinyinHidden);
+  btn.textContent = lessonPinyinHidden ? '🈺 Show Pinyin' : '🈲 Hide Pinyin';
+}
+
+/* ─────────────────── CONFETTI ─────────────────── */
+function fireConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  canvas.style.display = 'block';
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  const colors = ['#c9b8ff','#7c5cbf','#4aad7a','#f0c060','#f08080','#74d7f7'];
+  const pieces = Array.from({length:80}, () => ({
+    x: Math.random() * canvas.width,
+    y: -10 - Math.random() * 100,
+    r: 4 + Math.random() * 5,
+    c: colors[Math.floor(Math.random() * colors.length)],
+    vx: (Math.random() - 0.5) * 4,
+    vy: 3 + Math.random() * 4,
+    rot: Math.random() * 360,
+    vrot: (Math.random() - 0.5) * 8,
+    alpha: 1,
+  }));
+  let frame;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.rot += p.vrot;
+      if (p.y > canvas.height * 0.7) p.alpha -= 0.025;
+      if (p.alpha > 0) { alive = true; }
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.alpha);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+      ctx.restore();
+    });
+    if (alive) { frame = requestAnimationFrame(draw); }
+    else { canvas.style.display = 'none'; ctx.clearRect(0,0,canvas.width,canvas.height); }
+  }
+  cancelAnimationFrame(frame);
+  draw();
+}
+
+/* ─────────────────── KEYBOARD SHORTCUTS (1/2 for again/good) ─────────────────── */
+// Patch rate() to also handle streak + mastery celebration
+const _origRate = rate;
+rate = function(result) {
+  const wi = queue[idx];
+  const wasMastered = srsStatus(wi) === 'mastered';
+  _origRate(result);
+  bumpStreak();
+  if (!wasMastered && result === 'good' && srsStatus(wi) === 'mastered') {
+    fireConfetti();
+  }
+};
+
+/* Init streak on load */
+renderStreak();
 </script>
+
+<!-- SEARCH MODAL -->
+<div class="modal-overlay" id="search-modal">
+  <div class="modal-box" style="border-radius:20px 20px 0 0;">
+    <div style="display:flex;justify-content:center;padding:10px 0 2px;"><div style="width:36px;height:4px;background:#3a3850;border-radius:2px;"></div></div>
+    <div class="modal-header">
+      <h2>Search Words</h2>
+      <button class="modal-close" onclick="closeSearch()">✕</button>
+    </div>
+    <div class="search-input-wrap">
+      <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Type to search all 6 chapters</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas" style="display:none;"></canvas>
 
 <!-- iOS Add to Home Screen banner -->
 <div id="ios-hint" class="ios-hint" style="display:none">
