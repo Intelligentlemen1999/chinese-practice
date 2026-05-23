@@ -703,6 +703,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 5</span>
     <span class="ch-name">丽江的画</span>
   </button>
+  <button class="ch-btn" id="ch-btn-6" onclick="switchChapter(6)">
+    <span class="ch-num">Ch 6</span>
+    <span class="ch-name">终于结婚了</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -861,6 +865,7 @@ const CHAPTERS = {
   3: { title:'塞翁失马', subtitle:'Chapter 3' },
   4: { title:'狼和鹿', subtitle:'Chapter 4' },
   5: { title:'住在一幅叫"丽江"的画里', subtitle:'Chapter 5' },
+  6: { title:'终于要结婚了', subtitle:'Chapter 6' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -1529,6 +1534,154 @@ const LESSONS = {
         ]
       }
     ]
+  },
+  6: {
+    texts: [
+      {
+        num:'§1', title:'终于要结婚了', en:'Getting Married at Last',
+        paragraphs:[
+          {
+            zh:'妈妈每次打来电话，总是重复同一个话题："你什么时候结婚呀？"某甲说他已经回答了三年，但妈妈还是不满意，每次都催着说"快了、快了"。某甲的女朋友某乙也面对同样的问题。',
+            py:'Māma měi cì dǎ lái diànhuà, zǒng shì chóngfù tóng yī gè huàtí: "Nǐ shénme shíhou jiéhūn ya?" Mǒu jiǎ shuō tā yǐjīng huídá le sān nián, dàn māma hái shì bù mǎnyì, měi cì dōu cuī zhe shuō "kuài le, kuài le". Mǒu jiǎ de nǚpéngyou mǒu yǐ yě miàn duì tóngyàng de wèntí.',
+            en:'Every time Mom calls, she always repeats the same topic: "When are you getting married?" Jiǎ says he has been answering for three years, but Mom is still not satisfied, urging every time: "Soon, soon." Jiǎ\'s girlfriend Yǐ faces the same question.'
+          },
+          {
+            zh:'某甲和某乙在一起已经三年了。两个人住在一起可以节省很多费用，还能互相照顾，结婚嘛，太麻烦了，以后再说。朋友们都催着他们赶紧结婚，说三年了还不结婚，将来只剩一条路：分手。',
+            py:'Mǒu jiǎ hé mǒu yǐ zài yīqǐ yǐjīng sān nián le. Liǎng gè rén zhù zài yīqǐ kěyǐ jiéshěng hěn duō fèiyòng, hái néng hùxiāng zhàogù, jiéhūn ma, tài máfan le, yǐhòu zài shuō. Péngyoumen dōu cuī zhe tāmen gǎnjǐn jiéhūn, shuō sān nián le hái bù jiéhūn, jiānglái zhǐ shèng yī tiáo lù: fēnshǒu.',
+            en:'Jiǎ and Yǐ have been together for three years. Living together saves a lot of expenses and they can look after each other — getting married feels too troublesome, they\'ll think about it later. Friends keep urging them to get married quickly, saying that after three years with no wedding, the only road left is breaking up.'
+          },
+          {
+            zh:'一天，他们去参加好友的婚礼。回家路上，某乙默默地不理某甲。回到家，某乙把卫生间的灯关上，在里面足足待了两个小时，一边擦着眼泪，一边想着两人的将来，最后哭着睡着了。第二天，某甲终于答应了要结婚。',
+            py:'Yī tiān, tāmen qù cānjiā hǎoyǒu de hūnlǐ. Huí jiā lùshang, mǒu yǐ mòmò de bù lǐ mǒu jiǎ. Huí dào jiā, mǒu yǐ bǎ wèishēngjiān de dēng guān shàng, zài lǐmiàn zúzú dāi le liǎng gè xiǎoshí, yībiān cā zhe yǎnlèi, yībiān xiǎng zhe liǎng rén de jiānglái, zuìhòu kū zhe shuì zháo le. Dì èr tiān, mǒu jiǎ zhōngyú dāying le yào jiéhūn.',
+            en:'One day they went to a close friend\'s wedding. On the way home, Yǐ silently ignored Jiǎ. Back home, Yǐ turned off the bathroom light and stayed inside for a full two hours, wiping tears and thinking about their future — finally crying herself to sleep. The next day, Jiǎ finally agreed to get married.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'单身现象正在全球流行', en:'The Single Life: A Worldwide Trend',
+        paragraphs:[
+          {
+            zh:'单身现象正在全球流行。据说，40%的欧洲人过着单身生活，有800万单身者。不少亚洲国家的人也开始一个人生活。在很多国家，单身率越来越高，单身生活已经成为越来越普遍的现象。',
+            py:'Dānshēn xiànxiàng zhèngzài quánqiú liúxíng. Jùshuō, bǎifēnzhī sìshí de Ōuzhōu rén guò zhe dānshēn shēnghuó, yǒu bābǎi wàn dānshēn zhě. Bùshǎo Yàzhōu guójiā de rén yě kāishǐ yī gè rén shēnghuó. Zài hěn duō guójiā, dānshēn lǜ yuèlái yuè gāo, dānshēn shēnghuó yǐjīng chéngwéi yuèlái yuè pǔbiàn de xiànxiàng.',
+            en:'The phenomenon of single life is spreading worldwide. It is said that 40% of Europeans live a single life, with 8 million single people. Many people in Asian countries have also begun living alone. In many countries, the rate of single life is rising, and living alone has become an increasingly widespread phenomenon.'
+          },
+          {
+            zh:'在中国大城市，单身现象也越来越普遍。几年前，单身族们甚至有了自己的节日——11月11日（光棍节）。城市里的年轻人，由于工作压力大、生活丰富多彩，很多人不急于结婚，更加注重自己的个人生活。',
+            py:'Zài Zhōngguó dà chéngshì, dānshēn xiànxiàng yě yuèlái yuè pǔbiàn. Jǐ nián qián, dānshēn zú men shènzhì yǒu le zìjǐ de jiérì — shíyī yuè shíyī rì (Guānggùn jié). Chéngshì lǐ de niánqīng rén, yóuyú gōngzuò yālì dà, shēnghuó fēngfù duō cǎi, hěn duō rén bù jíyú jiéhūn, gèngjiā zhùzhòng zìjǐ de gèrén shēnghuó.',
+            en:'In China\'s big cities, the single phenomenon is also becoming increasingly common. A few years ago, singles even got their own holiday — November 11th (Singles\' Day). Young people in the city, due to work pressure and a colorful social life, are in no hurry to get married and focus even more on their personal lives.'
+          },
+          {
+            zh:'说到单身的理由，那是多种多样的。有的是工作忙，没时间谈恋爱；有的是觉得结婚后家庭关系复杂，受不了那些烦恼；还有就是要管孩子，付出太多。不过，更多的人表示，不是不想结婚，而是还没找到自己的"那一个"，所以终身大事只能继续等下去。',
+            py:'Shuō dào dānshēn de lǐyóu, nà shì duō zhǒng duō yàng de. Yǒu de shì gōngzuò máng, méi shíjiān tán liàn\'ài; yǒu de shì juéde jiéhūn hòu jiātíng guānxi fùzá, shòu bu liǎo nàxiē fánnǎo; hái yǒu jiù shì yào guǎn háizi, fùchū tài duō. Búguò, gèng duō de rén biǎoshì, bú shì bù xiǎng jiéhūn, ér shì hái méi zhǎodào zìjǐ de "nà yī gè", suǒyǐ zhōngshēn dà shì zhǐ néng jìxù děng xià qù.',
+            en:'As for reasons for staying single, there are many kinds. Some are too busy with work and have no time to date; some feel that family relationships after marriage are complicated and can\'t bear the trouble; others don\'t want the responsibility of raising children. However, most people say it\'s not that they don\'t want to get married — they just haven\'t found "the one" yet, so the major life event of marriage can only wait.'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'得了 / 不了 (Potential Complement)',
+        pattern:'V＋得了 / V＋不了',
+        explanation:'Indicates ability or inability to complete an action. "得了" (déliǎo) = can manage; "不了" (bùliǎo) = cannot manage.',
+        examples:[
+          {zh:'这么多菜，我吃不了。',py:'Zhème duō cài, wǒ chī bu liǎo.',en:'There is so much food — I can\'t finish it.'},
+          {zh:'这件事我做得了。',py:'Zhè jiàn shì wǒ zuò de liǎo.',en:'I can handle this matter.'},
+          {zh:'一个人受不了这么大的压力。',py:'Yī gè rén shòu bu liǎo zhème dà de yālì.',en:'One person cannot endure such great pressure.'},
+        ]
+      },
+      {
+        title:'赶紧 (Hurry Up)',
+        pattern:'赶紧＋V',
+        explanation:'"赶紧" means "no time to lose — hurry up and do something." It urges quick action.',
+        examples:[
+          {zh:'快迟到了，你赶紧走吧。',py:'Kuài chídào le, nǐ gǎnjǐn zǒu ba.',en:'You\'re almost late — hurry up and go.'},
+          {zh:'他生病了，赶紧送他去医院。',py:'Tā shēngbìng le, gǎnjǐn sòng tā qù yīyuàn.',en:'He\'s sick — hurry and take him to the hospital.'},
+          {zh:'妈妈催他赶紧找对象。',py:'Māma cuī tā gǎnjǐn zhǎo duìxiàng.',en:'Mom urged him to hurry up and find a partner.'},
+        ]
+      },
+      {
+        title:'不再 (No Longer)',
+        pattern:'不再＋V / Adj',
+        explanation:'"不再" means an action is no longer repeated or a state no longer continues.',
+        examples:[
+          {zh:'我不再吃快餐了。',py:'Wǒ bù zài chī kuàicān le.',en:'I no longer eat fast food.'},
+          {zh:'分手后，她不再联系他了。',py:'Fēnshǒu hòu, tā bù zài liánxì tā le.',en:'After breaking up, she no longer contacted him.'},
+          {zh:'老师说完，同学们不再提问了。',py:'Lǎoshī shuō wán, tóngxuémen bù zài tíwèn le.',en:'After the teacher finished, the students had no more questions.'},
+        ]
+      },
+      {
+        title:'足足 (A Full / No Less Than)',
+        pattern:'足足＋数量词',
+        explanation:'"足足" emphasizes a surprisingly large quantity or long duration.',
+        examples:[
+          {zh:'她在卫生间里足足待了两个小时。',py:'Tā zài wèishēngjiān lǐ zúzú dāi le liǎng gè xiǎoshí.',en:'She stayed in the bathroom for a full two hours.'},
+          {zh:'他们足足等了三个小时。',py:'Tāmen zúzú děng le sān gè xiǎoshí.',en:'They waited for a full three hours.'},
+          {zh:'这本书足足有五百页。',py:'Zhè běn shū zúzú yǒu wǔbǎi yè.',en:'This book has no fewer than five hundred pages.'},
+        ]
+      },
+      {
+        title:'在……看来 (In One\'s Opinion)',
+        pattern:'在＋人＋看来',
+        explanation:'"在……看来" expresses one\'s opinion or judgement about something.',
+        examples:[
+          {zh:'在我看来，结婚应该慎重考虑。',py:'Zài wǒ kàn lái, jiéhūn yīnggāi shènzhòng kǎolǜ.',en:'In my opinion, marriage should be considered carefully.'},
+          {zh:'在父母看来，结婚是终身大事。',py:'Zài fùmǔ kàn lái, jiéhūn shì zhōngshēn dà shì.',en:'In the parents\' view, marriage is a major life event.'},
+          {zh:'在他看来，单身生活更加自由。',py:'Zài tā kàn lái, dānshēn shēnghuó gèngjiā zìyóu.',en:'In his view, single life is even more free.'},
+        ]
+      },
+      {
+        title:'没啥大不了 (Not a Big Deal)',
+        pattern:'没啥大不了(的) / 大不了＋V',
+        explanation:'"大不了" means something is not serious or worth worrying about. Often used rhetorically.',
+        examples:[
+          {zh:'迟到了有啥大不了的，道个歉就好了。',py:'Chídào le yǒu shá dà bu liǎo de, dào gè qiàn jiù hǎo le.',en:'Being late is no big deal — just apologize.'},
+          {zh:'这点小事没啥大不了的。',py:'Zhè diǎn xiǎo shì méi shá dà bu liǎo de.',en:'This small matter is no big deal.'},
+          {zh:'没考好大不了再考一次嘛。',py:'Méi kǎo hǎo dà bu liǎo zài kǎo yī cì ma.',en:'If you didn\'t do well, it\'s no big deal — just take it again.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'这么多菜，我一个人吃____。',
+        options:['不了','得了','完了','好了'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'快要下雨了，我们____回家吧。',
+        options:['赶紧','足足','默默','更加'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'自从分手后，他们就____联系了。',
+        options:['不再','更加','足足','大不了'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____我看来，单身生活也可以很快乐。',
+        options:['在','从','对','为'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'她在浴室里____待了两个小时。',
+        options:['足足','赶紧','默默','更加'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "受不了" 完成句子：这里夏天太热了，我___。',
+        answer:'受不了'
+      },
+      {
+        type:'fill',
+        prompt:'用 "不再" 完成句子：分手以后，他们___联系了。',
+        answer:'不再'
+      },
+    ]
   }
 };
 
@@ -2039,20 +2192,100 @@ const EXAMPLES_CH5 = [
   [{"zh":"丽江每年吸引大量国内外游客。","py":"Lìjiāng měinián xīyǐn dàliàng guónèi wài yóukè.","en":"Lijiang attracts large numbers of domestic and international tourists every year."},{"zh":"这本书深深地吸引了我。","py":"Zhè běn shū shēnshēn de xīyǐn le wǒ.","en":"This book deeply attracted me."}],
 ];
 
+const WORDS_CH6 = [
+  {hanzi:'重复',py:'chóngfù',pos:'V.',en:'repeat, do again'},
+  {hanzi:'回答',py:'huídá',pos:'V.',en:'reply, answer'},
+  {hanzi:'同居',py:'tóngjū',pos:'V.',en:'cohabit, live together (unmarried)'},
+  {hanzi:'节省',py:'jiéshěng',pos:'V.',en:'economize, save'},
+  {hanzi:'费用',py:'fèiyòng',pos:'N.',en:'cost, expense'},
+  {hanzi:'催',py:'cuī',pos:'V.',en:'urge, hasten, hurry'},
+  {hanzi:'赶紧',py:'gǎnjǐn',pos:'Adv.',en:'quickly, hurriedly'},
+  {hanzi:'将来',py:'jiānglái',pos:'N.',en:'future'},
+  {hanzi:'分手',py:'fēnshǒu',pos:'V.',en:'break up'},
+  {hanzi:'不再',py:'bù zài',pos:'Adv.',en:'no longer, no more'},
+  {hanzi:'理',py:'lǐ',pos:'V.',en:'pay attention to, take notice of'},
+  {hanzi:'默默',py:'mòmò',pos:'Adv.',en:'quietly, silently'},
+  {hanzi:'擦',py:'cā',pos:'V.',en:'wipe, erase'},
+  {hanzi:'足足',py:'zúzú',pos:'Adv.',en:'fully, no less than'},
+  {hanzi:'待',py:'dāi',pos:'V.',en:'stay'},
+  {hanzi:'睡着',py:'shuì zháo',pos:'V.',en:'fall asleep'},
+  {hanzi:'哭',py:'kū',pos:'V.',en:'cry, weep'},
+  {hanzi:'答应',py:'dāying',pos:'V.',en:'promise, agree'},
+  {hanzi:'单身',py:'dānshēn',pos:'N.',en:'single (unmarried)'},
+  {hanzi:'现象',py:'xiànxiàng',pos:'N.',en:'phenomenon'},
+  {hanzi:'更加',py:'gèngjiā',pos:'Adv.',en:'even more'},
+  {hanzi:'丰富多彩',py:'fēngfù duō cǎi',pos:'Adj.',en:'rich and varied, colorful'},
+  {hanzi:'普遍',py:'pǔbiàn',pos:'Adj.',en:'universal, widespread'},
+  {hanzi:'终身大事',py:'zhōngshēn dà shì',pos:'N.',en:'major life event (marriage)'},
+  {hanzi:'啥',py:'shá',pos:'Pron.',en:'what (dialect)'},
+  {hanzi:'大不了',py:'dàbuliǎo',pos:'Adj.',en:'not a big deal'},
+  {hanzi:'懂得',py:'dǒngde',pos:'V.',en:'understand, know'},
+  {hanzi:'孤单',py:'gūdān',pos:'Adj.',en:'alone, lonely'},
+  {hanzi:'亲朋好友',py:'qīn péng hǎo yǒu',pos:'N.',en:'relatives and friends'},
+  {hanzi:'亲密',py:'qīnmì',pos:'Adj.',en:'close, intimate'},
+  {hanzi:'家人',py:'jiārén',pos:'N.',en:'family member'},
+  {hanzi:'理由',py:'lǐyóu',pos:'N.',en:'reason, argument'},
+  {hanzi:'考虑',py:'kǎolǜ',pos:'V.',en:'consider, think over'},
+  {hanzi:'管',py:'guǎn',pos:'V.',en:'be in charge of; care about'},
+  {hanzi:'受不了',py:'shòu bu liǎo',pos:'V.',en:'cannot bear, unable to endure'},
+  {hanzi:'耐心',py:'nàixīn',pos:'Adj.',en:'patient; patience'},
+];
+
+const EXAMPLES_CH6 = [
+  [{"zh":"请重复一下这个句子。","py":"Qǐng chóngfù yīxià zhège jùzi.","en":"Please repeat this sentence."},{"zh":"他总是重复同样的错误。","py":"Tā zǒng shì chóngfù tóngyàng de cuòwù.","en":"He always repeats the same mistakes."}],
+  [{"zh":"老师的问题他没能回答。","py":"Lǎoshī de wèntí tā méi néng huídá.","en":"He couldn't answer the teacher's question."},{"zh":"请回答我的问题。","py":"Qǐng huídá wǒ de wèntí.","en":"Please answer my question."}],
+  [{"zh":"他们同居了两年后才结婚。","py":"Tāmen tóngjū le liǎng nián hòu cái jiéhūn.","en":"They lived together for two years before getting married."},{"zh":"在欧洲，年轻人同居很普遍。","py":"Zài Ōuzhōu, niánqīng rén tóngjū hěn pǔbiàn.","en":"In Europe, young people living together is very common."}],
+  [{"zh":"两个人住在一起可以节省很多费用。","py":"Liǎng gè rén zhù zài yīqǐ kěyǐ jiéshěng hěn duō fèiyòng.","en":"Two people living together can save a lot of expenses."},{"zh":"他养成了节省的好习惯。","py":"Tā yǎngchéng le jiéshěng de hǎo xíguàn.","en":"He developed a good habit of being economical."}],
+  [{"zh":"这次旅行的费用太高了。","py":"Zhè cì lǚxíng de fèiyòng tài gāo le.","en":"The cost of this trip is too high."},{"zh":"学费是留学最大的费用。","py":"Xuéfèi shì liúxué zuì dà de fèiyòng.","en":"Tuition is the biggest expense of studying abroad."}],
+  [{"zh":"妈妈每天催他赶紧找对象。","py":"Māma měitiān cuī tā gǎnjǐn zhǎo duìxiàng.","en":"Mom urges him every day to hurry up and find a partner."},{"zh":"老板催我们尽快完成任务。","py":"Lǎobǎn cuī wǒmen jǐnkuài wánchéng rènwù.","en":"The boss is urging us to finish the task as soon as possible."}],
+  [{"zh":"下雨了，我们赶紧回家吧。","py":"Xià yǔ le, wǒmen gǎnjǐn huí jiā ba.","en":"It's raining — let's hurry home."},{"zh":"快迟到了，你赶紧出发吧。","py":"Kuài chídào le, nǐ gǎnjǐn chūfā ba.","en":"You're almost late — you'd better set off quickly."}],
+  [{"zh":"我将来想在上海工作。","py":"Wǒ jiānglái xiǎng zài Shànghǎi gōngzuò.","en":"I want to work in Shanghai in the future."},{"zh":"你将来有什么打算？","py":"Nǐ jiānglái yǒu shénme dǎsuàn?","en":"What are your plans for the future?"}],
+  [{"zh":"他们交往三年后分手了。","py":"Tāmen jiāowǎng sān nián hòu fēnshǒu le.","en":"They broke up after dating for three years."},{"zh":"分手以后她很长时间都不开心。","py":"Fēnshǒu yǐhòu tā hěn cháng shíjiān dōu bù kāixīn.","en":"After breaking up, she was unhappy for a long time."}],
+  [{"zh":"我不再喝酒了。","py":"Wǒ bù zài hē jiǔ le.","en":"I no longer drink alcohol."},{"zh":"分手以后他们不再联系了。","py":"Fēnshǒu yǐhòu tāmen bù zài liánxì le.","en":"After breaking up they no longer kept in touch."}],
+  [{"zh":"她生气了，不理我。","py":"Tā shēngqì le, bù lǐ wǒ.","en":"She was angry and ignored me."},{"zh":"他太忙了，没时间理这件事。","py":"Tā tài máng le, méi shíjiān lǐ zhè jiàn shì.","en":"He was too busy to pay attention to this matter."}],
+  [{"zh":"她默默地擦着眼泪。","py":"Tā mòmò de cā zhe yǎnlèi.","en":"She silently wiped her tears."},{"zh":"他默默地做完了所有的工作。","py":"Tā mòmò de zuò wán le suǒyǒu de gōngzuò.","en":"He quietly completed all the work."}],
+  [{"zh":"她擦了擦眼泪，继续工作。","py":"Tā cā le cā yǎnlèi, jìxù gōngzuò.","en":"She wiped away her tears and continued working."},{"zh":"请帮我擦一下桌子。","py":"Qǐng bāng wǒ cā yīxià zhuōzi.","en":"Please help me wipe the table."}],
+  [{"zh":"她在卫生间足足待了两个小时。","py":"Tā zài wèishēngjiān zúzú dāi le liǎng gè xiǎoshí.","en":"She stayed in the bathroom for a full two hours."},{"zh":"他们等了足足一个小时才见到医生。","py":"Tāmen děng le zúzú yī gè xiǎoshí cái jiàndào yīshēng.","en":"They waited a full hour before seeing the doctor."}],
+  [{"zh":"他在上海待了五年。","py":"Tā zài Shànghǎi dāi le wǔ nián.","en":"He stayed in Shanghai for five years."},{"zh":"你能在这里待多久？","py":"Nǐ néng zài zhèlǐ dāi duō jiǔ?","en":"How long can you stay here?"}],
+  [{"zh":"他太累了，一坐下就睡着了。","py":"Tā tài lèi le, yī zuò xià jiù shuì zháo le.","en":"He was so tired that he fell asleep as soon as he sat down."},{"zh":"她哭了很久才睡着。","py":"Tā kū le hěn jiǔ cái shuì zháo.","en":"She cried for a long time before falling asleep."}],
+  [{"zh":"孩子哭了，妈妈赶紧过来哄他。","py":"Háizi kū le, māma gǎnjǐn guòlái hǒng tā.","en":"The child cried and mom hurried over to comfort him."},{"zh":"她看完电影后哭了。","py":"Tā kàn wán diànyǐng hòu kū le.","en":"She cried after watching the movie."}],
+  [{"zh":"他答应了要结婚。","py":"Tā dāying le yào jiéhūn.","en":"He agreed to get married."},{"zh":"你答应了我的事，不能反悔。","py":"Nǐ dāying le wǒ de shì, bù néng fǎnhuǐ.","en":"You promised me — you can't go back on it."}],
+  [{"zh":"单身生活也有很多好处。","py":"Dānshēn shēnghuó yě yǒu hěn duō hǎochù.","en":"The single life also has many advantages."},{"zh":"她在城市里过着单身生活。","py":"Tā zài chéngshì lǐ guò zhe dānshēn shēnghuó.","en":"She lives a single life in the city."}],
+  [{"zh":"单身现象在全球越来越普遍。","py":"Dānshēn xiànxiàng zài quánqiú yuèlái yuè pǔbiàn.","en":"The single phenomenon is becoming more and more common worldwide."},{"zh":"这种现象在年轻人中很常见。","py":"Zhè zhǒng xiànxiàng zài niánqīng rén zhōng hěn chángjiàn.","en":"This phenomenon is very common among young people."}],
+  [{"zh":"他们在一起生活后感情更加深厚了。","py":"Tāmen zài yīqǐ shēnghuó hòu gǎnqíng gèngjiā shēnhòu le.","en":"Their feelings grew even deeper after living together."},{"zh":"今年的天气更加炎热。","py":"Jīnnián de tiānqì gèngjiā yánrè.","en":"This year's weather is even hotter."}],
+  [{"zh":"单身生活也可以过得丰富多彩。","py":"Dānshēn shēnghuó yě kěyǐ guò de fēngfù duō cǎi.","en":"Single life can also be rich and colorful."},{"zh":"上海的文化活动丰富多彩。","py":"Shànghǎi de wénhuà huódòng fēngfù duō cǎi.","en":"Shanghai's cultural activities are rich and varied."}],
+  [{"zh":"晚婚在现代社会非常普遍。","py":"Wǎn hūn zài xiàndài shèhuì fēicháng pǔbiàn.","en":"Late marriage is very common in modern society."},{"zh":"用手机支付在中国非常普遍。","py":"Yòng shǒujī zhīfù zài Zhōngguó fēicháng pǔbiàn.","en":"Paying by mobile phone is very common in China."}],
+  [{"zh":"结婚是人生的终身大事，要认真考虑。","py":"Jiéhūn shì rénshēng de zhōngshēn dà shì, yào rènzhēn kǎolǜ.","en":"Marriage is a major life event — consider it carefully."},{"zh":"父母都很关心子女的终身大事。","py":"Fùmǔ dōu hěn guānxīn zǐnǚ de zhōngshēn dà shì.","en":"Parents are very concerned about their children's marriage."}],
+  [{"zh":"你说啥？我没听清楚。","py":"Nǐ shuō shá? Wǒ méi tīng qīngchǔ.","en":"What did you say? I didn't hear clearly."},{"zh":"这有啥好担心的？","py":"Zhè yǒu shá hǎo dānxīn de?","en":"What's there to worry about?"}],
+  [{"zh":"没考好大不了下次再努力。","py":"Méi kǎo hǎo dàbuliǎo xià cì zài nǔlì.","en":"If you didn't do well on the exam, it's no big deal — try harder next time."},{"zh":"迟到了大不了道个歉。","py":"Chídào le dàbuliǎo dào gè qiàn.","en":"If you're late, it's no big deal — just apologize."}],
+  [{"zh":"你懂得如何和别人相处吗？","py":"Nǐ dǒngde rúhé hé biéren xiāngchǔ ma?","en":"Do you know how to get along with others?"},{"zh":"他懂得尊重别人的感受。","py":"Tā dǒngde zūnzhòng biéren de gǎnshòu.","en":"He understands how to respect other people's feelings."}],
+  [{"zh":"一个人住在大城市容易感到孤单。","py":"Yī gè rén zhù zài dà chéngshì róngyì gǎndào gūdān.","en":"Living alone in a big city can easily feel lonely."},{"zh":"节日的时候，他感到特别孤单。","py":"Jiérì de shíhou, tā gǎndào tèbié gūdān.","en":"During the holidays, he felt especially lonely."}],
+  [{"zh":"婚礼上来了很多亲朋好友。","py":"Hūnlǐ shàng lái le hěn duō qīn péng hǎo yǒu.","en":"Many relatives and friends came to the wedding."},{"zh":"过年的时候，亲朋好友都聚在一起。","py":"Guò nián de shíhou, qīn péng hǎo yǒu dōu jù zài yīqǐ.","en":"During the New Year, relatives and friends all gather together."}],
+  [{"zh":"他们两个关系非常亲密。","py":"Tāmen liǎng gè guānxi fēicháng qīnmì.","en":"The two of them have a very close relationship."},{"zh":"多年的合作让他们变得非常亲密。","py":"Duō nián de hézuò ràng tāmen biàn de fēicháng qīnmì.","en":"Years of cooperation made them very close."}],
+  [{"zh":"家人的支持对他很重要。","py":"Jiārén de zhīchí duì tā hěn zhòngyào.","en":"The support of family members is very important to him."},{"zh":"他很思念在国内的家人。","py":"Tā hěn sīniàn zài guónèi de jiārén.","en":"He misses his family back home very much."}],
+  [{"zh":"你有什么理由不去上班？","py":"Nǐ yǒu shénme lǐyóu bù qù shàngbān?","en":"What reason do you have for not going to work?"},{"zh":"他们分手的理由让大家都感到意外。","py":"Tāmen fēnshǒu de lǐyóu ràng dàjiā dōu gǎndào yìwài.","en":"The reason for their break-up surprised everyone."}],
+  [{"zh":"结婚的事需要认真考虑。","py":"Jiéhūn de shì xūyào rènzhēn kǎolǜ.","en":"The matter of marriage needs to be considered carefully."},{"zh":"我需要时间考虑你的建议。","py":"Wǒ xūyào shíjiān kǎolǜ nǐ de jiànyì.","en":"I need time to consider your suggestion."}],
+  [{"zh":"这件事你就不用管了。","py":"Zhè jiàn shì nǐ jiù bú yòng guǎn le.","en":"You don't need to worry about this matter."},{"zh":"父母要管好自己的孩子。","py":"Fùmǔ yào guǎn hǎo zìjǐ de háizi.","en":"Parents should discipline their children well."}],
+  [{"zh":"这里的天气太热了，我受不了。","py":"Zhèlǐ de tiānqì tài rè le, wǒ shòu bu liǎo.","en":"The weather here is too hot — I can't stand it."},{"zh":"他的坏习惯让她越来越受不了。","py":"Tā de huài xíguàn ràng tā yuèlái yuè shòu bu liǎo.","en":"His bad habits made her less and less able to put up with him."}],
+  [{"zh":"老师很有耐心地教我们。","py":"Lǎoshī hěn yǒu nàixīn de jiāo wǒmen.","en":"The teacher teaches us very patiently."},{"zh":"学汉语需要很大的耐心。","py":"Xué Hànyǔ xūyào hěn dà de nàixīn.","en":"Learning Chinese requires a great deal of patience."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
   if (currentChapter === 2) return WORDS_CH2;
   if (currentChapter === 3) return WORDS_CH3;
   if (currentChapter === 4) return WORDS_CH4;
-  return WORDS_CH5;
+  if (currentChapter === 5) return WORDS_CH5;
+  return WORDS_CH6;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
   if (currentChapter === 2) return EXAMPLES_CH2;
   if (currentChapter === 3) return EXAMPLES_CH3;
   if (currentChapter === 4) return EXAMPLES_CH4;
-  return EXAMPLES_CH5;
+  if (currentChapter === 5) return EXAMPLES_CH5;
+  return EXAMPLES_CH6;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -2881,8 +3114,8 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5];
-    const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画'];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6];
+    const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
       words.forEach((w, i) => {
@@ -3074,8 +3307,8 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4];
-  const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿'];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6];
+  const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
   const chData = chWords.map((words, ci) => {
