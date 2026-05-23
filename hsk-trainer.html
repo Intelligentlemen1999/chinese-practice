@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>HSK Trainer 1–6</title>
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f0f1a;color:#e8e8f0;min-height:100vh}
+:root{--blue:#4f8ef7;--green:#4caf7d;--red:#e05c5c;--gold:#f4c430;--purple:#9b59b6;--card:#1a1a2e;--border:#2a2a3e}
+
+/* ─── HEADER ─── */
+header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{font-size:1.3rem;font-weight:700;color:var(--blue)}
+.logo span{color:#e8e8f0}
+.header-stats{margin-left:auto;display:flex;gap:14px;font-size:.82rem;color:#888}
+.header-stats b{color:#e8e8f0}
+
+/* ─── LEVEL TABS ─── */
+.level-bar{background:#12121f;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;gap:4px;padding:8px 14px}
+.lv-btn{flex-shrink:0;padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:transparent;color:#999;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.lv-btn:hover{border-color:var(--blue);color:var(--blue)}
+.lv-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.lv-badge{font-size:.7rem;background:rgba(255,255,255,.12);border-radius:8px;padding:1px 6px;margin-left:4px}
+
+/* ─── MODE TABS ─── */
+.mode-bar{display:flex;gap:0;border-bottom:1px solid var(--border);background:#12121f}
+.mode-btn{flex:1;padding:12px;text-align:center;font-size:.85rem;font-weight:600;cursor:pointer;color:#666;border-bottom:3px solid transparent;transition:all .2s;max-width:200px}
+.mode-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+
+/* ─── MAIN CONTENT ─── */
+.view{display:none;padding:20px;max-width:700px;margin:0 auto}
+.view.active{display:block}
+
+/* ─── DASHBOARD ─── */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px}
+.dash-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+.dash-card h3{font-size:.75rem;text-transform:uppercase;color:#666;letter-spacing:.06em;margin-bottom:10px}
+.dash-card .big{font-size:2rem;font-weight:700;color:var(--blue)}
+.dash-card .sub{font-size:.78rem;color:#777;margin-top:4px}
+.prog-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.prog-label{font-size:.8rem;width:46px;color:#aaa}
+.prog-bar-wrap{flex:1;background:#1e1e30;border-radius:4px;height:8px;overflow:hidden}
+.prog-bar-fill{height:100%;background:var(--green);border-radius:4px;transition:width .5s}
+.prog-pct{font-size:.75rem;color:#888;width:36px;text-align:right}
+
+/* ─── STUDY CARD ─── */
+.card-wrap{display:flex;justify-content:center;margin-top:10px}
+.flash-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 28px;width:100%;max-width:480px;text-align:center;position:relative;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.card-hanzi{font-size:3.8rem;line-height:1.1;color:#fff;font-weight:300;letter-spacing:.05em}
+.card-pinyin{font-size:1.2rem;color:#7ab0ff}
+.card-pos{font-size:.78rem;color:#888;font-style:italic}
+.card-english{font-size:1.3rem;color:#ccc}
+.card-hint{font-size:.82rem;color:#555;position:absolute;bottom:14px;right:18px}
+.hidden{opacity:0;pointer-events:none}
+
+.srs-btns{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.srs-btn{padding:10px 22px;border-radius:10px;border:none;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .15s}
+.srs-btn:active{transform:scale(.95)}
+.btn-again{background:#3d1a1a;color:var(--red);border:1px solid var(--red)}
+.btn-hard{background:#3d2e1a;color:#e8a040;border:1px solid #e8a040}
+.btn-good{background:#1a3d27;color:var(--green);border:1px solid var(--green)}
+.btn-easy{background:#1a2a3d;color:var(--blue);border:1px solid var(--blue)}
+
+.reveal-btn{padding:12px 36px;background:var(--blue);border:none;border-radius:10px;color:#fff;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:10px}
+.reveal-btn:hover{background:#3a7ae0}
+
+.card-counter{text-align:center;font-size:.8rem;color:#555;margin-top:8px}
+.card-progress{height:4px;background:#1e1e30;border-radius:2px;margin:14px 0 0 0;overflow:hidden}
+.card-progress-fill{height:100%;background:var(--blue);transition:width .3s}
+
+/* stroke writer */
+.stroke-target{margin:10px auto 0;width:120px;height:120px}
+
+/* ─── TEST MODE ─── */
+.test-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.test-header h2{font-size:1.1rem;font-weight:700}
+.test-timer{margin-left:auto;font-size:1.1rem;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.test-question{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:16px;text-align:center}
+.test-hanzi{font-size:3rem;margin-bottom:8px}
+.test-sub{font-size:.95rem;color:#888}
+.mc-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.mc-opt{padding:12px 16px;background:#1e1e30;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.9rem;text-align:left;transition:all .15s;color:#ddd}
+.mc-opt:hover:not(.disabled){background:#252540;border-color:var(--blue)}
+.mc-opt.correct{background:#1a3d27;border-color:var(--green);color:var(--green)}
+.mc-opt.wrong{background:#3d1a1a;border-color:var(--red);color:var(--red)}
+.mc-opt.disabled{pointer-events:none}
+
+.test-score-screen{text-align:center;padding:40px 20px}
+.score-big{font-size:4rem;font-weight:700;color:var(--gold);margin:20px 0}
+.score-msg{font-size:1.1rem;color:#aaa;margin-bottom:30px}
+.score-breakdown{display:flex;gap:20px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
+.score-stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 20px;text-align:center}
+.score-stat .n{font-size:1.8rem;font-weight:700}
+.score-stat .l{font-size:.75rem;color:#888;margin-top:2px}
+
+/* ─── BUTTONS ─── */
+.btn{padding:10px 22px;border-radius:10px;border:none;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#3a7ae0}
+.btn-outline{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+.btn-outline:hover{background:rgba(79,142,247,.1)}
+.btn-danger{background:transparent;color:var(--red);border:1px solid var(--red)}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2a2a4a;border:1px solid var(--blue);color:#fff;padding:10px 20px;border-radius:10px;font-size:.85rem;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+/* ─── EMPTY STATE ─── */
+.empty{text-align:center;padding:60px 20px;color:#555}
+.empty .icon{font-size:3rem;margin-bottom:14px}
+.empty p{font-size:.95rem}
+
+/* ─── WORD LIST ─── */
+.wl-controls{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.wl-controls input{flex:1;min-width:160px;padding:8px 12px;background:#1e1e30;border:1px solid var(--border);border-radius:8px;color:#e8e8f0;font-size:.85rem}
+.wl-controls input::placeholder{color:#555}
+.word-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.word-table th{text-align:left;padding:8px 10px;color:#666;font-weight:600;border-bottom:1px solid var(--border);font-size:.75rem;text-transform:uppercase}
+.word-table td{padding:8px 10px;border-bottom:1px solid #1a1a2a}
+.word-table tr:hover td{background:#14142a}
+.w-hanzi{font-size:1.1rem;font-weight:500}
+.w-py{color:#7ab0ff;font-size:.8rem}
+.w-en{color:#aaa}
+.w-pos{color:#888;font-style:italic;font-size:.75rem}
+.w-status{font-size:.72rem;padding:2px 7px;border-radius:6px;font-weight:600}
+.status-new{background:#1e1e30;color:#666}
+.status-learning{background:#3d2e1a;color:#e8a040}
+.status-review{background:#1a2a3d;color:var(--blue)}
+.status-mastered{background:#1a3d27;color:var(--green)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:480px){
+  .mc-options{grid-template-columns:1fr}
+  .card-hanzi{font-size:3rem}
+  .dash-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">HSK <span>Trainer</span></div>
+  <div style="font-size:.8rem;color:#666">Levels 1–6 · Spaced Repetition</div>
+  <div class="header-stats" id="hdr-stats">
+    <span>Total mastered: <b id="hdr-mastered">0</b></span>
+    <span>Due: <b id="hdr-due">0</b></span>
+  </div>
+</header>
+
+<div class="level-bar" id="level-bar">
+  <button class="lv-btn active" data-lv="1" onclick="switchLevel(1)">HSK 1 <span class="lv-badge" id="lv-badge-1">150</span></button>
+  <button class="lv-btn" data-lv="2" onclick="switchLevel(2)">HSK 2 <span class="lv-badge" id="lv-badge-2">150</span></button>
+  <button class="lv-btn" data-lv="3" onclick="switchLevel(3)">HSK 3 <span class="lv-badge" id="lv-badge-3">300</span></button>
+  <button class="lv-btn" data-lv="4" onclick="switchLevel(4)">HSK 4 <span class="lv-badge" id="lv-badge-4">600</span></button>
+  <button class="lv-btn" data-lv="5" onclick="switchLevel(5)">HSK 5 <span class="lv-badge" id="lv-badge-5">1300</span></button>
+  <button class="lv-btn" data-lv="6" onclick="switchLevel(6)">HSK 6 <span class="lv-badge" id="lv-badge-6">2500</span></button>
+</div>
+
+<div class="mode-bar">
+  <div class="mode-btn active" data-mode="dash" onclick="switchMode('dash')">📊 Dashboard</div>
+  <div class="mode-btn" data-mode="study" onclick="switchMode('study')">🎴 Study</div>
+  <div class="mode-btn" data-mode="test" onclick="switchMode('test')">📝 Test</div>
+  <div class="mode-btn" data-mode="words" onclick="switchMode('words')">📖 Words</div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="view active" id="view-dash">
+  <div class="dash-grid">
+    <div class="dash-card">
+      <h3>Level Progress</h3>
+      <div id="level-prog-rows"></div>
+    </div>
+    <div class="dash-card">
+      <h3>Current Level</h3>
+      <div class="big" id="dash-mastered-n">0</div>
+      <div class="sub" id="dash-mastered-sub">mastered this level</div>
+    </div>
+    <div class="dash-card">
+      <h3>Due for Review</h3>
+      <div class="big" id="dash-due-n" style="color:var(--gold)">0</div>
+      <div class="sub">cards ready now</div>
+    </div>
+    <div class="dash-card">
+      <h3>New Cards</h3>
+      <div class="big" id="dash-new-n" style="color:#9b59b6">0</div>
+      <div class="sub">not yet studied</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="switchMode('study');startStudy()">▶ Study Now</button>
+    <button class="btn btn-outline" onclick="switchMode('test');startTest()">📝 Take Test</button>
+    <button class="btn btn-outline" onclick="resetLevelSRS()">↺ Reset Level</button>
+  </div>
+</div>
+
+<!-- STUDY -->
+<div class="view" id="view-study">
+  <div id="study-loading" style="text-align:center;padding:40px;color:#555">Loading cards…</div>
+  <div id="study-ui" style="display:none">
+    <div class="card-progress"><div class="card-progress-fill" id="study-prog-fill" style="width:0%"></div></div>
+    <div class="card-counter" id="study-counter">Card 1 of 20</div>
+    <div class="card-wrap">
+      <div class="flash-card" id="flash-card">
+        <div class="card-hanzi" id="card-hanzi">好</div>
+        <div class="card-pinyin hidden" id="card-pinyin">hǎo</div>
+        <div class="card-pos hidden" id="card-pos">Adj.</div>
+        <div class="card-english hidden" id="card-english">good</div>
+        <div class="stroke-target" id="stroke-target"></div>
+        <div class="card-hint">tap to reveal</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <button class="reveal-btn" id="reveal-btn" onclick="revealCard()">Show Answer</button>
+    </div>
+    <div class="srs-btns" id="srs-btns" style="display:none">
+      <button class="srs-btn btn-again" onclick="rateCard(0)"><div>Again</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">&lt;1m</div></button>
+      <button class="srs-btn btn-hard" onclick="rateCard(2)"><div>Hard</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~1d</div></button>
+      <button class="srs-btn btn-good" onclick="rateCard(3)"><div>Good</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~3d</div></button>
+      <button class="srs-btn btn-easy" onclick="rateCard(5)"><div>Easy</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~7d</div></button>
+    </div>
+  </div>
+  <div id="study-done" style="display:none" class="empty">
+    <div class="icon">🎉</div>
+    <p>All done for now!</p>
+    <p style="margin-top:8px;font-size:.8rem">Come back later for more reviews.</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:20px">
+      <button class="btn btn-primary" onclick="startStudy(true)">Study All Anyway</button>
+      <button class="btn btn-outline" onclick="switchMode('dash')">Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- TEST -->
+<div class="view" id="view-test">
+  <div id="test-start" style="text-align:center;padding:40px 20px">
+    <div style="font-size:2.5rem;margin-bottom:16px">📝</div>
+    <h2 style="margin-bottom:10px">Mock Test</h2>
+    <p style="color:#888;margin-bottom:24px">25 multiple-choice questions · 5 minutes</p>
+    <button class="btn btn-primary" onclick="startTest()">Start Test</button>
+  </div>
+  <div id="test-ui" style="display:none">
+    <div class="test-header">
+      <div>
+        <div style="font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.05em">Question</div>
+        <div id="test-qnum" style="font-size:1.1rem;font-weight:700">1 / 25</div>
+      </div>
+      <div class="card-progress" style="flex:1;margin:0 10px">
+        <div class="card-progress-fill" id="test-prog-fill" style="width:0%"></div>
+      </div>
+      <div class="test-timer" id="test-timer">5:00</div>
+    </div>
+    <div class="test-question">
+      <div class="test-hanzi" id="test-hanzi">好</div>
+      <div class="test-sub" id="test-sub">What does this mean?</div>
+    </div>
+    <div class="mc-options" id="mc-options"></div>
+    <div style="text-align:center;margin-top:16px">
+      <button class="btn btn-outline" id="next-btn" style="display:none" onclick="nextTestQ()">Next →</button>
+    </div>
+  </div>
+  <div id="test-score" style="display:none" class="test-score-screen">
+    <div style="font-size:1.2rem;font-weight:700">Test Complete!</div>
+    <div class="score-big" id="score-pct">80%</div>
+    <div class="score-msg" id="score-msg">Good job!</div>
+    <div class="score-breakdown">
+      <div class="score-stat"><div class="n" id="sc-correct" style="color:var(--green)">20</div><div class="l">Correct</div></div>
+      <div class="score-stat"><div class="n" id="sc-wrong" style="color:var(--red)">5</div><div class="l">Wrong</div></div>
+      <div class="score-stat"><div class="n" id="sc-time">3:24</div><div class="l">Time</div></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn btn-primary" onclick="startTest()">Try Again</button>
+      <button class="btn btn-outline" onclick="switchMode('dash')">Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- WORDS -->
+<div class="view" id="view-words">
+  <div class="wl-controls">
+    <input type="text" id="wl-search" placeholder="Search hanzi, pinyin, or English…" oninput="renderWordList()">
+    <select id="wl-filter" onchange="renderWordList()" style="padding:8px 10px;background:#1e1e30;border:1px solid var(--border);border-radius:8px;color:#e8e8f0;font-size:.85rem">
+      <option value="all">All</option>
+      <option value="new">New</option>
+      <option value="learning">Learning</option>
+      <option value="mastered">Mastered</option>
+    </select>
+  </div>
+  <table class="word-table">
+    <thead><tr><th>#</th><th>Word</th><th>Pinyin</th><th>English</th><th>Status</th></tr></thead>
+    <tbody id="wl-body"></tbody>
+  </table>
+  <div style="text-align:center;margin-top:14px;font-size:.8rem;color:#555" id="wl-count"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// HSK WORD DATA  [hanzi, pinyin, pos, english]
+// ═══════════════════════════════════════════════════════
+
+const HSK1 = [
+['爱','ài','v.','to love'],['八','bā','num.','eight'],['爸爸','bàba','n.','dad'],
+['杯子','bēizi','n.','cup, glass'],['北京','Běijīng','n.','Beijing'],
+['本','běn','m.w.','(m.w. for books)'],['不客气','bù kèqi','expr.','you\'re welcome'],
+['不','bù','adv.','not, no'],['菜','cài','n.','dish, vegetable'],['茶','chá','n.','tea'],
+['吃','chī','v.','to eat'],['出租车','chūzūchē','n.','taxi'],['打电话','dǎ diànhuà','v.','to make a phone call'],
+['大','dà','adj.','big, large'],['的','de','part.','(possessive/attributive)'],
+['地铁','dìtiě','n.','subway, metro'],['点','diǎn','n/v.','o\'clock; to order'],
+['电脑','diànnǎo','n.','computer'],['电视','diànshì','n.','television'],
+['电影','diànyǐng','n.','movie, film'],['东西','dōngxi','n.','thing, stuff'],
+['都','dōu','adv.','all, both'],['读','dú','v.','to read aloud'],
+['对不起','duìbuqǐ','expr.','sorry, excuse me'],['多','duō','adj/adv.','many, much; how'],
+['多少','duōshao','pron.','how many, how much'],['饿','è','adj.','hungry'],
+['二','èr','num.','two'],['饭店','fàndiàn','n.','restaurant; hotel'],
+['飞机','fēijī','n.','airplane'],['分钟','fēnzhōng','n.','minute'],
+['高兴','gāoxìng','adj.','happy, glad'],['个','gè','m.w.','(general measure word)'],
+['工作','gōngzuò','n/v.','work; to work'],['狗','gǒu','n.','dog'],
+['汉语','Hànyǔ','n.','Chinese language'],['好','hǎo','adj.','good, well'],
+['好吃','hǎochī','adj.','delicious, tasty'],['号','hào','n.','number; date'],
+['喝','hē','v.','to drink'],['和','hé','conj.','and'],['很','hěn','adv.','very'],
+['后面','hòumiàn','n.','back, behind'],['回','huí','v.','to return, go back'],
+['会','huì','aux.','can, will'],['几','jǐ','pron.','how many, several'],
+['家','jiā','n.','home, family'],['叫','jiào','v.','to call, be named'],
+['今天','jīntiān','n.','today'],['九','jiǔ','num.','nine'],
+['开','kāi','v.','to open; to drive'],['看','kàn','v.','to look, watch, read'],
+['看见','kànjiàn','v.','to see'],['来','lái','v.','to come'],
+['老师','lǎoshī','n.','teacher'],['了','le','part.','(completion/change)'],
+['累','lèi','adj.','tired'],['冷','lěng','adj.','cold'],
+['里','lǐ','n.','inside'],['两','liǎng','num.','two (of a pair)'],
+['零','líng','num.','zero'],['六','liù','num.','six'],
+['妈妈','māma','n.','mom'],['买','mǎi','v.','to buy'],
+['猫','māo','n.','cat'],['没关系','méi guānxi','expr.','it doesn\'t matter'],
+['没有','méiyǒu','v.','not have; haven\'t'],['每','měi','det.','every, each'],
+['妹妹','mèimei','n.','younger sister'],['门','mén','n.','door, gate'],
+['面条','miàntiáo','n.','noodles'],['明天','míngtiān','n.','tomorrow'],
+['名字','míngzi','n.','name'],['哪','nǎ','pron.','which'],
+['哪儿','nǎr','pron.','where'],['那','nà','pron.','that'],
+['呢','ne','part.','(question particle)'],['能','néng','aux.','can, be able to'],
+['你','nǐ','pron.','you'],['你好','nǐ hǎo','expr.','hello'],
+['年','nián','n.','year'],['女儿','nǚér','n.','daughter'],
+['朋友','péngyou','n.','friend'],['漂亮','piàoliang','adj.','beautiful, pretty'],
+['苹果','píngguǒ','n.','apple'],['七','qī','num.','seven'],
+['钱','qián','n.','money'],['前面','qiánmiàn','n.','front, ahead'],
+['去','qù','v.','to go'],['去年','qùnián','n.','last year'],
+['热','rè','adj.','hot'],['人','rén','n.','person, people'],
+['认识','rènshi','v.','to know, be acquainted with'],['日','rì','n.','day, sun'],
+['三','sān','num.','three'],['商店','shāngdiàn','n.','shop, store'],
+['上','shàng','n/v.','on, above; to go up'],['上午','shàngwǔ','n.','morning (a.m.)'],
+['少','shǎo','adj.','few, little'],['谁','shéi','pron.','who'],
+['什么','shénme','pron.','what'],['十','shí','num.','ten'],
+['时候','shíhou','n.','time, moment'],['是','shì','v.','to be (is/are/am)'],
+['书','shū','n.','book'],['水','shuǐ','n.','water'],
+['水果','shuǐguǒ','n.','fruit'],['睡觉','shuìjiào','v.','to sleep'],
+['说','shuō','v.','to speak, say'],['四','sì','num.','four'],
+['岁','suì','n.','year (of age)'],['他','tā','pron.','he, him'],
+['他们','tāmen','pron.','they, them'],['她','tā','pron.','she, her'],
+['太','tài','adv.','too, extremely'],['同学','tóngxué','n.','classmate'],
+['喂','wèi','interj.','hello (on phone)'],['我','wǒ','pron.','I, me'],
+['我们','wǒmen','pron.','we, us'],['五','wǔ','num.','five'],
+['下','xià','n.','under, below; next'],['下午','xiàwǔ','n.','afternoon (p.m.)'],
+['下雨','xià yǔ','v.','to rain'],['先生','xiānsheng','n.','Mr., husband, sir'],
+['现在','xiànzài','n.','now, currently'],['想','xiǎng','v.','to think; want to'],
+['小','xiǎo','adj.','small, little'],['小姐','xiǎojiě','n.','Miss, young lady'],
+['些','xiē','m.w.','some, a few'],['写','xiě','v.','to write'],
+['谢谢','xièxie','v.','thank you'],['星期','xīngqī','n.','week'],
+['学生','xuésheng','n.','student'],['学习','xuéxí','v.','to study, learn'],
+['学校','xuéxiào','n.','school'],['一','yī','num.','one'],
+['衣服','yīfu','n.','clothes'],['椅子','yǐzi','n.','chair'],
+['有','yǒu','v.','to have'],['语言','yǔyán','n.','language'],
+['再见','zàijiàn','expr.','goodbye'],['怎么','zěnme','pron.','how, why'],
+['怎么样','zěnmeyàng','pron.','how is it, what about'],['这','zhè','pron.','this'],
+['正在','zhèngzài','adv.','currently doing'],['中国','Zhōngguó','n.','China'],
+['中午','zhōngwǔ','n.','noon, midday'],['住','zhù','v.','to live, reside'],
+['桌子','zhuōzi','n.','table, desk'],['字','zì','n.','character, word'],
+['坐','zuò','v.','to sit; to travel by'],['做','zuò','v.','to do, make']
+];
+
+const HSK2 = [
+['吧','ba','part.','(suggestion/supposition)'],['白','bái','adj.','white'],
+['百','bǎi','num.','hundred'],['帮助','bāngzhù','v.','to help, assist'],
+['报纸','bàozhǐ','n.','newspaper'],['比','bǐ','prep.','compared to'],
+['别','bié','adv.','don\'t'],['宾馆','bīnguǎn','n.','hotel'],
+['长','cháng','adj.','long'],['唱歌','chàng gē','v.','to sing (a song)'],
+['出','chū','v.','to go out, come out'],['穿','chuān','v.','to wear, put on'],
+['次','cì','m.w.','time, occurrence'],['从','cóng','prep.','from'],
+['错','cuò','adj.','wrong, mistaken'],['打篮球','dǎ lánqiú','v.','to play basketball'],
+['大家','dàjiā','pron.','everyone, everybody'],['但是','dànshì','conj.','but, however'],
+['到','dào','v/prep.','to arrive; to'],['得','de','part.','(complement particle)'],
+['等','děng','v.','to wait'],['弟弟','dìdi','n.','younger brother'],
+['第一','dì yī','adj.','first'],['懂','dǒng','v.','to understand'],
+['房间','fángjiān','n.','room'],['非常','fēicháng','adv.','very, extremely'],
+['服务员','fúwùyuán','n.','waiter, attendant'],['高','gāo','adj.','tall, high'],
+['告诉','gàosu','v.','to tell, inform'],['哥哥','gēge','n.','older brother'],
+['给','gěi','v/prep.','to give; for'],['公共汽车','gōnggòng qìchē','n.','bus'],
+['公司','gōngsī','n.','company, firm'],['贵','guì','adj.','expensive'],
+['过','guò','v.','to pass, cross; (past experience)'],
+['还是','háishi','conj.','or; still'],['孩子','háizi','n.','child'],
+['好像','hǎoxiàng','adv.','seem, look like'],['黑','hēi','adj.','black'],
+['红','hóng','adj.','red'],['候','hòu','n.','wait; time'],
+['花','huā','n.','flower'],['话','huà','n.','speech, words'],
+['欢迎','huānyíng','v.','to welcome'],['还','huán','v.','to return, give back'],
+['换','huàn','v.','to exchange, change'],['黄','huáng','adj.','yellow'],
+['回答','huídá','v.','to reply, answer'],['机场','jīchǎng','n.','airport'],
+['鸡蛋','jīdàn','n.','egg'],['件','jiàn','m.w.','(m.w. for clothes/matters)'],
+['教室','jiàoshì','n.','classroom'],['姐姐','jiějie','n.','older sister'],
+['介绍','jièshào','v.','to introduce'],['进','jìn','v.','to enter'],
+['近','jìn','adj.','near, close'],['就','jiù','adv.','just, then'],
+['觉得','juéde','v.','to feel, think'],['开始','kāishǐ','v.','to start, begin'],
+['考试','kǎoshì','n/v.','exam; to take a test'],['可能','kěnéng','adv.','possibly, maybe'],
+['可以','kěyǐ','aux.','can, may'],['课','kè','n.','class, lesson'],
+['快','kuài','adj/adv.','fast, quick'],['快乐','kuàilè','adj.','happy, joyful'],
+['离','lí','prep.','away from'],['两','liǎng','num.','two, a couple'],
+['料','liào','n.','material, ingredient'],['路','lù','n.','road, route'],
+['旅游','lǚyóu','v.','to travel, tour'],['卖','mài','v.','to sell'],
+['慢','màn','adj.','slow'],['忙','máng','adj.','busy'],
+['每天','měi tiān','adv.','every day'],['门','mén','n.','door, entrance'],
+['米饭','mǐfàn','n.','cooked rice'],['明白','míngbai','v.','to understand'],
+['拿','ná','v.','to take, hold'],['男','nán','adj.','male'],
+['难','nán','adj.','difficult, hard'],['哦','ó','interj.','oh (surprise)'],
+['旁边','pángbiān','n.','beside, next to'],['跑步','pǎo bù','v.','to run, jog'],
+['便宜','piányí','adj.','cheap, inexpensive'],['票','piào','n.','ticket'],
+['妻子','qīzi','n.','wife'],['起床','qǐ chuáng','v.','to get up'],
+['请','qǐng','v.','please; to invite'],['去','qù','v.','to go'],
+['让','ràng','v.','to let, allow'],['日','rì','n.','day; sun'],
+['如果','rúguǒ','conj.','if, in case'],['上班','shàng bān','v.','to go to work'],
+['身体','shēntǐ','n.','body; health'],['生病','shēng bìng','v.','to get sick'],
+['生日','shēngrì','n.','birthday'],['时间','shíjiān','n.','time'],
+['事情','shìqing','n.','matter, affair'],['手机','shǒujī','n.','mobile phone'],
+['双','shuāng','m.w.','pair (of shoes etc.)'],['说话','shuō huà','v.','to speak, talk'],
+['送','sòng','v.','to send; to give as gift'],['虽然','suīrán','conj.','although, even though'],
+['它','tā','pron.','it'],['她们','tāmen','pron.','they (female)'],
+['踢足球','tī zúqiú','v.','to play football'],['题','tí','n.','question, problem'],
+['跳舞','tiào wǔ','v.','to dance'],['玩','wán','v.','to play, have fun'],
+['晚上','wǎnshang','n.','evening, night'],['往','wǎng','prep.','towards, in the direction of'],
+['为什么','wèi shénme','pron.','why'],['问','wèn','v.','to ask'],
+['问题','wèntí','n.','question, problem'],['西瓜','xīguā','n.','watermelon'],
+['希望','xīwàng','v/n.','to hope; hope'],['洗','xǐ','v.','to wash'],
+['小时','xiǎoshí','n.','hour'],['笑','xiào','v.','to laugh, smile'],
+['新','xīn','adj.','new'],['休息','xiūxi','v.','to rest'],
+['雪','xuě','n.','snow'],['颜色','yánsè','n.','color'],
+['眼睛','yǎnjing','n.','eye(s)'],['一起','yīqǐ','adv.','together'],
+['一下','yīxià','adv.','a moment; (softens a verb)'],
+['意思','yìsi','n.','meaning'],['因为','yīnwèi','conj.','because'],
+['应该','yīnggāi','aux.','should, ought to'],['用','yòng','v.','to use'],
+['游泳','yóu yǒng','v.','to swim'],['右边','yòubiān','n.','right side'],
+['鱼','yú','n.','fish'],['远','yuǎn','adj.','far, distant'],
+['运动','yùndòng','n/v.','sport, exercise; to exercise'],
+['再','zài','adv.','again; then'],['在','zài','prep/v.','at, in; to be at'],
+['早上','zǎoshang','n.','morning'],['张','zhāng','m.w.','(m.w. for flat objects)'],
+['丈夫','zhàngfu','n.','husband'],['找','zhǎo','v.','to look for, find'],
+['着','zhe','part.','(ongoing action)'],['真','zhēn','adv.','really, truly'],
+['知道','zhīdào','v.','to know'],['准备','zhǔnbèi','v.','to prepare'],
+['走','zǒu','v.','to walk, go'],['最','zuì','adv.','most'],
+['左边','zuǒbiān','n.','left side'],['昨天','zuótiān','n.','yesterday']
+];
+
+const HSK3 = [
+['阿姨','āyí','n.','aunt; auntie'],['啊','a','part.','(exclamation/softener)'],
+['矮','ǎi','adj.','short (height)'],['爱好','àihào','n.','hobby, interest'],
+['安静','ānjìng','adj.','quiet, peaceful'],['把','bǎ','prep.','(disposal marker)'],
+['班','bān','n.','class, shift'],['搬','bān','v.','to move (house/objects)'],
+['办法','bànfǎ','n.','method, way, means'],['办公室','bàngōngshì','n.','office'],
+['半','bàn','num.','half'],['帮','bāng','v.','to help'],
+['包','bāo','n.','bag, package'],['饱','bǎo','adj.','full (after eating)'],
+['北方','běifāng','n.','north, northern area'],['被','bèi','prep.','by (passive marker)'],
+['鼻子','bízi','n.','nose'],['比较','bǐjiào','adv.','comparatively, relatively'],
+['比赛','bǐsài','n/v.','competition; to compete'],['变化','biànhuà','n/v.','change; to change'],
+['别人','biérén','pron.','other people, others'],['宾馆','bīnguǎn','n.','hotel'],
+['不但','bùdàn','conj.','not only'],['不过','búguò','conj.','however, but'],
+['才','cái','adv.','only then, not until'],['参加','cānjiā','v.','to join, participate'],
+['草','cǎo','n.','grass'],['层','céng','m.w.','floor, layer'],
+['差','chà','adj.','bad, poor; differ by'],['超市','chāoshì','n.','supermarket'],
+['成绩','chéngjì','n.','grade, achievement'],['城市','chéngshì','n.','city'],
+['迟到','chídào','v.','to arrive late, be late'],['除了','chúle','prep.','except, besides'],
+['船','chuán','n.','boat, ship'],['春','chūn','n.','spring (season)'],
+['词语','cíyǔ','n.','word, phrase'],['聪明','cōngming','adj.','smart, clever'],
+['打扫','dǎsǎo','v.','to clean, sweep'],['打算','dǎsuan','v/n.','to plan; plan'],
+['带','dài','v.','to bring, take; to wear'],['担心','dānxīn','v.','to worry'],
+['蛋糕','dàngāo','n.','cake'],['当然','dāngrán','adv.','of course, naturally'],
+['灯','dēng','n.','lamp, light'],['地','de','part.','(adverbial particle)'],
+['地方','dìfang','n.','place, location'],['地图','dìtú','n.','map'],
+['电梯','diàntī','n.','elevator'],['电子邮件','diànzǐ yóujiàn','n.','email'],
+['东','dōng','n.','east'],['动物','dòngwù','n.','animal'],
+['短','duǎn','adj.','short (length)'],['段','duàn','m.w.','section, paragraph'],
+['锻炼','duànliàn','v.','to exercise, work out'],['多么','duōme','adv.','how (exclamation)'],
+['饿','è','adj.','hungry'],['而且','érqiě','conj.','moreover, furthermore'],
+['耳朵','ěrduo','n.','ear(s)'],['发烧','fāshāo','v.','to have a fever'],
+['发现','fāxiàn','v.','to discover, find'],['方便','fāngbiàn','adj.','convenient'],
+['放','fàng','v.','to put, place; to let go'],['放心','fàngxīn','v.','to relax, not worry'],
+['分','fēn','m.w.','minute; point; cent'],['附近','fùjìn','n.','nearby, vicinity'],
+['复习','fùxí','v.','to review, revise'],['感冒','gǎnmào','v/n.','to catch a cold; cold'],
+['感兴趣','gǎn xìngqù','v.','to be interested in'],['刚才','gāngcái','n.','just now, a moment ago'],
+['更','gèng','adv.','even more, still more'],['故事','gùshi','n.','story'],
+['关系','guānxi','n.','relationship, connection'],['关心','guānxīn','v.','to care about'],
+['关注','guānzhù','v.','to pay attention to'],['贵姓','guì xìng','expr.','your surname (polite)'],
+['国家','guójiā','n.','country, nation'],['过去','guòqù','n.','past'],
+['还','hái','adv.','still, also'],['害怕','hàipà','v.','to be afraid, fear'],
+['寒假','hánjià','n.','winter vacation'],['汗','hàn','n.','sweat'],
+['好久','hǎo jiǔ','adv.','for a long time'],['好学','hàoxué','adj.','eager to learn'],
+['号码','hàomǎ','n.','number (phone etc.)'],['合适','héshì','adj.','suitable, appropriate'],
+['黑板','hēibǎn','n.','blackboard'],['护士','hùshi','n.','nurse'],
+['花','huā','v.','to spend (time/money)'],['画','huà','v/n.','to draw; painting'],
+['坏','huài','adj.','bad, broken'],['环境','huánjìng','n.','environment'],
+['换','huàn','v.','to change, exchange'],['回家','huí jiā','v.','to go home'],
+['会议','huìyì','n.','meeting'],['活动','huódòng','n/v.','activity; to move about'],
+['火车站','huǒchē zhàn','n.','train station'],['或者','huòzhě','conj.','or'],
+['几乎','jīhū','adv.','almost, nearly'],['计划','jìhuà','n/v.','plan; to plan'],
+['记住','jìzhù','v.','to remember, memorize'],['季节','jìjié','n.','season'],
+['检查','jiǎnchá','v.','to check, inspect'],['简单','jiǎndān','adj.','simple, easy'],
+['健康','jiànkāng','adj/n.','healthy; health'],['见面','jiàn miàn','v.','to meet'],
+['教','jiāo/jiào','v.','to teach'],['接','jiē','v.','to receive; to pick up'],
+['节目','jiémù','n.','programme, show'],['节日','jiérì','n.','holiday, festival'],
+['结婚','jié hūn','v.','to get married'],['解决','jiějué','v.','to solve'],
+['结束','jiéshù','v.','to end, finish'],['借','jiè','v.','to borrow; to lend'],
+['经常','jīngcháng','adv.','often, frequently'],['经过','jīngguò','v.','to pass by; after'],
+['经理','jīnglǐ','n.','manager'],['就是','jiùshì','conj.','exactly, it\'s just that'],
+['举行','jǔxíng','v.','to hold (an event)'],['句子','jùzi','n.','sentence'],
+['开心','kāixīn','adj.','happy, delighted'],['看法','kànfǎ','n.','view, opinion'],
+['客人','kèrén','n.','guest, visitor'],['空调','kōngtiáo','n.','air conditioning'],
+['口','kǒu','m.w.','(m.w. for family members)'],['裤子','kùzi','n.','trousers, pants'],
+['筷子','kuàizi','n.','chopsticks'],['蓝','lán','adj.','blue'],
+['老','lǎo','adj.','old'],['离开','líkāi','v.','to leave, depart'],
+['礼物','lǐwù','n.','gift, present'],['历史','lìshǐ','n.','history'],
+['脸','liǎn','n.','face'],['练习','liànxí','n/v.','exercise; to practice'],
+['聊天','liáo tiān','v.','to chat'],['了解','liǎojiě','v.','to understand, know about'],
+['邻居','línjū','n.','neighbour'],['留','liú','v.','to stay; to leave behind'],
+['楼','lóu','n.','building, floor'],['马上','mǎshàng','adv.','immediately, right away'],
+['满意','mǎnyì','adj.','satisfied'],['帽子','màozi','n.','hat, cap'],
+['名字','míngzi','n.','name'],['明显','míngxiǎn','adj.','obvious, clear'],
+['拿','ná','v.','to take, hold, grab'],['南','nán','n.','south'],
+['年级','niánjí','n.','grade, year (school)'],['年轻','niánqīng','adj.','young'],
+['努力','nǔlì','adj/v.','hardworking; to work hard'],['爬山','pá shān','v.','to climb a mountain'],
+['盘子','pánzi','n.','plate, dish'],['皮肤','pífū','n.','skin'],
+['瓶子','píngzi','n.','bottle'],['其实','qíshí','adv.','actually, in fact'],
+['其他','qítā','pron.','other, others'],['骑','qí','v.','to ride (bike/horse)'],
+['起来','qǐlái','v.','to get up; (indicates start)'],
+['清楚','qīngchu','adj.','clear, distinct'],['请假','qǐng jià','v.','to ask for leave'],
+['秋','qiū','n.','autumn, fall'],['裙子','qúnzi','n.','skirt'],
+['然后','ránhòu','adv.','then, after that'],['认为','rènwéi','v.','to think, consider'],
+['认真','rènzhēn','adj.','serious, diligent'],['容易','róngyì','adj.','easy'],
+['如果','rúguǒ','conj.','if'],['弱','ruò','adj.','weak'],
+['伞','sǎn','n.','umbrella'],['上网','shàng wǎng','v.','to go online'],
+['生气','shēngqì','v.','to be angry'],['声音','shēngyīn','n.','sound, voice'],
+['是否','shìfǒu','conj.','whether or not'],['叔叔','shūshu','n.','uncle'],
+['数学','shùxué','n.','mathematics'],['树','shù','n.','tree'],
+['刷牙','shuā yá','v.','to brush teeth'],['水平','shuǐpíng','n.','level, standard'],
+['司机','sījī','n.','driver'],['所以','suǒyǐ','conj.','so, therefore'],
+['特别','tèbié','adv.','especially, particularly'],['疼','téng','adj.','painful, ache'],
+['体育','tǐyù','n.','physical education, sports'],['天气','tiānqì','n.','weather'],
+['甜','tián','adj.','sweet'],['条','tiáo','m.w.','(m.w. for long thin objects)'],
+['同事','tóngshì','n.','colleague, workmate'],['突然','tūrán','adv.','suddenly'],
+['图书馆','túshūguǎn','n.','library'],['推','tuī','v.','to push'],
+['完成','wánchéng','v.','to complete, finish'],['碗','wǎn','n.','bowl'],
+['往','wǎng','prep.','towards'],['忘','wàng','v.','to forget'],
+['位','wèi','m.w.','(polite m.w. for people)'],['文化','wénhuà','n.','culture'],
+['西','xī','n.','west'],['习惯','xíguàn','n/v.','habit; to be used to'],
+['洗手间','xǐshǒujiān','n.','restroom, toilet'],['喜欢','xǐhuān','v.','to like'],
+['相信','xiāngxìn','v.','to believe, trust'],['向','xiàng','prep.','towards, to'],
+['小心','xiǎoxīn','adj/v.','careful; to be careful'],['笑话','xiàohuà','n.','joke'],
+['新鲜','xīnxiān','adj.','fresh'],['信','xìn','n.','letter'],
+['兴趣','xìngqù','n.','interest'],['行李箱','xínglǐxiāng','n.','suitcase'],
+['熊猫','xióngmāo','n.','panda'],['选择','xuǎnzé','v/n.','to choose; choice'],
+['要求','yāoqiú','v/n.','to require; requirement'],['也许','yěxǔ','adv.','perhaps, maybe'],
+['以前','yǐqián','n.','before, in the past'],['已经','yǐjīng','adv.','already'],
+['以为','yǐwéi','v.','to think (mistakenly)'],['一般','yībān','adj.','ordinary, general'],
+['一定','yīdìng','adv.','certainly, definitely'],['一共','yīgòng','adv.','in total, altogether'],
+['一会儿','yīhuìr','n.','a moment, a while'],['一样','yīyàng','adj.','same, alike'],
+['音乐','yīnyuè','n.','music'],['银行','yínháng','n.','bank'],
+['饮料','yǐnliào','n.','drink, beverage'],['印象','yìnxiàng','n.','impression'],
+['影响','yǐngxiǎng','v/n.','to influence; influence'],
+['用','yòng','v.','to use'],['邮局','yóujú','n.','post office'],
+['游戏','yóuxì','n.','game'],['有名','yǒumíng','adj.','famous, well-known'],
+['又','yòu','adv.','again; also'],['遇到','yùdào','v.','to meet, encounter'],
+['月','yuè','n.','month; moon'],['越','yuè','adv.','the more... (the more)'],
+['照片','zhàopiàn','n.','photo, picture'],['照顾','zhàogu','v.','to look after, care for'],
+['这里','zhèlǐ','pron.','here'],['着急','zháojí','adj.','anxious, worried'],
+['只','zhǐ','adv.','only'],['重要','zhòngyào','adj.','important'],
+['终于','zhōngyú','adv.','finally, at last'],['中间','zhōngjiān','n.','middle, between'],
+['周末','zhōumò','n.','weekend'],['主要','zhǔyào','adj.','main, primary'],
+['注意','zhùyì','v.','to pay attention, notice'],['自己','zìjǐ','pron.','oneself, self'],
+['总是','zǒngshì','adv.','always'],['嘴','zuǐ','n.','mouth'],
+['最近','zuìjìn','n.','recently, lately']
+];
+
+// HSK 4 — 600 words (first 200 shown; full list expandable)
+const HSK4 = [
+['爱护','àihù','v.','to cherish, take good care of'],
+['爱情','àiqíng','n.','love (romantic)'],
+['安全','ānquán','adj.','safe, secure'],
+['按照','ànzhào','prep.','according to, in accordance with'],
+['百分之','bǎifēnzhī','expr.','percent'],
+['保护','bǎohù','v.','to protect'],
+['宝贝','bǎobèi','n.','treasure; darling'],
+['保证','bǎozhèng','v/n.','to guarantee; guarantee'],
+['报告','bàogào','n/v.','report; to report'],
+['抱怨','bàoyuàn','v.','to complain'],
+['背','bèi','v.','to carry on back; to memorise'],
+['本来','běnlái','adv.','originally, at first'],
+['毕业','bì yè','v.','to graduate'],
+['表示','biǎoshì','v.','to express, indicate'],
+['表演','biǎoyǎn','v/n.','to perform; performance'],
+['表扬','biǎoyáng','v.','to praise'],
+['冰箱','bīngxiāng','n.','refrigerator'],
+['部分','bùfen','n.','part, portion'],
+['不得不','bùdébù','adv.','have to, cannot but'],
+['不管','bùguǎn','conj.','no matter, regardless of'],
+['不仅','bùjǐn','conj.','not only'],
+['不知道','bù zhīdào','v.','do not know'],
+['材料','cáiliào','n.','material; data'],
+['菜单','càidān','n.','menu'],
+['参观','cānguān','v.','to visit (a place)'],
+['厕所','cèsuǒ','n.','toilet, restroom'],
+['差不多','chà buduō','adj/adv.','similar; almost'],
+['长城','Chángchéng','n.','the Great Wall'],
+['成功','chénggōng','v/n.','to succeed; success'],
+['成为','chéngwéi','v.','to become'],
+['成长','chéngzhǎng','v.','to grow up'],
+['诚实','chéngshí','adj.','honest'],
+['吃惊','chī jīng','v.','to be surprised, shocked'],
+['重新','chóngxīn','adv.','again, anew'],
+['出发','chūfā','v.','to set off, depart'],
+['出现','chūxiàn','v.','to appear, emerge'],
+['传统','chuántǒng','n/adj.','tradition; traditional'],
+['窗户','chuānghu','n.','window'],
+['次','cì','m.w.','time, instance'],
+['聪明','cōngming','adj.','clever, intelligent'],
+['从来','cónglái','adv.','always, at all times (+ neg: never)'],
+['粗心','cūxīn','adj.','careless, inattentive'],
+['存在','cúnzài','v.','to exist'],
+['打扮','dǎban','v.','to dress up, make up'],
+['打折','dǎ zhé','v.','to give a discount'],
+['大概','dàgài','adv.','approximately, probably'],
+['大使馆','dàshǐguǎn','n.','embassy'],
+['代表','dàibiǎo','n/v.','representative; to represent'],
+['大夫','dàifu','n.','doctor (informal)'],
+['担','dān','v.','to carry; to bear responsibility'],
+['倒','dào','v.','to pour; to fall; on the contrary'],
+['道歉','dào qiàn','v.','to apologize'],
+['得到','dédào','v.','to get, obtain'],
+['地球','dìqiú','n.','the Earth'],
+['点心','diǎnxīn','n.','snack, dim sum'],
+['调查','diàochá','v/n.','to investigate; investigation'],
+['掉','diào','v.','to fall, drop; to lose'],
+['丢','diū','v.','to lose; to throw'],
+['动作','dòngzuò','n.','movement, action'],
+['堵车','dǔ chē','v.','to have a traffic jam'],
+['肚子','dùzi','n.','stomach, belly'],
+['对话','duìhuà','n.','dialogue, conversation'],
+['发展','fāzhǎn','v/n.','to develop; development'],
+['方向','fāngxiàng','n.','direction'],
+['方面','fāngmiàn','n.','aspect, side'],
+['放假','fàng jià','v.','to have a holiday/vacation'],
+['丰富','fēngfù','adj.','rich, abundant'],
+['付','fù','v.','to pay'],
+['负责','fùzé','v.','to be responsible for'],
+['感动','gǎndòng','v.','to move, touch (emotionally)'],
+['感情','gǎnqíng','n.','feeling, emotion'],
+['干燥','gānzào','adj.','dry'],
+['感谢','gǎnxiè','v.','to thank, be grateful'],
+['刚','gāng','adv.','just (recently)'],
+['搞','gǎo','v.','to do, make'],
+['格外','géwài','adv.','especially, particularly'],
+['根据','gēnjù','prep.','according to, based on'],
+['公园','gōngyuán','n.','park'],
+['工程师','gōngchéngshī','n.','engineer'],
+['工资','gōngzī','n.','salary, wages'],
+['购物','gòu wù','v.','to shop'],
+['鼓励','gǔlì','v.','to encourage'],
+['挂','guà','v.','to hang'],
+['观众','guānzhòng','n.','audience, spectators'],
+['广播','guǎngbō','n/v.','broadcast; to broadcast'],
+['逛','guàng','v.','to stroll, window-shop'],
+['过分','guòfèn','adj.','excessive, too much'],
+['海洋','hǎiyáng','n.','ocean, sea'],
+['含','hán','v.','to contain, include'],
+['好处','hǎochu','n.','advantage, benefit'],
+['好看','hǎokàn','adj.','good-looking, attractive'],
+['好奇','hàoqí','adj.','curious'],
+['合格','hégé','adj.','qualified, up to standard'],
+['厚','hòu','adj.','thick'],
+['后悔','hòuhuǐ','v.','to regret'],
+['后来','hòulái','adv.','afterwards, later'],
+['呼吸','hūxī','v.','to breathe'],
+['护照','hùzhào','n.','passport'],
+['积极','jījí','adj.','positive, active, enthusiastic'],
+['基础','jīchǔ','n.','foundation, basis'],
+['即使','jíshǐ','conj.','even if, even though'],
+['既然','jìrán','conj.','since, given that'],
+['将来','jiānglái','n.','future'],
+['讲','jiǎng','v.','to speak, tell, explain'],
+['角','jiǎo','m.w.','jiao (0.1 yuan); corner'],
+['脚','jiǎo','n.','foot'],
+['教育','jiàoyù','n/v.','education; to educate'],
+['结果','jiéguǒ','n.','result, outcome'],
+['精彩','jīngcǎi','adj.','wonderful, brilliant'],
+['京剧','jīngjù','n.','Peking opera'],
+['紧张','jǐnzhāng','adj.','nervous, tense'],
+['尽管','jǐnguǎn','conj.','even though, despite'],
+['进行','jìnxíng','v.','to carry out, proceed'],
+['景色','jǐngsè','n.','scenery, view'],
+['禁止','jìnzhǐ','v.','to prohibit, forbid'],
+['竟然','jìngrán','adv.','unexpectedly, to one\'s surprise'],
+['距离','jùlí','n.','distance'],
+['举','jǔ','v.','to raise, lift; to give an example'],
+['决定','juédìng','v/n.','to decide; decision'],
+['可惜','kěxī','adj.','it\'s a pity, unfortunate'],
+['空气','kōngqì','n.','air'],
+['空间','kōngjiān','n.','space'],
+['困','kùn','adj.','sleepy, tired'],
+['困难','kùnnan','n/adj.','difficulty; difficult'],
+['来不及','lái bùjí','v.','not have time, too late to'],
+['来得及','lái dejí','v.','have time, not too late'],
+['来自','lái zì','v.','to come from'],
+['懒','lǎn','adj.','lazy'],
+['浪费','làngfèi','v.','to waste'],
+['联系','liánxì','v.','to contact, get in touch'],
+['另外','lìngwài','conj.','in addition, besides'],
+['流利','liúlì','adj.','fluent'],
+['流行','liúxíng','adj.','popular, fashionable'],
+['马虎','mǎhu','adj.','careless, sloppy'],
+['满','mǎn','adj.','full; satisfied'],
+['毛病','máobìng','n.','fault, defect; trouble'],
+['美丽','měilì','adj.','beautiful'],
+['秘密','mìmì','n.','secret'],
+['免费','miǎnfèi','adj.','free of charge'],
+['勉强','miǎnqiǎng','adj.','to do with difficulty, reluctantly'],
+['命运','mìngyùn','n.','fate, destiny'],
+['目的','mùdì','n.','purpose, goal'],
+['目前','mùqián','n.','currently, at present'],
+['耐心','nàixīn','adj/n.','patient; patience'],
+['难道','nándào','adv.','do you mean to say; can it be'],
+['难受','nánshòu','adj.','feel bad, uncomfortable'],
+['内','nèi','n.','inside, within'],
+['能力','nénglì','n.','ability, capability'],
+['年龄','niánlíng','n.','age'],
+['努力','nǔlì','v/adj.','to strive, work hard; diligent'],
+['偶尔','ǒu\'ěr','adv.','occasionally'],
+['排队','pái duì','v.','to queue, stand in line'],
+['批评','pīpíng','v.','to criticize'],
+['普通话','pǔtōnghuà','n.','Mandarin Chinese'],
+['其中','qízhōng','pron.','among them, of which'],
+['区别','qūbié','n.','difference, distinction'],
+['全部','quánbù','adj.','all, complete'],
+['确实','quèshí','adv.','indeed, certainly'],
+['缺少','quēshǎo','v.','to lack, be short of'],
+['热闹','rènao','adj.','lively, bustling'],
+['认识','rènshi','v.','to know, recognise'],
+['任何','rènhé','pron.','any, whatever'],
+['任务','rènwu','n.','task, mission'],
+['日记','rìjì','n.','diary'],
+['软件','ruǎnjiàn','n.','software'],
+['散步','sàn bù','v.','to take a walk'],
+['删除','shānchú','v.','to delete'],
+['商量','shāngliang','v.','to discuss, consult'],
+['社会','shèhuì','n.','society'],
+['申请','shēnqǐng','v.','to apply'],
+['甚至','shènzhì','adv.','even, so far as to'],
+['失败','shībài','v/n.','to fail; failure'],
+['实际','shíjì','adj/n.','practical, actual; reality'],
+['实验','shíyàn','n/v.','experiment; to experiment'],
+['收到','shōudào','v.','to receive'],
+['收入','shōurù','n.','income'],
+['受到','shòudào','v.','to receive, be subject to'],
+['竖','shù','adj/n.','vertical; column'],
+['数量','shùliàng','n.','quantity, amount'],
+['双方','shuāngfāng','n.','both sides'],
+['顺便','shùnbiàn','adv.','conveniently, in passing'],
+['说明','shuōmíng','v/n.','to explain; explanation'],
+['斯','sī','suffix','(name suffix)'],
+['速度','sùdù','n.','speed'],
+['随便','suíbiàn','adj/adv.','casual, random; as you like'],
+['随时','suíshí','adv.','at any time'],
+['所有','suǒyǒu','adj.','all, every'],
+['台','tái','m.w.','(m.w. for machines/shows)'],
+['态度','tàidu','n.','attitude'],
+['讨论','tǎolùn','v.','to discuss'],
+['讨厌','tǎoyàn','v.','to dislike, find annoying'],
+['提高','tígāo','v.','to raise, improve'],
+['提供','tígōng','v.','to provide, offer'],
+['提前','tíqián','v.','to move up (a date), in advance'],
+['提问','tí wèn','v.','to ask a question'],
+['条件','tiáojiàn','n.','condition, terms'],
+['填写','tiánxiě','v.','to fill in, complete (a form)'],
+['通过','tōngguò','v/prep.','to pass through; by means of'],
+['通知','tōngzhī','v/n.','to notify; notice'],
+['推迟','tuīchí','v.','to postpone'],
+['完全','wánquán','adv.','completely, entirely'],
+['网络','wǎngluò','n.','network, internet'],
+['危险','wēixiǎn','adj/n.','dangerous; danger'],
+['为了','wèile','prep.','in order to, for the sake of'],
+['温度','wēndù','n.','temperature'],
+['文章','wénzhāng','n.','article, essay'],
+['问题','wèntí','n.','problem, question'],
+['吸引','xīyǐn','v.','to attract'],
+['系','xì','n.','department (university)'],
+['消息','xiāoxi','n.','news, message'],
+['小说','xiǎoshuō','n.','novel, fiction'],
+['效果','xiàoguǒ','n.','effect, result'],
+['辛苦','xīnkǔ','adj.','hard, laborious'],
+['信心','xìnxīn','n.','confidence'],
+['行','xíng','adj.','OK, all right'],
+['性别','xìngbié','n.','gender, sex'],
+['性格','xìnggé','n.','personality, character'],
+['兴奋','xīngfèn','adj.','excited'],
+['幸福','xìngfú','adj/n.','happy, blessed; happiness'],
+['修改','xiūgǎi','v.','to modify, revise'],
+['许多','xǔduō','adj.','many, a lot of'],
+['一旦','yīdàn','conj.','once, if ever'],
+['以后','yǐhòu','n.','after, afterwards'],
+['意见','yìjiàn','n.','opinion, view; objection'],
+['意义','yìyì','n.','meaning, significance'],
+['引起','yǐnqǐ','v.','to give rise to, cause'],
+['印象','yìnxiàng','n.','impression'],
+['用功','yòng gōng','adj.','hardworking, studious'],
+['有趣','yǒuqù','adj.','interesting'],
+['羡慕','xiànmù','v.','to envy, admire'],
+['严格','yángé','adj.','strict, rigorous'],
+['严重','yánzhòng','adj.','serious, severe'],
+['样子','yàngzi','n.','appearance, look'],
+['要不','yàobu','conj.','otherwise; or'],
+['一般来说','yībān lái shuō','expr.','generally speaking'],
+['以上','yǐshàng','n.','above, more than'],
+['语法','yǔfǎ','n.','grammar'],
+['原来','yuánlái','adv.','originally; it turns out'],
+['原因','yuányīn','n.','reason, cause'],
+['约','yuē','v.','to make an appointment; about'],
+['证明','zhèngmíng','v/n.','to prove; proof'],
+['只要','zhǐyào','conj.','as long as, provided that'],
+['至少','zhìshǎo','adv.','at least'],['专门','zhuānmén','adv.','specially'],
+['专业','zhuānyè','n.','major, speciality'],
+['组','zǔ','m.w/n.','group; team'],
+['尊重','zūnzhòng','v.','to respect'],
+['作者','zuòzhě','n.','author, writer']
+];
+
+// HSK 5 — sample (expand as needed)
+const HSK5 = [
+['暗示','ànshì','v.','to hint, imply'],['摆','bǎi','v.','to place, display'],
+['版本','bǎnběn','n.','version, edition'],['彻底','chèdǐ','adj.','thorough, complete'],
+['承认','chéngrèn','v.','to admit, acknowledge'],['充分','chōngfèn','adj.','sufficient, full'],
+['创造','chuàngzào','v.','to create'],['存在','cúnzài','v.','to exist'],
+['当地','dāngdì','adj.','local'],['道德','dàodé','n.','morality, ethics'],
+['大量','dàliàng','adj.','a large amount of'],['动力','dònglì','n.','motivation, driving force'],
+['对象','duìxiàng','n.','object; romantic partner'],['方案','fāng\'àn','n.','scheme, plan'],
+['放弃','fàngqì','v.','to give up, abandon'],['否则','fǒuzé','conj.','otherwise'],
+['富裕','fùyù','adj.','wealthy, prosperous'],['改革','gǎigé','v/n.','to reform; reform'],
+['赶上','gǎn shàng','v.','to catch up with'],['高度','gāodù','n.','height; highly'],
+['各','gè','det.','each, various'],['根本','gēnběn','adv.','at all, fundamentally'],
+['顾客','gùkè','n.','customer, client'],['关注','guānzhù','v.','to pay close attention'],
+['规律','guīlǜ','n.','rule, regularity'],['过去','guòqù','n.','the past'],
+['含义','hányì','n.','meaning, implication'],['好奇','hàoqí','adj.','curious'],
+['核心','héxīn','n.','core, kernel'],['互联网','hùliánwǎng','n.','internet'],
+['积累','jīlěi','v.','to accumulate'],['即将','jíjiāng','adv.','about to, soon'],
+['寂寞','jìmò','adj.','lonely'],['技术','jìshù','n.','technology, skill'],
+['加速','jiāsù','v.','to accelerate'],['坚持','jiānchí','v.','to persist, insist'],
+['简洁','jiǎnjié','adj.','concise, brief'],['建议','jiànyì','v/n.','to suggest; suggestion'],
+['经济','jīngjì','n.','economy'],['精确','jīngquè','adj.','precise, accurate'],
+['具体','jùtǐ','adj.','specific, concrete'],['竞争','jìngzhēng','v/n.','to compete; competition'],
+['来看','lái kàn','expr.','from the perspective of'],['理念','lǐniàn','n.','idea, concept'],
+['理性','lǐxìng','n.','rationality; rational'],['立即','lìjí','adv.','immediately'],
+['逻辑','luóji','n.','logic'],['毛泽东','Máo Zédōng','n.','Mao Zedong'],
+['民主','mínzhǔ','n.','democracy'],['模式','móshì','n.','model, pattern'],
+['内容','nèiróng','n.','content'],['能源','néngyuán','n.','energy source'],
+['批准','pīzhǔn','v.','to approve, sanction'],['平等','píngděng','adj.','equal'],
+['平衡','pínghéng','adj/n.','balanced; balance'],['起到','qǐ dào','v.','to play (a role)'],
+['青年','qīngnián','n.','youth, young person'],['轻松','qīngsōng','adj.','relaxed, easy'],
+['全球','quánqiú','n.','global, the whole world'],['热情','rèqíng','adj/n.','passionate; enthusiasm'],
+['人才','réncái','n.','talent, gifted person'],['认可','rènkě','v.','to approve, recognize'],
+['如今','rújīn','n.','nowadays, today'],['生产','shēngchǎn','v/n.','to produce; production'],
+['实现','shíxiàn','v.','to realize, achieve'],['适当','shìdàng','adj.','appropriate, suitable'],
+['收获','shōuhuò','n/v.','harvest; to gain, achieve'],
+['探索','tànsuǒ','v.','to explore'],['态度','tàidu','n.','attitude'],
+['体现','tǐxiàn','v.','to embody, reflect'],['提倡','tíchàng','v.','to advocate'],
+['统一','tǒngyī','v/adj.','to unify; unified'],['推广','tuīguǎng','v.','to promote, spread'],
+['文明','wénmíng','n/adj.','civilization; civilized'],
+['现象','xiànxiàng','n.','phenomenon'],['相关','xiāngguān','adj.','related, relevant'],
+['效益','xiàoyì','n.','benefit, efficiency'],['心理','xīnlǐ','n.','psychology, mentality'],
+['信任','xìnrèn','v/n.','to trust; trust'],['形成','xíngchéng','v.','to form, take shape'],
+['修建','xiūjiàn','v.','to build, construct'],['研究','yánjiū','v/n.','to research; research'],
+['依靠','yīkào','v.','to rely on, depend on'],['意识','yìshi','n.','consciousness, awareness'],
+['因此','yīncǐ','conj.','therefore, thus'],['引导','yǐndǎo','v.','to guide, lead'],
+['优秀','yōuxiù','adj.','excellent, outstanding'],['有效','yǒuxiào','adj.','effective, valid'],
+['于','yú','prep.','in, at, on (formal)'],['整体','zhěngtǐ','n.','whole, overall'],
+['政策','zhèngcè','n.','policy'],['支持','zhīchí','v.','to support'],
+['主要','zhǔyào','adj.','main, major, primary'],['转变','zhuǎnbiàn','v.','to transform, change'],
+['自信','zìxìn','adj/n.','confident; confidence'],['综合','zōnghé','adj.','comprehensive, synthesized'],
+['总体','zǒngtǐ','n.','overall, in general'],['作用','zuòyòng','n.','function, role, effect']
+];
+
+// HSK 6 — sample (expand as needed)
+const HSK6 = [
+['暗','àn','adj.','dark, dim'],['奥秘','àomì','n.','mystery, secret'],
+['表达','biǎodá','v.','to express'],['博大','bódà','adj.','broad and profound'],
+['参与','cānyù','v.','to participate in'],['超越','chāoyuè','v.','to surpass, transcend'],
+['沉默','chénmò','adj/v.','silent; to be silent'],['陈述','chénshù','v.','to state, describe'],
+['程度','chéngdù','n.','degree, level, extent'],['呈现','chéngxiàn','v.','to present, emerge'],
+['初步','chūbù','adj.','initial, preliminary'],['触发','chùfā','v.','to trigger'],
+['大幅','dàfú','adv.','by a large margin'],['代价','dàijià','n.','price, cost'],
+['当局','dāngjú','n.','the authorities'],['导致','dǎozhì','v.','to lead to, result in'],
+['得以','déyǐ','v.','to be able to (formal)'],['对于','duìyú','prep.','regarding, as for'],
+['而言','éryán','expr.','in terms of, for'],['发挥','fāhuī','v.','to bring into play, give full scope'],
+['观察','guānchá','v.','to observe'],['广泛','guǎngfàn','adj.','extensive, widespread'],
+['规范','guīfàn','v/n.','to standardize; norm, standard'],
+['含量','hánliàng','n.','content, amount contained'],['涵盖','hángài','v.','to encompass, cover'],
+['宏观','hóngguān','adj.','macro-, macroscopic'],['化解','huàjiě','v.','to resolve, defuse'],
+['汇集','huìjí','v.','to gather, assemble'],['基本上','jīběnshang','adv.','basically, fundamentally'],
+['积极性','jījíxìng','n.','enthusiasm, initiative'],['激励','jīlì','v.','to motivate, inspire'],
+['集中','jízhōng','v.','to concentrate, focus'],['继续','jìxù','v.','to continue'],
+['加强','jiāqiáng','v.','to strengthen, enhance'],['坚定','jiāndìng','adj.','firm, resolute'],
+['监督','jiāndū','v.','to supervise, oversee'],['艰难','jiānnán','adj.','difficult, hard'],
+['讲述','jiǎngshù','v.','to narrate, tell'],['较','jiào','adv.','comparatively (formal)'],
+['结构','jiégòu','n.','structure'],['揭示','jiēshì','v.','to reveal, disclose'],
+['界定','jièdìng','v.','to define, delimit'],['精神','jīngshén','n.','spirit, essence'],
+['局面','júmiàn','n.','situation, aspect'],['举例','jǔ lì','v.','to give an example'],
+['开展','kāizhǎn','v.','to carry out, develop'],['客观','kèguān','adj.','objective'],
+['理解','lǐjiě','v.','to understand, comprehend'],['利益','lìyì','n.','interest, benefit'],
+['联系','liánxì','v/n.','to contact; connection'],['良好','liánghǎo','adj.','good, sound'],
+['领导','lǐngdǎo','v/n.','to lead; leader'],['流程','liúchéng','n.','process, procedure'],
+['满足','mǎnzú','v.','to satisfy, meet (needs)'],['迈向','màixiàng','v.','to stride towards'],
+['面临','miànlín','v.','to face, confront'],['明确','míngquè','adj.','clear and definite'],
+['模糊','móhu','adj.','vague, blurred'],['内部','nèibù','n.','interior, internal'],
+['努力','nǔlì','adv.','diligently, hard'],['批判','pīpàn','v.','to criticize, critique'],
+['平台','píngtái','n.','platform'],['认为','rènwéi','v.','to consider, think that'],
+['深刻','shēnkè','adj.','profound, deep'],['深入','shēnrù','v.','to deepen, go deep into'],
+['生动','shēngdòng','adj.','vivid, lively'],['数据','shùjù','n.','data'],
+['体系','tǐxì','n.','system, framework'],['提升','tíshēng','v.','to improve, enhance'],
+['完善','wánshàn','v/adj.','to perfect; perfect, complete'],
+['维护','wéihù','v.','to maintain, safeguard'],['稳定','wěndìng','adj.','stable'],
+['相互','xiānghù','adv.','mutually, each other'],['详细','xiángxì','adj.','detailed'],
+['新兴','xīnxīng','adj.','newly emerging'],['信息','xìnxī','n.','information'],
+['行为','xíngwéi','n.','behavior, conduct'],['需求','xūqiú','n.','demand, need, requirement'],
+['循环','xúnhuán','v/n.','to circulate; cycle'],['延伸','yánshēn','v.','to extend'],
+['演变','yǎnbiàn','v.','to evolve, develop'],['有助于','yǒu zhùyú','v.','to be helpful for'],
+['与此同时','yǔ cǐ tóngshí','expr.','at the same time'],
+['运行','yùnxíng','v.','to operate, run'],['蕴含','yùnhán','v.','to contain, embody'],
+['增强','zēngqiáng','v.','to strengthen, enhance'],['展示','zhǎnshì','v.','to display, demonstrate'],
+['针对','zhēnduì','v/prep.','to be aimed at; against'],['正常','zhèngcháng','adj.','normal'],
+['整合','zhěnghé','v.','to integrate'],['支撑','zhīchēng','v.','to support, sustain'],
+['至关重要','zhìguān zhòng yào','adj.','crucial, of vital importance'],
+['逐渐','zhújiàn','adv.','gradually'],['主导','zhǔdǎo','adj/v.','leading; to dominate'],
+['转化','zhuǎnhuà','v.','to transform, convert'],['紫外线','zǐwàixiàn','n.','ultraviolet rays'],
+['走向','zǒuxiàng','v.','to move towards']
+];
+
+const LEVEL_DATA = {1:HSK1,2:HSK2,3:HSK3,4:HSK4,5:HSK5,6:HSK6};
+const LEVEL_NAMES = {1:'HSK 1',2:'HSK 2',3:'HSK 3',4:'HSK 4',5:'HSK 5',6:'HSK 6'};
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let currentLevel = 1;
+let currentMode = 'dash';
+let studyQueue = [];
+let studyIdx = 0;
+let revealed = false;
+let hwWriter = null;
+let testQuestions = [];
+let testIdx = 0;
+let testScore = {correct:0,wrong:0};
+let testTimer = null;
+let testSecsLeft = 300;
+let testStartTime = 0;
+
+// ─── SRS helpers ───────────────────────────────────────
+function srsKey(lv, idx){ return `hsk_srs_${lv}_${idx}`; }
+
+function getSRS(lv, idx){
+  const raw = localStorage.getItem(srsKey(lv,idx));
+  if (!raw) return null;
+  return JSON.parse(raw);
+}
+
+function saveSRS(lv, idx, data){
+  localStorage.setItem(srsKey(lv,idx), JSON.stringify(data));
+}
+
+function defaultSRS(){
+  return {ease:2.5, interval:0, reps:0, due:0};
+}
+
+function isDue(lv, idx){
+  const s = getSRS(lv,idx);
+  if (!s) return true;
+  return Date.now() >= s.due;
+}
+
+function srsStatus(lv, idx){
+  const s = getSRS(lv,idx);
+  if (!s) return 'new';
+  if (s.interval >= 21) return 'mastered';
+  if (s.interval >= 1) return (Date.now() >= s.due) ? 'review' : 'learning';
+  return 'learning';
+}
+
+function sm2Update(srs, q){
+  // q: 0=again, 2=hard, 3=good, 5=easy
+  if (q < 3) {
+    srs.reps = 0;
+    srs.interval = 1;
+  } else {
+    if (srs.reps === 0) srs.interval = 1;
+    else if (srs.reps === 1) srs.interval = 6;
+    else srs.interval = Math.round(srs.interval * srs.ease);
+    srs.reps++;
+  }
+  srs.ease = Math.max(1.3, srs.ease + (0.1 - (5-q)*(0.08+(5-q)*0.02)));
+  if (q === 5) srs.interval = Math.round(srs.interval * 1.3);
+  srs.due = Date.now() + srs.interval * 86400000;
+  return srs;
+}
+
+// ─── Level/Mode switching ──────────────────────────────
+function switchLevel(lv){
+  currentLevel = lv;
+  document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', +b.dataset.lv === lv));
+  if (currentMode === 'study') startStudy();
+  else if (currentMode === 'test') { document.getElementById('test-ui').style.display='none'; document.getElementById('test-score').style.display='none'; document.getElementById('test-start').style.display='block'; }
+  else if (currentMode === 'words') renderWordList();
+  renderDash();
+  updateHeader();
+}
+
+function switchMode(mode){
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode===mode));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-'+mode).classList.add('active');
+  if (mode==='dash') renderDash();
+  else if (mode==='study') startStudy();
+  else if (mode==='words') renderWordList();
+}
+
+// ─── Dashboard ────────────────────────────────────────
+function renderDash(){
+  const words = LEVEL_DATA[currentLevel];
+  let mastered=0, due=0, newC=0;
+  words.forEach((_,i)=>{
+    const st = srsStatus(currentLevel,i);
+    if(st==='mastered') mastered++;
+    else if(st==='new') newC++;
+    if(isDue(currentLevel,i) && st!=='mastered') due++;
+  });
+  document.getElementById('dash-mastered-n').textContent = mastered;
+  document.getElementById('dash-mastered-sub').textContent = `mastered of ${words.length}`;
+  document.getElementById('dash-due-n').textContent = due;
+  document.getElementById('dash-new-n').textContent = newC;
+
+  // level progress bars
+  const rows = document.getElementById('level-prog-rows');
+  rows.innerHTML = '';
+  [1,2,3,4,5,6].forEach(lv=>{
+    const ws = LEVEL_DATA[lv];
+    let m=0; ws.forEach((_,i)=>{ if(srsStatus(lv,i)==='mastered') m++; });
+    const pct = Math.round(m/ws.length*100);
+    rows.innerHTML += `<div class="prog-row">
+      <div class="prog-label">HSK ${lv}</div>
+      <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:${pct}%"></div></div>
+      <div class="prog-pct">${pct}%</div>
+    </div>`;
+  });
+
+  updateHeader();
+}
+
+function updateHeader(){
+  let totalM=0, totalDue=0;
+  [1,2,3,4,5,6].forEach(lv=>{
+    LEVEL_DATA[lv].forEach((_,i)=>{
+      if(srsStatus(lv,i)==='mastered') totalM++;
+      if(isDue(lv,i) && srsStatus(lv,i)!=='mastered') totalDue++;
+    });
+  });
+  document.getElementById('hdr-mastered').textContent = totalM;
+  document.getElementById('hdr-due').textContent = totalDue;
+}
+
+// ─── Study ─────────────────────────────────────────────
+function buildQueue(allCards=false){
+  const words = LEVEL_DATA[currentLevel];
+  let q = [];
+  words.forEach((_,i)=>{
+    if(allCards || isDue(currentLevel,i)){
+      q.push(i);
+    }
+  });
+  // Shuffle
+  for(let i=q.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [q[i],q[j]]=[q[j],q[i]]; }
+  return q;
+}
+
+function startStudy(allCards=false){
+  studyQueue = buildQueue(allCards);
+  studyIdx = 0;
+  if(studyQueue.length === 0){
+    document.getElementById('study-loading').style.display='none';
+    document.getElementById('study-ui').style.display='none';
+    document.getElementById('study-done').style.display='block';
+    return;
+  }
+  document.getElementById('study-loading').style.display='none';
+  document.getElementById('study-done').style.display='none';
+  document.getElementById('study-ui').style.display='block';
+  showCard(studyQueue[0]);
+}
+
+function showCard(idx){
+  const words = LEVEL_DATA[currentLevel];
+  const w = words[idx];
+  revealed = false;
+
+  document.getElementById('card-hanzi').textContent = w[0];
+  document.getElementById('card-pinyin').textContent = w[1];
+  document.getElementById('card-pos').textContent = w[2];
+  document.getElementById('card-english').textContent = w[3];
+
+  ['card-pinyin','card-pos','card-english'].forEach(id=>{
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById('reveal-btn').style.display='';
+  document.getElementById('srs-btns').style.display='none';
+
+  const pct = studyIdx / studyQueue.length * 100;
+  document.getElementById('study-prog-fill').style.width = pct+'%';
+  document.getElementById('study-counter').textContent = `Card ${studyIdx+1} of ${studyQueue.length}`;
+
+  // Stroke order
+  const target = document.getElementById('stroke-target');
+  target.innerHTML = '';
+  if(hwWriter){ try{ hwWriter.cancelQuiz(); }catch(e){} hwWriter=null; }
+  try {
+    hwWriter = HanziWriter.create(target, w[0][0], {
+      width:100, height:100, padding:4,
+      strokeColor:'#7ab0ff', radicalColor:'#f4c430',
+      showOutline:true, strokeAnimationSpeed:1
+    });
+    hwWriter.animateCharacter();
+  } catch(e){}
+}
+
+function revealCard(){
+  revealed = true;
+  ['card-pinyin','card-pos','card-english'].forEach(id=>{
+    document.getElementById(id).classList.remove('hidden');
+  });
+  document.getElementById('reveal-btn').style.display='none';
+  document.getElementById('srs-btns').style.display='flex';
+  speakWord(LEVEL_DATA[currentLevel][studyQueue[studyIdx]][0]);
+}
+
+function rateCard(q){
+  const lv = currentLevel;
+  const idx = studyQueue[studyIdx];
+  let srs = getSRS(lv,idx) || defaultSRS();
+  srs = sm2Update(srs, q);
+  saveSRS(lv,idx,srs);
+
+  studyIdx++;
+  if(studyIdx >= studyQueue.length){
+    document.getElementById('study-done').style.display='block';
+    document.getElementById('study-ui').style.display='none';
+    renderDash();
+    return;
+  }
+  showCard(studyQueue[studyIdx]);
+}
+
+// ─── Test ──────────────────────────────────────────────
+function buildTestQuestions(){
+  const words = LEVEL_DATA[currentLevel];
+  const all = [...words];
+  // Shuffle
+  for(let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
+  const sample = all.slice(0, Math.min(25, all.length));
+  return sample.map((w,i)=>{
+    // 3 wrong answers
+    const wrong = all.filter(x=>x!==w).slice(0,20);
+    for(let k=wrong.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [wrong[k],wrong[j]]=[wrong[j],wrong[k]]; }
+    const opts = [w[3], wrong[0][3], wrong[1][3], wrong[2][3]];
+    for(let k=opts.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [opts[k],opts[j]]=[opts[j],opts[k]]; }
+    return {hanzi:w[0], pinyin:w[1], answer:w[3], opts};
+  });
+}
+
+function startTest(){
+  testQuestions = buildTestQuestions();
+  testIdx = 0;
+  testScore = {correct:0,wrong:0};
+  testSecsLeft = 300;
+  testStartTime = Date.now();
+
+  document.getElementById('test-start').style.display='none';
+  document.getElementById('test-score').style.display='none';
+  document.getElementById('test-ui').style.display='block';
+
+  clearInterval(testTimer);
+  testTimer = setInterval(tickTimer, 1000);
+  showTestQ();
+}
+
+function tickTimer(){
+  testSecsLeft--;
+  const m = Math.floor(testSecsLeft/60);
+  const s = testSecsLeft%60;
+  document.getElementById('test-timer').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  if(testSecsLeft<=0){ clearInterval(testTimer); showScore(); }
+}
+
+function showTestQ(){
+  const q = testQuestions[testIdx];
+  document.getElementById('test-hanzi').textContent = q.hanzi;
+  document.getElementById('test-sub').textContent = q.pinyin;
+  document.getElementById('test-qnum').textContent = `${testIdx+1} / ${testQuestions.length}`;
+  document.getElementById('test-prog-fill').style.width = (testIdx/testQuestions.length*100)+'%';
+  document.getElementById('next-btn').style.display='none';
+
+  const container = document.getElementById('mc-options');
+  container.innerHTML = '';
+  q.opts.forEach(opt=>{
+    const btn = document.createElement('button');
+    btn.className = 'mc-opt';
+    btn.textContent = opt;
+    btn.onclick = ()=>chooseOpt(btn, opt, q.answer);
+    container.appendChild(btn);
+  });
+}
+
+function chooseOpt(btn, chosen, answer){
+  document.querySelectorAll('.mc-opt').forEach(b=>b.classList.add('disabled'));
+  if(chosen===answer){
+    btn.classList.add('correct');
+    testScore.correct++;
+  } else {
+    btn.classList.add('wrong');
+    testScore.wrong++;
+    document.querySelectorAll('.mc-opt').forEach(b=>{ if(b.textContent===answer) b.classList.add('correct'); });
+  }
+  document.getElementById('next-btn').style.display='';
+}
+
+function nextTestQ(){
+  testIdx++;
+  if(testIdx >= testQuestions.length){ clearInterval(testTimer); showScore(); return; }
+  showTestQ();
+}
+
+function showScore(){
+  clearInterval(testTimer);
+  const total = testScore.correct + testScore.wrong;
+  const pct = total>0 ? Math.round(testScore.correct/total*100) : 0;
+  const elapsed = Math.floor((Date.now()-testStartTime)/1000);
+  const em = Math.floor(elapsed/60), es = elapsed%60;
+
+  document.getElementById('test-ui').style.display='none';
+  document.getElementById('test-score').style.display='block';
+  document.getElementById('score-pct').textContent = pct+'%';
+  document.getElementById('sc-correct').textContent = testScore.correct;
+  document.getElementById('sc-wrong').textContent = testScore.wrong;
+  document.getElementById('sc-time').textContent = `${em}:${es.toString().padStart(2,'0')}`;
+
+  const msgs = ['','Keep trying!','Keep trying!','Not bad!','Not bad!','Good job!','Good job!','Great!','Great!','Excellent!','Perfect!'];
+  document.getElementById('score-msg').textContent = msgs[Math.floor(pct/10)] || 'Perfect!';
+}
+
+// ─── Word List ─────────────────────────────────────────
+function renderWordList(){
+  const words = LEVEL_DATA[currentLevel];
+  const q = document.getElementById('wl-search').value.toLowerCase();
+  const filter = document.getElementById('wl-filter').value;
+
+  let rows = [], count = 0;
+  words.forEach((w,i)=>{
+    const st = srsStatus(currentLevel,i);
+    if(filter!=='all' && st!==filter) return;
+    if(q && !w[0].includes(q) && !w[1].toLowerCase().includes(q) && !w[3].toLowerCase().includes(q)) return;
+    count++;
+    rows.push(`<tr>
+      <td style="color:#555">${i+1}</td>
+      <td><div class="w-hanzi">${w[0]}</div></td>
+      <td class="w-py">${w[1]}</td>
+      <td><span class="w-pos">${w[2]}</span> <span class="w-en">${w[3]}</span></td>
+      <td><span class="w-status status-${st}">${st}</span></td>
+    </tr>`);
+  });
+
+  document.getElementById('wl-body').innerHTML = rows.join('');
+  document.getElementById('wl-count').textContent = `Showing ${count} of ${words.length} words`;
+}
+
+// ─── Reset ─────────────────────────────────────────────
+function resetLevelSRS(){
+  if(!confirm(`Reset all progress for HSK ${currentLevel}?`)) return;
+  LEVEL_DATA[currentLevel].forEach((_,i)=>localStorage.removeItem(srsKey(currentLevel,i)));
+  renderDash();
+  showToast('Progress reset');
+}
+
+// ─── TTS ───────────────────────────────────────────────
+function speakWord(text){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-CN';
+  u.rate = 0.85;
+  const v = pickBestVoice();
+  if(v) u.voice = v;
+  window.speechSynthesis.speak(u);
+}
+
+function pickBestVoice(){
+  const voices = window.speechSynthesis.getVoices();
+  const priority = ['Microsoft Xiaoxiao Online (Natural)','Microsoft Yunxi Online (Natural)',
+    'Microsoft Xiaoyi Online (Natural)','Microsoft Xiaoxiao','Tingting','Mei-Jia',
+    'Google 普通话（中国大陆）'];
+  for(const name of priority){
+    const v = voices.find(v=>v.name.includes(name));
+    if(v) return v;
+  }
+  return voices.find(v=>v.lang==='zh-CN') || voices.find(v=>v.lang.startsWith('zh')) || null;
+}
+
+// ─── Toast ─────────────────────────────────────────────
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// ─── Init ──────────────────────────────────────────────
+window.speechSynthesis.onvoiceschanged = ()=>{};
+
+// Badge counts
+[1,2,3,4,5,6].forEach(lv=>{
+  document.getElementById(`lv-badge-${lv}`).textContent = LEVEL_DATA[lv].length;
+});
+
+renderDash();
+</script>
+</body>
+</html>
