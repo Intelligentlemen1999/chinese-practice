@@ -592,12 +592,30 @@ textarea#my-sentence::placeholder { color:#3a384a; }
 
 /* Texts tab */
 .text-block { margin-bottom:24px; }
+.text-block-header { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:12px; }
+.text-block-header-left { flex:1; }
 .text-block-title { font-size:17px; font-weight:600; color:#c9b8ff; margin-bottom:2px; }
-.text-block-sub { font-size:11px; color:#7a6aaa; margin-bottom:12px; }
-.text-para-zh { font-size:16px; line-height:1.9; color:#e8e6f0; margin-bottom:4px; }
+.text-block-sub { font-size:11px; color:#7a6aaa; }
+.text-read-all-btn {
+  padding:5px 12px; background:#1e1a30; border:1px solid #3a3650;
+  border-radius:8px; color:#9a88cc; font-size:12px; cursor:pointer;
+  white-space:nowrap; flex:none; transition:all .15s; min-height:32px;
+  touch-action:manipulation;
+}
+.text-read-all-btn:hover { background:#2a2540; color:#c9b8ff; border-color:#7c5cbf; }
+.text-read-all-btn.playing { background:#2a2540; color:#c9b8ff; border-color:#7c5cbf; }
+.text-para-wrap { position:relative; margin-bottom:16px; }
+.text-para-zh { font-size:16px; line-height:1.9; color:#e8e6f0; margin-bottom:4px; padding-right:32px; }
+.text-para-speak {
+  position:absolute; top:2px; right:0;
+  background:none; border:none; font-size:16px; cursor:pointer;
+  opacity:0.35; transition:opacity .15s; padding:2px 4px;
+  min-height:unset; touch-action:manipulation; border-radius:6px;
+}
+.text-para-speak:hover, .text-para-speak.playing { opacity:1; background:rgba(124,92,191,.15); }
 .text-para-py { font-size:12px; line-height:1.7; color:#7c5cbf; margin-bottom:5px; font-style:italic; }
-.text-para-en { font-size:12px; line-height:1.6; color:#7a7888; margin-bottom:16px; border-left:2px solid #2e2c3e; padding-left:10px; }
-.text-source { font-size:11px; color:#5a5870; margin-top:2px; }
+.text-para-en { font-size:12px; line-height:1.6; color:#7a7888; margin-bottom:0; border-left:2px solid #2e2c3e; padding-left:10px; }
+.text-source { font-size:11px; color:#5a5870; margin-top:8px; }
 
 /* Grammar tab */
 .grammar-item { border:1px solid #2e2c3e; border-radius:10px; margin-bottom:10px; overflow:hidden; }
@@ -3528,12 +3546,20 @@ function renderLessonContent() {
   if (lessonCurrentTab === 'texts') {
     container.innerHTML = lesson.texts.map((text, ti) => `
       <div class="text-block">
-        <div class="text-block-title">${text.num} ${text.title}</div>
-        <div class="text-block-sub">${text.en}</div>
-        ${text.paragraphs.map(p => `
-          <div class="text-para-zh">${annotateVocab(p.zh)}</div>
-          ${p.py ? `<div class="text-para-py">${p.py}</div>` : ''}
-          <div class="text-para-en">${p.en}</div>
+        <div class="text-block-header">
+          <div class="text-block-header-left">
+            <div class="text-block-title">${text.num} ${text.title}</div>
+            <div class="text-block-sub">${text.en}</div>
+          </div>
+          <button class="text-read-all-btn" id="read-all-${ti}" onclick="readAllParagraphs(${ti})">▶ Listen</button>
+        </div>
+        ${text.paragraphs.map((p, pi) => `
+          <div class="text-para-wrap">
+            <div class="text-para-zh" id="para-zh-${ti}-${pi}">${annotateVocab(p.zh)}</div>
+            <button class="text-para-speak" id="para-speak-${ti}-${pi}" onclick="speakParagraph(event,${ti},${pi})" title="Read aloud">🔊</button>
+            ${p.py ? `<div class="text-para-py">${p.py}</div>` : ''}
+            <div class="text-para-en">${p.en}</div>
+          </div>
         `).join('')}
         ${text.source ? `<div class="text-source">${text.source}</div>` : ''}
       </div>
@@ -3964,6 +3990,100 @@ rate = function(result) {
     fireConfetti();
   }
 };
+
+/* ─────────────────── LESSON TTS ─────────────────── */
+let _lessonSpeaking = false;
+
+function speakParagraph(e, ti, pi) {
+  e.stopPropagation();
+  const ch = currentChapter;
+  const lesson = LESSONS[ch];
+  if (!lesson) return;
+  const text = lesson.texts[ti]?.paragraphs[pi]?.zh;
+  if (!text) return;
+
+  const btn = document.getElementById(`para-speak-${ti}-${pi}`);
+  const allBtns = document.querySelectorAll('.text-para-speak, .text-read-all-btn');
+
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    allBtns.forEach(b => b.classList.remove('playing'));
+    _lessonSpeaking = false;
+    return;
+  }
+
+  allBtns.forEach(b => b.classList.remove('playing'));
+  btn.classList.add('playing');
+  _lessonSpeaking = true;
+
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'zh-CN';
+  const voice = getZhVoice();
+  if (voice) utt.voice = voice;
+  const isNeural = voice && (voice.name.includes('Natural') || voice.name.includes('Online'));
+  utt.rate  = isNeural ? 0.95 : 0.8;
+  utt.pitch = 1.0;
+  utt.onend = () => { btn.classList.remove('playing'); _lessonSpeaking = false; };
+  utt.onerror = () => { btn.classList.remove('playing'); _lessonSpeaking = false; };
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utt);
+}
+
+function readAllParagraphs(ti) {
+  const ch = currentChapter;
+  const lesson = LESSONS[ch];
+  if (!lesson) return;
+  const paragraphs = lesson.texts[ti]?.paragraphs;
+  if (!paragraphs?.length) return;
+
+  const btn = document.getElementById(`read-all-${ti}`);
+  const allBtns = document.querySelectorAll('.text-para-speak, .text-read-all-btn');
+
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    allBtns.forEach(b => b.classList.remove('playing'));
+    if (btn) btn.textContent = '▶ Listen';
+    _lessonSpeaking = false;
+    return;
+  }
+
+  allBtns.forEach(b => b.classList.remove('playing'));
+  if (btn) { btn.classList.add('playing'); btn.textContent = '■ Stop'; }
+  _lessonSpeaking = true;
+
+  const voice = getZhVoice();
+  const isNeural = voice && (voice.name.includes('Natural') || voice.name.includes('Online'));
+
+  window.speechSynthesis.cancel();
+
+  paragraphs.forEach((p, pi) => {
+    const utt = new SpeechSynthesisUtterance(p.zh);
+    utt.lang  = 'zh-CN';
+    if (voice) utt.voice = voice;
+    utt.rate  = isNeural ? 0.95 : 0.8;
+    utt.pitch = 1.0;
+
+    utt.onstart = () => {
+      document.querySelectorAll('.text-para-speak').forEach(b => b.classList.remove('playing'));
+      const pb = document.getElementById(`para-speak-${ti}-${pi}`);
+      if (pb) pb.classList.add('playing');
+    };
+
+    if (pi === paragraphs.length - 1) {
+      utt.onend = () => {
+        allBtns.forEach(b => b.classList.remove('playing'));
+        if (btn) btn.textContent = '▶ Listen';
+        _lessonSpeaking = false;
+      };
+      utt.onerror = () => {
+        allBtns.forEach(b => b.classList.remove('playing'));
+        if (btn) btn.textContent = '▶ Listen';
+        _lessonSpeaking = false;
+      };
+    }
+    window.speechSynthesis.speak(utt);
+  });
+}
 
 /* Init streak on load */
 renderStreak();
