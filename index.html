@@ -3100,12 +3100,62 @@ function setDrawSize(size, key) {
 }
 
 /* ─────────────────── AUDIO ─────────────────── */
+/* ── TTS: pick the best available Mandarin voice ── */
+let _zhVoice = null;
+let _voicesLoaded = false;
+
+function pickBestVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return null;
+  /* Priority list — neural / natural voices first */
+  const priority = [
+    'Microsoft Xiaoxiao Online (Natural)',   // Edge — best quality
+    'Microsoft Yunxi Online (Natural)',
+    'Microsoft Xiaoyi Online (Natural)',
+    'Microsoft Xiaoxiao',
+    'Microsoft Yunxi',
+    'Microsoft Xiaoyi',
+    'Tingting',           // macOS Enhanced
+    'Mei-Jia',            // macOS Taiwan
+    'Google 普通话（中国大陆）',
+    'Google Chinese (Simplified)',
+  ];
+  for (const name of priority) {
+    const v = voices.find(v => v.name.includes(name));
+    if (v) return v;
+  }
+  /* Fallback: any zh-CN, then any zh */
+  return voices.find(v => v.lang === 'zh-CN')
+      || voices.find(v => v.lang.startsWith('zh-CN'))
+      || voices.find(v => v.lang.startsWith('zh'))
+      || null;
+}
+
+function getZhVoice() {
+  if (_zhVoice) return _zhVoice;
+  _zhVoice = pickBestVoice();
+  return _zhVoice;
+}
+
+/* Re-pick when browser finishes loading voices (Chrome async) */
+if (window.speechSynthesis) {
+  window.speechSynthesis.addEventListener('voiceschanged', () => {
+    _zhVoice = null;
+    _zhVoice = pickBestVoice();
+  });
+}
+
 function speak(text) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const utt  = new SpeechSynthesisUtterance(text);
-  utt.lang   = 'zh-CN';
-  utt.rate   = 0.85;
+  const utt   = new SpeechSynthesisUtterance(text);
+  utt.lang    = 'zh-CN';
+  const voice = getZhVoice();
+  if (voice) utt.voice = voice;
+  /* Natural-sounding settings */
+  const isNeural = voice && (voice.name.includes('Natural') || voice.name.includes('Online'));
+  utt.rate  = isNeural ? 1.0 : 0.82;   // neural voices need normal speed; robot voices need slower
+  utt.pitch = 1.0;
   window.speechSynthesis.speak(utt);
 }
 function speakCurrent() {
