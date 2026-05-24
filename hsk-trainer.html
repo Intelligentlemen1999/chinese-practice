@@ -254,8 +254,11 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
       <button class="reveal-btn" id="reveal-btn" onclick="revealCard()">Show Answer</button>
     </div>
     <div class="py-input-wrap" id="py-input-wrap" style="display:none">
-      <input type="text" class="py-input" id="py-input" placeholder="Type pinyin…" onkeydown="if(event.key==='Enter')checkPinyin()">
-      <button class="py-submit" onclick="checkPinyin()">✓</button>
+      <div style="width:100%;text-align:center">
+        <input type="text" class="py-input" id="py-input" placeholder="e.g.  ni hao  or  ni3 hao3" onkeydown="if(event.key==='Enter')checkPinyin()" style="width:240px">
+        <button class="py-submit" onclick="checkPinyin()">✓</button>
+        <div style="font-size:.7rem;color:#444;margin-top:5px">No tone marks needed · use numbers for tones: mā=ma1 · v = ü (lv=lü)</div>
+      </div>
     </div>
     <div class="srs-btns" id="srs-btns" style="display:none">
       <button class="srs-btn btn-again" onclick="rateCard(0)"><div>Again</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~10m</div></button>
@@ -8383,7 +8386,9 @@ function normPinyin(s){
     .replace(/[āáǎà]/g,'a').replace(/[ēéěè]/g,'e')
     .replace(/[īíǐì]/g,'i').replace(/[ōóǒò]/g,'o')
     .replace(/[ūúǔù]/g,'u').replace(/[ǖǘǚǜü]/g,'u')
-    .replace(/[1-5]/g,'').replace(/\s+/g,'');
+    .replace(/v/g,'u')        // lv → lu, nv → nu (keyboard ü)
+    .replace(/[1-5]/g,'')     // strip tone numbers (ma1 → ma)
+    .replace(/\s+/g,'');
 }
 function checkPinyin(){
   const input = document.getElementById('py-input');
