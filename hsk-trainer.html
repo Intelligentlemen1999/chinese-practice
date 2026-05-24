@@ -353,7 +353,7 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
     </select>
   </div>
   <table class="word-table">
-    <thead><tr><th>#</th><th>Word</th><th>Pinyin</th><th>English</th><th>Status</th></tr></thead>
+    <thead><tr><th>#</th><th id="wl-th-level" style="display:none">Level</th><th>Word</th><th>Pinyin</th><th>English</th><th>Status</th></tr></thead>
     <tbody id="wl-body"></tbody>
   </table>
   <div style="text-align:center;margin-top:14px;font-size:.8rem;color:#555" id="wl-count"></div>
@@ -8282,27 +8282,36 @@ function showScore(){
 
 // ─── Word List ─────────────────────────────────────────
 function renderWordList(){
-  const words = LEVEL_DATA[currentLevel];
   const q = document.getElementById('wl-search').value.toLowerCase();
   const filter = document.getElementById('wl-filter').value;
+  const allLevels = currentLevel === 0;
+  const levels = allLevels ? [1,2,3,4,5,6] : [currentLevel];
 
-  let rows = [], count = 0;
-  words.forEach((w,i)=>{
-    const st = srsStatus(currentLevel,i);
-    if(filter!=='all' && st!==filter) return;
-    if(q && !w[0].includes(q) && !w[1].toLowerCase().includes(q) && !w[3].toLowerCase().includes(q)) return;
-    count++;
-    rows.push(`<tr>
-      <td style="color:#555">${i+1}</td>
-      <td><div class="w-hanzi">${w[0]}</div></td>
-      <td class="w-py">${w[1]}</td>
-      <td><span class="w-pos">${w[2]}</span> <span class="w-en">${w[3]}</span></td>
-      <td><span class="w-status status-${st}">${st}</span></td>
-    </tr>`);
+  // Show/hide Level column
+  document.getElementById('wl-th-level').style.display = allLevels ? '' : 'none';
+
+  let rows = [], count = 0, total = 0;
+  levels.forEach(lv => {
+    LEVEL_DATA[lv].forEach((w,i)=>{
+      total++;
+      const st = srsStatus(lv,i);
+      if(filter!=='all' && st!==filter) return;
+      if(q && !w[0].includes(q) && !w[1].toLowerCase().includes(q) && !w[3].toLowerCase().includes(q)) return;
+      count++;
+      const lvCell = allLevels ? `<td style="color:#666;font-size:.75rem">HSK ${lv}</td>` : '';
+      rows.push(`<tr>
+        <td style="color:#555">${count}</td>
+        ${lvCell}
+        <td><div class="w-hanzi">${w[0]}</div></td>
+        <td class="w-py">${w[1]}</td>
+        <td><span class="w-pos">${w[2]}</span> <span class="w-en">${w[3]}</span></td>
+        <td><span class="w-status status-${st}">${st}</span></td>
+      </tr>`);
+    });
   });
 
   document.getElementById('wl-body').innerHTML = rows.join('');
-  document.getElementById('wl-count').textContent = `Showing ${count} of ${words.length} words`;
+  document.getElementById('wl-count').textContent = `Showing ${count} of ${total} words`;
 }
 
 // ─── Reset ─────────────────────────────────────────────
