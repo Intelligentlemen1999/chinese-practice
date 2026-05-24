@@ -223,10 +223,10 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
       <button class="reveal-btn" id="reveal-btn" onclick="revealCard()">Show Answer</button>
     </div>
     <div class="srs-btns" id="srs-btns" style="display:none">
-      <button class="srs-btn btn-again" onclick="rateCard(0)"><div>Again</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">&lt;1m</div></button>
-      <button class="srs-btn btn-hard" onclick="rateCard(2)"><div>Hard</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~1d</div></button>
-      <button class="srs-btn btn-good" onclick="rateCard(3)"><div>Good</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~3d</div></button>
-      <button class="srs-btn btn-easy" onclick="rateCard(5)"><div>Easy</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~7d</div></button>
+      <button class="srs-btn btn-again" onclick="rateCard(0)"><div>Again</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~10m</div></button>
+      <button class="srs-btn btn-hard" onclick="rateCard(2)"><div>Hard</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~4h</div></button>
+      <button class="srs-btn btn-good" onclick="rateCard(3)"><div>Good</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~1d</div></button>
+      <button class="srs-btn btn-easy" onclick="rateCard(5)"><div>Easy</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~3d</div></button>
     </div>
   </div>
   <div id="study-done" style="display:none" class="empty">
@@ -7904,13 +7904,16 @@ function srsStatus(lv, idx){
 }
 
 function sm2Update(srs, q){
-  // q: 0=again, 2=hard, 3=good, 5=easy
-  if (q < 3) {
+  // q: 0=again, 2=hard, 3=good, 5=easy  (interval in days)
+  if (q === 0) {
     srs.reps = 0;
-    srs.interval = 1;
+    srs.interval = 10/1440;   // ~10 minutes
+  } else if (q === 2) {
+    srs.reps = 0;
+    srs.interval = 4/24;      // ~4 hours
   } else {
     if (srs.reps === 0) srs.interval = 1;
-    else if (srs.reps === 1) srs.interval = 6;
+    else if (srs.reps === 1) srs.interval = 3;
     else srs.interval = Math.round(srs.interval * srs.ease);
     srs.reps++;
   }
