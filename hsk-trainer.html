@@ -133,6 +133,19 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
 .status-review{background:#1a2a3d;color:var(--blue)}
 .status-mastered{background:#1a3d27;color:var(--green)}
 
+/* ─── STUDY TOGGLES ─── */
+.study-toggles{display:flex;gap:6px;justify-content:center;margin-bottom:8px;flex-wrap:wrap}
+.toggle-btn{padding:4px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;color:#666;font-size:.75rem;cursor:pointer;transition:all .2s}
+.toggle-btn.on{border-color:var(--blue);color:var(--blue);background:rgba(79,142,247,.12)}
+/* ─── PINYIN QUIZ ─── */
+.py-input-wrap{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:10px}
+.py-input{padding:9px 14px;background:#1e1e30;border:1px solid var(--border);border-radius:10px;color:#e8e8f0;font-size:.95rem;width:200px;text-align:center}
+.py-input:focus{outline:none;border-color:var(--blue)}
+.py-submit{padding:9px 16px;background:var(--blue);border:none;border-radius:10px;color:#fff;font-size:.85rem;font-weight:600;cursor:pointer}
+.kbd-hint{font-size:.68rem;color:#333;text-align:center;margin-top:6px;letter-spacing:.03em}
+/* ─── STREAK / EXPORT ─── */
+.streak-num{font-size:2rem;font-weight:700;color:var(--gold)}
+.dash-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 /* ─── RESPONSIVE ─── */
 @media(max-width:480px){
   .mc-options{grid-template-columns:1fr}
@@ -153,6 +166,7 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
 </header>
 
 <div class="level-bar" id="level-bar">
+  <button class="lv-btn" data-lv="0" onclick="switchLevel(0)">⭐ All <span class="lv-badge" id="lv-badge-0">0</span></button>
   <button class="lv-btn active" data-lv="1" onclick="switchLevel(1)">HSK 1 <span class="lv-badge" id="lv-badge-1">150</span></button>
   <button class="lv-btn" data-lv="2" onclick="switchLevel(2)">HSK 2 <span class="lv-badge" id="lv-badge-2">150</span></button>
   <button class="lv-btn" data-lv="3" onclick="switchLevel(3)">HSK 3 <span class="lv-badge" id="lv-badge-3">300</span></button>
@@ -190,11 +204,23 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
       <div class="big" id="dash-new-n" style="color:#9b59b6">0</div>
       <div class="sub">not yet studied</div>
     </div>
+    <div class="dash-card">
+      <h3>🔥 Streak</h3>
+      <div class="streak-num" id="dash-streak">0</div>
+      <div class="sub">days in a row</div>
+    </div>
+    <div class="dash-card">
+      <h3>Today</h3>
+      <div class="big" id="dash-today-n" style="color:var(--purple)">0</div>
+      <div class="sub" id="dash-today-sub">cards studied · goal: 20</div>
+    </div>
   </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
+  <div class="dash-actions">
     <button class="btn btn-primary" onclick="switchMode('study');startStudy()">▶ Study Now</button>
     <button class="btn btn-outline" onclick="switchMode('test');startTest()">📝 Take Test</button>
     <button class="btn btn-outline" onclick="resetLevelSRS()">↺ Reset Level</button>
+    <button class="btn btn-outline" onclick="exportProgress()">⬇ Export</button>
+    <label class="btn btn-outline" style="cursor:pointer">⬆ Import<input type="file" accept=".json" style="display:none" onchange="importProgress(event)"></label>
   </div>
 </div>
 
@@ -202,6 +228,11 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
 <div class="view" id="view-study">
   <div id="study-loading" style="text-align:center;padding:40px;color:#555">Loading cards…</div>
   <div id="study-ui" style="display:none">
+    <div class="study-toggles">
+      <button class="toggle-btn" id="toggle-pinyin" onclick="toggleHidePinyin()">👁 Hide Pinyin</button>
+      <button class="toggle-btn" id="toggle-pyquiz" onclick="togglePinyinQuiz()">⌨ Pinyin Quiz</button>
+      <button class="toggle-btn on" id="toggle-stroke" onclick="toggleStroke()">✍ Stroke</button>
+    </div>
     <div class="card-progress"><div class="card-progress-fill" id="study-prog-fill" style="width:0%"></div></div>
     <div class="card-counter" id="study-counter">Card 1 of 20</div>
     <div class="card-wrap">
@@ -222,12 +253,17 @@ header{background:#12121f;border-bottom:1px solid var(--border);padding:14px 20p
     <div style="text-align:center;margin-top:16px">
       <button class="reveal-btn" id="reveal-btn" onclick="revealCard()">Show Answer</button>
     </div>
+    <div class="py-input-wrap" id="py-input-wrap" style="display:none">
+      <input type="text" class="py-input" id="py-input" placeholder="Type pinyin…" onkeydown="if(event.key==='Enter')checkPinyin()">
+      <button class="py-submit" onclick="checkPinyin()">✓</button>
+    </div>
     <div class="srs-btns" id="srs-btns" style="display:none">
       <button class="srs-btn btn-again" onclick="rateCard(0)"><div>Again</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~10m</div></button>
       <button class="srs-btn btn-hard" onclick="rateCard(2)"><div>Hard</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~4h</div></button>
       <button class="srs-btn btn-good" onclick="rateCard(3)"><div>Good</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~1d</div></button>
       <button class="srs-btn btn-easy" onclick="rateCard(5)"><div>Easy</div><div style="font-size:.72rem;margin-top:2px;opacity:.7">~3d</div></button>
     </div>
+    <div class="kbd-hint" id="kbd-hint">Space = reveal &nbsp;·&nbsp; 1 Again &nbsp;·&nbsp; 2 Hard &nbsp;·&nbsp; 3 Good &nbsp;·&nbsp; 4 Easy</div>
   </div>
   <div id="study-done" style="display:none" class="empty">
     <div class="icon">🎉</div>
@@ -7859,18 +7895,12 @@ const LEVEL_NAMES = {1:'HSK 1',2:'HSK 2',3:'HSK 3',4:'HSK 4',5:'HSK 5',6:'HSK 6'
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
-let currentLevel = 1;
-let currentMode = 'dash';
-let studyQueue = [];
-let studyIdx = 0;
-let revealed = false;
+let currentLevel = 1, currentMode = 'dash';
+let studyQueue = [], queueLevels = [], studyIdx = 0, revealed = false;
 let hwWriter = null;
-let testQuestions = [];
-let testIdx = 0;
-let testScore = {correct:0,wrong:0};
-let testTimer = null;
-let testSecsLeft = 300;
-let testStartTime = 0;
+let testQuestions = [], testIdx = 0, testScore = {correct:0,wrong:0};
+let testTimer = null, testSecsLeft = 300, testStartTime = 0;
+let hidePinyin = false, pinyinQuizMode = false, showStrokeAnim = true;
 
 // ─── SRS helpers ───────────────────────────────────────
 function srsKey(lv, idx){ return `hsk_srs_${lv}_${idx}`; }
@@ -7928,7 +7958,12 @@ function switchLevel(lv){
   currentLevel = lv;
   document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', +b.dataset.lv === lv));
   if (currentMode === 'study') startStudy();
-  else if (currentMode === 'test') { document.getElementById('test-ui').style.display='none'; document.getElementById('test-score').style.display='none'; document.getElementById('test-start').style.display='block'; }
+  else if (currentMode === 'test') {
+    if(lv === 0){ showToast('Test mode uses current level only'); return; }
+    document.getElementById('test-ui').style.display='none';
+    document.getElementById('test-score').style.display='none';
+    document.getElementById('test-start').style.display='block';
+  }
   else if (currentMode === 'words') renderWordList();
   renderDash();
   updateHeader();
@@ -7946,18 +7981,35 @@ function switchMode(mode){
 
 // ─── Dashboard ────────────────────────────────────────
 function renderDash(){
-  const words = LEVEL_DATA[currentLevel];
-  let mastered=0, due=0, newC=0;
-  words.forEach((_,i)=>{
-    const st = srsStatus(currentLevel,i);
-    if(st==='mastered') mastered++;
-    else if(st==='new') newC++;
-    if(isDue(currentLevel,i) && st!=='mastered') due++;
+  const levels = currentLevel === 0 ? [1,2,3,4,5,6] : [currentLevel];
+  let mastered=0, due=0, newC=0, total=0;
+  levels.forEach(lv=>{
+    LEVEL_DATA[lv].forEach((_,i)=>{
+      total++;
+      const st = srsStatus(lv,i);
+      if(st==='mastered') mastered++;
+      else if(st==='new') newC++;
+      if(isDue(lv,i) && st!=='mastered') due++;
+    });
   });
   document.getElementById('dash-mastered-n').textContent = mastered;
-  document.getElementById('dash-mastered-sub').textContent = `mastered of ${words.length}`;
+  document.getElementById('dash-mastered-sub').textContent = `mastered of ${total}`;
   document.getElementById('dash-due-n').textContent = due;
   document.getElementById('dash-new-n').textContent = newC;
+
+  const streak = getStreak();
+  const daily = getDailyCount();
+  document.getElementById('dash-streak').textContent = streak + (streak===1?' 🔥':'🔥');
+  document.getElementById('dash-today-n').textContent = daily;
+  const goal = 20;
+  document.getElementById('dash-today-sub').textContent = `cards studied · goal: ${goal}${daily>=goal?' ✓':''}`;
+
+  // Update "All" badge with total due across all levels
+  let allDue=0;
+  [1,2,3,4,5,6].forEach(lv=>{
+    LEVEL_DATA[lv].forEach((_,i)=>{ if(isDue(lv,i) && srsStatus(lv,i)!=='mastered') allDue++; });
+  });
+  document.getElementById('lv-badge-0').textContent = allDue;
 
   // level progress bars
   const rows = document.getElementById('level-prog-rows');
@@ -7990,15 +8042,23 @@ function updateHeader(){
 
 // ─── Study ─────────────────────────────────────────────
 function buildQueue(allCards=false){
-  const words = LEVEL_DATA[currentLevel];
-  let q = [];
-  words.forEach((_,i)=>{
-    if(allCards || isDue(currentLevel,i)){
-      q.push(i);
-    }
+  const levels = currentLevel === 0 ? [1,2,3,4,5,6] : [currentLevel];
+  let q = [], lvs = [];
+  levels.forEach(lv => {
+    LEVEL_DATA[lv].forEach((_,i)=>{
+      if(allCards || isDue(lv,i)){
+        q.push(i);
+        lvs.push(lv);
+      }
+    });
   });
-  // Shuffle
-  for(let i=q.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [q[i],q[j]]=[q[j],q[i]]; }
+  // Shuffle both arrays together
+  for(let i=q.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [q[i],q[j]]=[q[j],q[i]];
+    [lvs[i],lvs[j]]=[lvs[j],lvs[i]];
+  }
+  queueLevels = lvs;
   return q;
 }
 
@@ -8018,7 +8078,8 @@ function startStudy(allCards=false){
 }
 
 function showCard(idx){
-  const words = LEVEL_DATA[currentLevel];
+  const lv = queueLevels[studyIdx] || currentLevel;
+  const words = LEVEL_DATA[lv];
   const w = words[idx];
   revealed = false;
 
@@ -8030,36 +8091,47 @@ function showCard(idx){
   ['card-pinyin','card-pos','card-english','card-example'].forEach(id=>{
     document.getElementById(id).classList.add('hidden');
   });
-  document.getElementById('reveal-btn').style.display='';
+  document.getElementById('reveal-btn').style.display = pinyinQuizMode ? 'none' : '';
   document.getElementById('srs-btns').style.display='none';
+  document.getElementById('py-input-wrap').style.display = pinyinQuizMode ? '' : 'none';
+  if(pinyinQuizMode){ setTimeout(()=>document.getElementById('py-input').focus(), 80); }
 
   const pct = studyIdx / studyQueue.length * 100;
   document.getElementById('study-prog-fill').style.width = pct+'%';
-  document.getElementById('study-counter').textContent = `Card ${studyIdx+1} of ${studyQueue.length}`;
+  document.getElementById('study-counter').textContent =
+    `Card ${studyIdx+1} of ${studyQueue.length}${currentLevel===0?' (All)':' · HSK '+lv}`;
 
   // Stroke order
   const target = document.getElementById('stroke-target');
+  target.style.display = showStrokeAnim ? '' : 'none';
   target.innerHTML = '';
   if(hwWriter){ try{ hwWriter.cancelQuiz(); }catch(e){} hwWriter=null; }
-  try {
-    hwWriter = HanziWriter.create(target, w[0][0], {
-      width:100, height:100, padding:4,
-      strokeColor:'#7ab0ff', radicalColor:'#f4c430',
-      showOutline:true, strokeAnimationSpeed:1
-    });
-    hwWriter.animateCharacter();
-  } catch(e){}
+  if(showStrokeAnim){
+    try {
+      hwWriter = HanziWriter.create(target, w[0][0], {
+        width:100, height:100, padding:4,
+        strokeColor:'#7ab0ff', radicalColor:'#f4c430',
+        showOutline:true, strokeAnimationSpeed:1
+      });
+      hwWriter.animateCharacter();
+    } catch(e){}
+  }
 }
 
 function revealCard(){
   revealed = true;
-  ['card-pinyin','card-pos','card-english'].forEach(id=>{
-    document.getElementById(id).classList.remove('hidden');
-  });
+  const lv = queueLevels[studyIdx] || currentLevel;
+  const _w = LEVEL_DATA[lv][studyQueue[studyIdx]];
+
+  document.getElementById('card-pos').classList.remove('hidden');
+  document.getElementById('card-english').classList.remove('hidden');
+  if(!hidePinyin) document.getElementById('card-pinyin').classList.remove('hidden');
+
   document.getElementById('reveal-btn').style.display='none';
+  document.getElementById('py-input-wrap').style.display='none';
   document.getElementById('srs-btns').style.display='flex';
-  const _w = LEVEL_DATA[currentLevel][studyQueue[studyIdx]];
   speakWord(_w[0]);
+
   const _ex = typeof EXAMPLES!=='undefined' ? EXAMPLES[_w[0]] : null;
   if(_ex){
     document.getElementById('card-example-zh').textContent = _ex[0];
@@ -8072,11 +8144,13 @@ function revealCard(){
 }
 
 function rateCard(q){
-  const lv = currentLevel;
+  const lv = queueLevels[studyIdx] || currentLevel;
   const idx = studyQueue[studyIdx];
   let srs = getSRS(lv,idx) || defaultSRS();
   srs = sm2Update(srs, q);
   saveSRS(lv,idx,srs);
+  incrementDailyCount();
+  updateStreak();
 
   studyIdx++;
   if(studyIdx >= studyQueue.length){
@@ -8249,6 +8323,137 @@ function showToast(msg){
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2000);
 }
+
+// ─── Streak & Daily ────────────────────────────────────
+function getTodayStr(){ return new Date().toISOString().slice(0,10); }
+
+function getStreak(){
+  return +(localStorage.getItem('hsk_streak_count') || 0);
+}
+function updateStreak(){
+  const today = getTodayStr();
+  const lastDate = localStorage.getItem('hsk_streak_date') || '';
+  if(lastDate === today) return;
+  const yesterday = new Date(Date.now()-86400000).toISOString().slice(0,10);
+  let streak = +(localStorage.getItem('hsk_streak_count') || 0);
+  streak = (lastDate === yesterday) ? streak + 1 : 1;
+  localStorage.setItem('hsk_streak_count', streak);
+  localStorage.setItem('hsk_streak_date', today);
+}
+function getDailyCount(){
+  const today = getTodayStr();
+  if(localStorage.getItem('hsk_daily_date') !== today) return 0;
+  return +(localStorage.getItem('hsk_daily_cards') || 0);
+}
+function incrementDailyCount(){
+  const today = getTodayStr();
+  if(localStorage.getItem('hsk_daily_date') !== today){
+    localStorage.setItem('hsk_daily_date', today);
+    localStorage.setItem('hsk_daily_cards', '1');
+  } else {
+    localStorage.setItem('hsk_daily_cards', getDailyCount() + 1);
+  }
+}
+
+// ─── Study Toggles ─────────────────────────────────────
+function toggleHidePinyin(){
+  hidePinyin = !hidePinyin;
+  const btn = document.getElementById('toggle-pinyin');
+  btn.classList.toggle('on', hidePinyin);
+  btn.textContent = hidePinyin ? '👁 Show Pinyin' : '👁 Hide Pinyin';
+  showToast(hidePinyin ? 'Pinyin hidden' : 'Pinyin visible');
+}
+function togglePinyinQuiz(){
+  pinyinQuizMode = !pinyinQuizMode;
+  document.getElementById('toggle-pyquiz').classList.toggle('on', pinyinQuizMode);
+  showToast(pinyinQuizMode ? 'Pinyin quiz on' : 'Pinyin quiz off');
+  if(studyQueue.length > 0) showCard(studyQueue[studyIdx]);
+}
+function toggleStroke(){
+  showStrokeAnim = !showStrokeAnim;
+  document.getElementById('toggle-stroke').classList.toggle('on', showStrokeAnim);
+  document.getElementById('stroke-target').style.display = showStrokeAnim ? '' : 'none';
+  showToast(showStrokeAnim ? 'Stroke on' : 'Stroke off');
+  if(showStrokeAnim && studyQueue.length > 0) showCard(studyQueue[studyIdx]);
+}
+
+// ─── Pinyin Quiz ───────────────────────────────────────
+function normPinyin(s){
+  return s.toLowerCase()
+    .replace(/[āáǎà]/g,'a').replace(/[ēéěè]/g,'e')
+    .replace(/[īíǐì]/g,'i').replace(/[ōóǒò]/g,'o')
+    .replace(/[ūúǔù]/g,'u').replace(/[ǖǘǚǜü]/g,'u')
+    .replace(/[1-5]/g,'').replace(/\s+/g,'');
+}
+function checkPinyin(){
+  const input = document.getElementById('py-input');
+  const typed = normPinyin(input.value.trim());
+  if(!typed) return;
+  const lv = queueLevels[studyIdx] || currentLevel;
+  const w = LEVEL_DATA[lv][studyQueue[studyIdx]];
+  const correct = normPinyin(w[1]);
+  input.value = '';
+  if(typed === correct){
+    showToast('✓ Correct!');
+    revealCard();
+  } else {
+    showToast('✗  ' + w[1]);
+    input.style.borderColor = 'var(--red)';
+    setTimeout(()=>{ input.style.borderColor=''; revealCard(); }, 900);
+  }
+}
+
+// ─── Export / Import ───────────────────────────────────
+function exportProgress(){
+  const data = {};
+  for(let i=0;i<localStorage.length;i++){
+    const k = localStorage.key(i);
+    if(k && k.startsWith('hsk_')) data[k] = localStorage.getItem(k);
+  }
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'hsk-progress-' + getTodayStr() + '.json';
+  a.click();
+  showToast('Progress exported!');
+}
+function importProgress(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      Object.entries(data).forEach(([k,v])=>localStorage.setItem(k,v));
+      renderDash(); updateHeader();
+      showToast('Progress imported ✓');
+    } catch(err){ showToast('Import failed'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+// ─── Keyboard Shortcuts ────────────────────────────────
+document.addEventListener('keydown', e => {
+  if(currentMode === 'study'){
+    const ui = document.getElementById('study-ui');
+    if(ui.style.display === 'none') return;
+    if(!revealed){
+      if((e.key === ' ' || e.key === 'Enter') && !pinyinQuizMode){
+        e.preventDefault(); revealCard();
+      }
+    } else {
+      if(e.key==='1'){ rateCard(0); }
+      else if(e.key==='2'){ rateCard(2); }
+      else if(e.key==='3'){ rateCard(3); }
+      else if(e.key==='4'){ rateCard(5); }
+    }
+  }
+  if(currentMode === 'test' && e.key==='Enter'){
+    const nb = document.getElementById('next-btn');
+    if(nb && nb.style.display !== 'none') nextTestQ();
+  }
+});
 
 // ─── Init ──────────────────────────────────────────────
 window.speechSynthesis.onvoiceschanged = ()=>{};
