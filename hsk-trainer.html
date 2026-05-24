@@ -8388,7 +8388,12 @@ function togglePinyinQuiz(){
   pinyinQuizMode = !pinyinQuizMode;
   document.getElementById('toggle-pyquiz').classList.toggle('on', pinyinQuizMode);
   showToast(pinyinQuizMode ? 'Pinyin quiz on' : 'Pinyin quiz off');
-  if(studyQueue.length > 0) showCard(studyQueue[studyIdx]);
+  const studyUI = document.getElementById('study-ui');
+  if(studyUI.style.display !== 'none' && studyQueue.length > 0 && !revealed){
+    document.getElementById('reveal-btn').style.display = pinyinQuizMode ? 'none' : '';
+    document.getElementById('py-input-wrap').style.display = pinyinQuizMode ? '' : 'none';
+    if(pinyinQuizMode) setTimeout(()=>document.getElementById('py-input').focus(), 80);
+  }
 }
 function toggleStroke(){
   showStrokeAnim = !showStrokeAnim;
