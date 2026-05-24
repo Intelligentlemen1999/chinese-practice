@@ -8481,18 +8481,22 @@ function importProgress(e){
 
 // ─── Keyboard Shortcuts ────────────────────────────────
 document.addEventListener('keydown', e => {
+  // Never hijack keys when user is typing in an input
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
   if(currentMode === 'study'){
     const ui = document.getElementById('study-ui');
-    if(ui.style.display === 'none') return;
-    if(!revealed){
-      if((e.key === ' ' || e.key === 'Enter') && !pinyinQuizMode){
-        e.preventDefault(); revealCard();
+    if(!ui || ui.style.display === 'none') return;
+    if(!revealed && !pinyinQuizMode){
+      if(e.key === ' ' || e.key === 'Enter'){
+        e.preventDefault(); revealCard(); return;
       }
-    } else {
-      if(e.key==='1'){ rateCard(0); }
-      else if(e.key==='2'){ rateCard(2); }
-      else if(e.key==='3'){ rateCard(3); }
-      else if(e.key==='4'){ rateCard(5); }
+    }
+    if(revealed){
+      if(e.key==='1'){ e.preventDefault(); rateCard(0); }
+      else if(e.key==='2'){ e.preventDefault(); rateCard(2); }
+      else if(e.key==='3'){ e.preventDefault(); rateCard(3); }
+      else if(e.key==='4'){ e.preventDefault(); rateCard(5); }
     }
   }
   if(currentMode === 'test' && e.key==='Enter'){
