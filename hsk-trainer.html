@@ -8171,7 +8171,6 @@ function switchLevel(lv){
   document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', +b.dataset.lv === lv));
   if (currentMode === 'study') startStudy();
   else if (currentMode === 'test') {
-    if(lv === 0){ showToast('Test mode uses current level only'); return; }
     document.getElementById('test-ui').style.display='none';
     document.getElementById('test-score').style.display='none';
     document.getElementById('test-start').style.display='block';
@@ -8761,8 +8760,6 @@ function showScore(){
   } else {
     rmb.style.display = 'none';
   }
-  // Only check level unlock when testing a specific level (not All Levels mode)
-  if(currentLevel > 0) checkLevelUnlock(pct, currentLevel);
 }
 
 // ─── Session Stats ──────────────────────────────────────
@@ -9314,65 +9311,6 @@ function getLevelMastery(lv){
   return words.length > 0 ? Math.round(m/words.length*100) : 0;
 }
 
-function checkLevelUnlock(testPct, lv){
-  // Unlock next level if current test score >= 80% or mastery >= 80%
-  if(lv < 1 || lv >= 6) return;
-  const nextLv = lv + 1;
-  const mastery = getLevelMastery(lv);
-  if(testPct >= 80 || mastery >= 80){
-    const key = `hsk_unlocked_${nextLv}`;
-    if(!localStorage.getItem(key)){
-      localStorage.setItem(key, '1');
-      updateLevelLockIcons();
-      showToast(`🔓 HSK ${nextLv} unlocked!`);
-    }
-  }
-}
-
-function isLevelUnlocked(lv){
-  if(lv <= 1) return true;
-  return !!localStorage.getItem(`hsk_unlocked_${lv}`);
-}
-
-function updateLevelLockIcons(){
-  [2,3,4,5,6].forEach(lv=>{
-    const btn = document.querySelector(`.lv-btn[data-lv="${lv}"]`);
-    if(!btn) return;
-    const locked = !isLevelUnlocked(lv);
-    btn.classList.toggle('lv-locked', locked);
-    // Update label to show lock icon if locked
-    const badge = btn.querySelector('.lv-badge');
-    const badgeHtml = badge ? badge.outerHTML : '';
-    if(locked){
-      btn.innerHTML = `🔒 HSK ${lv} ${badgeHtml}`;
-    } else {
-      btn.innerHTML = `HSK ${lv} ${badgeHtml}`;
-    }
-  });
-}
-
-// Patch switchLevel to respect locks
-const _origSwitchLevel = switchLevel;
-function switchLevel(lv){
-  if(lv > 0 && !isLevelUnlocked(lv)){
-    const prev = lv - 1;
-    const mastery = getLevelMastery(prev);
-    showToast(`🔒 Complete HSK ${prev} (80% mastery) to unlock HSK ${lv} (current: ${mastery}%)`);
-    return;
-  }
-  currentLevel = lv;
-  document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', +b.dataset.lv === lv));
-  if(currentMode === 'study') startStudy();
-  else if(currentMode === 'test'){
-    if(lv === 0){ showToast('Test mode uses current level only'); return; }
-    document.getElementById('test-ui').style.display='none';
-    document.getElementById('test-score').style.display='none';
-    document.getElementById('test-start').style.display='block';
-  }
-  else if(currentMode === 'words') renderWordList();
-  renderDash();
-  updateHeader();
-}
 
 // ─── Init ──────────────────────────────────────────────
 window.speechSynthesis.onvoiceschanged = ()=>{};
@@ -9383,7 +9321,6 @@ window.speechSynthesis.onvoiceschanged = ()=>{};
 });
 
 updateWeakCount();
-updateLevelLockIcons();
 renderDash();
 </script>
 </body>
