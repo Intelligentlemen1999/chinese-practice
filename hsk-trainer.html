@@ -8648,6 +8648,7 @@ function setTestDir(rev){
 
 // buildTestQuestions: supports All Levels mode + reverse mode + deduplicated distractors
 function buildTestQuestions(){
+  const hasChinese = /[一-鿿]/;
   let pool;
   if(currentLevel === 0){
     pool = [];
@@ -8655,6 +8656,8 @@ function buildTestQuestions(){
   } else {
     pool = [...LEVEL_DATA[currentLevel]];
   }
+  // Exclude entries whose English field contains Chinese characters (no valid English translation)
+  pool = pool.filter(w => w[3] && !hasChinese.test(w[3]));
   for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
   const sample = pool.slice(0, Math.min(25, pool.length));
   testWrongAnswers = [];
