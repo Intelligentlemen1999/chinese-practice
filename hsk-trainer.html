@@ -8384,22 +8384,6 @@ function rateCard(q){
 }
 
 // ─── Test ──────────────────────────────────────────────
-function buildTestQuestions(){
-  const words = LEVEL_DATA[currentLevel];
-  const all = [...words];
-  // Shuffle
-  for(let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
-  const sample = all.slice(0, Math.min(25, all.length));
-  return sample.map((w,i)=>{
-    // 3 wrong answers
-    const wrong = all.filter(x=>x!==w).slice(0,20);
-    for(let k=wrong.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [wrong[k],wrong[j]]=[wrong[j],wrong[k]]; }
-    const opts = [w[3], wrong[0][3], wrong[1][3], wrong[2][3]];
-    for(let k=opts.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [opts[k],opts[j]]=[opts[j],opts[k]]; }
-    return {hanzi:w[0], pinyin:w[1], answer:w[3], opts};
-  });
-}
-
 function startTest(){
   testQuestions = buildTestQuestions();
   testIdx = 0;
@@ -8422,62 +8406,6 @@ function tickTimer(){
   const s = testSecsLeft%60;
   document.getElementById('test-timer').textContent = `${m}:${s.toString().padStart(2,'0')}`;
   if(testSecsLeft<=0){ clearInterval(testTimer); showScore(); }
-}
-
-function showTestQ(){
-  const q = testQuestions[testIdx];
-  document.getElementById('test-hanzi').textContent = q.hanzi;
-  document.getElementById('test-sub').textContent = q.pinyin;
-  document.getElementById('test-qnum').textContent = `${testIdx+1} / ${testQuestions.length}`;
-  document.getElementById('test-prog-fill').style.width = (testIdx/testQuestions.length*100)+'%';
-  document.getElementById('next-btn').style.display='none';
-
-  const container = document.getElementById('mc-options');
-  container.innerHTML = '';
-  q.opts.forEach(opt=>{
-    const btn = document.createElement('button');
-    btn.className = 'mc-opt';
-    btn.textContent = opt;
-    btn.onclick = ()=>chooseOpt(btn, opt, q.answer);
-    container.appendChild(btn);
-  });
-}
-
-function chooseOpt(btn, chosen, answer){
-  document.querySelectorAll('.mc-opt').forEach(b=>b.classList.add('disabled'));
-  if(chosen===answer){
-    btn.classList.add('correct');
-    testScore.correct++;
-  } else {
-    btn.classList.add('wrong');
-    testScore.wrong++;
-    document.querySelectorAll('.mc-opt').forEach(b=>{ if(b.textContent===answer) b.classList.add('correct'); });
-  }
-  document.getElementById('next-btn').style.display='';
-}
-
-function nextTestQ(){
-  testIdx++;
-  if(testIdx >= testQuestions.length){ clearInterval(testTimer); showScore(); return; }
-  showTestQ();
-}
-
-function showScore(){
-  clearInterval(testTimer);
-  const total = testScore.correct + testScore.wrong;
-  const pct = total>0 ? Math.round(testScore.correct/total*100) : 0;
-  const elapsed = Math.floor((Date.now()-testStartTime)/1000);
-  const em = Math.floor(elapsed/60), es = elapsed%60;
-
-  document.getElementById('test-ui').style.display='none';
-  document.getElementById('test-score').style.display='block';
-  document.getElementById('score-pct').textContent = pct+'%';
-  document.getElementById('sc-correct').textContent = testScore.correct;
-  document.getElementById('sc-wrong').textContent = testScore.wrong;
-  document.getElementById('sc-time').textContent = `${em}:${es.toString().padStart(2,'0')}`;
-
-  const msgs = ['','Keep trying!','Keep trying!','Not bad!','Not bad!','Good job!','Good job!','Great!','Great!','Excellent!','Perfect!'];
-  document.getElementById('score-msg').textContent = msgs[Math.floor(pct/10)] || 'Perfect!';
 }
 
 // ─── Word List ─────────────────────────────────────────
@@ -8713,24 +8641,39 @@ function setTestDir(rev){
   document.getElementById('test-dir-rev').classList.toggle('on', rev);
 }
 
-// Override buildTestQuestions to support reverse mode
-const _origBuildTestQ = buildTestQuestions;
+// buildTestQuestions: supports All Levels mode + reverse mode + deduplicated distractors
 function buildTestQuestions(){
-  const words = LEVEL_DATA[currentLevel === 0 ? 1 : currentLevel];
-  const all = [...words];
-  for(let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
-  const sample = all.slice(0, Math.min(25, all.length));
+  let pool;
+  if(currentLevel === 0){
+    pool = [];
+    [1,2,3,4,5,6].forEach(lv => pool.push(...LEVEL_DATA[lv]));
+  } else {
+    pool = [...LEVEL_DATA[currentLevel]];
+  }
+  for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  const sample = pool.slice(0, Math.min(25, pool.length));
   testWrongAnswers = [];
   return sample.map((w)=>{
-    const wrong = all.filter(x=>x!==w).slice(0,20);
-    for(let k=wrong.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [wrong[k],wrong[j]]=[wrong[j],wrong[k]]; }
+    const correctVal = testReverse ? w[0] : w[3];
+    // Distractors: different word, different answer text (no duplicates or same-meaning options)
+    const seen = new Set([correctVal]);
+    const picked = [];
+    const shuffled = [...pool];
+    for(let i=shuffled.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]; }
+    for(const x of shuffled){
+      if(x === w) continue;
+      const val = testReverse ? x[0] : x[3];
+      if(!seen.has(val)){ seen.add(val); picked.push(x); }
+      if(picked.length === 3) break;
+    }
+    // Pad if pool too small (edge case for tiny levels)
+    while(picked.length < 3) picked.push(picked[0] || w);
     if(testReverse){
-      // English → Chinese: show English, pick hanzi
-      const opts = [w[0], wrong[0][0], wrong[1][0], wrong[2][0]];
+      const opts = [w[0], picked[0][0], picked[1][0], picked[2][0]];
       for(let k=opts.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [opts[k],opts[j]]=[opts[j],opts[k]]; }
       return {hanzi:w[3], pinyin:'(choose the Chinese)', answer:w[0], opts, word:w, reverse:true};
     } else {
-      const opts = [w[3], wrong[0][3], wrong[1][3], wrong[2][3]];
+      const opts = [w[3], picked[0][3], picked[1][3], picked[2][3]];
       for(let k=opts.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [opts[k],opts[j]]=[opts[j],opts[k]]; }
       return {hanzi:w[0], pinyin:w[1], answer:w[3], opts, word:w, reverse:false};
     }
@@ -8747,8 +8690,6 @@ function toggleWrongReview(){
   btn.textContent = (showing ? '📋 Review Mistakes' : '📋 Hide Mistakes') + ' (' + testWrongAnswers.length + ')';
 }
 
-// Patch chooseOpt to track wrong answers
-const _origChooseOpt = chooseOpt;
 function chooseOpt(btn, chosen, answer, wordObj){
   document.querySelectorAll('.mc-opt').forEach(b=>b.classList.add('disabled'));
   if(chosen===answer){
@@ -8763,7 +8704,6 @@ function chooseOpt(btn, chosen, answer, wordObj){
   document.getElementById('next-btn').style.display='';
 }
 
-// Patch showTestQ to pass word obj
 function showTestQ(){
   const q = testQuestions[testIdx];
   document.getElementById('test-hanzi').textContent = q.hanzi;
@@ -8782,7 +8722,6 @@ function showTestQ(){
   });
 }
 
-// Patch showScore to show wrong review button
 function showScore(){
   clearInterval(testTimer);
   const total = testScore.correct + testScore.wrong;
