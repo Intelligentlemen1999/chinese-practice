@@ -8408,6 +8408,12 @@ function tickTimer(){
   if(testSecsLeft<=0){ clearInterval(testTimer); showScore(); }
 }
 
+function nextTestQ(){
+  testIdx++;
+  if(testIdx >= testQuestions.length){ clearInterval(testTimer); showScore(); return; }
+  showTestQ();
+}
+
 // ─── Word List ─────────────────────────────────────────
 function renderWordList(){
   const q = document.getElementById('wl-search').value.toLowerCase();
@@ -8755,8 +8761,8 @@ function showScore(){
   } else {
     rmb.style.display = 'none';
   }
-  // Check level unlock
-  checkLevelUnlock(pct, currentLevel === 0 ? 1 : currentLevel);
+  // Only check level unlock when testing a specific level (not All Levels mode)
+  if(currentLevel > 0) checkLevelUnlock(pct, currentLevel);
 }
 
 // ─── Session Stats ──────────────────────────────────────
