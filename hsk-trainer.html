@@ -8647,8 +8647,21 @@ function setTestDir(rev){
 }
 
 // buildTestQuestions: supports All Levels mode + reverse mode + deduplicated distractors
-function buildTestQuestions(){
+function isGoodTestWord(w){
   const hasChinese = /[一-鿿]/;
+  const eng = w[3] || '';
+  if(!eng || hasChinese.test(eng)) return false;
+  if(eng.length > 55) return false;
+  if(/^(old |see |abbr\.|variant |arch\.|lit\.|fig\.)/i.test(eng)) return false;
+  return true;
+}
+
+function normTestEng(eng){
+  // Normalize to first meaning before semicolon for deduplication
+  return eng.toLowerCase().split(/[;；]/)[0].trim();
+}
+
+function buildTestQuestions(){
   let pool;
   if(currentLevel === 0){
     pool = [];
@@ -8656,25 +8669,23 @@ function buildTestQuestions(){
   } else {
     pool = [...LEVEL_DATA[currentLevel]];
   }
-  // Exclude entries whose English field contains Chinese characters (no valid English translation)
-  pool = pool.filter(w => w[3] && !hasChinese.test(w[3]));
+  pool = pool.filter(isGoodTestWord);
   for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
   const sample = pool.slice(0, Math.min(25, pool.length));
   testWrongAnswers = [];
   return sample.map((w)=>{
-    const correctVal = testReverse ? w[0] : w[3];
-    // Distractors: different word, different answer text (no duplicates or same-meaning options)
-    const seen = new Set([correctVal]);
+    // Use normalized form for deduplication (prevents "to change" + "to change; to alter" together)
+    const correctNorm = testReverse ? w[0] : normTestEng(w[3]);
+    const seen = new Set([correctNorm]);
     const picked = [];
     const shuffled = [...pool];
     for(let i=shuffled.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]; }
     for(const x of shuffled){
       if(x === w) continue;
-      const val = testReverse ? x[0] : x[3];
-      if(!seen.has(val)){ seen.add(val); picked.push(x); }
+      const norm = testReverse ? x[0] : normTestEng(x[3]);
+      if(!seen.has(norm)){ seen.add(norm); picked.push(x); }
       if(picked.length === 3) break;
     }
-    // Pad if pool too small (edge case for tiny levels)
     while(picked.length < 3) picked.push(picked[0] || w);
     if(testReverse){
       const opts = [w[0], picked[0][0], picked[1][0], picked[2][0]];
