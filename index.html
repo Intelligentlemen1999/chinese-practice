@@ -796,6 +796,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 7</span>
     <span class="ch-name">网络依赖</span>
   </button>
+  <button class="ch-btn" id="ch-btn-8" onclick="switchChapter(8)">
+    <span class="ch-num">Ch 8</span>
+    <span class="ch-name">为啥不合身</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -961,6 +965,7 @@ const CHAPTERS = {
   5: { title:'住在一幅叫"丽江"的画里', subtitle:'Chapter 5' },
   6: { title:'终于要结婚了', subtitle:'Chapter 6' },
   7: { title:'白领的"网络依赖"', subtitle:'Chapter 7' },
+  8: { title:'为啥就要不合身', subtitle:'Chapter 8' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -2021,6 +2026,170 @@ const LESSONS = {
         answer:'说实话'
       },
     ]
+  },
+  8: {
+    texts: [
+      {
+        num:'§1', title:'为啥就要不合身', en:'Why Do They Have to Wear Clothes That Don\'t Fit?',
+        paragraphs:[
+          {
+            zh:'听说有些国家还要限制人们在公共场合的穿着，我们这里的姑娘小伙子都把这当成笑话："连衣服也要管，真是的！"他们觉得，下了班，放了学，自己想穿什么就穿什么，想怎么穿就怎么穿，谁也管不着。我的朋友小虎和小琴就是这样一种人。',
+            py:'Tīng shuō yǒuxiē guójiā hái yào xiànzhì rénmen zài gōnggòng chǎnghé de chuānzhuó, wǒmen zhèlǐ de gūniang xiǎohuǒzi dōu bǎ zhè dāngchéng xiàohuà: "Lián yīfu yě yào guǎn, zhēnshì de!" Tāmen juéde, xià le bān, fàng le xué, zìjǐ xiǎng chuān shénme jiù chuān shénme, xiǎng zěnme chuān jiù zěnme chuān, shuí yě guǎn bu zháo. Wǒ de péngyou Xiǎohǔ hé Xiǎoqín jiùshì zhèyàng yī zhǒng rén.',
+            en:'I hear some countries even regulate what people wear in public — young people here treat that as a joke: "Controlling what you wear too? Seriously!" They feel that after work, after school, you can wear whatever you want however you want, and no one can stop you. My friends Xiaohu and Xiaoqin are exactly this kind of people.'
+          },
+          {
+            zh:'小虎是属虎的，他已经19岁了，"是大人了"，他是坚决不穿妈妈买的衣服的，因为那些衣服"太正常"了，不够"酷"。他平时穿的裤子肥得可以装进两个人，长得一直拖到地上。爸妈当然反对，因为它太不合身了；可小虎却特别喜欢，就因为它肥得不合身，所以才很酷。',
+            py:'Xiǎohǔ shì shǔ hǔ de, tā yǐjīng 19 suì le, "shì dàren le", tā shì jiānjué bù chuān māma mǎi de yīfu de, yīnwèi nàxiē yīfu "tài zhèngcháng" le, bùgòu "kù". Tā píngshí chuān de kùzi féi de kěyǐ zhuāng jìn liǎng gè rén, cháng de yīzhí tuō dào dì shàng. Bàba māma dāngrán fǎnduì, yīnwèi tā tài bù héshēn le; kě Xiǎohǔ què tèbié xǐhuān, jiù yīnwèi tā féi de bù héshēn, suǒyǐ cái hěn kù.',
+            en:'Xiaohu was born in the year of the Tiger and is already 19 — "a grown-up." He absolutely refuses to wear clothes his mom buys, because they are "too normal," not cool enough. The trousers he usually wears are baggy enough to fit two people, and long enough to drag along the ground. His parents naturally object because they don\'t fit at all; but Xiaohu loves them precisely because they are so baggy and ill-fitting — that\'s exactly what makes them cool.'
+          },
+          {
+            zh:'小琴是不穿那种裤子的，她说："那种式样，男孩子穿了是挺好看的，女孩子穿就不合适。"她爱穿那种紧身的裤子。说真的，式样确实不错，就是穿的时候实在太费力了。裤子太瘦了，要把它穿上身，得花不少时间。',
+            py:'Xiǎoqín shì bù chuān nà zhǒng kùzi de, tā shuō: "Nà zhǒng shìyàng, nánháizi chuān le shì tǐng hǎokàn de, nǚháizi chuān jiù bù héshì." Tā ài chuān nà zhǒng jǐnshēn de kùzi. Shuō zhēn de, shìyàng quèshí bùcuò, jiùshì chuān de shíhòu shízài tài fèilì le. Kùzi tài shòu le, yào bǎ tā chuān shàngshēn, děi huā bùshǎo shíjiān.',
+            en:'Xiaoqin doesn\'t wear that kind of trousers. She says: "That style looks quite good on boys, but it\'s not suitable for girls." She loves tight-fitting trousers. Honestly, the style really isn\'t bad — it\'s just that putting them on is incredibly hard work. The trousers are so tight that getting into them takes quite a lot of time.'
+          },
+          {
+            zh:'他们的父母亲说起这事就怪设计师："谁设计出这种衣服，谁的脑子肯定有问题。"虽然有一肚子的意见，可是他们一点儿办法也没有。',
+            py:'Tāmen de fùmǔqīn shuō qǐ zhè shì jiù guài shèjìshī: "Shuí shèjì chū zhè zhǒng yīfu, shuí de nǎozi kěndìng yǒu wèntí." Suīrán yǒu yī dùzi de yìjiàn, kěshì tāmen yīdiǎnr bànfǎ yě méiyǒu.',
+            en:'Their parents blame the designers whenever this comes up: "Whoever designed this kind of clothing must have something wrong with their brain." Despite having a belly full of opinions, they can\'t do a thing about it.',
+            source:'(根据《新民晚报》喜悦文章改写)'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'一场地震，震平了代沟', en:'An Earthquake That Bridged the Generation Gap',
+        paragraphs:[
+          {
+            zh:'他们大多是独生子女，他们大多在快餐文化和网络文化中长大，他们是一群"活得很轻松"的人。一直以来，1980年以后和1990年以后出生的年轻人，是让社会担心的一群人。',
+            py:'Tāmen dà duō shì dúshēng zǐnǚ, tāmen dà duō zài kuàicān wénhuà hé wǎngluò wénhuà zhōng zhǎngdà, tāmen shì yī qún "huó de hěn qīngsōng" de rén. Yīzhí yǐlái, 1980 nián yǐhòu hé 1990 nián yǐhòu chūshēng de niánqīng rén, shì ràng shèhuì dānxīn de yī qún rén.',
+            en:'Most of them are only children, most grew up in a fast-food culture and internet culture, and they are a generation that "takes life easy." For a long time, young people born after 1980 and after 1990 have been a group that worries society.'
+          },
+          {
+            zh:'但是，2008年"五·一二"汶川大地震改变了人们对他们的看法。一场地震，震平了他们和长辈之间的代沟。',
+            py:'Dànshì, 2008 nián "Wǔ·Yī·Èr" Wènchuān dà dìzhèn gǎibiàn le rénmen duì tāmen de kànfǎ. Yī chǎng dìzhèn, zhèn píng le tāmen hé zhǎngbèi zhījiān de dàigōu.',
+            en:'But the Wenchuan earthquake of May 12, 2008 changed people\'s view of them. One earthquake levelled the generation gap between them and their elders.'
+          },
+          {
+            zh:'地震发生的第二天上午，北京、上海的很多医院里就站满了等待献血的市民，其中超过一半的人都是20岁到30岁的年轻人。',
+            py:'Dìzhèn fāshēng de dì èr tiān shàngwǔ, Běijīng, Shànghǎi de hěn duō yīyuàn lǐ jiù zhàn mǎn le děngdài xiàn xiě de shìmín, qízhōng chāoguò yī bàn de rén dōu shì 20 suì dào 30 suì de niánqīng rén.',
+            en:'The morning after the earthquake, hospitals in Beijing and Shanghai were already packed with citizens waiting to donate blood — more than half of them young people between 20 and 30.'
+          },
+          {
+            zh:'在地震灾区，到处都可以看到20多岁的年轻志愿者。他们乘火车、汽车从全国各地来到灾区，组成一个个志愿者小组。哪里需要他们，他们就出现在哪里。',
+            py:'Zài dìzhèn zāiqū, dàochù dōu kěyǐ kàndào 20 duō suì de niánqīng zhìyuànzhě. Tāmen chéng huǒchē, qìchē cóng quánguó gè dì lái dào zāiqū, zǔchéng yī gè gè zhìyuànzhě xiǎozǔ. Nǎlǐ xūyào tāmen, tāmen jiù chūxiàn zài nǎlǐ.',
+            en:'In the earthquake disaster zones, young volunteers in their twenties could be seen everywhere. They took trains and buses from all parts of the country to the disaster area, forming volunteer teams. Wherever they were needed, they showed up.'
+          },
+          {
+            zh:'经历了灾难，他们更明白了亲情的宝贵和人生的责任。有一位大学生在博客中写道："我父亲是灾区的一名中学教师，在地震中，他为了保护学生献出了自己的生命。现在，我对爸爸的感情不只是尊敬、想念，还有后悔。我后悔的是，小时候常常玩得很晚才回家；上大学时没能常常给家里打个电话……现在，我要替父亲承担起家庭的责任。"',
+            py:'Jīnglì le zāinàn, tāmen gèng míngbai le qīnqíng de bǎoguì hé rénshēng de zérèn. Yǒu yī wèi dàxuéshēng zài bókè zhōng xiě dào: "Wǒ fùqīn shì zāiqū de yī míng zhōngxué jiàoshī, zài dìzhèn zhōng, tā wèile bǎohù xuésheng xiànchū le zìjǐ de shēngmìng. Xiànzài, wǒ duì bàba de gǎnqíng bùzhǐ shì zūnjìng, xiǎngniàn, hái yǒu hòuhuǐ. Wǒ hòuhuǐ de shì, xiǎoshíhòu chángcháng wán de hěn wǎn cái huí jiā; shàng dàxué shí méi néng chángcháng gěi jiā lǐ dǎ gè diànhuà…… Xiànzài, wǒ yào tì fùqīn chéngdān qǐ jiātíng de zérèn."',
+            en:'Having lived through the disaster, they came to understand even better the preciousness of family bonds and the responsibilities of life. One university student wrote in a blog: "My father was a middle-school teacher in the disaster zone. In the earthquake, he gave his life to protect his students. Now my feelings for my father are not just respect and longing — there is also regret. I regret that as a child I often came home very late; that at university I couldn\'t call home more often… Now, I want to take on the family responsibilities in my father\'s place."'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'是……的 (Emphatic Pattern)',
+        pattern:'是＋[condition/reason]＋的',
+        explanation:'"是……的" emphasizes a particular aspect of a fact — how, when, where, or why something happened. The element between 是 and 的 is the focus.',
+        examples:[
+          {zh:'他是坚决不穿妈妈买的衣服的。',py:'Tā shì jiānjué bù chuān māma mǎi de yīfu de.',en:'He absolutely refuses to wear clothes his mom buys.'},
+          {zh:'只要努力，你的水平是会提高的。',py:'Zhǐyào nǔlì, nǐ de shuǐpíng shì huì tígāo de.',en:'As long as you work hard, your level will improve.'},
+          {zh:'我是从来不参加这种活动的。',py:'Wǒ shì cónglái bù cānjiā zhè zhǒng huódòng de.',en:'I never take part in this kind of activity.'},
+        ]
+      },
+      {
+        title:'当成 (Regard As, Treat As)',
+        pattern:'把A当成B',
+        explanation:'"当成" means to look upon or treat something as something else.',
+        examples:[
+          {zh:'他们把这当成笑话。',py:'Tāmen bǎ zhè dāngchéng xiàohuà.',en:'They treated this as a joke.'},
+          {zh:'他把学校当成了自己的家。',py:'Tā bǎ xuéxiào dāngchéng le zìjǐ de jiā.',en:'He treated school as his own home.'},
+          {zh:'我把他当成最好的朋友。',py:'Wǒ bǎ tā dāngchéng zuì hǎo de péngyou.',en:'I regard him as my best friend.'},
+        ]
+      },
+      {
+        title:'说真的 (Honestly, To Be Honest)',
+        pattern:'说真的，……',
+        explanation:'"说真的" signals a frank or sincere admission, like "honestly" or "to be honest."',
+        examples:[
+          {zh:'说真的，式样确实不错。',py:'Shuō zhēn de, shìyàng quèshí bùcuò.',en:'To be honest, the style really isn\'t bad.'},
+          {zh:'说真的，你不应该跟她吵架。',py:'Shuō zhēn de, nǐ bù yīnggāi gēn tā chǎojià.',en:'Honestly, you shouldn\'t have argued with her.'},
+          {zh:'说真的，这个笑话没什么好笑的。',py:'Shuō zhēn de, zhège xiàohuà méi shénme hǎoxiào de.',en:'To be honest, that joke isn\'t funny at all.'},
+        ]
+      },
+      {
+        title:'……就是…… (It\'s Just That / Only)',
+        pattern:'……，就是……',
+        explanation:'"就是" in this pattern introduces a concession or qualification: "the only problem is / it\'s just that…"',
+        examples:[
+          {zh:'式样确实不错，就是穿的时候实在太费力了。',py:'Shìyàng quèshí bùcuò, jiùshì chuān de shíhòu shízài tài fèilì le.',en:'The style really is nice — it\'s just that putting them on is incredibly hard work.'},
+          {zh:'这件衣服挺漂亮，就是有点儿贵。',py:'Zhè jiàn yīfu tǐng piàoliang, jiùshì yǒudiǎnr guì.',en:'This piece of clothing is quite nice — it\'s just a bit expensive.'},
+          {zh:'这种点心很好吃，就是做起来太麻烦。',py:'Zhè zhǒng diǎnxīn hěn hǎochī, jiùshì zuò qǐlái tài máfan.',en:'This snack is delicious — it\'s just too much trouble to make.'},
+        ]
+      },
+      {
+        title:'一直以来 (Ever Since, All Along)',
+        pattern:'一直以来，……',
+        explanation:'"一直以来" means "ever since" or "all along" — the situation has been unchanged from some point in the past up to now.',
+        examples:[
+          {zh:'一直以来，1980年以后出生的年轻人是让社会担心的一群人。',py:'Yīzhí yǐlái, 1980 nián yǐhòu chūshēng de niánqīng rén shì ràng shèhuì dānxīn de yī qún rén.',en:'All along, young people born after 1980 have been a group that worries society.'},
+          {zh:'一直以来，上海人都不喜欢吃太辣的菜。',py:'Yīzhí yǐlái, Shànghǎi rén dōu bù xǐhuān chī tài là de cài.',en:'All along, people from Shanghai have not liked very spicy food.'},
+          {zh:'春节一直以来都是中国人最重视的节日。',py:'Chūnjié yīzhí yǐlái dōu shì Zhōngguó rén zuì zhòngshì de jiérì.',en:'Spring Festival has always been the most important holiday for Chinese people.'},
+        ]
+      },
+      {
+        title:'替 (For, On Behalf Of)',
+        pattern:'替＋人＋V',
+        explanation:'"替" means to do something for someone or in someone\'s place, similar to "为" but often implies substituting.',
+        examples:[
+          {zh:'我要替父亲承担起家庭的责任。',py:'Wǒ yào tì fùqīn chéngdān qǐ jiātíng de zérèn.',en:'I want to take on the family responsibilities in my father\'s place.'},
+          {zh:'你休息休息，我替你干一会儿。',py:'Nǐ xiūxi xiūxi, wǒ tì nǐ gàn yīhuìr.',en:'You take a rest — I\'ll do it for you for a while.'},
+          {zh:'我们都替你高兴。',py:'Wǒmen dōu tì nǐ gāoxìng.',en:'We are all happy for you.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'他的裤子太肥了，根本不____。',
+        options:['合身','坚决','正常','费力'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'下了班，自己想穿什么就穿什么，谁也管不着。他们把那些穿着规定____笑话。',
+        options:['当成','穿着','限制','放学'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____，1980年后出生的年轻人一直让社会担心。',
+        options:['一直以来','说真的','当成','就是'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'他为了保护学生____了自己的生命。',
+        options:['献出','承担','出现','尊敬'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'志愿者从全国各地____火车来到灾区。',
+        options:['乘','装','拖','替'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "替" 完成句子：你休息，我___你去买。',
+        answer:'替'
+      },
+      {
+        type:'fill',
+        prompt:'用 "说真的" 开头：___，这种裤子穿起来太费力了。',
+        answer:'说真的'
+      },
+    ]
   }
 };
 
@@ -2685,6 +2854,90 @@ const EXAMPLES_CH7 = [
   [{"zh":"说实话，我有时候很羡慕他。","py":"Shuō shíhuà, wǒ yǒushíhòu hěn xiànmù tā.","en":"To tell the truth, I sometimes really envy him."},{"zh":"你就跟我说实话吧，不要骗我。","py":"Nǐ jiù gēn wǒ shuō shíhuà ba, bú yào piàn wǒ.","en":"Just tell me the truth — don\'t deceive me."}],
 ];
 
+const WORDS_CH8 = [
+  { hanzi:"合身",   pinyin:"héshēn",       pos:"Adj.",      english:"fit, well-fitting" },
+  { hanzi:"限制",   pinyin:"xiànzhì",      pos:"V./N.",     english:"restrict; restriction, limit" },
+  { hanzi:"场合",   pinyin:"chǎnghé",      pos:"N.",        english:"situation, occasion" },
+  { hanzi:"穿着",   pinyin:"chuānzhuó",    pos:"N.",        english:"dress, clothing, what one wears" },
+  { hanzi:"放学",   pinyin:"fàng xué",     pos:"V.",        english:"school dismisses; get out of school" },
+  { hanzi:"大人",   pinyin:"dàren",        pos:"N.",        english:"adult, grown-up" },
+  { hanzi:"坚决",   pinyin:"jiānjué",      pos:"Adj.",      english:"firm, resolute, determined" },
+  { hanzi:"正常",   pinyin:"zhèngcháng",   pos:"Adj.",      english:"normal, usual" },
+  { hanzi:"裤子",   pinyin:"kùzi",         pos:"N.",        english:"trousers, pants" },
+  { hanzi:"装",     pinyin:"zhuāng",       pos:"V.",        english:"hold, put in; contain" },
+  { hanzi:"拖",     pinyin:"tuō",          pos:"V.",        english:"trail, drag" },
+  { hanzi:"好看",   pinyin:"hǎokàn",       pos:"Adj.",      english:"good-looking, nice, attractive" },
+  { hanzi:"紧身",   pinyin:"jǐnshēn",      pos:"Adj.",      english:"tight-fitting, close-fitting" },
+  { hanzi:"费力",   pinyin:"fèilì",        pos:"Adj.",      english:"requiring great effort, strenuous" },
+  { hanzi:"设计师", pinyin:"shèjìshī",     pos:"N.",        english:"designer" },
+  { hanzi:"设计",   pinyin:"shèjì",        pos:"V./N.",     english:"design; plan" },
+  { hanzi:"脑子",   pinyin:"nǎozi",        pos:"N.",        english:"mind, brain" },
+  { hanzi:"意见",   pinyin:"yìjiàn",       pos:"N.",        english:"opinion, objection, complaint" },
+  { hanzi:"地震",   pinyin:"dìzhèn",       pos:"N.",        english:"earthquake" },
+  { hanzi:"震",     pinyin:"zhèn",         pos:"V.",        english:"quake, shake, shock" },
+  { hanzi:"平",     pinyin:"píng",         pos:"Adj.",      english:"flat, level; equal" },
+  { hanzi:"代沟",   pinyin:"dàigōu",       pos:"N.",        english:"generation gap" },
+  { hanzi:"快餐",   pinyin:"kuàicān",      pos:"N.",        english:"fast food" },
+  { hanzi:"看法",   pinyin:"kànfǎ",        pos:"N.",        english:"opinion, point of view" },
+  { hanzi:"长辈",   pinyin:"zhǎngbèi",     pos:"N.",        english:"elder, person of the older generation" },
+  { hanzi:"献血",   pinyin:"xiàn xiě",     pos:"V.",        english:"donate blood" },
+  { hanzi:"灾区",   pinyin:"zāiqū",        pos:"N.",        english:"disaster area" },
+  { hanzi:"乘",     pinyin:"chéng",        pos:"V.",        english:"ride, take (a vehicle)" },
+  { hanzi:"各地",   pinyin:"gè dì",        pos:"N.",        english:"all parts of the country, everywhere" },
+  { hanzi:"小组",   pinyin:"xiǎozǔ",       pos:"N.",        english:"group, team" },
+  { hanzi:"出现",   pinyin:"chūxiàn",      pos:"V.",        english:"appear, emerge, show up" },
+  { hanzi:"亲情",   pinyin:"qīnqíng",      pos:"N.",        english:"family love, bond among family members" },
+  { hanzi:"宝贵",   pinyin:"bǎoguì",       pos:"Adj.",      english:"valuable, precious, rare" },
+  { hanzi:"人生",   pinyin:"rénshēng",     pos:"N.",        english:"life (one\'s life journey)" },
+  { hanzi:"中学",   pinyin:"zhōngxué",     pos:"N.",        english:"middle school, secondary school" },
+  { hanzi:"生命",   pinyin:"shēngmìng",    pos:"N.",        english:"life (biological life)" },
+  { hanzi:"尊敬",   pinyin:"zūnjìng",      pos:"V.",        english:"respect, esteem" },
+  { hanzi:"替",     pinyin:"tì",           pos:"V./Prep.",  english:"replace; for, on behalf of" },
+  { hanzi:"承担",   pinyin:"chéngdān",     pos:"V.",        english:"undertake, bear, take on (responsibility)" },
+];
+
+const EXAMPLES_CH8 = [
+  [{"zh":"这件衣服很合身，你穿上去真好看。","py":"Zhè jiàn yīfu hěn héshēn, nǐ chuān shàngqù zhēn hǎokàn.","en":"This piece of clothing fits well — it really looks good on you."},{"zh":"买衣服最重要的是合身，而不是品牌。","py":"Mǎi yīfu zuì zhòngyào de shì héshēn, ér bú shì pǐnpái.","en":"The most important thing when buying clothes is that they fit, not the brand."}],
+  [{"zh":"有些国家要限制人们在公共场合的穿着。","py":"Yǒuxiē guójiā yào xiànzhì rénmen zài gōnggòng chǎnghé de chuānzhuó.","en":"Some countries restrict what people wear in public places."},{"zh":"父母想限制孩子玩手机的时间。","py":"Fùmǔ xiǎng xiànzhì háizi wán shǒujī de shíjiān.","en":"Parents want to limit the time their children spend on mobile phones."}],
+  [{"zh":"在正式场合，穿着要得体一些。","py":"Zài zhèngshì chǎnghé, chuānzhuó yào détǐ yīxiē.","en":"In formal situations, one should dress appropriately."},{"zh":"这种场合不适合穿太随便的衣服。","py":"Zhè zhǒng chǎnghé bù shìhé chuān tài suíbiàn de yīfu.","en":"This kind of occasion is not suitable for dressing too casually."}],
+  [{"zh":"他的穿着总是很随意，不管什么场合。","py":"Tā de chuānzhuó zǒng shì hěn suíyì, bùguǎn shénme chǎnghé.","en":"His dress is always very casual regardless of the occasion."},{"zh":"从一个人的穿着可以看出很多东西。","py":"Cóng yī gè rén de chuānzhuó kěyǐ kàn chū hěn duō dōngxi.","en":"You can tell a lot about a person from the way they dress."}],
+  [{"zh":"放学以后，孩子们都跑出去玩了。","py":"Fàng xué yǐhòu, háizimen dōu pǎo chūqù wán le.","en":"After school, the children all ran out to play."},{"zh":"我放学就直接去图书馆学习。","py":"Wǒ fàng xué jiù zhíjiē qù túshūguǎn xuéxí.","en":"After school I go straight to the library to study."}],
+  [{"zh":"他已经19岁了，是大人了。","py":"Tā yǐjīng 19 suì le, shì dàren le.","en":"He is already 19 — a grown-up now."},{"zh":"大人的世界有很多规则。","py":"Dàren de shìjiè yǒu hěn duō guīzé.","en":"The adult world has many rules."}],
+  [{"zh":"他坚决反对穿那种不合身的衣服。","py":"Tā jiānjué fǎnduì chuān nà zhǒng bù héshēn de yīfu.","en":"He firmly opposes wearing that kind of ill-fitting clothing."},{"zh":"她坚决地拒绝了他的邀请。","py":"Tā jiānjué de jùjué le tā de yāoqǐng.","en":"She firmly refused his invitation."}],
+  [{"zh":"这个温度正常吗？","py":"Zhège wēndù zhèngcháng ma?","en":"Is this temperature normal?"},{"zh":"最近他的行为不太正常，让大家很担心。","py":"Zuìjìn tā de xíngwéi bú tài zhèngcháng, ràng dàjiā hěn dānxīn.","en":"His behavior recently hasn\'t been quite normal — everyone is worried."}],
+  [{"zh":"他的裤子肥得可以装进两个人。","py":"Tā de kùzi féi de kěyǐ zhuāng jìn liǎng gè rén.","en":"His trousers are so baggy they could fit two people inside."},{"zh":"这条裤子太短了，不合身。","py":"Zhè tiáo kùzi tài duǎn le, bù héshēn.","en":"These trousers are too short — they don\'t fit."}],
+  [{"zh":"这个袋子能装多少东西？","py":"Zhège dàizi néng zhuāng duōshǎo dōngxi?","en":"How much can this bag hold?"},{"zh":"箱子里装满了衣服。","py":"Xiāngzi lǐ zhuāng mǎn le yīfu.","en":"The suitcase is packed full of clothes."}],
+  [{"zh":"裤子太长了，一直拖到地上。","py":"Kùzi tài cháng le, yīzhí tuō dào dì shàng.","en":"The trousers are too long and drag along the ground."},{"zh":"他拖着疲惫的身体走回了家。","py":"Tā tuō zhe píbèi de shēntǐ zǒu huí le jiā.","en":"He dragged his exhausted body home."}],
+  [{"zh":"这种式样的裙子真好看。","py":"Zhè zhǒng shìyàng de qúnzi zhēn hǎokàn.","en":"Skirts of this style really look nice."},{"zh":"她打扮得很好看。","py":"Tā dǎbàn de hěn hǎokàn.","en":"She is dressed up very attractively."}],
+  [{"zh":"她爱穿紧身的裤子。","py":"Tā ài chuān jǐnshēn de kùzi.","en":"She loves wearing tight-fitting trousers."},{"zh":"紧身衣穿起来比较费力。","py":"Jǐnshēn yī chuān qǐlái bǐjiào fèilì.","en":"Tight-fitting clothes are harder to put on."}],
+  [{"zh":"穿那种裤子实在太费力了。","py":"Chuān nà zhǒng kùzi shízài tài fèilì le.","en":"Putting on that kind of trousers is really too much effort."},{"zh":"爬这座山很费力，但风景很美。","py":"Pá zhè zuò shān hěn fèilì, dàn fēngjǐng hěn měi.","en":"Climbing this mountain takes a lot of effort, but the scenery is beautiful."}],
+  [{"zh":"她是一位著名的服装设计师。","py":"Tā shì yī wèi zhùmíng de fúzhuāng shèjìshī.","en":"She is a famous fashion designer."},{"zh":"这栋大楼是由一位年轻的设计师设计的。","py":"Zhè dòng dàlóu shì yóu yī wèi niánqīng de shèjìshī shèjì de.","en":"This building was designed by a young designer."}],
+  [{"zh":"谁设计了这件衣服？","py":"Shuí shèjì le zhè jiàn yīfu?","en":"Who designed this piece of clothing?"},{"zh":"他们正在设计一个新的产品。","py":"Tāmen zhèngzài shèjì yī gè xīn de chǎnpǐn.","en":"They are designing a new product."}],
+  [{"zh":"谁设计出这种衣服，谁的脑子肯定有问题。","py":"Shuí shèjì chū zhè zhǒng yīfu, shuí de nǎozi kěndìng yǒu wèntí.","en":"Whoever designed this kind of clothing must have something wrong with their brain."},{"zh":"他很聪明，脑子转得很快。","py":"Tā hěn cōngming, nǎozi zhuǎn de hěn kuài.","en":"He is very smart — his mind works quickly."}],
+  [{"zh":"他对这件事有很多意见。","py":"Tā duì zhè jiàn shì yǒu hěn duō yìjiàn.","en":"He has a lot of opinions about this matter."},{"zh":"你对我们的服务有什么意见吗？","py":"Nǐ duì wǒmen de fúwù yǒu shénme yìjiàn ma?","en":"Do you have any complaints about our service?"}],
+  [{"zh":"2008年四川发生了一场大地震。","py":"2008 nián Sìchuān fāshēng le yī chǎng dà dìzhèn.","en":"A major earthquake hit Sichuan in 2008."},{"zh":"地震后，全国各地的人都来帮助灾区。","py":"Dìzhèn hòu, quánguó gè dì de rén dōu lái bāngzhù zāiqū.","en":"After the earthquake, people from all over the country came to help the disaster area."}],
+  [{"zh":"一场地震，震平了两代人之间的代沟。","py":"Yī chǎng dìzhèn, zhèn píng le liǎng dài rén zhījiān de dàigōu.","en":"One earthquake levelled the generation gap between two generations."},{"zh":"这个消息震动了全国。","py":"Zhège xiāoxi zhèndòng le quánguó.","en":"This news shook the whole country."}],
+  [{"zh":"把那里的地面弄平，才能盖房子。","py":"Bǎ nàlǐ de dìmiàn nòng píng, cái néng gài fángzi.","en":"Level the ground there before building a house."},{"zh":"这条路不平，开车要小心。","py":"Zhè tiáo lù bù píng, kāichē yào xiǎoxīn.","en":"This road is uneven — drive carefully."}],
+  [{"zh":"父母和孩子之间常常存在代沟。","py":"Fùmǔ hé háizi zhījiān chángcháng cúnzài dàigōu.","en":"A generation gap often exists between parents and children."},{"zh":"怎样才能减少两代人之间的代沟？","py":"Zěnyàng cái néng jiǎnshǎo liǎng dài rén zhījiān de dàigōu?","en":"How can we reduce the generation gap between two generations?"}],
+  [{"zh":"他们在快餐文化和网络文化中长大。","py":"Tāmen zài kuàicān wénhuà hé wǎngluò wénhuà zhōng zhǎngdà.","en":"They grew up in a fast-food culture and internet culture."},{"zh":"经常吃快餐对身体不好。","py":"Jīngcháng chī kuàicān duì shēntǐ bù hǎo.","en":"Eating fast food often is bad for your health."}],
+  [{"zh":"你对这件事有什么看法？","py":"Nǐ duì zhè jiàn shì yǒu shénme kànfǎ?","en":"What is your view on this matter?"},{"zh":"大家的看法不一样，很难达成一致。","py":"Dàjiā de kànfǎ bù yīyàng, hěn nán dáchéng yīzhì.","en":"Everyone has different views — it\'s hard to reach agreement."}],
+  [{"zh":"我们要多尊重长辈的意见。","py":"Wǒmen yào duō zūnzhòng zhǎngbèi de yìjiàn.","en":"We should respect the opinions of our elders more."},{"zh":"长辈们觉得年轻人太不负责任了。","py":"Zhǎngbèimen juéde niánqīng rén tài bù fùzérèn le.","en":"The older generation feels young people are too irresponsible."}],
+  [{"zh":"地震发生后，很多年轻人去医院献血。","py":"Dìzhèn fāshēng hòu, hěn duō niánqīng rén qù yīyuàn xiàn xiě.","en":"After the earthquake, many young people went to donate blood at hospitals."},{"zh":"献血是一件非常有意义的事。","py":"Xiàn xiě shì yī jiàn fēicháng yǒu yìyì de shì.","en":"Donating blood is a very meaningful thing to do."}],
+  [{"zh":"志愿者从各地来到地震灾区帮忙。","py":"Zhìyuànzhě cóng gè dì lái dào dìzhèn zāiqū bāngmáng.","en":"Volunteers came from all over to help in the earthquake disaster zones."},{"zh":"政府正在向灾区运送物资。","py":"Zhèngfǔ zhèngzài xiàng zāiqū yùnsòng wùzī.","en":"The government is sending supplies to the disaster area."}],
+  [{"zh":"他们乘火车从全国各地来到灾区。","py":"Tāmen chéng huǒchē cóng quánguó gè dì lái dào zāiqū.","en":"They took trains from all over the country to the disaster area."},{"zh":"我们乘地铁去机场。","py":"Wǒmen chéng dìtiě qù jīchǎng.","en":"We took the subway to the airport."}],
+  [{"zh":"他们从全国各地赶来支援灾区。","py":"Tāmen cóng quánguó gè dì gǎnlái zhīyuán zāiqū.","en":"They rushed from all parts of the country to support the disaster area."},{"zh":"这个问题在各地都存在。","py":"Zhège wèntí zài gè dì dōu cúnzài.","en":"This problem exists in all parts of the country."}],
+  [{"zh":"志愿者分成几个小组，各自负责一个区域。","py":"Zhìyuànzhě fēn chéng jǐ gè xiǎozǔ, gèzì fùzé yī gè qūyù.","en":"The volunteers were divided into several teams, each responsible for one area."},{"zh":"同学们分成小组讨论这个问题。","py":"Tóngxuémen fēn chéng xiǎozǔ tǎolùn zhège wèntí.","en":"Students divided into small groups to discuss the problem."}],
+  [{"zh":"哪里需要他们，他们就出现在哪里。","py":"Nǎlǐ xūyào tāmen, tāmen jiù chūxiàn zài nǎlǐ.","en":"Wherever they were needed, they showed up."},{"zh":"这里最近出现了一个新问题。","py":"Zhèlǐ zuìjìn chūxiàn le yī gè xīn wèntí.","en":"A new problem has recently emerged here."}],
+  [{"zh":"经历了这次灾难，他更明白了亲情的宝贵。","py":"Jīnglì le zhè cì zāinàn, tā gèng míngbai le qīnqíng de bǎoguì.","en":"Having experienced this disaster, he came to understand even better the preciousness of family bonds."},{"zh":"父母的亲情是世界上最宝贵的东西。","py":"Fùmǔ de qīnqíng shì shìjiè shàng zuì bǎoguì de dōngxi.","en":"Parental love is the most precious thing in the world."}],
+  [{"zh":"这段经历是最宝贵的人生财富。","py":"Zhè duàn jīnglì shì zuì bǎoguì de rénshēng cáifù.","en":"This experience is the most precious wealth of life."},{"zh":"时间是最宝贵的资源。","py":"Shíjiān shì zuì bǎoguì de zīyuán.","en":"Time is the most precious resource."}],
+  [{"zh":"人生中最重要的是健康和家人。","py":"Rénshēng zhōng zuì zhòngyào de shì jiànkāng hé jiārén.","en":"The most important things in life are health and family."},{"zh":"经历了这次灾难，他对人生有了新的看法。","py":"Jīnglì le zhè cì zāinàn, tā duì rénshēng yǒu le xīn de kànfǎ.","en":"Having lived through this disaster, he gained a new perspective on life."}],
+  [{"zh":"他的父亲是一名中学教师。","py":"Tā de fùqīn shì yī míng zhōngxué jiàoshī.","en":"His father is a middle-school teacher."},{"zh":"我在一所中学教语文。","py":"Wǒ zài yī suǒ zhōngxué jiāo yǔwén.","en":"I teach Chinese at a secondary school."}],
+  [{"zh":"他的父亲献出了自己宝贵的生命。","py":"Tā de fùqīn xiànchū le zìjǐ bǎoguì de shēngmìng.","en":"His father gave his precious life."},{"zh":"我们要珍惜自己的生命。","py":"Wǒmen yào zhēnxī zìjǐ de shēngmìng.","en":"We must cherish our lives."}],
+  [{"zh":"我们应该尊敬老人。","py":"Wǒmen yīnggāi zūnjìng lǎorén.","en":"We should respect the elderly."},{"zh":"他非常尊敬自己的父母。","py":"Tā fēicháng zūnjìng zìjǐ de fùmǔ.","en":"He has great respect for his parents."}],
+  [{"zh":"我要替父亲承担起家庭的责任。","py":"Wǒ yào tì fùqīn chéngdān qǐ jiātíng de zérèn.","en":"I want to take on the family responsibilities in my father\'s place."},{"zh":"老师生病了，我替她上课。","py":"Lǎoshī shēngbìng le, wǒ tì tā shàng kè.","en":"The teacher is sick — I\'m taking the class for her."}],
+  [{"zh":"他承担了所有的工作责任。","py":"Tā chéngdān le suǒyǒu de gōngzuò zérèn.","en":"He took on all the work responsibilities."},{"zh":"我们要学会承担自己的错误。","py":"Wǒmen yào xuéhuì chéngdān zìjǐ de cuòwù.","en":"We should learn to take responsibility for our own mistakes."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -2693,7 +2946,8 @@ function WORDS() {
   if (currentChapter === 4) return WORDS_CH4;
   if (currentChapter === 5) return WORDS_CH5;
   if (currentChapter === 6) return WORDS_CH6;
-  return WORDS_CH7;
+  if (currentChapter === 7) return WORDS_CH7;
+  return WORDS_CH8;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -2702,7 +2956,8 @@ function EXAMPLES() {
   if (currentChapter === 4) return EXAMPLES_CH4;
   if (currentChapter === 5) return EXAMPLES_CH5;
   if (currentChapter === 6) return EXAMPLES_CH6;
-  return EXAMPLES_CH7;
+  if (currentChapter === 7) return EXAMPLES_CH7;
+  return EXAMPLES_CH8;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -3581,7 +3836,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -3774,7 +4029,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -4170,6 +4425,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:3, words: WORDS_CH3 }, { ch:4, words: WORDS_CH4 },
   { ch:5, words: WORDS_CH5 }, { ch:6, words: WORDS_CH6 },
   { ch:7, words: WORDS_CH7 },
+  { ch:8, words: WORDS_CH8 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -4178,12 +4434,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 7 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 8 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 7 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 8 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -4430,7 +4686,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 7 chapters</div>
+      <div class="search-empty">Type to search all 8 chapters</div>
     </div>
   </div>
 </div>
