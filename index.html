@@ -792,6 +792,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 6</span>
     <span class="ch-name">终于结婚了</span>
   </button>
+  <button class="ch-btn" id="ch-btn-7" onclick="switchChapter(7)">
+    <span class="ch-num">Ch 7</span>
+    <span class="ch-name">网络依赖</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -956,6 +960,7 @@ const CHAPTERS = {
   4: { title:'狼和鹿', subtitle:'Chapter 4' },
   5: { title:'住在一幅叫"丽江"的画里', subtitle:'Chapter 5' },
   6: { title:'终于要结婚了', subtitle:'Chapter 6' },
+  7: { title:'白领的"网络依赖"', subtitle:'Chapter 7' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -1863,6 +1868,159 @@ const LESSONS = {
         answer:'不再'
       },
     ]
+  },
+  7: {
+    texts: [
+      {
+        num:'§1', title:'白领的"网络依赖"', en:'White-collar Workers\' "Internet Addiction"',
+        paragraphs:[
+          {
+            zh:'"一会儿我们MSN上见吧。""我在QQ上给你留言了。"这大概是年轻白领之间现在最流行的两句话了。',
+            py:'"Yīhuìr wǒmen MSN shàng jiàn ba." "Wǒ zài QQ shàng gěi nǐ liúyán le." Zhè dàgài shì niánqīng báilǐng zhījiān xiànzài zuì liúxíng de liǎng jù huà le.',
+            en:'"See you on MSN in a bit." "I left you a message on QQ." These are probably the two most popular phrases among young white-collar workers right now.'
+          },
+          {
+            zh:'陈小姐是做销售工作的。为了加强跟客户的联系，她经常在MSN上跟客户聊天，工作、家庭、爱好等等，什么都聊。通过网络，双方的关系变得更近了。但哪天跟对方见了面，她却发现，其实没什么可说的，所有能说的东西她们都已经谈过了，怎么也想不出新的话题。但是，等双方各自回到网上，她马上感到又有说不完的话题要跟别人聊了。',
+            py:'Chén xiǎojiě shì zuò xiāoshòu gōngzuò de. Wèile jiāqiáng gēn kèhù de liánxì, tā jīngcháng zài MSN shàng gēn kèhù liáotiān, gōngzuò, jiātíng, àihào děng děng, shénme dōu liáo. Tōngguò wǎngluò, shuāngfāng de guānxi biàn de gèng jìn le. Dàn nǎ tiān gēn duìfāng jiànle miàn, tā què fāxiàn, qíshí méi shénme kě shuō de, suǒyǒu néng shuō de dōngxi tāmen dōu yǐjīng tán guò le, zěnme yě xiǎng bu chū xīn de huàtí. Dànshì, děng shuāngfāng gèzì huídào wǎng shàng, tā mǎshàng gǎndào yòu yǒu shuō bu wán de huàtí yào gēn biérén liáo le.',
+            en:'Ms. Chen works in sales. To strengthen contact with clients, she often chats with them on MSN — work, family, hobbies and everything else. Through the internet their relationships grew closer. But whenever she actually met a client in person, she found there was nothing to say — everything had already been discussed online, and she couldn\'t think of new topics. Yet once each of them got back online, she immediately felt she had endless things to chat about again.'
+          },
+          {
+            zh:'像陈小姐这样的情况还有很多。上网已经成为大部分白领们工作、生活的一个重要的组成部分。他们不仅工作中每天要利用网络，而且生活中也离不开网络。只要一上网，就能看到许多亲朋好友及工作伙伴，有什么问题可以随时问，有什么信息也可以随时分享。渐渐地，白领们对互联网的依赖变得越来越严重了。',
+            py:'Xiàng Chén xiǎojiě zhèyàng de qíngkuàng hái yǒu hěn duō. Shàngwǎng yǐjīng chéngwéi dà bùfēn báilǐngmen gōngzuò, shēnghuó de yī gè zhòngyào de zǔchéng bùfēn. Tāmen bùjǐn gōngzuò zhōng měitiān yào lìyòng wǎngluò, érqiě shēnghuó zhōng yě lí bu kāi wǎngluò. Zhǐyào yī shàngwǎng, jiù néng kàndào xǔduō qīn péng hǎoyǒu jí gōngzuò huǒbàn, yǒu shénme wèntí kěyǐ suíshí wèn, yǒu shénme xìnxi yě kěyǐ suíshí fēnxiǎng. Jiànjiàn de, báilǐngmen duì hùliánwǎng de yīlài biàn de yuèlái yuè yánzhòng le.',
+            en:'Situations like Ms. Chen\'s are very common. Going online has already become an important part of most white-collar workers\' professional and personal lives. They use the internet every day at work, and their personal lives are inseparable from it too. The moment they go online they can see friends, family, and work partners — any question can be asked any time, any information shared any time. Gradually, white-collar workers\' dependence on the internet has grown more and more serious.'
+          },
+          {
+            zh:'很多白领要找人时，第一个念头就是上MSN，发现对方不在，再转到QQ，然后再上博客，如果实在是哪儿都找不到，那干脆就在网上留言。',
+            py:'Hěn duō báilǐng yào zhǎo rén shí, dì yī gè niàntou jiùshì shàng MSN, fāxiàn duìfāng bú zài, zài zhuǎn dào QQ, ránhòu zài shàng bókè, rúguǒ shízài shì nǎr dōu zhǎo bu dào, nà gǎncuì jiù zài wǎng shàng liúyán.',
+            en:'When many white-collar workers want to reach someone, their first thought is to go on MSN. If the person isn\'t there, they switch to QQ, then check their blog — and if they still can\'t find them anywhere, they simply leave a message online.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'一个真正自由的人', en:'A Truly Free Person',
+        paragraphs:[
+          {
+            zh:'在我们这个时代，谁都离不开网络和手机。要是有人对你说：我根本没有电子邮箱，我也从来不使用手机。你会有什么反应？你是不是会觉得他太落后了？是不是会把他看成一个怪物？',
+            py:'Zài wǒmen zhège shídài, shuí dōu lí bu kāi wǎngluò hé shǒujī. Yàoshi yǒu rén duì nǐ shuō: wǒ gēnběn méiyǒu diànzǐ yóuxiāng, wǒ yě cónglái bù shǐyòng shǒujī. Nǐ huì yǒu shénme fǎnyìng? Nǐ shì bu shì huì juéde tā tài luòhòu le? Shì bu shì huì bǎ tā kàn chéng yī gè guàiwù?',
+            en:'In our era, no one can do without the internet and a mobile phone. If someone told you: "I have absolutely no email address, and I have never used a mobile phone" — what would your reaction be? Wouldn\'t you think they were hopelessly behind the times? Wouldn\'t you see them as some kind of freak?'
+          },
+          {
+            zh:'我的朋友张乐古就是这样一个"稀有动物"。他四十多岁，是个历史学教授，住在网络发达的城市，却一直拒绝网络进入自己的生活。他有一台电脑，但对他来说只是打字机。跟大多数人遇到什么问题先上网搜索不同，他选择从书中找答案。他也明白手机、电子邮箱能带来许多方便，可是他觉得自己确实不需要这些东西。他从不会像其他人那样边走边打手机。"外出时不用接电话，是多么美好的事啊！"他说。可是，不能通过手机或电子邮件与朋友联系，不是很不方便吗？他说："那又有什么关系？如果有事要跟我联系，可以给我办公室或者家里打电话，或者写信——那邮票的那种，不是发手机短信，也不是发电子邮件。"',
+            py:'Wǒ de péngyou Zhāng Lègǔ jiùshì zhèyàng yī gè "xīyǒu dòngwù". Tā sìshí duō suì, shì gè lìshǐxué jiàoshòu, zhù zài wǎngluò fādá de chéngshì, què yīzhí jùjué wǎngluò jìnrù zìjǐ de shēnghuó. Tā yǒu yī tái diànnǎo, dàn duì tā lái shuō zhǐshì dǎzìjī. Gēn dà duōshù rén yùdào shénme wèntí xiān shàngwǎng sōusuǒ bùtóng, tā xuǎnzé cóng shū zhōng zhǎo dá\'àn. Tā yě míngbai shǒujī, diànzǐ yóuxiāng néng dài lái xǔduō fāngbiàn, kěshì tā juéde zìjǐ quèshí bù xūyào zhèxiē dōngxi. Tā cóng bù huì xiàng qítā rén nàyàng biān zǒu biān dǎ shǒujī. "Wàichū shí bú yòng jiē diànhuà, shì duōme měihǎo de shì a!" tā shuō. Kěshì, bù néng tōngguò shǒujī huò diànzǐ yóujiàn yǔ péngyou liánxì, bú shì hěn bù fāngbiàn ma? Tā shuō: "Nà yòu yǒu shénme guānxì? Rúguǒ yǒu shì yào gēn wǒ liánxì, kěyǐ gěi wǒ bàngōngshì huòzhě jiā lǐ dǎ diànhuà, huòzhě xiě xìn——nà yóupiào de nà zhǒng, bú shì fā shǒujī duǎnxìn, yě bú shì fā diànzǐ yóujiàn."',
+            en:'My friend Zhang Legu is exactly this kind of "rare creature." He is in his forties, a history professor living in a highly connected city, yet he has always refused to let the internet into his life. He has a computer, but to him it is just a typewriter. Unlike most people who search online first when they have a question, he turns to books for answers. He understands that mobile phones and email can be very convenient, but he genuinely feels he doesn\'t need these things. He never walks around talking on his phone the way others do. "Not having to answer calls when you\'re out — isn\'t that wonderful?" he says. But can\'t he contact friends by phone or email? "What does it matter? If someone needs to reach me, they can call my office or home, or write a letter — the kind with a stamp, not a text message or an email."'
+          },
+          {
+            zh:'说实话，我有时候很羡慕老张。他是个真正自由的人。不过，要我像他那样生活，我可做不到。',
+            py:'Shuō shíhuà, wǒ yǒushíhòu hěn xiànmù lǎo Zhāng. Tā shì gè zhēnzhèng zìyóu de rén. Búguò, yào wǒ xiàng tā nàyàng shēnghuó, wǒ kě zuò bu dào.',
+            en:'Tell the truth, I sometimes really envy Old Zhang. He is a truly free person. But if I had to live the way he does, I really could not do it.'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'各自 (Each Respectively)',
+        pattern:'各自＋V/Adj',
+        explanation:'"各自" means each person (of a group) does something on their own or in their own way.',
+        examples:[
+          {zh:'下课后，同学们各自回家了。',py:'Xià kè hòu, tóngxuémen gèzì huí jiā le.',en:'After class, the students each went home on their own.'},
+          {zh:'双方各自回到网上，继续聊天。',py:'Shuāngfāng gèzì huídào wǎng shàng, jìxù liáotiān.',en:'Both sides each went back online and continued chatting.'},
+          {zh:'他们各自有各自的想法。',py:'Tāmen gèzì yǒu gèzì de xiǎngfǎ.',en:'Each of them has their own ideas.'},
+        ]
+      },
+      {
+        title:'部分 / 大部分 (Part / Majority)',
+        pattern:'大部分＋N　/　N的一部分',
+        explanation:'"大部分" means most or the majority. "部分" means a part or section of something.',
+        examples:[
+          {zh:'大部分白领每天都要利用网络工作。',py:'Dà bùfēn báilǐng měitiān dōu yào lìyòng wǎngluò gōngzuò.',en:'The majority of white-collar workers use the internet every day for work.'},
+          {zh:'这只是问题的一部分，还有别的原因。',py:'Zhè zhǐshì wèntí de yī bùfēn, hái yǒu bié de yuányīn.',en:'This is only part of the problem — there are other reasons too.'},
+          {zh:'大部分同学都同意这个计划。',py:'Dà bùfēn tóngxué dōu tóngyì zhège jìhuà.',en:'Most of the students agree with this plan.'},
+        ]
+      },
+      {
+        title:'随时 (At Any Time)',
+        pattern:'可以随时＋V',
+        explanation:'"随时" means whenever necessary — "at any time, whenever you need to."',
+        examples:[
+          {zh:'有什么问题，可以随时问我。',py:'Yǒu shénme wèntí, kěyǐ suíshí wèn wǒ.',en:'If you have any questions, feel free to ask me at any time.'},
+          {zh:'有什么信息也可以随时分享。',py:'Yǒu shénme xìnxi yě kěyǐ suíshí fēnxiǎng.',en:'Any information can also be shared at any time.'},
+          {zh:'外出旅行时要随时注意安全。',py:'Wàichū lǚxíng shí yào suíshí zhùyì ānquán.',en:'When travelling, always stay alert at any time.'},
+        ]
+      },
+      {
+        title:'根本 (Not At All)',
+        pattern:'根本不/没＋V',
+        explanation:'"根本" (used before a negative) means "not at all" or "absolutely not." It stresses a complete denial.',
+        examples:[
+          {zh:'我根本没有电子邮箱。',py:'Wǒ gēnběn méiyǒu diànzǐ yóuxiāng.',en:'I have absolutely no email address.'},
+          {zh:'他根本不了解这个情况。',py:'Tā gēnběn bù liǎojiě zhège qíngkuàng.',en:'He doesn\'t understand this situation at all.'},
+          {zh:'这道题根本没有他说的那么难。',py:'Zhè dào tí gēnběn méiyǒu tā shuō de nàme nán.',en:'This question is not nearly as hard as he said.'},
+        ]
+      },
+      {
+        title:'与 (And, With)',
+        pattern:'A与B　/　与＋N联系',
+        explanation:'"与" is a formal/written equivalent of "和" (and) or "跟" (with). Common in written Chinese.',
+        examples:[
+          {zh:'不能通过手机或电子邮件与朋友联系。',py:'Bù néng tōngguò shǒujī huò diànzǐ yóujiàn yǔ péngyou liánxì.',en:'Cannot contact friends through mobile phone or email.'},
+          {zh:'我与此事无关。',py:'Wǒ yǔ cǐ shì wúguān.',en:'I have nothing to do with this matter.'},
+          {zh:'中国与其他国家的交流越来越多。',py:'Zhōngguó yǔ qítā guójiā de jiāoliú yuèlái yuè duō.',en:'Exchanges between China and other countries are growing more frequent.'},
+        ]
+      },
+      {
+        title:'说实话 (Tell the Truth / Honestly)',
+        pattern:'说实话，……',
+        explanation:'"说实话" is used at the start of a sentence to signal honesty or a frank admission, like "to tell the truth" or "honestly speaking."',
+        examples:[
+          {zh:'说实话，我有时候很羡慕他。',py:'Shuō shíhuà, wǒ yǒushíhòu hěn xiànmù tā.',en:'To tell the truth, I sometimes really envy him.'},
+          {zh:'说实话，这个电影没什么意思。',py:'Shuō shíhuà, zhège diànyǐng méi shénme yìsi.',en:'Honestly, this movie is not that interesting.'},
+          {zh:'说实话，我根本不喜欢这种生活。',py:'Shuō shíhuà, wǒ gēnběn bù xǐhuān zhè zhǒng shēnghuó.',en:'Honestly, I don\'t like this kind of life at all.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'他____没有电子邮箱，也从来不用手机。',
+        options:['根本','随时','各自','真正'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'有什么问题，可以____问我。',
+        options:['随时','各自','根本','稀有'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'下班后，同学们____回家了。',
+        options:['各自','随时','根本','真正'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'他是个历史学____，住在上海。',
+        options:['教授','伙伴','怪物','念头'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'遇到问题，她第一个____就是上网搜索。',
+        options:['念头','答案','信息','博客'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "根本" 完成句子：他___不了解这个情况。',
+        answer:'根本'
+      },
+      {
+        type:'fill',
+        prompt:'用 "说实话" 开头造句：___，我有时候觉得网络依赖很严重。',
+        answer:'说实话'
+      },
+    ]
   }
 };
 
@@ -2451,6 +2609,82 @@ const EXAMPLES_CH6 = [
   [{"zh":"老师很有耐心地教我们。","py":"Lǎoshī hěn yǒu nàixīn de jiāo wǒmen.","en":"The teacher teaches us very patiently."},{"zh":"学汉语需要很大的耐心。","py":"Xué Hànyǔ xūyào hěn dà de nàixīn.","en":"Learning Chinese requires a great deal of patience."}],
 ];
 
+const WORDS_CH7 = [
+  { hanzi:"网络",   pinyin:"wǎngluò",         pos:"N.",        english:"internet, network" },
+  { hanzi:"依赖",   pinyin:"yīlài",           pos:"V.",        english:"rely on, depend on" },
+  { hanzi:"留言",   pinyin:"liúyán",          pos:"V./N.",     english:"leave a message; message" },
+  { hanzi:"销售",   pinyin:"xiāoshòu",        pos:"V.",        english:"sell, market" },
+  { hanzi:"加强",   pinyin:"jiāqiáng",        pos:"V.",        english:"strengthen, enhance, intensify" },
+  { hanzi:"各自",   pinyin:"gèzì",            pos:"Pron.",     english:"each, respective, on one's own" },
+  { hanzi:"感到",   pinyin:"gǎndào",          pos:"V.",        english:"feel, sense" },
+  { hanzi:"大部分", pinyin:"dà bùfēn",        pos:"N.",        english:"most, the majority" },
+  { hanzi:"部分",   pinyin:"bùfēn",           pos:"N.",        english:"part, section, portion" },
+  { hanzi:"利用",   pinyin:"lìyòng",          pos:"V.",        english:"utilize, make use of" },
+  { hanzi:"伙伴",   pinyin:"huǒbàn",          pos:"N.",        english:"partner, companion" },
+  { hanzi:"随时",   pinyin:"suíshí",          pos:"Adv.",      english:"at any time, whenever necessary" },
+  { hanzi:"信息",   pinyin:"xìnxi",           pos:"N.",        english:"information, message" },
+  { hanzi:"分享",   pinyin:"fēnxiǎng",        pos:"V.",        english:"share" },
+  { hanzi:"互联网", pinyin:"hùliánwǎng",      pos:"N.",        english:"the Internet" },
+  { hanzi:"念头",   pinyin:"niàntou",         pos:"N.",        english:"thought, idea, intention" },
+  { hanzi:"转",     pinyin:"zhuǎn",           pos:"V.",        english:"turn, shift, transfer" },
+  { hanzi:"博客",   pinyin:"bókè",            pos:"N.",        english:"blog" },
+  { hanzi:"真正",   pinyin:"zhēnzhèng",       pos:"Adv./Adj.", english:"truly, genuine, real" },
+  { hanzi:"根本",   pinyin:"gēnběn",          pos:"Adv.",      english:"at all, fundamentally (used in negatives)" },
+  { hanzi:"电子",   pinyin:"diànzǐ",          pos:"N.",        english:"electron; electronic (电子邮件 email)" },
+  { hanzi:"邮箱",   pinyin:"yóuxiāng",        pos:"N.",        english:"mailbox, email inbox" },
+  { hanzi:"怪物",   pinyin:"guàiwù",          pos:"N.",        english:"monster, freak" },
+  { hanzi:"稀有",   pinyin:"xīyǒu",           pos:"Adj.",      english:"rare, unusual" },
+  { hanzi:"教授",   pinyin:"jiàoshòu",        pos:"N.",        english:"professor" },
+  { hanzi:"拒绝",   pinyin:"jùjué",           pos:"V.",        english:"refuse, reject" },
+  { hanzi:"进入",   pinyin:"jìnrù",           pos:"V.",        english:"enter, get into" },
+  { hanzi:"打字机", pinyin:"dǎzìjī",          pos:"N.",        english:"typewriter" },
+  { hanzi:"搜索",   pinyin:"sōusuǒ",          pos:"V.",        english:"search, hunt" },
+  { hanzi:"答案",   pinyin:"dá\'àn",          pos:"N.",        english:"answer, solution, key" },
+  { hanzi:"那样",   pinyin:"nàyàng",          pos:"Pron.",     english:"like that, such, so" },
+  { hanzi:"外出",   pinyin:"wàichū",          pos:"V.",        english:"go out, be away" },
+  { hanzi:"与",     pinyin:"yǔ",              pos:"Prep./Conj.",english:"and, with (formal/written)" },
+  { hanzi:"邮票",   pinyin:"yóupiào",         pos:"N.",        english:"stamp (postage)" },
+  { hanzi:"实话",   pinyin:"shíhuà",          pos:"N.",        english:"truth, honest words" },
+];
+
+const EXAMPLES_CH7 = [
+  [{"zh":"他对互联网的依赖越来越严重。","py":"Tā duì hùliánwǎng de yīlài yuèlái yuè yánzhòng.","en":"His dependence on the internet is getting more and more serious."},{"zh":"现代人的生活已经离不开网络了。","py":"Xiàndài rén de shēnghuó yǐjīng lí bu kāi wǎngluò le.","en":"Modern people's lives are already inseparable from the internet."}],
+  [{"zh":"他对父母的经济依赖让朋友们担心。","py":"Tā duì fùmǔ de jīngjì yīlài ràng péngyoumen dānxīn.","en":"His financial dependence on his parents worries his friends."},{"zh":"不要过分依赖别人，要学会独立。","py":"Bú yào guòfèn yīlài biéren, yào xuéhuì dúlì.","en":"Don\'t rely on others too much — learn to be independent."}],
+  [{"zh":"如果你不在，我会在网上留言给你。","py":"Rúguǒ nǐ bú zài, wǒ huì zài wǎng shàng liúyán gěi nǐ.","en":"If you\'re not there, I\'ll leave you a message online."},{"zh":"他给老师留了一条言，说明自己缺课的原因。","py":"Tā gěi lǎoshī liú le yī tiáo yán, shuōmíng zìjǐ quē kè de yuányīn.","en":"He left the teacher a message explaining why he missed class."}],
+  [{"zh":"这家公司主要负责网络产品的销售。","py":"Zhè jiā gōngsī zhǔyào fùzé wǎngluò chǎnpǐn de xiāoshòu.","en":"This company mainly handles the sales of internet products."},{"zh":"网络销售改变了人们的购物方式。","py":"Wǎngluò xiāoshòu gǎibiàn le rénmen de gòuwù fāngshì.","en":"Online sales have changed the way people shop."}],
+  [{"zh":"我们要加强与客户之间的联系。","py":"Wǒmen yào jiāqiáng yǔ kèhù zhījiān de liánxì.","en":"We need to strengthen our contact with clients."},{"zh":"学校决定加强学生的汉语训练。","py":"Xuéxiào juédìng jiāqiáng xuésheng de Hànyǔ xùnliàn.","en":"The school decided to intensify the students\' Chinese training."}],
+  [{"zh":"下课后，同学们各自回家了。","py":"Xià kè hòu, tóngxuémen gèzì huí jiā le.","en":"After class, the students each went home."},{"zh":"双方各自说出了自己的意见。","py":"Shuāngfāng gèzì shuō chū le zìjǐ de yìjiàn.","en":"Both sides each expressed their own opinions."}],
+  [{"zh":"她感到非常孤单，没有朋友可以倾诉。","py":"Tā gǎndào fēicháng gūdān, méiyǒu péngyou kěyǐ qīngsù.","en":"She felt very lonely with no friends to confide in."},{"zh":"看到这个消息，他感到很惊讶。","py":"Kàndào zhège xiāoxi, tā gǎndào hěn jīngyà.","en":"Seeing this news, he felt very surprised."}],
+  [{"zh":"大部分白领每天都要利用网络工作。","py":"Dà bùfēn báilǐng měitiān dōu yào lìyòng wǎngluò gōngzuò.","en":"Most white-collar workers use the internet every day for work."},{"zh":"大部分同学都完成了作业。","py":"Dà bùfēn tóngxué dōu wánchéng le zuòyè.","en":"Most of the students finished their homework."}],
+  [{"zh":"这只是问题的一部分，还有别的原因。","py":"Zhè zhǐshì wèntí de yī bùfēn, hái yǒu bié de yuányīn.","en":"This is only part of the problem — there are other reasons too."},{"zh":"一部分学生选择了去留学。","py":"Yī bùfēn xuésheng xuǎnzé le qù liúxué.","en":"Some students chose to study abroad."}],
+  [{"zh":"我们应该更好地利用时间学习。","py":"Wǒmen yīnggāi gèng hǎo de lìyòng shíjiān xuéxí.","en":"We should make better use of our time to study."},{"zh":"他善于利用各种资源完成工作。","py":"Tā shànyú lìyòng gè zhǒng zīyuán wánchéng gōngzuò.","en":"He is good at using various resources to get things done."}],
+  [{"zh":"他们是多年的工作伙伴。","py":"Tāmen shì duō nián de gōngzuò huǒbàn.","en":"They have been work partners for many years."},{"zh":"找到一个好的人生伙伴很重要。","py":"Zhǎodào yī gè hǎo de rénshēng huǒbàn hěn zhòngyào.","en":"Finding a good life partner is very important."}],
+  [{"zh":"有什么问题，可以随时给我打电话。","py":"Yǒu shénme wèntí, kěyǐ suíshí gěi wǒ dǎ diànhuà.","en":"If you have any questions, feel free to call me any time."},{"zh":"外出旅行时要随时注意安全。","py":"Wàichū lǚxíng shí yào suíshí zhùyì ānquán.","en":"When travelling, always be alert at any time."}],
+  [{"zh":"有什么信息可以随时分享给大家。","py":"Yǒu shénme xìnxi kěyǐ suíshí fēnxiǎng gěi dàjiā.","en":"Any information can be shared with everyone at any time."},{"zh":"我没有收到你发的信息。","py":"Wǒ méiyǒu shōudào nǐ fā de xìnxi.","en":"I didn\'t receive the message you sent."}],
+  [{"zh":"他喜欢在网上分享自己的旅行经历。","py":"Tā xǐhuān zài wǎng shàng fēnxiǎng zìjǐ de lǚxíng jīnglì.","en":"He likes to share his travel experiences online."},{"zh":"分享快乐可以让快乐加倍。","py":"Fēnxiǎng kuàilè kěyǐ ràng kuàilè jiā bèi.","en":"Sharing happiness can multiply it."}],
+  [{"zh":"现在全世界有几十亿人在使用互联网。","py":"Xiànzài quánshìjiè yǒu jǐ shí yì rén zài shǐyòng hùliánwǎng.","en":"There are now billions of people worldwide using the Internet."},{"zh":"互联网改变了人们的生活方式。","py":"Hùliánwǎng gǎibiàn le rénmen de shēnghuó fāngshì.","en":"The Internet has changed people\'s way of life."}],
+  [{"zh":"我第一个念头就是打电话问他。","py":"Wǒ dì yī gè niàntou jiùshì dǎ diànhuà wèn tā.","en":"My first thought was to call and ask him."},{"zh":"他突然有了一个好念头。","py":"Tā tūrán yǒu le yī gè hǎo niàntou.","en":"He suddenly had a good idea."}],
+  [{"zh":"发现对方不在线，他又转到QQ上找。","py":"Fāxiàn duìfāng bú zài xiàn, tā yòu zhuǎn dào QQ shàng zhǎo.","en":"Finding the other person wasn\'t online, he switched over to QQ to look."},{"zh":"话题转到了工作上面。","py":"Huàtí zhuǎn dào le gōngzuò shàngmiàn.","en":"The topic shifted to work."}],
+  [{"zh":"他每天都在博客上写日记。","py":"Tā měitiān dōu zài bókè shàng xiě rìjì.","en":"He writes a diary on his blog every day."},{"zh":"她的旅行博客有很多读者。","py":"Tā de lǚxíng bókè yǒu hěn duō dúzhě.","en":"Her travel blog has many readers."}],
+  [{"zh":"他是个真正喜欢学习的人。","py":"Tā shì gè zhēnzhèng xǐhuān xuéxí de rén.","en":"He is a person who genuinely loves learning."},{"zh":"这才是真正的问题所在。","py":"Zhè cái shì zhēnzhèng de wèntí suǒzài.","en":"This is where the real problem lies."}],
+  [{"zh":"我根本没有电子邮箱。","py":"Wǒ gēnběn méiyǒu diànzǐ yóuxiāng.","en":"I have absolutely no email address."},{"zh":"他根本不知道这件事。","py":"Tā gēnběn bù zhīdào zhè jiàn shì.","en":"He doesn\'t know about this at all."}],
+  [{"zh":"请把你的电子邮件地址告诉我。","py":"Qǐng bǎ nǐ de diànzǐ yóujiàn dìzhǐ gàosu wǒ.","en":"Please give me your email address."},{"zh":"这家书店开始销售电子书了。","py":"Zhè jiā shūdiàn kāishǐ xiāoshòu diànzǐ shū le.","en":"This bookstore has started selling e-books."}],
+  [{"zh":"你可以把简历发到我的邮箱。","py":"Nǐ kěyǐ bǎ jiǎnlì fā dào wǒ de yóuxiāng.","en":"You can send your résumé to my email inbox."},{"zh":"我的邮箱每天都有很多邮件。","py":"Wǒ de yóuxiāng měitiān dōu yǒu hěn duō yóujiàn.","en":"My inbox gets a lot of emails every day."}],
+  [{"zh":"他们觉得不用手机的人是怪物。","py":"Tāmen juéde bú yòng shǒujī de rén shì guàiwù.","en":"They think anyone who doesn\'t use a mobile phone is a freak."},{"zh":"那个怪物吓到了所有的孩子。","py":"Nà gè guàiwù xià dào le suǒyǒu de háizi.","en":"That monster frightened all the children."}],
+  [{"zh":"大熊猫是一种稀有动物。","py":"Dà xióngmāo shì yī zhǒng xīyǒu dòngwù.","en":"The giant panda is a rare animal."},{"zh":"他是那种稀有的、真正热爱工作的人。","py":"Tā shì nà zhǒng xīyǒu de, zhēnzhèng rè\'ài gōngzuò de rén.","en":"He is one of those rare people who genuinely love their work."}],
+  [{"zh":"他是我们大学最受欢迎的教授。","py":"Tā shì wǒmen dàxué zuì shòu huānyíng de jiàoshòu.","en":"He is the most popular professor at our university."},{"zh":"这位教授的课非常有意思。","py":"Zhè wèi jiàoshòu de kè fēicháng yǒu yìsi.","en":"This professor\'s classes are very interesting."}],
+  [{"zh":"他拒绝了所有的网络社交邀请。","py":"Tā jùjué le suǒyǒu de wǎngluò shèjiāo yāoqǐng.","en":"He rejected all social media invitations."},{"zh":"她拒绝回答记者的问题。","py":"Tā jùjué huídá jìzhě de wèntí.","en":"She refused to answer the reporter\'s questions."}],
+  [{"zh":"他拒绝网络进入自己的生活。","py":"Tā jùjué wǎngluò jìnrù zìjǐ de shēnghuó.","en":"He refuses to let the internet into his life."},{"zh":"我们进入了一个新的时代。","py":"Wǒmen jìnrù le yī gè xīn de shídài.","en":"We have entered a new era."}],
+  [{"zh":"他把电脑当成打字机来用。","py":"Tā bǎ diànnǎo dàng chéng dǎzìjī lái yòng.","en":"He uses his computer as nothing more than a typewriter."},{"zh":"打字机现在已经很少有人用了。","py":"Dǎzìjī xiànzài yǐjīng hěn shǎo yǒu rén yòng le.","en":"Typewriters are now used by very few people."}],
+  [{"zh":"遇到问题，他总是先上网搜索答案。","py":"Yùdào wèntí, tā zǒng shì xiān shàngwǎng sōusuǒ dá\'àn.","en":"When he has a problem, he always searches for the answer online first."},{"zh":"警方正在搜索失踪的孩子。","py":"Jǐngfāng zhèngzài sōusuǒ shīzōng de háizi.","en":"Police are searching for the missing child."}],
+  [{"zh":"他从书中找到了这道题的答案。","py":"Tā cóng shū zhōng zhǎodào le zhè dào tí de dá\'àn.","en":"He found the answer to this question in a book."},{"zh":"这道数学题没有正确答案。","py":"Zhè dào shùxué tí méiyǒu zhèngquè dá\'àn.","en":"This math problem has no correct answer."}],
+  [{"zh":"他不会像其他人那样边走边玩手机。","py":"Tā bú huì xiàng qítā rén nàyàng biān zǒu biān wán shǒujī.","en":"He doesn\'t walk around playing on his phone the way other people do."},{"zh":"你那样说话，别人会误会的。","py":"Nǐ nàyàng shuōhuà, biéren huì wùhuì de.","en":"If you speak like that, people will misunderstand."}],
+  [{"zh":"外出时不用接电话，是多么美好的事啊！","py":"Wàichū shí bú yòng jiē diànhuà, shì duōme měihǎo de shì a!","en":"Not having to answer calls when you\'re out — isn\'t that wonderful!"},{"zh":"他最近经常外出，不在家。","py":"Tā zuìjìn jīngcháng wàichū, bú zài jiā.","en":"He has been going out a lot lately and isn\'t home much."}],
+  [{"zh":"不能通过手机或电子邮件与朋友联系。","py":"Bù néng tōngguò shǒujī huò diànzǐ yóujiàn yǔ péngyou liánxì.","en":"Cannot contact friends through mobile phone or email."},{"zh":"我与此事完全无关。","py":"Wǒ yǔ cǐ shì wánquán wúguān.","en":"I have absolutely nothing to do with this matter."}],
+  [{"zh":"他写信的时候总是贴上漂亮的邮票。","py":"Tā xiě xìn de shíhòu zǒng shì tiē shàng piàoliang de yóupiào.","en":"When he writes letters, he always puts on a nice stamp."},{"zh":"这套邮票是我爸爸收藏的。","py":"Zhè tào yóupiào shì wǒ bàba shōucáng de.","en":"This set of stamps is my father\'s collection."}],
+  [{"zh":"说实话，我有时候很羡慕他。","py":"Shuō shíhuà, wǒ yǒushíhòu hěn xiànmù tā.","en":"To tell the truth, I sometimes really envy him."},{"zh":"你就跟我说实话吧，不要骗我。","py":"Nǐ jiù gēn wǒ shuō shíhuà ba, bú yào piàn wǒ.","en":"Just tell me the truth — don\'t deceive me."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -2458,7 +2692,8 @@ function WORDS() {
   if (currentChapter === 3) return WORDS_CH3;
   if (currentChapter === 4) return WORDS_CH4;
   if (currentChapter === 5) return WORDS_CH5;
-  return WORDS_CH6;
+  if (currentChapter === 6) return WORDS_CH6;
+  return WORDS_CH7;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -2466,7 +2701,8 @@ function EXAMPLES() {
   if (currentChapter === 3) return EXAMPLES_CH3;
   if (currentChapter === 4) return EXAMPLES_CH4;
   if (currentChapter === 5) return EXAMPLES_CH5;
-  return EXAMPLES_CH6;
+  if (currentChapter === 6) return EXAMPLES_CH6;
+  return EXAMPLES_CH7;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -3345,7 +3581,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -3538,7 +3774,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -3933,6 +4169,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:1, words: WORDS_CH1 }, { ch:2, words: WORDS_CH2 },
   { ch:3, words: WORDS_CH3 }, { ch:4, words: WORDS_CH4 },
   { ch:5, words: WORDS_CH5 }, { ch:6, words: WORDS_CH6 },
+  { ch:7, words: WORDS_CH7 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -3941,12 +4178,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 6 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 7 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 6 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 7 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -4193,7 +4430,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 6 chapters</div>
+      <div class="search-empty">Type to search all 7 chapters</div>
     </div>
   </div>
 </div>
