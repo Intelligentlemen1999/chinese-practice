@@ -804,6 +804,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 9</span>
     <span class="ch-name">姚明的故事</span>
   </button>
+  <button class="ch-btn" id="ch-btn-10" onclick="switchChapter(10)">
+    <span class="ch-num">Ch 10</span>
+    <span class="ch-name">养宠物的老人</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -971,6 +975,7 @@ const CHAPTERS = {
   7: { title:'白领的"网络依赖"', subtitle:'Chapter 7' },
   8: { title:'为啥就要不合身', subtitle:'Chapter 8' },
   9: { title:'姚明的故事', subtitle:'Chapter 9' },
+  10: { title:'养宠物的老人', subtitle:'Chapter 10' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -2353,6 +2358,165 @@ const LESSONS = {
         answer:'难道'
       },
     ]
+  },
+  10: {
+    texts: [
+      {
+        num:'§1', title:'养宠物的老人', en:'The Old Man Who Keeps Pets',
+        paragraphs:[
+          {
+            zh:'我曾经在南方住过几年。我的一位邻居，王奶奶，喜欢养乌龟。王奶奶家里放着一台大冰箱。到了冬天，冰箱里几乎不装什么食物，里面就睡着五只冬眠的乌龟！',
+            py:'Wǒ céngjīng zài nánfāng zhù guò jǐ nián. Wǒ de yī wèi línjū, Wáng nǎinai, xǐhuān yǎng wūguī. Wáng nǎinai jiā lǐ fàng zhe yī tái dà bīngxiāng. Dào le dōngtiān, bīngxiāng lǐ jīhū bù zhuāng shénme shíwù, lǐmiàn jiù shuì zhe wǔ zhī dōngmián de wūguī!',
+            en:'I once lived in the south for a few years. One of my neighbours, Grandma Wang, loved keeping tortoises. Grandma Wang had a large refrigerator in her home. When winter came, the fridge was almost empty of food — inside it slept five hibernating tortoises!'
+          },
+          {
+            zh:'乌龟一般要冬眠3个月，冬眠时的温度最好在3摄氏度到8摄氏度之间。南方的冬天不太冷，为了让这些乌龟安心地冬眠，王妈妈只好把它们全都裹上毛巾，装进冰箱的冷藏室，那儿是它们冬眠的最好的环境。小乌龟睡在小盒子里，大乌龟睡在大盒子里，一直睡到春暖花开。',
+            py:'Wūguī yībān yào dōngmián 3 gè yuè, dōngmián shí de wēndù zuì hǎo zài 3 shèshìdù dào 8 shèshìdù zhījiān. Nánfāng de dōngtiān bú tài lěng, wèile ràng zhèxiē wūguī ānxīn de dōngmián, Wáng māma zhǐhǎo bǎ tāmen quán dōu guǒ shàng máojīn, zhuāng jìn bīngxiāng de lěngcángshì, nà\'er shì tāmen dōngmián de zuì hǎo de huánjìng. Xiǎo wūguī shuì zài xiǎo hézi lǐ, dà wūguī shuì zài dà hézi lǐ, yīzhí shuì dào chūn nuǎn huā kāi.',
+            en:'Tortoises generally hibernate for three months, and during hibernation the temperature should ideally be between 3 and 8 degrees centigrade. Winters in the south are not very cold, so to let the tortoises hibernate in peace, Grandma Wang had no choice but to wrap them all in towels and put them into the refrigerator\'s cold compartment — that was the best environment for their hibernation. The small tortoises slept in small boxes and the large ones in big boxes, sleeping all the way until spring.'
+          },
+          {
+            zh:'后来，因为工作的原因，我搬到了北京。我的邻居李大爷是一位老北京。从李大爷的爷爷开始，李大爷一家就喜欢养鸽子。李大爷家养着几十只鸽子。他家的屋顶，就是鸽子们的乐园。每天早晨，鸽舍里飞出一群群的鸽子，鸽子们绕着屋顶一圈一圈地飞，越飞越高，李大爷的眼光，也跟着鸽子们，一圈一圈地转，越转越远。鸽子的身上都挂着鸽哨，远远地传来高高低低的声音，优美动听，那是从天上传来的音乐。',
+            py:'Hòulái, yīnwèi gōngzuò de yuányīn, wǒ bān dào le Běijīng. Wǒ de línjū Lǐ dàye shì yī wèi lǎo Běijīng rén. Cóng Lǐ dàye de yéye kāishǐ, Lǐ dàye yī jiā jiù xǐhuān yǎng gēzi. Lǐ dàye jiā yǎng zhe jǐ shí zhī gēzi. Tā jiā de wūdǐng, jiùshì gēzimen de lèyuán. Měitiān zǎochén, gēshè lǐ fēi chū yī qún qún de gēzi, gēzimen rào zhe wūdǐng yī quān yī quān de fēi, yuè fēi yuè gāo, Lǐ dàye de yǎnguāng, yě gēn zhe gēzimen, yī quān yī quān de zhuǎn, yuè zhuǎn yuè yuǎn. Gēzi de shēnshang dōu guà zhe gēshào, yuǎnyuǎn de chuán lái gāo gāo dī dī de shēngyīn, yōuměi dòngtīng, nà shì cóng tiān shàng chuánlái de yīnyuè.',
+            en:'Later, for work reasons, I moved to Beijing. My neighbour was Uncle Li, a true old Beijinger. From Uncle Li\'s grandfather onwards, his whole family had loved keeping pigeons. Uncle Li kept dozens of pigeons. His rooftop was the pigeons\' paradise. Every morning, flocks of pigeons flew out of the pigeon loft, circling the rooftop higher and higher; Uncle Li\'s gaze followed the pigeons round and round, going further and further away. All the pigeons wore pigeon whistles, and from far away came sounds of varying pitches — beautiful and melodious, like music drifting down from the sky.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'养条狗得花多少钱', en:'How Much Does It Cost to Keep a Dog?',
+        paragraphs:[
+          {
+            zh:'最近，英国的报纸上登了一篇文章，说在英国养一条狗的费用是2.2万英镑，跟英国人的平均年收入差不多。这么一大笔钱，拿来买一辆高级的奔驰汽车也够了。',
+            py:'Zuìjìn, Yīngguó de bàozhǐ shàng dēng le yī piān wénzhāng, shuō zài Yīngguó yǎng yī tiáo gǒu de fèiyòng shì 2.2 wàn yīngbàng, gēn Yīngguó rén de píngjūn nián shōurù chà bu duō. Zhème yī dà bǐ qián, ná lái mǎi yī liàng gāojí de Bēnchí qìchē yě gòu le.',
+            en:'Recently, a British newspaper published an article saying that keeping a dog in the UK costs £22,000 — about the same as the average British annual income. That sum of money would be enough to buy a luxury Mercedes-Benz.'
+          },
+          {
+            zh:'这笔费用包括买狗的钱，再加上每年的狗粮费、卫生费、保险费、医药费等等。另外，还有一些额外的费用，比如，在去外地或外国的时候，一些狗主人会把宠物送到很贵的宠物宾馆，或者，请宠物专家来帮忙照顾。',
+            py:'Zhè bǐ fèiyòng bāokuò mǎi gǒu de qián, zài jiā shàng měi nián de gǒuliáng fèi, wèishēng fèi, bǎoxiǎn fèi, yīyào fèi děngděng. Lìngwài, hái yǒu yīxiē éwài de fèiyòng, bǐrú, zài qù wàidì huò wàiguó de shíhòu, yīxiē gǒu zhǔrén huì bǎ chǒngwù sòng dào hěn guì de chǒngwù bīnguǎn, huòzhě, qǐng chǒngwù zhuānjiā lái bāngmáng zhàogù.',
+            en:'This cost includes the price of buying the dog, plus annual expenses for dog food, hygiene, insurance, veterinary care, and so on. In addition, there are some extra expenses — for instance, when owners travel domestically or abroad, some take their pets to very expensive pet hotels, or hire a pet specialist to look after them.'
+          },
+          {
+            zh:'一些养狗人还经常为宠物买很贵的装饰品。一位宠物装饰品商店的老板说，他开了这家商店以来，生意一直相当不错。"你看那些宠物狗，身上挂着各种各样的装饰品，多漂亮！宠物成了家庭中的重要成员，人们愿意为它们花钱，就好像愿意为自己的孩子花钱一样。"',
+            py:'Yīxiē yǎng gǒu rén hái jīngcháng wèi chǒngwù mǎi hěn guì de zhuāngshìpǐn. Yī wèi chǒngwù zhuāngshìpǐn shāngdiàn de lǎobǎn shuō, tā kāi le zhè jiā shāngdiàn yǐlái, shēngyì yīzhí xiāngdāng bùcuò. "Nǐ kàn nàxiē chǒngwù gǒu, shēnshang guà zhe gè zhǒng gè yàng de zhuāngshìpǐn, duō piàoliang! Chǒngwù chéngle jiātíng zhōng de zhòngyào chéngyuán, rénmen yuànyì wèi tāmen huāqián, jiù hǎoxiàng yuànyì wèi zìjǐ de háizi huāqián yīyàng."',
+            en:'Some dog owners also frequently buy expensive accessories for their pets. The owner of a pet accessories shop said that since he opened the shop, business has always been quite good. "Look at those pet dogs, decked out with all kinds of accessories — how beautiful! Pets have become important members of the family, and people are willing to spend money on them, just as they would on their own children."'
+          },
+          {
+            zh:'当然，不同品种的狗价格完全不同，不同的养狗人花在狗身上的钱也有不小的差别。很多人觉得2.2万英镑这个数字太夸张了，他们估计，养一条宠物狗一般大概需要5000英镑。',
+            py:'Dāngrán, bùtóng pǐnzhǒng de gǒu jiàgé wánquán bùtóng, bùtóng de yǎng gǒu rén huā zài gǒu shēnshang de qián yě yǒu bù xiǎo de chābié. Hěn duō rén juéde 2.2 wàn yīngbàng zhège shùzì tài kuāzhāng le, tāmen gūjì, yǎng yī tiáo chǒngwù gǒu yībān dàgài xūyào 5000 yīngbàng.',
+            en:'Of course, the prices of dogs vary completely by breed, and different dog owners also spend very different amounts on their dogs. Many people find the figure of £22,000 exaggerated — they estimate that keeping a pet dog generally requires about £5,000.'
+          },
+          {
+            zh:'不管是2.2万英镑还是5000英镑，都不是一个小数字。但英国人养狗的热情好像一点儿也没有受到影响。英国下周就要举行一场宠物狗展览，2.5万名狗爸狗妈准备带自己的"孩子"参加。',
+            py:'Bùguǎn shì 2.2 wàn yīngbàng háishi 5000 yīngbàng, dōu bú shì yī gè xiǎo shùzì. Dàn Yīngguó rén yǎng gǒu de rèqíng hǎoxiàng yīdiǎnr yě méiyǒu shòudào yǐngxiǎng. Yīngguó xià zhōu jiù yào jǔxíng yī chǎng chǒngwù gǒu zhǎnlǎn, 2.5 wàn míng gǒu bà gǒu mā zhǔnbèi dài zìjǐ de "háizi" cānjiā.',
+            en:'Whether it\'s £22,000 or £5,000, neither is a small amount. Yet British people\'s passion for keeping dogs seems not to have been affected in the slightest. Next week Britain is holding a pet dog show, and 25,000 "dog mums and dads" are preparing to bring their "children."',
+            source:'(根据《新民晚报》李叶文章改写)'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'存现句 Existential Sentences',
+        pattern:'Place/time ＋ appear/exist/disappear verb ＋ particle ＋ person/thing',
+        explanation:'An existential sentence describes the existence, appearance, or disappearance of someone or something at a place or time. The place or time comes first, followed by a verb of presence/emergence/departure, an aspect particle, and then the subject.',
+        examples:[
+          {zh:'冰箱里睡着五只冬眠的乌龟。',py:'Bīngxiāng lǐ shuì zhe wǔ zhī dōngmián de wūguī.',en:'Inside the fridge slept five hibernating tortoises.'},
+          {zh:'桌子上放着一台大电脑。',py:'Zhuōzi shàng fàng zhe yī tái dà diànnǎo.',en:'On the desk sat a large computer.'},
+          {zh:'书架上怎么少了一本书？',py:'Shūjià shàng zěnme shǎo le yī běn shū?',en:'How come a book has disappeared from the shelf?'},
+        ]
+      },
+      {
+        title:'曾经 (Ever, Once)',
+        pattern:'曾经＋V＋过',
+        explanation:'"曾经" indicates that something happened at some point in the past, often paired with "过." It is used before a verb or adjective.',
+        examples:[
+          {zh:'我曾经在南方住过几年。',py:'Wǒ céngjīng zài nánfāng zhù guò jǐ nián.',en:'I once lived in the south for a few years.'},
+          {zh:'他曾经学过法语，后来才学了英语。',py:'Tā céngjīng xué guò Fǎyǔ, hòulái cái xué le Yīngyǔ.',en:'He once studied French, and only later started learning English.'},
+          {zh:'我曾经去过那个城市，非常喜欢。',py:'Wǒ céngjīng qù guò nà gè chéngshì, fēicháng xǐhuān.',en:'I have been to that city before and liked it very much.'},
+        ]
+      },
+      {
+        title:'只好 (Have No Choice But To)',
+        pattern:'只好＋V',
+        explanation:'"只好" means the speaker is forced into a course of action due to circumstances — "have no choice but to." Softer than 不得不.',
+        examples:[
+          {zh:'王妈妈只好把乌龟全都裹上毛巾，装进冰箱。',py:'Wáng māma zhǐhǎo bǎ wūguī quán dōu guǒ shàng máojīn, zhuāng jìn bīngxiāng.',en:'Grandma Wang had no choice but to wrap all the tortoises in towels and put them in the fridge.'},
+          {zh:'明天要下大雨，运动会只好推迟。',py:'Míngtiān yào xià dà yǔ, yùndònghuì zhǐhǎo tuīchí.',en:'It\'s going to rain heavily tomorrow, so the sports day has no choice but to be postponed.'},
+          {zh:'钱不够，只好少买一点儿。',py:'Qián bù gòu, zhǐhǎo shǎo mǎi yīdiǎnr.',en:'There isn\'t enough money — I had no choice but to buy a little less.'},
+        ]
+      },
+      {
+        title:'相当 (Quite, Rather, Considerably)',
+        pattern:'相当＋Adj./VP',
+        explanation:'"相当" is used before adjectives or verb phrases to indicate a fairly high degree — "quite," "rather," or "considerably."',
+        examples:[
+          {zh:'他开了这家商店以来，生意一直相当不错。',py:'Tā kāi le zhè jiā shāngdiàn yǐlái, shēngyì yīzhí xiāngdāng bùcuò.',en:'Since he opened the shop, business has always been quite good.'},
+          {zh:'这道菜的味道相当好。',py:'Zhè dào cài de wèidào xiāngdāng hǎo.',en:'This dish tastes quite good.'},
+          {zh:'我相当喜欢上海的夏天。',py:'Wǒ xiāngdāng xǐhuān Shànghǎi de xiàtiān.',en:'I quite like Shanghai\'s summers.'},
+        ]
+      },
+      {
+        title:'完全 (Completely, Entirely, At All)',
+        pattern:'完全＋V/Adj.  /  完全不/没＋V',
+        explanation:'"完全" means completely or entirely. In negative sentences "完全不/没" means "not at all."',
+        examples:[
+          {zh:'不同品种的狗价格完全不同。',py:'Bùtóng pǐnzhǒng de gǒu jiàgé wánquán bùtóng.',en:'The prices of different dog breeds are completely different.'},
+          {zh:'他的病完全好了。',py:'Tā de bìng wánquán hǎo le.',en:'He has completely recovered from his illness.'},
+          {zh:'我对这件事完全不清楚。',py:'Wǒ duì zhè jiàn shì wánquán bù qīngchǔ.',en:'I have no idea about this matter at all.'},
+        ]
+      },
+      {
+        title:'不管……都/也 (No Matter…)',
+        pattern:'不管＋condition，都/也＋result',
+        explanation:'"不管" means "no matter what/how/whether," and the second clause uses 都 or 也 to show the outcome is unchanged regardless of the condition.',
+        examples:[
+          {zh:'不管是2.2万英镑还是5000英镑，都不是一个小数字。',py:'Bùguǎn shì 2.2 wàn yīngbàng háishi 5000 yīngbàng, dōu bú shì yī gè xiǎo shùzì.',en:'Whether it\'s £22,000 or £5,000, neither is a small amount.'},
+          {zh:'不管天气多冷，他总是穿得很少。',py:'Bùguǎn tiānqì duō lěng, tā zǒng shì chuān de hěn shǎo.',en:'No matter how cold the weather is, he always wears very little.'},
+          {zh:'不管你有什么困难，我都会帮你。',py:'Bùguǎn nǐ yǒu shénme kùnnan, wǒ dōu huì bāng nǐ.',en:'No matter what difficulties you face, I will help you.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'王奶奶____在南方住过几年，她的邻居喜欢养乌龟。',
+        options:['曾经','完全','相当','只好'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'冬天不够冷，王妈妈____把乌龟裹上毛巾放进冰箱。',
+        options:['只好','不管','相当','完全'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'他开了这家商店以来，生意____不错。',
+        options:['相当','完全','曾经','额外'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'不同品种的狗，价格____不同。',
+        options:['完全','相当','夸张','额外'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____是2.2万英镑还是5000英镑，____不是小数字。',
+        options:['不管……都','只好……也','曾经……了','完全……不'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "只好" 完成句子：下雨了，我们___取消野餐。',
+        answer:'只好'
+      },
+      {
+        type:'fill',
+        prompt:'用 "不管……都" 造句：___天气怎么样，他___坚持跑步。',
+        answer:'不管'
+      },
+    ]
   }
 };
 
@@ -3183,6 +3347,92 @@ const EXAMPLES_CH9 = [
   [{"zh":"你难道真的不知道这件事吗？","py":"Nǐ nándào zhēn de bù zhīdào zhè jiàn shì ma?","en":"Can it really be that you don\'t know about this?"},{"zh":"这难道不是最好的办法吗？","py":"Zhè nándào bú shì zuì hǎo de bànfǎ ma?","en":"Isn\'t this the best solution?"}],
 ];
 
+const WORDS_CH10 = [
+  { hanzi:"宠物",   pinyin:"chǒngwù",      pos:"N.",      english:"pet" },
+  { hanzi:"曾经",   pinyin:"céngjīng",     pos:"Adv.",    english:"ever, once (in the past)" },
+  { hanzi:"乌龟",   pinyin:"wūguī",        pos:"N.",      english:"tortoise, turtle" },
+  { hanzi:"冰箱",   pinyin:"bīngxiāng",    pos:"N.",      english:"refrigerator, icebox" },
+  { hanzi:"食物",   pinyin:"shíwù",        pos:"N.",      english:"food" },
+  { hanzi:"冬眠",   pinyin:"dōngmián",     pos:"V.",      english:"hibernate, go into hibernation" },
+  { hanzi:"摄氏度", pinyin:"shèshìdù",     pos:"M.W.",    english:"degree centigrade (℃)" },
+  { hanzi:"安心",   pinyin:"ānxīn",        pos:"Adj.",    english:"feel at ease, be relieved, be at peace" },
+  { hanzi:"裹",     pinyin:"guǒ",          pos:"V.",      english:"wrap, bind, bundle up" },
+  { hanzi:"毛巾",   pinyin:"máojīn",       pos:"N.",      english:"towel" },
+  { hanzi:"冷藏室", pinyin:"lěngcángshì",  pos:"N.",      english:"cold storage compartment, cold closet" },
+  { hanzi:"春暖花开",pinyin:"chūn nuǎn huā kāi", pos:"Idiom.", english:"spring is warm and flowers bloom (arrival of spring)" },
+  { hanzi:"大爷",   pinyin:"dàye",         pos:"N.",      english:"uncle (respectful address for an elderly man)" },
+  { hanzi:"鸽子",   pinyin:"gēzi",         pos:"N.",      english:"pigeon, dove" },
+  { hanzi:"屋顶",   pinyin:"wūdǐng",       pos:"N.",      english:"roof, housetop, rooftop" },
+  { hanzi:"乐园",   pinyin:"lèyuán",       pos:"N.",      english:"paradise, wonderland, fairy land" },
+  { hanzi:"鸽舍",   pinyin:"gēshè",        pos:"N.",      english:"pigeon loft, pigeonry" },
+  { hanzi:"绕",     pinyin:"rào",          pos:"V.",      english:"circle, go around, wind around" },
+  { hanzi:"眼光",   pinyin:"yǎnguāng",     pos:"N.",      english:"gaze, vision, sight" },
+  { hanzi:"转",     pinyin:"zhuǎn",        pos:"V.",      english:"turn, revolve, rotate" },
+  { hanzi:"鸽哨",   pinyin:"gēshào",       pos:"N.",      english:"pigeon whistle" },
+  { hanzi:"动听",   pinyin:"dòngtīng",     pos:"Adj.",    english:"pleasant to hear, melodious" },
+  { hanzi:"报纸",   pinyin:"bàozhǐ",       pos:"N.",      english:"newspaper" },
+  { hanzi:"篇",     pinyin:"piān",         pos:"M.W.",    english:"(measure word for articles, essays, novels)" },
+  { hanzi:"文章",   pinyin:"wénzhāng",     pos:"N.",      english:"article, essay" },
+  { hanzi:"英镑",   pinyin:"yīngbàng",     pos:"N.",      english:"pound sterling (British currency)" },
+  { hanzi:"高级",   pinyin:"gāojí",        pos:"Adj.",    english:"high-grade, high-quality, luxury, advanced" },
+  { hanzi:"粮",     pinyin:"liáng",        pos:"N.",      english:"grain, food" },
+  { hanzi:"卫生",   pinyin:"wèishēng",     pos:"Adj./N.", english:"hygienic; hygiene, sanitation" },
+  { hanzi:"医药",   pinyin:"yīyào",        pos:"N.",      english:"medicine, medical care" },
+  { hanzi:"额外",   pinyin:"éwài",         pos:"Adj.",    english:"extra, additional" },
+  { hanzi:"专家",   pinyin:"zhuānjiā",     pos:"N.",      english:"expert, specialist" },
+  { hanzi:"装饰品", pinyin:"zhuāngshìpǐn", pos:"N.",      english:"decoration, accessory, ornament" },
+  { hanzi:"相当",   pinyin:"xiāngdāng",    pos:"Adv.",    english:"quite, rather, considerably" },
+  { hanzi:"各种各样",pinyin:"gè zhǒng gè yàng", pos:"Phrase.", english:"all kinds of, a great variety of" },
+  { hanzi:"品种",   pinyin:"pǐnzhǒng",     pos:"N.",      english:"variety, breed, type" },
+  { hanzi:"价格",   pinyin:"jiàgé",        pos:"N.",      english:"price" },
+  { hanzi:"完全",   pinyin:"wánquán",      pos:"Adv.",    english:"completely, fully, entirely; not at all (with negation)" },
+  { hanzi:"夸张",   pinyin:"kuāzhāng",     pos:"Adj.",    english:"exaggerated, overstated" },
+  { hanzi:"展览",   pinyin:"zhǎnlǎn",      pos:"V./N.",   english:"exhibit, show; exhibition" },
+];
+
+const EXAMPLES_CH10 = [
+  [{"zh":"她家里养了很多宠物，有猫、狗和鸟。","py":"Tā jiā lǐ yǎng le hěn duō chǒngwù, yǒu māo, gǒu hé niǎo.","en":"She keeps many pets at home — cats, dogs, and birds."},{"zh":"宠物给很多人带来了快乐和陪伴。","py":"Chǒngwù gěi hěn duō rén dài lái le kuàilè hé péibàn.","en":"Pets bring joy and companionship to many people."}],
+  [{"zh":"他曾经在这家公司工作过，后来换了工作。","py":"Tā céngjīng zài zhè jiā gōngsī gōngzuò guò, hòulái huàn le gōngzuò.","en":"He once worked at this company, but later changed jobs."},{"zh":"我曾经学过一点儿日语，但都忘了。","py":"Wǒ céngjīng xué guò yīdiǎnr Rìyǔ, dàn dōu wàng le.","en":"I once studied a little Japanese, but I\'ve forgotten it all."}],
+  [{"zh":"他家里养了三只乌龟，最老的已经二十岁了。","py":"Tā jiā lǐ yǎng le sān zhī wūguī, zuì lǎo de yǐjīng èrshí suì le.","en":"He keeps three tortoises at home — the oldest is already twenty years old."},{"zh":"乌龟爬得很慢，但寿命很长。","py":"Wūguī pá de hěn màn, dàn shòumìng hěn cháng.","en":"Tortoises move very slowly, but they live very long lives."}],
+  [{"zh":"冰箱里还有一些剩饭，你可以热一下吃。","py":"Bīngxiāng lǐ hái yǒu yīxiē shèng fàn, nǐ kěyǐ rè yīxià chī.","en":"There\'s some leftover food in the fridge — you can heat it up and eat it."},{"zh":"夏天食物容易变质，最好放进冰箱保存。","py":"Xiàtiān shíwù róngyì biànzhì, zuì hǎo fàng jìn bīngxiāng bǎocún.","en":"Food spoils easily in summer — it\'s best to put it in the fridge to keep it."}],
+  [{"zh":"这个动物园里有很多不同种类的食物。","py":"Zhège dòngwùyuán lǐ yǒu hěn duō bùtóng zhǒnglèi de shíwù.","en":"This zoo has many different kinds of food."},{"zh":"健康的食物能让身体更强壮。","py":"Jiànkāng de shíwù néng ràng shēntǐ gèng qiángzhuàng.","en":"Healthy food can make your body stronger."}],
+  [{"zh":"熊在冬天会冬眠，到了春天才出来。","py":"Xióng zài dōngtiān huì dōngmián, dào le chūntiān cái chūlái.","en":"Bears hibernate in winter and don\'t come out until spring."},{"zh":"乌龟一般冬眠三个月左右。","py":"Wūguī yībān dōngmián sān gè yuè zuǒyòu.","en":"Tortoises generally hibernate for about three months."}],
+  [{"zh":"水的沸点是100摄氏度。","py":"Shuǐ de fèidiǎn shì 100 shèshìdù.","en":"The boiling point of water is 100 degrees centigrade."},{"zh":"今天气温只有5摄氏度，非常冷。","py":"Jīntiān qìwēn zhǐyǒu 5 shèshìdù, fēicháng lěng.","en":"Today\'s temperature is only 5 degrees centigrade — very cold."}],
+  [{"zh":"孩子在外面玩，妈妈才能安心工作。","py":"Háizi zài wàimiàn wán, māma cái néng ānxīn gōngzuò.","en":"Only when the children are playing outside can mum work in peace."},{"zh":"事情解决了，他终于安心了。","py":"Shìqing jiějué le, tā zhōngyú ānxīn le.","en":"Now that the matter is resolved, he is finally at ease."}],
+  [{"zh":"她把受伤的小猫裹在毯子里。","py":"Tā bǎ shòushāng de xiǎo māo guǒ zài tǎnzi lǐ.","en":"She wrapped the injured kitten in a blanket."},{"zh":"天气很冷，要把孩子裹得暖暖的。","py":"Tiānqì hěn lěng, yào bǎ háizi guǒ de nuǎn nuǎn de.","en":"The weather is very cold — wrap the child up nice and warm."}],
+  [{"zh":"洗完脸，他拿起毛巾擦了擦脸。","py":"Xǐ wán liǎn, tā ná qǐ máojīn cā le cā liǎn.","en":"After washing his face, he picked up a towel and dried it."},{"zh":"游泳池边上放着很多干净的毛巾。","py":"Yóuyǒngchí biān shàng fàng zhe hěn duō gānjìng de máojīn.","en":"There are many clean towels placed by the side of the swimming pool."}],
+  [{"zh":"这台冰箱的冷藏室温度可以调节。","py":"Zhè tái bīngxiāng de lěngcángshì wēndù kěyǐ tiáojié.","en":"The temperature of this refrigerator\'s cold compartment can be adjusted."},{"zh":"把食物放进冷藏室可以保持新鲜。","py":"Bǎ shíwù fàng jìn lěngcángshì kěyǐ bǎochí xīnxiān.","en":"Putting food in the cold compartment keeps it fresh."}],
+  [{"zh":"等到春暖花开，我们就去郊外踏青。","py":"Děng dào chūn nuǎn huā kāi, wǒmen jiù qù jiāowài tàqīng.","en":"When spring comes and flowers bloom, we\'ll go to the countryside for a walk."},{"zh":"春暖花开的季节，公园里到处都是游客。","py":"Chūn nuǎn huā kāi de jìjié, gōngyuán lǐ dàochù dōu shì yóukè.","en":"In the season when spring warms and flowers bloom, the parks are full of visitors everywhere."}],
+  [{"zh":"社区里的大爷们每天早上打太极拳。","py":"Shèqū lǐ de dàyemen měitiān zǎoshang dǎ tàijíquán.","en":"The elderly uncles in the community do tai chi every morning."},{"zh":"对不认识的老人，我们应该叫他们大爷或大妈。","py":"Duì bú rènshi de lǎorén, wǒmen yīnggāi jiào tāmen dàye huò dàmā.","en":"For elderly people we don\'t know, we should address them as Uncle or Auntie."}],
+  [{"zh":"广场上有很多人在喂鸽子。","py":"Guǎngchǎng shàng yǒu hěn duō rén zài wèi gēzi.","en":"Many people are feeding pigeons in the square."},{"zh":"他养了十几只信鸽，每只都有名字。","py":"Tā yǎng le shí jǐ zhī xìngē, měi zhī dōu yǒu míngzi.","en":"He keeps over a dozen carrier pigeons, and each one has a name."}],
+  [{"zh":"猫喜欢坐在屋顶上晒太阳。","py":"Māo xǐhuān zuò zài wūdǐng shàng shài tàiyáng.","en":"Cats love sitting on rooftops sunbathing."},{"zh":"下大雨的时候，屋顶漏水了。","py":"Xià dà yǔ de shíhòu, wūdǐng lòu shuǐ le.","en":"When it rained heavily, the roof leaked."}],
+  [{"zh":"这个儿童乐园有很多好玩的设施。","py":"Zhège értóng lèyuán yǒu hěn duō hǎo wán de shèshī.","en":"This children\'s paradise has many fun facilities."},{"zh":"对爱好美食的人来说，这里简直是美食乐园。","py":"Duì àihào měishí de rén lái shuō, zhèlǐ jiǎnzhí shì měishí lèyuán.","en":"For food lovers, this place is practically a food paradise."}],
+  [{"zh":"鸽舍里住着二十多只鸽子。","py":"Gēshè lǐ zhù zhe èrshí duō zhī gēzi.","en":"More than twenty pigeons live in the pigeon loft."},{"zh":"他每天清晨都去打扫鸽舍。","py":"Tā měitiān qīngchén dōu qù dǎsǎo gēshè.","en":"He goes to clean the pigeon loft every morning."}],
+  [{"zh":"飞机绕着跑道转了一圈才降落。","py":"Fēijī rào zhe pǎodào zhuǎn le yī quān cái jiànluò.","en":"The plane circled the runway once before landing."},{"zh":"孩子们绕着操场跑了三圈。","py":"Háizimen rào zhe cāochǎng pǎo le sān quān.","en":"The children ran three laps around the playground."}],
+  [{"zh":"她的眼光落在窗外的风景上。","py":"Tā de yǎnguāng luò zài chuāng wài de fēngjǐng shàng.","en":"Her gaze fell on the scenery outside the window."},{"zh":"他独到的眼光帮助他在商业上取得了成功。","py":"Tā dúdào de yǎnguāng bāngzhù tā zài shāngyè shàng qǔdé le chénggōng.","en":"His unique vision helped him achieve success in business."}],
+  [{"zh":"他转过身来，看了我一眼。","py":"Tā zhuǎn guò shēn lái, kàn le wǒ yī yǎn.","en":"He turned around and glanced at me."},{"zh":"地球在不停地转动。","py":"Dìqiú zài bù tíng de zhuǎndòng.","en":"The earth is constantly rotating."}],
+  [{"zh":"鸽哨的声音随着鸽子飞翔传遍了整个街区。","py":"Gēshào de shēngyīn suízhe gēzi fēixiáng chuánbiàn le zhěnggè jiēqū.","en":"The sound of pigeon whistles spread throughout the entire neighbourhood as the pigeons soared."},{"zh":"老北京人喜欢在鸽子身上绑鸽哨。","py":"Lǎo Běijīng rén xǐhuān zài gēzi shēnshang bǎng gēshào.","en":"Old Beijingers love tying pigeon whistles onto their birds."}],
+  [{"zh":"他唱歌的声音非常动听，每次都让人着迷。","py":"Tā chànggē de shēngyīn fēicháng dòngtīng, měi cì dōu ràng rén zháomí.","en":"His singing voice is extremely melodious and always captivates people."},{"zh":"这段音乐旋律优美，十分动听。","py":"Zhè duàn yīnyuè xuánlǜ yōuměi, shífēn dòngtīng.","en":"This piece of music has a beautiful melody and is very pleasant to hear."}],
+  [{"zh":"每天早上他都会买一份报纸，边喝咖啡边看。","py":"Měitiān zǎoshang tā dōu huì mǎi yī fèn bàozhǐ, biān hē kāfēi biān kàn.","en":"Every morning he buys a newspaper and reads it while drinking coffee."},{"zh":"随着网络的普及，买报纸的人越来越少了。","py":"Suízhe wǎngluò de pǔjí, mǎi bàozhǐ de rén yuèlái yuè shǎo le.","en":"As the internet has spread, fewer and fewer people buy newspapers."}],
+  [{"zh":"他写了一篇关于环境保护的文章。","py":"Tā xiě le yī piān guānyú huánjìng bǎohù de wénzhāng.","en":"He wrote an article about environmental protection."},{"zh":"老师让每个同学写一篇作文。","py":"Lǎoshī ràng měi gè tóngxué xiě yī piān zuòwén.","en":"The teacher asked every student to write a composition."}],
+  [{"zh":"报纸上登了一篇关于养宠物的文章。","py":"Bàozhǐ shàng dēng le yī piān guānyú yǎng chǒngwù de wénzhāng.","en":"The newspaper published an article about keeping pets."},{"zh":"他最近写了很多文章，发表在网上。","py":"Tā zuìjìn xiě le hěn duō wénzhāng, fābiǎo zài wǎng shàng.","en":"He has written many articles recently and published them online."}],
+  [{"zh":"一英镑换多少人民币？","py":"Yī yīngbàng huàn duōshao rénmínbì?","en":"How much RMB is one pound sterling worth?"},{"zh":"英镑是英国的货币。","py":"Yīngbàng shì Yīngguó de huòbì.","en":"The pound sterling is the currency of the United Kingdom."}],
+  [{"zh":"他买了一辆高级汽车，花了很多钱。","py":"Tā mǎi le yī liàng gāojí qìchē, huā le hěn duō qián.","en":"He bought a luxury car, spending a lot of money."},{"zh":"这是一家高级饭店，消费很贵。","py":"Zhè shì yī jiā gāojí fàndiàn, xiāofèi hěn guì.","en":"This is a high-end hotel — the prices are very expensive."}],
+  [{"zh":"仓库里存放着大量的粮食。","py":"Cāngkù lǐ cúnfàng zhe dàliàng de liángshi.","en":"The warehouse stores a large amount of grain."},{"zh":"节省粮食是每个人的责任。","py":"Jiéshěng liángshi shì měi gè rén de zérèn.","en":"Saving grain is everyone\'s responsibility."}],
+  [{"zh":"注意卫生，勤洗手，能预防很多疾病。","py":"Zhùyì wèishēng, qín xǐ shǒu, néng yùfáng hěn duō jíbìng.","en":"Paying attention to hygiene and washing hands frequently can prevent many illnesses."},{"zh":"这家饭馆的厨房卫生状况很差。","py":"Zhè jiā fànguǎn de chúfáng wèishēng zhuàngkuàng hěn chà.","en":"The kitchen hygiene at this restaurant is very poor."}],
+  [{"zh":"老人每月要花很多钱在医药上。","py":"Lǎorén měi yuè yào huā hěn duō qián zài yīyào shàng.","en":"The elderly man spends a lot of money each month on medical care."},{"zh":"他买了一份医药保险，以防万一。","py":"Tā mǎi le yī fèn yīyào bǎoxiǎn, yǐ fáng wànyī.","en":"He bought medical insurance just in case."}],
+  [{"zh":"这次旅行产生了很多额外的费用。","py":"Zhè cì lǚxíng chǎnshēng le hěn duō éwài de fèiyòng.","en":"This trip generated many extra expenses."},{"zh":"公司给了他额外的奖金，作为对他努力工作的认可。","py":"Gōngsī gěi le tā éwài de jiǎngjīn, zuòwéi duì tā nǔlì gōngzuò de rènkě.","en":"The company gave him an extra bonus in recognition of his hard work."}],
+  [{"zh":"她是一位经济学专家，在大学里教书。","py":"Tā shì yī wèi jīngjìxué zhuānjiā, zài dàxué lǐ jiāoshū.","en":"She is an economics expert who teaches at a university."},{"zh":"我们请来了一位宠物专家，帮忙照顾生病的狗。","py":"Wǒmen qǐng lái le yī wèi chǒngwù zhuānjiā, bāngmáng zhàogù shēngbìng de gǒu.","en":"We brought in a pet specialist to help take care of the sick dog."}],
+  [{"zh":"她给宠物狗买了很多漂亮的装饰品。","py":"Tā gěi chǒngwù gǒu mǎi le hěn duō piàoliang de zhuāngshìpǐn.","en":"She bought many beautiful accessories for her pet dog."},{"zh":"节日里，街道上挂满了各种装饰品。","py":"Jiérì lǐ, jiēdào shàng guà mǎn le gè zhǒng zhuāngshìpǐn.","en":"During the holidays, the streets are hung with all kinds of decorations."}],
+  [{"zh":"他的中文说得相当流利。","py":"Tā de Zhōngwén shuō de xiāngdāng liúlì.","en":"His Chinese is quite fluent."},{"zh":"这道菜相当辣，不习惯吃辣的人要小心。","py":"Zhè dào cài xiāngdāng là, bù xíguàn chī là de rén yào xiǎoxīn.","en":"This dish is quite spicy — people not used to spicy food should be careful."}],
+  [{"zh":"市场上有各种各样的水果，非常新鲜。","py":"Shìchǎng shàng yǒu gè zhǒng gè yàng de shuǐguǒ, fēicháng xīnxiān.","en":"The market has all kinds of fruit — very fresh."},{"zh":"他的书架上放着各种各样的书。","py":"Tā de shūjià shàng fàng zhe gè zhǒng gè yàng de shū.","en":"His bookshelf holds all kinds of books."}],
+  [{"zh":"这家宠物店有几十个狗的品种可以选择。","py":"Zhè jiā chǒngwù diàn yǒu jǐ shí gè gǒu de pǐnzhǒng kěyǐ xuǎnzé.","en":"This pet shop has dozens of dog breeds to choose from."},{"zh":"中国有很多优良的茶叶品种。","py":"Zhōngguó yǒu hěn duō yōuliáng de cháyè pǐnzhǒng.","en":"China has many excellent varieties of tea."}],
+  [{"zh":"这件商品的价格比网上贵了很多。","py":"Zhè jiàn shāngpǐn de jiàgé bǐ wǎngshàng guì le hěn duō.","en":"The price of this item is much higher than online."},{"zh":"价格太高了，我们讨价还价了很久才买到。","py":"Jiàgé tài gāo le, wǒmen tǎojiàhuánjià le hěn jiǔ cái mǎidào.","en":"The price was too high — we haggled for a long time before buying it."}],
+  [{"zh":"他们两个完全不同，一个安静，一个活泼。","py":"Tāmen liǎng gè wánquán bùtóng, yī gè ānjìng, yī gè huópō.","en":"The two of them are completely different — one is quiet, the other lively."},{"zh":"我完全同意你的看法。","py":"Wǒ wánquán tóngyì nǐ de kànfǎ.","en":"I completely agree with your opinion."}],
+  [{"zh":"这个故事说得有点儿夸张，不像是真的。","py":"Zhège gùshi shuō de yǒudiǎnr kuāzhāng, bú xiàng shì zhēn de.","en":"This story sounds a bit exaggerated — it doesn\'t seem real."},{"zh":"他总喜欢夸张地描述自己的经历。","py":"Tā zǒng xǐhuān kuāzhāng de miáoshù zìjǐ de jīnglì.","en":"He always likes to describe his experiences in an exaggerated way."}],
+  [{"zh":"博物馆正在展览一批古代瓷器。","py":"Bówùguǎn zhèngzài zhǎnlǎn yī pī gǔdài cíqì.","en":"The museum is currently exhibiting a collection of ancient ceramics."},{"zh":"下周将举行一场国际汽车展览。","py":"Xià zhōu jiāng jǔxíng yī chǎng guójì qìchē zhǎnlǎn.","en":"An international automobile exhibition will be held next week."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -3193,7 +3443,8 @@ function WORDS() {
   if (currentChapter === 6) return WORDS_CH6;
   if (currentChapter === 7) return WORDS_CH7;
   if (currentChapter === 8) return WORDS_CH8;
-  return WORDS_CH9;
+  if (currentChapter === 9) return WORDS_CH9;
+  return WORDS_CH10;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -3204,7 +3455,8 @@ function EXAMPLES() {
   if (currentChapter === 6) return EXAMPLES_CH6;
   if (currentChapter === 7) return EXAMPLES_CH7;
   if (currentChapter === 8) return EXAMPLES_CH8;
-  return EXAMPLES_CH9;
+  if (currentChapter === 9) return EXAMPLES_CH9;
+  return EXAMPLES_CH10;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -4083,7 +4335,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -4276,7 +4528,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -4674,6 +4926,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:7, words: WORDS_CH7 },
   { ch:8, words: WORDS_CH8 },
   { ch:9, words: WORDS_CH9 },
+  { ch:10, words: WORDS_CH10 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -4682,12 +4935,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 9 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 10 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 9 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 10 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -4934,7 +5187,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 9 chapters</div>
+      <div class="search-empty">Type to search all 10 chapters</div>
     </div>
   </div>
 </div>
