@@ -808,6 +808,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 10</span>
     <span class="ch-name">养宠物的老人</span>
   </button>
+  <button class="ch-btn" id="ch-btn-11" onclick="switchChapter(11)">
+    <span class="ch-num">Ch 11</span>
+    <span class="ch-name">其实你也是富翁</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -976,6 +980,7 @@ const CHAPTERS = {
   8: { title:'为啥就要不合身', subtitle:'Chapter 8' },
   9: { title:'姚明的故事', subtitle:'Chapter 9' },
   10: { title:'养宠物的老人', subtitle:'Chapter 10' },
+  11: { title:'其实你也是富翁', subtitle:'Chapter 11' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -2517,6 +2522,174 @@ const LESSONS = {
         answer:'不管'
       },
     ]
+  },
+  11: {
+    texts: [
+      {
+        num:'§1', title:'其实你也是富翁', en:'In Fact You Are Also Rich',
+        paragraphs:[
+          {
+            zh:'有位青年对自己的生活很不满意。有一天，他敲开了一位富翁的家门，希望这位富翁能告诉他一些发财的秘诀。',
+            py:'Yǒu wèi qīngnián duì zìjǐ de shēnghuó hěn bù mǎnyì. Yǒu yī tiān, tā qiāo kāi le yī wèi fùwēng de jiāmén, xīwàng zhè wèi fùwēng néng gàosu tā yīxiē fā cái de mìjué.',
+            en:'A young man was very unhappy with his life. One day he knocked on the door of a wealthy man, hoping this rich man could tell him some secrets to getting rich.'
+          },
+          {
+            zh:'"这其实很简单。有很多自以为一无所有的人来找我，来的时候他们确实很穷，但是走的时候个个都成了富翁。"富翁说。"您是怎么帮助他们的呢？"青年有点儿着急。"其实，我们每个人都拥有一笔巨大的财富，可是我们自己却不知道。"',
+            py:'"Zhè qíshí hěn jiǎndān. Yǒu hěn duō zìyǐwéi yī wú suǒ yǒu de rén lái zhǎo wǒ, lái de shíhòu tāmen quèshí hěn qióng, dànshì zǒu de shíhòu gègè dōu chéngle fùwēng." Fùwēng shuō. "Nín shì zěnme bāngzhù tāmen de ne?" Qīngnián yǒudiǎnr zháojí. "Qíshí, wǒmen měi gè rén dōu yōngyǒu yī bǐ jùdà de cáifù, kěshì wǒmen zìjǐ què bù zhīdào."',
+            en:'"It is actually very simple. Many people who think they own nothing come to find me — when they arrive they are truly poor, but when they leave every single one has become wealthy," said the rich man. "How do you help them?" asked the young man, a little anxious. "In fact, every one of us possesses a great fortune — we just don\'t know it."'
+          },
+          {
+            zh:'"它到底在哪里呢？""就在你身上。比如说，你的一双眼睛。你要是愿意给我一只眼睛的话，我就可以付给你一百万。""不，眼睛不能给您！"青年立刻叫了起来。',
+            py:'"Tā dàodǐ zài nǎlǐ ne?" "Jiù zài nǐ shēnshang. Bǐrú shuō, nǐ de yī shuāng yǎnjīng. Nǐ yàoshi yuànyì gěi wǒ yī zhī yǎnjīng de huà, wǒ jiù kěyǐ fù gěi nǐ yī bǎi wàn." "Bù, yǎnjīng bù néng gěi nín!" Qīngnián lìkè jiào le qǐlái.',
+            en:'"Where on earth is it?" "Right there on you. For example, your two eyes. If you were willing to give me one eye, I could pay you one million." "No, I cannot give you my eyes!" the young man immediately cried out.'
+          },
+          {
+            zh:'"好吧，既然你不肯，那就算了。那么，我就要你的一双手吧！它们值两百万。""不，那也不行！"青年坚决地说。',
+            py:'"Hǎo ba, jìrán nǐ bù kěn, nà jiù suàn le. Nàme, wǒ jiù yào nǐ de yī shuāng shǒu ba! Tāmen zhí liǎng bǎi wàn." "Bù, nà yě bù xíng!" Qīngnián jiānjué de shuō.',
+            en:'"All right, since you\'re not willing, forget it. Then how about your two hands — they\'re worth two million." "No, that won\'t do either!" the young man said firmly.'
+          },
+          {
+            zh:'"你看，我一说你就明白了。有一双眼睛，你就可以学习；有一双手，你就可以劳动。现在你看到了吧，你拥有多么巨大的财富啊！这就是我的秘诀。"青年告别了富翁，充满信心地走了出去。他似乎觉得自己已经成了一个富翁了。',
+            py:'"Nǐ kàn, wǒ yī shuō nǐ jiù míngbai le. Yǒu yī shuāng yǎnjīng, nǐ jiù kěyǐ xuéxí; yǒu yī shuāng shǒu, nǐ jiù kěyǐ láodòng. Xiànzài nǐ kàndào le ba, nǐ yōngyǒu duōme jùdà de cáifù a! Zhè jiùshì wǒ de mìjué." Qīngnián gàobié le fùwēng, chōngmǎn xìnxīn de zǒu le chūqù. Tā sìhū juéde zìjǐ yǐjīng chéngle yī gè fùwēng le.',
+            en:'"You see, the moment I said it you understood. With two eyes you can study; with two hands you can work. Now you see — what enormous wealth you possess! That is my secret." The young man said goodbye to the rich man and walked out full of confidence. He seemed to feel that he had already become a wealthy man.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'中了大奖怎么花', en:'How to Spend a Lottery Jackpot',
+        paragraphs:[
+          {
+            zh:'我每个星期都买彩票。既然买彩票，当然希望中奖，最好是中个大奖。可是我运气不好，这几年得到的奖品虽然不少，可始终都是小东西，不是毛巾，就是肥皂，没有更大的了。',
+            py:'Wǒ měi gè xīngqī dōu mǎi cǎipiào. Jìrán mǎi cǎipiào, dāngrán xīwàng zhòng jiǎng, zuì hǎo shì zhòng gè dà jiǎng. Kěshì wǒ yùnqi bù hǎo, zhè jǐ nián dédào de jiǎngpǐn suīrán bùshǎo, kě shǐzhōng dōu shì xiǎo dōngxi, bú shì máojīn, jiùshì féizào, méiyǒu gèng dà de le.',
+            en:'I buy lottery tickets every week. Since I buy lottery tickets, I naturally hope to win — ideally a big prize. But my luck isn\'t good. Over the past few years I\'ve received quite a few prizes, but they have always been small things — either a towel or a bar of soap, nothing bigger.'
+          },
+          {
+            zh:'不过，这不等于说我永远中不了大奖，说不定明天运气突然就来了呢！如果我中了500万——当然，去掉税，还剩400万——我打算这么花：先拿出120万买套房子。现在我们一家三代五口人才住四十几平方米，实在太挤了，做梦也想住得舒适一些。房价年年在涨，看来，只有等我中了大奖，才有可能实现这个梦想。',
+            py:'Bùguò, zhè bù děngyú shuō wǒ yǒngyuǎn zhòng bu liǎo dà jiǎng, shuōbudìng míngtiān yùnqi tūrán jiù lái le ne! Rúguǒ wǒ zhòng le 500 wàn——dāngrán, qùdiào shuì, hái shèng 400 wàn——wǒ dǎsuàn zhème huā: xiān ná chū 120 wàn mǎi tào fángzi. Xiànzài wǒmen yī jiā sān dài wǔ kǒu rén cái zhù sìshí jǐ píngfāngmǐ, shízài tài jǐ le, zuò mèng yě xiǎng zhù de shūshì yīxiē. Fáng jià niánnián zài zhǎng, kàn lái, zhǐyǒu děng wǒ zhòng le dà jiǎng, cái yǒu kěnéng shíxiàn zhège mèngxiǎng.',
+            en:'But this is not to say I\'ll never win a big prize — maybe my luck will suddenly come tomorrow! If I won 5 million — of course, after deducting tax there would be 4 million left — I plan to spend it like this: first, take out 1.2 million to buy a home. Right now five of us — three generations — are crammed into just over forty square metres, which is really too tight. I dream of living more comfortably. House prices go up every year, so it seems only by winning a big prize could this dream come true.'
+          },
+          {
+            zh:'然后再买辆车。不用很高级，十几万的就行。再拿出10万给全家人都买一份保险，拿出5万帮助我哥的孩子上大学，拿出5万给我父母。拿出50万捐给穷人，或者，为他们的孩子建一所希望小学。',
+            py:'Ránhòu zài mǎi liàng chē. Bú yòng hěn gāojí, shí jǐ wàn de jiù xíng. Zài ná chū 10 wàn gěi quánjiā rén dōu mǎi yī fèn bǎoxiǎn, ná chū 5 wàn bāngzhù wǒ gē de háizi shàng dàxué, ná chū 5 wàn gěi wǒ fùmǔ. Ná chū 50 wàn juān gěi qióngrén, huòzhě, wèi tāmen de háizi jiàn yī suǒ xīwàng xiǎoxué.',
+            en:'Then buy a car — nothing too fancy, around 100,000 will do. Spend another 100,000 on insurance for the whole family, 50,000 to help my brother\'s child go to university, and 50,000 for my parents. Use 500,000 to donate to the poor, or to build a Hope Primary School for their children.'
+          },
+          {
+            zh:'拿出100万，开个公司。我一直都有自己创业的想法，可是，由于没钱，现在只能做点儿小生意。如果有了这么一大笔钱，我的创业计划就能实现了。留50万给孩子，将来孩子上大学呀，读研究生呀，出国留学呀，都免不了要花钱。最后，带着全家人到欧洲旅游一次。剩下的钱存银行。',
+            py:'Ná chū 100 wàn, kāi gè gōngsī. Wǒ yīzhí dōu yǒu zìjǐ chuàngyè de xiǎngfǎ, kěshì, yóuyú méi qián, xiànzài zhǐ néng zuò diǎnr xiǎo shēngyì. Rúguǒ yǒu le zhème yī dà bǐ qián, wǒ de chuàngyè jìhuà jiù néng shíxiàn le. Liú 50 wàn gěi háizi, jiānglái háizi shàng dàxué ya, dú yánjiūshēng ya, chū guó liúxué ya, dōu miǎnbuliǎo yào huā qián. Zuìhòu, dài zhe quánjiā rén dào Ōuzhōu lǚyóu yī cì. Shèngxia de qián cún yínháng.',
+            en:'Take out 1 million to open a company. I\'ve always had the idea of starting my own business, but for lack of money I can only run a small operation now. With that kind of money, my business plan could finally be realised. Keep 500,000 for the children — when they go to university, pursue a master\'s degree, or study abroad, there will inevitably be expenses. Finally, take the whole family on a trip to Europe. The rest goes in the bank.'
+          },
+          {
+            zh:'你看，我的计划还不错吧？你有什么更好的建议？',
+            py:'Nǐ kàn, wǒ de jìhuà hái bùcuò ba? Nǐ yǒu shénme gèng hǎo de jiànyì?',
+            en:'Not a bad plan, right? Do you have any better suggestions?'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'既然……就/也…… (Since, Now That)',
+        pattern:'既然＋premise，就/也＋conclusion',
+        explanation:'"既然" introduces a known premise and draws a logical conclusion from it. The second clause uses 就 or 也.',
+        examples:[
+          {zh:'既然买彩票，当然希望中奖。',py:'Jìrán mǎi cǎipiào, dāngrán xīwàng zhòng jiǎng.',en:'Since I buy lottery tickets, of course I hope to win.'},
+          {zh:'既然你不肯，那就算了。',py:'Jìrán nǐ bù kěn, nà jiù suàn le.',en:'Since you\'re unwilling, let\'s forget it.'},
+          {zh:'既然决定了，就不要后悔。',py:'Jìrán juédìng le, jiù bú yào hòuhuǐ.',en:'Since the decision is made, don\'t regret it.'},
+        ]
+      },
+      {
+        title:'肯 (Be Willing To)',
+        pattern:'肯/不肯＋V',
+        explanation:'"肯" means to be willing to do something, often implying a conscious or emotional willingness. The negative 不肯 means refusal.',
+        examples:[
+          {zh:'既然你不肯，那就算了。',py:'Jìrán nǐ bù kěn, nà jiù suàn le.',en:'Since you\'re not willing, then forget it.'},
+          {zh:'只要你肯努力，一定能学好汉语。',py:'Zhǐyào nǐ kěn nǔlì, yīdìng néng xué hǎo Hànyǔ.',en:'As long as you\'re willing to work hard, you will definitely learn Chinese well.'},
+          {zh:'他不肯承认自己的错误。',py:'Tā bù kěn chéngrèn zìjǐ de cuòwù.',en:'He refuses to admit his mistake.'},
+        ]
+      },
+      {
+        title:'似乎 (As If, It Seems)',
+        pattern:'似乎＋clause',
+        explanation:'"似乎" expresses that something appears to be the case, but is not certain — "it seems," "as if," or "apparently."',
+        examples:[
+          {zh:'他似乎觉得自己已经成了一个富翁了。',py:'Tā sìhū juéde zìjǐ yǐjīng chéngle yī gè fùwēng le.',en:'He seemed to feel that he had already become a wealthy man.'},
+          {zh:'她似乎不太高兴，一句话也没说。',py:'Tā sìhū bú tài gāoxìng, yī jù huà yě méi shuō.',en:'She seems not very happy — she didn\'t say a word.'},
+          {zh:'今天似乎要下雨，你带伞了吗？',py:'Jīntiān sìhū yào xià yǔ, nǐ dài sǎn le ma?',en:'It seems like it might rain today — did you bring an umbrella?'},
+        ]
+      },
+      {
+        title:'不是……就是…… (Either … Or …)',
+        pattern:'不是＋A，就是＋B',
+        explanation:'"不是……就是……" means "if not A, then B" — one of two alternatives is always the case.',
+        examples:[
+          {zh:'奖品始终都是小东西，不是毛巾，就是肥皂。',py:'Jiǎngpǐn shǐzhōng dōu shì xiǎo dōngxi, bú shì máojīn, jiùshì féizào.',en:'The prizes are always small things — either a towel or a bar of soap.'},
+          {zh:'他每天不是看书，就是写作。',py:'Tā měitiān bú shì kàn shū, jiùshì xiězuò.',en:'Every day he is either reading or writing.'},
+          {zh:'不是你去，就是我去，总得有人去。',py:'Bú shì nǐ qù, jiùshì wǒ qù, zǒng děi yǒu rén qù.',en:'Either you go or I go — someone has to go.'},
+        ]
+      },
+      {
+        title:'(不)等于说 (That Is (Not) to Say)',
+        pattern:'(不)等于说＋conclusion',
+        explanation:'"等于说" means "amounts to saying" or "that is to say." "不等于说" means "that is not to say" — used to prevent a false conclusion.',
+        examples:[
+          {zh:'这不等于说我永远中不了大奖。',py:'Zhè bù děngyú shuō wǒ yǒngyuǎn zhòng bu liǎo dà jiǎng.',en:'This is not to say I\'ll never win a big prize.'},
+          {zh:'我错了，但不等于说你是对的。',py:'Wǒ cuò le, dàn bù děngyú shuō nǐ shì duì de.',en:'I was wrong, but that is not to say you are right.'},
+          {zh:'你通过了考试，不等于说你已经掌握了这门语言。',py:'Nǐ tōngguò le kǎoshì, bù děngyú shuō nǐ yǐjīng zhǎngwò le zhè mén yǔyán.',en:'Passing the exam doesn\'t mean you have already mastered the language.'},
+        ]
+      },
+      {
+        title:'免不了 (Unavoidably, Inevitably)',
+        pattern:'免不了＋V/situation',
+        explanation:'"免不了" means something is unavoidable or bound to happen — "there\'s no escaping," "inevitably."',
+        examples:[
+          {zh:'出国留学，都免不了要花钱。',py:'Chū guó liúxué, dōu miǎnbuliǎo yào huā qián.',en:'Studying abroad inevitably costs money.'},
+          {zh:'两个人住在一起，免不了会有矛盾。',py:'Liǎng gè rén zhù zài yīqǐ, miǎnbuliǎo huì yǒu máodùn.',en:'When two people live together, there are bound to be conflicts.'},
+          {zh:'做生意免不了会遇到困难。',py:'Zuò shēngyì miǎnbuliǎo huì yùdào kùnnan.',en:'Running a business inevitably involves running into difficulties.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'青年____了富翁的门，希望学习发财的秘诀。',
+        options:['敲','拥有','充满','告别'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'富翁说，每个人都____一笔巨大的财富。',
+        options:['拥有','发财','存','捐'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____买彩票，当然希望能中奖。',
+        options:['既然','似乎','免不了','始终'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'这几年的奖品不____毛巾，____是肥皂，始终是小东西。',
+        options:['是……就','管……都','但……也','论……都'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'出国留学____要花很多钱。',
+        options:['免不了','等于','似乎','始终'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "似乎" 完成句子：他___觉得自己已经是富翁了。',
+        answer:'似乎'
+      },
+      {
+        type:'fill',
+        prompt:'用 "既然" 造句：___你不肯，那就算了。',
+        answer:'既然'
+      },
+    ]
   }
 };
 
@@ -3433,6 +3606,86 @@ const EXAMPLES_CH10 = [
   [{"zh":"博物馆正在展览一批古代瓷器。","py":"Bówùguǎn zhèngzài zhǎnlǎn yī pī gǔdài cíqì.","en":"The museum is currently exhibiting a collection of ancient ceramics."},{"zh":"下周将举行一场国际汽车展览。","py":"Xià zhōu jiāng jǔxíng yī chǎng guójì qìchē zhǎnlǎn.","en":"An international automobile exhibition will be held next week."}],
 ];
 
+const WORDS_CH11 = [
+  { hanzi:"富翁",   pinyin:"fùwēng",      pos:"N.",      english:"rich man, wealthy person" },
+  { hanzi:"敲",     pinyin:"qiāo",        pos:"V.",      english:"knock, beat, tap" },
+  { hanzi:"发财",   pinyin:"fā cái",      pos:"V.",      english:"make a fortune, get rich" },
+  { hanzi:"秘诀",   pinyin:"mìjué",       pos:"N.",      english:"secret (of success), key" },
+  { hanzi:"一无所有",pinyin:"yī wú suǒ yǒu", pos:"Idiom.", english:"have nothing at all, penniless" },
+  { hanzi:"穷",     pinyin:"qióng",       pos:"Adj.",    english:"poor, impoverished" },
+  { hanzi:"拥有",   pinyin:"yōngyǒu",     pos:"V.",      english:"possess, have, own" },
+  { hanzi:"巨大",   pinyin:"jùdà",        pos:"Adj.",    english:"huge, enormous, immense" },
+  { hanzi:"财富",   pinyin:"cáifù",       pos:"N.",      english:"wealth, riches, fortune" },
+  { hanzi:"百万",   pinyin:"bǎiwàn",      pos:"Num.",    english:"million" },
+  { hanzi:"立刻",   pinyin:"lìkè",        pos:"Adv.",    english:"immediately, at once, right away" },
+  { hanzi:"既然",   pinyin:"jìrán",       pos:"Conj.",   english:"since, now that, given that" },
+  { hanzi:"肯",     pinyin:"kěn",         pos:"V.",      english:"be willing to, agree to" },
+  { hanzi:"值",     pinyin:"zhí",         pos:"V.",      english:"be worth" },
+  { hanzi:"劳动",   pinyin:"láodòng",     pos:"V./N.",   english:"work, labour; labour" },
+  { hanzi:"告别",   pinyin:"gàobié",      pos:"V.",      english:"say goodbye, bid farewell, leave" },
+  { hanzi:"充满",   pinyin:"chōngmǎn",    pos:"V.",      english:"be full of, fill with, brimming with" },
+  { hanzi:"似乎",   pinyin:"sìhū",        pos:"Adv.",    english:"as if, it seems, apparently" },
+  { hanzi:"中奖",   pinyin:"zhòng jiǎng", pos:"V.",      english:"win a prize, hit the jackpot" },
+  { hanzi:"彩票",   pinyin:"cǎipiào",     pos:"N.",      english:"lottery ticket" },
+  { hanzi:"奖品",   pinyin:"jiǎngpǐn",    pos:"N.",      english:"prize, award, trophy" },
+  { hanzi:"始终",   pinyin:"shǐzhōng",    pos:"Adv.",    english:"always, all along, from start to finish" },
+  { hanzi:"肥皂",   pinyin:"féizào",      pos:"N.",      english:"soap" },
+  { hanzi:"去掉",   pinyin:"qùdiào",      pos:"V.",      english:"get rid of, remove, deduct" },
+  { hanzi:"税",     pinyin:"shuì",        pos:"N.",      english:"tax, duty" },
+  { hanzi:"套",     pinyin:"tào",         pos:"M.W.",    english:"(measure word for sets, suites, apartments)" },
+  { hanzi:"平方米", pinyin:"píngfāngmǐ",  pos:"M.W.",    english:"square metre" },
+  { hanzi:"房价",   pinyin:"fáng jià",    pos:"N.",      english:"house price, property price" },
+  { hanzi:"涨",     pinyin:"zhǎng",       pos:"V.",      english:"rise, go up, increase" },
+  { hanzi:"捐",     pinyin:"juān",        pos:"V.",      english:"donate, contribute, give" },
+  { hanzi:"所",     pinyin:"suǒ",         pos:"M.W.",    english:"(measure word for schools, buildings)" },
+  { hanzi:"创业",   pinyin:"chuàngyè",    pos:"V.",      english:"start a business, launch an undertaking" },
+  { hanzi:"想法",   pinyin:"xiǎngfǎ",     pos:"N.",      english:"idea, thought, opinion" },
+  { hanzi:"计划",   pinyin:"jìhuà",       pos:"N./V.",   english:"plan, project; plan, make a plan" },
+  { hanzi:"出国",   pinyin:"chū guó",     pos:"V.",      english:"go abroad, leave the country" },
+  { hanzi:"免不了", pinyin:"miǎnbuliǎo",  pos:"V.",      english:"unavoidable, bound to happen, can\'t escape" },
+  { hanzi:"存",     pinyin:"cún",         pos:"V.",      english:"deposit, save, store" },
+];
+
+const EXAMPLES_CH11 = [
+  [{"zh":"他是当地有名的大富翁，拥有好几家公司。","py":"Tā shì dāngdì yǒumíng de dà fùwēng, yōngyǒu hǎo jǐ jiā gōngsī.","en":"He is a well-known wealthy man locally, owning several companies."},{"zh":"成为富翁是很多年轻人的梦想。","py":"Chéngwéi fùwēng shì hěn duō niánqīng rén de mèngxiǎng.","en":"Becoming wealthy is the dream of many young people."}],
+  [{"zh":"他敲了半天门，都没有人来开。","py":"Tā qiāo le bàntiān mén, dōu méiyǒu rén lái kāi.","en":"He knocked at the door for a long time but nobody came to open it."},{"zh":"请先敲门，再进来。","py":"Qǐng xiān qiāo mén, zài jìnlái.","en":"Please knock first, then come in."}],
+  [{"zh":"他做生意发财了，买了一套大房子。","py":"Tā zuò shēngyì fā cái le, mǎi le yī tào dà fángzi.","en":"He made his fortune in business and bought a large apartment."},{"zh":"不是每个人都能靠股票发财的。","py":"Bú shì měi gè rén dōu néng kào gǔpiào fā cái de.","en":"Not everyone can get rich from stocks."}],
+  [{"zh":"她把成功的秘诀分享给了所有人。","py":"Tā bǎ chénggōng de mìjué fēnxiǎng gěi le suǒyǒu rén.","en":"She shared the secret to her success with everyone."},{"zh":"健康的秘诀就是规律作息和适当运动。","py":"Jiànkāng de mìjué jiùshì guīlǜ zuòxī hé shìdàng yùndòng.","en":"The key to good health is a regular routine and moderate exercise."}],
+  [{"zh":"他失业了，几乎一无所有，生活非常艰难。","py":"Tā shīyè le, jīhū yī wú suǒ yǒu, shēnghuó fēicháng jiānnán.","en":"He lost his job and had almost nothing — life was extremely difficult."},{"zh":"虽然一无所有，但他从不放弃梦想。","py":"Suīrán yī wú suǒ yǒu, dàn tā cóng bù fàngqì mèngxiǎng.","en":"Although he had nothing at all, he never gave up on his dreams."}],
+  [{"zh":"他家里很穷，从小就要帮父母工作。","py":"Tā jiā lǐ hěn qióng, cóng xiǎo jiù yào bāng fùmǔ gōngzuò.","en":"His family was very poor, and he had to help his parents work from a young age."},{"zh":"穷人和富人之间的差距越来越大。","py":"Qióngrén hé fùrén zhījiān de chājù yuèlái yuè dà.","en":"The gap between the poor and the rich is growing wider and wider."}],
+  [{"zh":"每个人都拥有改变自己命运的能力。","py":"Měi gè rén dōu yōngyǒu gǎibiàn zìjǐ mìngyùn de nénglì.","en":"Everyone possesses the ability to change their own destiny."},{"zh":"她拥有丰富的工作经验和良好的人际关系。","py":"Tā yōngyǒu fēngfù de gōngzuò jīngyàn hé liánghǎo de rénjì guānxi.","en":"She has rich work experience and good interpersonal relationships."}],
+  [{"zh":"这次地震造成了巨大的损失。","py":"Zhè cì dìzhèn zàochéng le jùdà de sǔnshī.","en":"This earthquake caused enormous losses."},{"zh":"这项发明对人类有巨大的影响。","py":"Zhè xiàng fāmíng duì rénlèi yǒu jùdà de yǐngxiǎng.","en":"This invention has had an enormous impact on humanity."}],
+  [{"zh":"知识是人生最重要的财富。","py":"Zhīshì shì rénshēng zuì zhòngyào de cáifù.","en":"Knowledge is the most important wealth in life."},{"zh":"他通过努力工作积累了大量财富。","py":"Tā tōngguò nǔlì gōngzuò jīlěi le dàliàng cáifù.","en":"He accumulated great wealth through hard work."}],
+  [{"zh":"这座城市有几百万人口。","py":"Zhè zuò chéngshì yǒu jǐ bǎi wàn rénkǒu.","en":"This city has several million inhabitants."},{"zh":"他赢得了百万大奖，高兴得跳了起来。","py":"Tā yíngdé le bǎiwàn dà jiǎng, gāoxìng de tiào le qǐlái.","en":"He won a million-dollar prize and jumped for joy."}],
+  [{"zh":"听到警报，他立刻跑了出去。","py":"Tīngdào jǐngbào, tā lìkè pǎo le chūqù.","en":"Hearing the alarm, he immediately ran out."},{"zh":"我立刻就明白了他的意思。","py":"Wǒ lìkè jiù míngbai le tā de yìsi.","en":"I understood his meaning right away."}],
+  [{"zh":"既然决定了，就认真去做吧。","py":"Jìrán juédìng le, jiù rènzhēn qù zuò ba.","en":"Since the decision is made, go ahead and do it seriously."},{"zh":"既然你已经来了，就留下来吃饭吧。","py":"Jìrán nǐ yǐjīng lái le, jiù liú xiàlái chī fàn ba.","en":"Since you\'re already here, stay and have dinner."}],
+  [{"zh":"只要你肯努力，一定能成功。","py":"Zhǐyào nǐ kěn nǔlì, yīdìng néng chénggōng.","en":"As long as you\'re willing to work hard, you will definitely succeed."},{"zh":"他不肯向对方道歉，两人因此闹翻了。","py":"Tā bù kěn xiàng duìfāng dàoqiàn, liǎng rén yīncǐ nào fān le.","en":"He refused to apologise to the other person, and the two fell out as a result."}],
+  [{"zh":"这幅画值多少钱？","py":"Zhè fú huà zhí duōshao qián?","en":"How much is this painting worth?"},{"zh":"这辆旧车只值几百块，不值得修。","py":"Zhè liàng jiù chē zhǐ zhí jǐ bǎi kuài, bù zhídé xiū.","en":"This old car is only worth a few hundred yuan — not worth repairing."}],
+  [{"zh":"他喜欢用体力劳动来放松自己。","py":"Tā xǐhuān yòng tǐlì láodòng lái fàngsōng zìjǐ.","en":"He likes to relax through physical labour."},{"zh":"劳动节是庆祝劳动者的节日。","py":"Láodòngjié shì qìngzhù láodòngzhě de jiérì.","en":"Labour Day is a holiday celebrating workers."}],
+  [{"zh":"他告别了家乡，去外地工作。","py":"Tā gàobié le jiāxiāng, qù wàidì gōngzuò.","en":"He said goodbye to his hometown and went to work elsewhere."},{"zh":"毕业典礼上，大家含泪告别了校园。","py":"Bìyè diǎnlǐ shàng, dàjiā hán lèi gàobié le xiàoyuán.","en":"At the graduation ceremony, everyone tearfully said goodbye to the campus."}],
+  [{"zh":"他充满信心地走上了演讲台。","py":"Tā chōngmǎn xìnxīn de zǒu shàng le yǎnjiǎng tái.","en":"He walked up to the podium brimming with confidence."},{"zh":"春节期间，街上充满了节日的气氛。","py":"Chūnjié qījiān, jiē shàng chōngmǎn le jiérì de qìfēn.","en":"During Spring Festival, the streets are filled with a festive atmosphere."}],
+  [{"zh":"他似乎对这件事不太感兴趣。","py":"Tā sìhū duì zhè jiàn shì bú tài gǎn xìngqù.","en":"He doesn\'t seem very interested in this matter."},{"zh":"天空似乎要下雨了，最好带把伞。","py":"Tiānkōng sìhū yào xià yǔ le, zuì hǎo dài bǎ sǎn.","en":"The sky looks like it\'s going to rain — best to bring an umbrella."}],
+  [{"zh":"他买了好几年彩票，终于中奖了。","py":"Tā mǎi le hǎo jǐ nián cǎipiào, zhōngyú zhòng jiǎng le.","en":"He bought lottery tickets for many years and finally won a prize."},{"zh":"中奖的概率非常低，不要把希望都放在上面。","py":"Zhòng jiǎng de gàilǜ fēicháng dī, bú yào bǎ xīwàng dōu fàng zài shàngmiàn.","en":"The odds of winning a prize are very low — don\'t pin all your hopes on it."}],
+  [{"zh":"他每周都买几张彩票，希望有一天能中大奖。","py":"Tā měi zhōu dōu mǎi jǐ zhāng cǎipiào, xīwàng yǒu yī tiān néng zhòng dà jiǎng.","en":"He buys a few lottery tickets every week, hoping to win a big prize one day."},{"zh":"买彩票只是娱乐，不要花太多钱。","py":"Mǎi cǎipiào zhǐshì yúlè, bú yào huā tài duō qián.","en":"Buying lottery tickets is just for fun — don\'t spend too much money on it."}],
+  [{"zh":"她在比赛中获得了一个很好的奖品。","py":"Tā zài bǐsài zhōng huòdé le yī gè hěn hǎo de jiǎngpǐn.","en":"She received a nice prize in the competition."},{"zh":"这次活动的奖品是一台笔记本电脑。","py":"Zhè cì huódòng de jiǎngpǐn shì yī tái bǐjìběn diànnǎo.","en":"The prize for this event is a laptop computer."}],
+  [{"zh":"他始终坚持自己的理想，从未放弃。","py":"Tā shǐzhōng jiānchí zìjǐ de lǐxiǎng, cóng wèi fàngqì.","en":"He has always persisted with his ideals and never gave up."},{"zh":"这件事他始终没有弄明白。","py":"Zhè jiàn shì tā shǐzhōng méiyǒu nòng míngbai.","en":"He never managed to figure this matter out."}],
+  [{"zh":"洗手要用肥皂，才能洗得干净。","py":"Xǐ shǒu yào yòng féizào, cái néng xǐ de gānjìng.","en":"You need to use soap when washing your hands to get them really clean."},{"zh":"她买了一块香皂，放在浴室里。","py":"Tā mǎi le yī kuài xiāngsào, fàng zài yùshì lǐ.","en":"She bought a bar of scented soap and put it in the bathroom."}],
+  [{"zh":"这道菜太咸了，去掉一些盐就好了。","py":"Zhè dào cài tài xián le, qùdiào yīxiē yán jiù hǎo le.","en":"This dish is too salty — take away some salt and it\'ll be fine."},{"zh":"他决心去掉自己的坏习惯。","py":"Tā juéxīn qùdiào zìjǐ de huài xíguàn.","en":"He is determined to get rid of his bad habits."}],
+  [{"zh":"这家公司每年要缴纳很多税。","py":"Zhè jiā gōngsī měi nián yào jiǎonà hěn duō shuì.","en":"This company pays a lot of tax every year."},{"zh":"收入越高，需要缴纳的税越多。","py":"Shōurù yuè gāo, xūyào jiǎonà de shuì yuè duō.","en":"The higher your income, the more tax you need to pay."}],
+  [{"zh":"他买了一套两居室的房子。","py":"Tā mǎi le yī tào liǎng jūshì de fángzi.","en":"He bought a two-bedroom apartment."},{"zh":"我买了一套新的餐具，送给妈妈。","py":"Wǒ mǎi le yī tào xīn de cānjù, sòng gěi māma.","en":"I bought a new set of tableware as a gift for my mother."}],
+  [{"zh":"这套公寓大约有一百平方米。","py":"Zhè tào gōngyù dàyuē yǒu yī bǎi píngfāngmǐ.","en":"This apartment is about one hundred square metres."},{"zh":"每平方米的价格在上海非常高。","py":"Měi píngfāngmǐ de jiàgé zài Shànghǎi fēicháng gāo.","en":"The price per square metre in Shanghai is very high."}],
+  [{"zh":"上海的房价这几年涨了很多。","py":"Shànghǎi de fáng jià zhè jǐ nián zhǎng le hěn duō.","en":"Shanghai\'s house prices have risen a great deal over the past few years."},{"zh":"房价太高，很多年轻人买不起房。","py":"Fáng jià tài gāo, hěn duō niánqīng rén mǎi bu qǐ fáng.","en":"House prices are so high that many young people can\'t afford to buy."}],
+  [{"zh":"物价不断上涨，生活成本越来越高。","py":"Wùjià bùduàn shàngzhǎng, shēnghuó chéngběn yuèlái yuè gāo.","en":"Prices keep rising and the cost of living is getting higher and higher."},{"zh":"河水因为下雨涨了很多。","py":"Hé shuǐ yīnwèi xià yǔ zhǎng le hěn duō.","en":"The river rose a great deal because of the rain."}],
+  [{"zh":"他把一半的工资捐给了慈善机构。","py":"Tā bǎ yī bàn de gōngzī juān gěi le císhàn jīgòu.","en":"He donated half his salary to a charity."},{"zh":"我们捐了一些旧衣服给需要帮助的人。","py":"Wǒmen juān le yīxiē jiù yīfu gěi xūyào bāngzhù de rén.","en":"We donated some old clothes to people in need."}],
+  [{"zh":"这一所大学有几万名学生。","py":"Zhè yī suǒ dàxué yǒu jǐ wàn míng xuésheng.","en":"This university has tens of thousands of students."},{"zh":"这个城市新建了三所希望小学。","py":"Zhège chéngshì xīn jiàn le sān suǒ xīwàng xiǎoxué.","en":"This city has newly built three Hope Primary Schools."}],
+  [{"zh":"他大学一毕业就开始创业，现在很成功。","py":"Tā dàxué yī bìyè jiù kāishǐ chuàngyè, xiànzài hěn chénggōng.","en":"He started his own business right after graduating from university and is now very successful."},{"zh":"创业需要勇气和耐心，不是一件容易的事。","py":"Chuàngyè xūyào yǒngqì hé nàixīn, bú shì yī jiàn róngyì de shì.","en":"Starting a business requires courage and patience — it\'s not an easy thing."}],
+  [{"zh":"他有很多好想法，但是缺乏执行力。","py":"Tā yǒu hěn duō hǎo xiǎngfǎ, dànshì quēfá zhíxínglì.","en":"He has many good ideas, but lacks the drive to execute them."},{"zh":"你对这件事有什么想法？","py":"Nǐ duì zhè jiàn shì yǒu shénme xiǎngfǎ?","en":"What are your thoughts on this matter?"}],
+  [{"zh":"我们需要制定一个详细的计划。","py":"Wǒmen xūyào zhìdìng yī gè xiángxì de jìhuà.","en":"We need to draw up a detailed plan."},{"zh":"他的旅行计划已经安排好了。","py":"Tā de lǚxíng jìhuà yǐjīng ānpái hǎo le.","en":"His travel plans have already been arranged."}],
+  [{"zh":"他第一次出国是去法国留学。","py":"Tā dì yī cì chū guó shì qù Fǎguó liúxué.","en":"His first time going abroad was to study in France."},{"zh":"出国旅游前要记得办签证。","py":"Chū guó lǚyóu qián yào jìde bàn qiānzhèng.","en":"Before travelling abroad, remember to apply for a visa."}],
+  [{"zh":"两个人住在一起，免不了会有摩擦。","py":"Liǎng gè rén zhù zài yīqǐ, miǎnbuliǎo huì yǒu mócā.","en":"When two people live together, there are bound to be frictions."},{"zh":"工作忙的时候，加班是免不了的。","py":"Gōngzuò máng de shíhòu, jiābān shì miǎnbuliǎo de.","en":"When work is busy, overtime is unavoidable."}],
+  [{"zh":"他把钱存进了银行，准备买房。","py":"Tā bǎ qián cún jìn le yínháng, zhǔnbèi mǎi fáng.","en":"He deposited the money in the bank, preparing to buy a home."},{"zh":"养成存钱的习惯，对未来很有帮助。","py":"Yǎngchéng cún qián de xíguàn, duì wèilái hěn yǒu bāngzhù.","en":"Developing the habit of saving money is very helpful for the future."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -3444,7 +3697,8 @@ function WORDS() {
   if (currentChapter === 7) return WORDS_CH7;
   if (currentChapter === 8) return WORDS_CH8;
   if (currentChapter === 9) return WORDS_CH9;
-  return WORDS_CH10;
+  if (currentChapter === 10) return WORDS_CH10;
+  return WORDS_CH11;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -3456,7 +3710,8 @@ function EXAMPLES() {
   if (currentChapter === 7) return EXAMPLES_CH7;
   if (currentChapter === 8) return EXAMPLES_CH8;
   if (currentChapter === 9) return EXAMPLES_CH9;
-  return EXAMPLES_CH10;
+  if (currentChapter === 10) return EXAMPLES_CH10;
+  return EXAMPLES_CH11;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -4335,7 +4590,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -4528,7 +4783,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -4927,6 +5182,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:8, words: WORDS_CH8 },
   { ch:9, words: WORDS_CH9 },
   { ch:10, words: WORDS_CH10 },
+  { ch:11, words: WORDS_CH11 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -4935,12 +5191,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 10 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 11 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 10 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 11 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -5187,7 +5443,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 10 chapters</div>
+      <div class="search-empty">Type to search all 11 chapters</div>
     </div>
   </div>
 </div>
