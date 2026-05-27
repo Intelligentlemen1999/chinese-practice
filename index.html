@@ -800,6 +800,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 8</span>
     <span class="ch-name">为啥不合身</span>
   </button>
+  <button class="ch-btn" id="ch-btn-9" onclick="switchChapter(9)">
+    <span class="ch-num">Ch 9</span>
+    <span class="ch-name">姚明的故事</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -966,6 +970,7 @@ const CHAPTERS = {
   6: { title:'终于要结婚了', subtitle:'Chapter 6' },
   7: { title:'白领的"网络依赖"', subtitle:'Chapter 7' },
   8: { title:'为啥就要不合身', subtitle:'Chapter 8' },
+  9: { title:'姚明的故事', subtitle:'Chapter 9' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -2190,6 +2195,164 @@ const LESSONS = {
         answer:'说真的'
       },
     ]
+  },
+  9: {
+    texts: [
+      {
+        num:'§1', title:'姚明的故事', en:'The Story of Yao Ming',
+        paragraphs:[
+          {
+            zh:'1980年9月12日傍晚，在上海市第六人民医院，一个超级宝宝出生了。',
+            py:'1980 nián 9 yuè 12 rì bàngwǎn, zài Shànghǎi shì dì liù rénmín yīyuàn, yī gè chāojí bǎobao chūshēng le.',
+            en:'On the evening of 12 September 1980, at Shanghai\'s Sixth People\'s Hospital, a super baby was born.'
+          },
+          {
+            zh:'见到这个宝宝的人，没有一个不吃惊的。这孩子长长的腿，手脚大得像三岁的孩子，体重几乎是普通宝宝的两倍。',
+            py:'Jiàndào zhège bǎobao de rén, méiyǒu yī gè bù chī jīng de. Zhè háizi cháng cháng de tuǐ, shǒujiǎo dà de xiàng sān suì de háizi, tǐzhòng jīhū shì pǔtōng bǎobao de liǎng bèi.',
+            en:'Everyone who saw this baby was amazed. The child had long legs, hands and feet as big as a three-year-old\'s, and weighed almost twice as much as a normal baby.'
+          },
+          {
+            zh:'这个宝宝就是姚明。他的父母以前都是篮球运动员。他刚出生，大家就猜想到了，他将来很可能会和他父母一样，成为一名篮球运动员。不过，谁也没想到，他会成为中国最有名的篮球明星，更没想到，他还能在遥远的美国获得成功。',
+            py:'Zhège bǎobao jiùshì Yáo Míng. Tā de fùmǔ yǐqián dōu shì lánqiú yùndòngyuán. Tā gāng chūshēng, dàjiā jiù cāixiǎng dào le, tā jiānglái hěn kěnéng huì hé tā fùmǔ yīyàng, chéngwéi yī míng lánqiú yùndòngyuán. Bùguò, shuí yě méi xiǎngdào, tā huì chéngwéi Zhōngguó zuì yǒumíng de lánqiú míngxīng, gèng méi xiǎngdào, tā hái néng zài yáoyuǎn de Měiguó huòdé chénggōng.',
+            en:'This baby was Yao Ming. Both his parents had been basketball players. From the moment he was born, everyone guessed that he would likely follow in his parents\' footsteps and become a basketball player. But no one imagined he would become China\'s most famous basketball star — and even less that he would find success in faraway America.'
+          },
+          {
+            zh:'在中国，人们常常把有运动天赋的孩子送进体育学校，让他们接受专业的体育训练。从13岁起，姚明就离开家，开始篮球训练。运动员的生活是十分艰苦的，训练也非常严格。每年除了少数几个节日，姚明几乎没有一天不是在训练馆里度过的，每天要训练8到10个小时。短短几年里，他的篮球水平进步飞快。',
+            py:'Zài Zhōngguó, rénmen chángcháng bǎ yǒu yùndòng tiānfù de háizi sòng jìn tǐyù xuéxiào, ràng tāmen jiēshòu zhuānyè de tǐyù xùnliàn. Cóng 13 suì qǐ, Yáo Míng jiù líkāi jiā, kāishǐ lánqiú xùnliàn. Yùndòngyuán de shēnghuó shì shífēn jiānkǔ de, xùnliàn yě fēicháng yángé. Měi nián chúle shǎoshù jǐ gè jiérì, Yáo Míng jīhū méiyǒu yī tiān bú shì zài xùnliànguǎn lǐ dùguò de, měitiān yào xùnliàn 8 dào 10 gè xiǎoshí. Duǎnduǎn jǐ nián lǐ, tā de lánqiú shuǐpíng jìnbù fēikuài.',
+            en:'In China, children with athletic talent are often sent to sports schools to receive professional sports training. From the age of 13, Yao Ming left home and began basketball training. The life of an athlete is extremely arduous, and the training is very strict. Apart from a few holidays each year, Yao Ming spent almost every day in the training hall, training 8 to 10 hours a day. In just a few years, his basketball skills improved with remarkable speed.'
+          },
+          {
+            zh:'五年后，姚明进了中国篮球队。2001年，他帮助中国队获得亚洲冠军。第二年，22岁的姚明，这个2.26米高，134公斤重的大个子，登上了飞往美国的飞机。',
+            py:'Wǔ nián hòu, Yáo Míng jìn le Zhōngguó lánqiú duì. 2001 nián, tā bāngzhù Zhōngguó duì huòdé Yàzhōu guànjūn. Dì èr nián, 22 suì de Yáo Míng, zhège 2.26 mǐ gāo, 134 gōngjīn zhòng de dà gèzi, dēng shàng le fēi wǎng Měiguó de fēijī.',
+            en:'Five years later, Yao Ming joined the Chinese national basketball team. In 2001 he helped the Chinese team win the Asian championship. The following year, 22-year-old Yao Ming — this 2.26-metre-tall, 134-kilogram giant — boarded a plane bound for the United States.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'马拉松纪录', en:'The Marathon Record',
+        paragraphs:[
+          {
+            zh:'1912年，第五届奥运会在瑞典举行。南非运动员麦克阿瑟以2小时36分54秒8的成绩获得了马拉松冠军，挪威运动员奥尔森慢了1个小时，以3小时36分35秒2的成绩获第34名，是这次比赛的最后一名。54年以后，人们才知道，这次比赛的最后一名其实是日本运动员金栗志藏。原来，这里还有一段有趣的小故事呢。',
+            py:'1912 nián, dì wǔ jiè Àoyùnhuì zài Ruìdiǎn jǔxíng. Nánfēi yùndòngyuán Màikè\'āshè yǐ 2 xiǎoshí 36 fēn 54 miǎo 8 de chéngjì huòdé le mǎlāsōng guànjūn, Nuówēi yùndòngyuán Àoěrsēn màn le 1 gè xiǎoshí, yǐ 3 xiǎoshí 36 fēn 35 miǎo 2 de chéngjì huò dì 34 míng, shì zhè cì bǐsài de zuìhòu yī míng. 54 nián yǐhòu, rénmen cái zhīdào, zhè cì bǐsài de zuìhòu yī míng qíshí shì Rìběn yùndòngyuán Jīnlì Zhìcáng. Yuánlái, zhèlǐ hái yǒu yī duàn yǒuqù de xiǎo gùshi ne.',
+            en:'In 1912 the Fifth Olympic Games were held in Sweden. South African athlete McArthur won the marathon with a time of 2 hours 36 minutes 54.8 seconds; Norwegian athlete Olsen was an hour slower, finishing 34th with a time of 3 hours 36 minutes 35.2 seconds — the last-place finisher. It was not until 54 years later that people learned the real last-place finisher was Japanese athlete Kanakuri Shizo. It turns out there is an amusing little story behind this.'
+          },
+          {
+            zh:'那次马拉松赛遇上了一个大热天。日本运动员金栗跑在队伍的后面。他突然发现路边有一个观众在喝橙汁。他又渴又累，不得不放弃了比赛，向那个观众走去。虽然语言不通，但金栗很快就喝到了橙汁，还去那个观众家里舒舒服服地睡了一觉。这时，运动场内的比赛早已结束了。',
+            py:'Nà cì mǎlāsōng sài yùshàng le yī gè dà rè tiān. Rìběn yùndòngyuán Jīnlì pǎo zài duìwu de hòumiàn. Tā tūrán fāxiàn lù biān yǒu yī gè guānzhòng zài hē chéngzhī. Tā yòu kě yòu lèi, bùdébù fàngqì le bǐsài, xiàng nà gè guānzhòng zǒu qù. Suīrán yǔyán bù tōng, dàn Jīnlì hěn kuài jiù hē dào le chéngzhī, hái qù nà gè guānzhòng jiā lǐ shūshūfufú de shuì le yī jiào. Zhè shí, yùndòngchǎng nèi de bǐsài zǎo yǐ jiéshù le.',
+            en:'That marathon took place on an extremely hot day. Japanese athlete Kanakuri was running at the back of the pack. He suddenly noticed a spectator on the roadside drinking orange juice. Exhausted and desperately thirsty, he had no choice but to give up the race and walk over to the spectator. Although they couldn\'t communicate, Kanakuri quickly got some orange juice and even went to the spectator\'s home for a good comfortable sleep. By then, the race at the stadium had long since ended.'
+          },
+          {
+            zh:'1966年，76岁的金栗又到了瑞典。他从他1912年放弃比赛的那个地点向马拉松比赛的终点——奥林匹克体育场——走去，终于走到了终点。从那次比赛的出发时间算起，已经过了54年8个月6天8小时32分20秒3。人们纷纷向他祝贺，说他创造了一个特别的"马拉松纪录"。金栗说："很抱歉，让大家久等了。我不能不承认，我跑得确实慢了点儿，不过，我觉得非常有意义。在这54年中，我找到了我的妻子，现在我有6个孩子，10个孙儿。这难道不需要时间吗？不管时间长短，每个人都会跑到终点的。"',
+            py:'1966 nián, 76 suì de Jīnlì yòu dào le Ruìdiǎn. Tā cóng tā 1912 nián fàngqì bǐsài de nà gè dìdiǎn xiàng mǎlāsōng bǐsài de zhōngdiǎn——Àolínpǐkè tǐyùchǎng——zǒu qù, zhōngyú zǒu dào le zhōngdiǎn. Cóng nà cì bǐsài de chūfā shíjiān suànqǐ, yǐjīng guò le 54 nián 8 gè yuè 6 tiān 8 xiǎoshí 32 fēn 20 miǎo 3. Rénmen fēnfēn xiàng tā zhùhè, shuō tā chuàngzào le yī gè tèbié de "mǎlāsōng jìlù". Jīnlì shuō: "Hěn bàoqiàn, ràng dàjiā jiǔ děng le. Wǒ bù néng bù chéngrèn, wǒ pǎo de quèshí màn le diǎnr, bùguò, wǒ juéde fēicháng yǒu yìyì. Zài zhè 54 nián zhōng, wǒ zhǎodào le wǒ de qīzi, xiànzài wǒ yǒu 6 gè háizi, 10 gè sūn\'ér. Zhè nándào bù xūyào shíjiān ma? Bùguǎn shíjiān cháng duǎn, měi gè rén dōu huì pǎo dào zhōngdiǎn de."',
+            en:'In 1966, 76-year-old Kanakuri returned to Sweden. He walked from the spot where he had abandoned the race in 1912 to the marathon finish line — the Olympic Stadium — and finally crossed it. Counting from the starting time of that race, 54 years, 8 months, 6 days, 8 hours, 32 minutes and 20.3 seconds had passed. People came forward one after another to congratulate him, saying he had set a special "marathon record." Kanakuri said: "I\'m so sorry to have kept everyone waiting. I can\'t deny that I ran rather slowly, but I feel it was very meaningful. In those 54 years, I found my wife, and now I have 6 children and 10 grandchildren. Doesn\'t that take time? No matter how long it takes, everyone will reach the finish line."'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'双重否定 Double Negation (没有…不/不…不)',
+        pattern:'没有一个不……  /  没有一天不……',
+        explanation:'A double negative in Chinese creates strong emphasis: "not a single one doesn\'t…" means "every single one does." The pattern "没有…不" strengthens a positive statement.',
+        examples:[
+          {zh:'见到这个宝宝的人，没有一个不吃惊的。',py:'Jiàndào zhège bǎobao de rén, méiyǒu yī gè bù chī jīng de.',en:'Everyone who saw this baby was amazed (not a single person wasn\'t amazed).'},
+          {zh:'我没有一天不想她。',py:'Wǒ méiyǒu yī tiān bù xiǎng tā.',en:'There is not a day I don\'t think of her.'},
+          {zh:'班上没有一个同学不喜欢这位老师。',py:'Bān shàng méiyǒu yī gè tóngxué bù xǐhuān zhè wèi lǎoshī.',en:'Not a single student in the class dislikes this teacher.'},
+        ]
+      },
+      {
+        title:'几乎 (Almost, Nearly)',
+        pattern:'几乎＋V/Adj.',
+        explanation:'"几乎" modifies a verb or adjective to mean "almost" or "nearly" — very close to a limit but not quite.',
+        examples:[
+          {zh:'他的体重几乎是普通宝宝的两倍。',py:'Tā de tǐzhòng jīhū shì pǔtōng bǎobao de liǎng bèi.',en:'His weight was almost twice that of a normal baby.'},
+          {zh:'这道题几乎所有人都做错了。',py:'Zhè dào tí jīhū suǒyǒu rén dōu zuò cuò le.',en:'Almost everyone got this question wrong.'},
+          {zh:'他几乎每天都在训练。',py:'Tā jīhū měitiān dōu zài xùnliàn.',en:'He trains almost every day.'},
+        ]
+      },
+      {
+        title:'从……起 (Since, From … On)',
+        pattern:'从＋time/age＋起，……',
+        explanation:'"从……起" marks the starting point of an action or state: "starting from a certain time/age."',
+        examples:[
+          {zh:'从13岁起，姚明就离开家，开始篮球训练。',py:'Cóng 13 suì qǐ, Yáo Míng jiù líkāi jiā, kāishǐ lánqiú xùnliàn.',en:'From the age of 13, Yao Ming left home and began basketball training.'},
+          {zh:'从明天起，我要坚持每天跑步。',py:'Cóng míngtiān qǐ, wǒ yào jiānchí měitiān pǎobù.',en:'Starting from tomorrow, I will stick to running every day.'},
+          {zh:'从小学起，他就对音乐很感兴趣。',py:'Cóng xiǎoxué qǐ, tā jiù duì yīnyuè hěn gǎn xìngqù.',en:'Since primary school, he has been very interested in music.'},
+        ]
+      },
+      {
+        title:'不得不 (Have To, Have No Choice But To)',
+        pattern:'不得不＋V',
+        explanation:'"不得不" expresses that someone is compelled to do something, with no alternative — stronger than "必须."',
+        examples:[
+          {zh:'他又渴又累，不得不放弃了比赛。',py:'Tā yòu kě yòu lèi, bùdébù fàngqì le bǐsài.',en:'Exhausted and thirsty, he had no choice but to give up the race.'},
+          {zh:'天气太差，我们不得不取消了野餐。',py:'Tiānqì tài chà, wǒmen bùdébù qǔxiāo le yěcān.',en:'The weather was too bad — we had no choice but to cancel the picnic.'},
+          {zh:'为了家人，他不得不辞去了工作。',py:'Wèile jiārén, tā bùdébù cí qù le gōngzuò.',en:'For the sake of his family, he had no choice but to quit his job.'},
+        ]
+      },
+      {
+        title:'纷纷 (One After Another, In Succession)',
+        pattern:'纷纷＋V',
+        explanation:'"纷纷" means many people or things doing something in quick succession — "one after another," "in droves."',
+        examples:[
+          {zh:'人们纷纷向他祝贺。',py:'Rénmen fēnfēn xiàng tā zhùhè.',en:'People came forward one after another to congratulate him.'},
+          {zh:'听到这个消息，同学们纷纷赶来帮忙。',py:'Tīngdào zhège xiāoxi, tóngxuémen fēnfēn gǎnlái bāngmáng.',en:'Hearing this news, classmates rushed over one by one to help.'},
+          {zh:'春节前，人们纷纷回到家乡。',py:'Chūnjié qián, rénmen fēnfēn huídào jiāxiāng.',en:'Before Spring Festival, people return to their hometowns in droves.'},
+        ]
+      },
+      {
+        title:'难道 (Could It Be That… / Rhetorical Question)',
+        pattern:'难道……吗？',
+        explanation:'"难道" is used in rhetorical questions to emphasize the speaker\'s surprise or to stress an obvious point. The expected answer is implied.',
+        examples:[
+          {zh:'这难道不需要时间吗？',py:'Zhè nándào bù xūyào shíjiān ma?',en:'Doesn\'t that take time? (Of course it does!)'},
+          {zh:'你难道不知道今天是她的生日吗？',py:'Nǐ nándào bù zhīdào jīntiān shì tā de shēngrì ma?',en:'Don\'t you know today is her birthday?'},
+          {zh:'难道我们就没有办法了吗？',py:'Nándào wǒmen jiù méiyǒu bànfǎ le ma?',en:'Is there really no solution for us?'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'姚明出生时，体重____是普通宝宝的两倍。',
+        options:['几乎','纷纷','艰苦','严格'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____13岁____，姚明就开始了专业篮球训练。',
+        options:['从……起','不得不','难道','以……成绩'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'金栗又渴又累，____放弃了比赛。',
+        options:['不得不','纷纷','几乎','飞快'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'人们____向金栗祝贺，说他创造了特别的纪录。',
+        options:['纷纷','几乎','遥远','艰苦'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'这____不需要时间吗？（反问句）',
+        options:['难道','几乎','纷纷','不得不'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "不得不" 完成句子：下雨了，我们___取消比赛。',
+        answer:'不得不'
+      },
+      {
+        type:'fill',
+        prompt:'用 "难道" 造句：你___不知道他是冠军吗？',
+        answer:'难道'
+      },
+    ]
   }
 };
 
@@ -2938,6 +3101,88 @@ const EXAMPLES_CH8 = [
   [{"zh":"他承担了所有的工作责任。","py":"Tā chéngdān le suǒyǒu de gōngzuò zérèn.","en":"He took on all the work responsibilities."},{"zh":"我们要学会承担自己的错误。","py":"Wǒmen yào xuéhuì chéngdān zìjǐ de cuòwù.","en":"We should learn to take responsibility for our own mistakes."}],
 ];
 
+const WORDS_CH9 = [
+  { hanzi:"人民",   pinyin:"rénmín",       pos:"N.",     english:"people, the people" },
+  { hanzi:"超级",   pinyin:"chāojí",       pos:"Adj.",   english:"super, super-level" },
+  { hanzi:"宝宝",   pinyin:"bǎobao",       pos:"N.",     english:"baby, darling" },
+  { hanzi:"吃惊",   pinyin:"chī jīng",     pos:"V.",     english:"be surprised, be amazed" },
+  { hanzi:"脚",     pinyin:"jiǎo",         pos:"N.",     english:"foot" },
+  { hanzi:"体重",   pinyin:"tǐzhòng",      pos:"N.",     english:"(body) weight" },
+  { hanzi:"几乎",   pinyin:"jīhū",         pos:"Adv.",   english:"almost, nearly" },
+  { hanzi:"运动员", pinyin:"yùndòngyuán",  pos:"N.",     english:"athlete, sportsman" },
+  { hanzi:"猜想",   pinyin:"cāixiǎng",     pos:"V.",     english:"suppose, guess, conjecture" },
+  { hanzi:"猜",     pinyin:"cāi",          pos:"V.",     english:"guess, surmise" },
+  { hanzi:"明星",   pinyin:"míngxīng",     pos:"N.",     english:"star (sports/film/pop)" },
+  { hanzi:"遥远",   pinyin:"yáoyuǎn",      pos:"Adj.",   english:"faraway, distant, remote" },
+  { hanzi:"天赋",   pinyin:"tiānfù",       pos:"N.",     english:"natural gift, innate talent" },
+  { hanzi:"体育",   pinyin:"tǐyù",         pos:"N.",     english:"sports, physical education" },
+  { hanzi:"训练",   pinyin:"xùnliàn",      pos:"V.",     english:"train, drill, practise" },
+  { hanzi:"艰苦",   pinyin:"jiānkǔ",       pos:"Adj.",   english:"arduous, difficult, hard" },
+  { hanzi:"严格",   pinyin:"yángé",        pos:"Adj.",   english:"strict, rigorous, exacting" },
+  { hanzi:"度过",   pinyin:"dùguò",        pos:"V.",     english:"spend, pass (time)" },
+  { hanzi:"飞快",   pinyin:"fēikuài",      pos:"Adj.",   english:"very fast, rapid, swift" },
+  { hanzi:"冠军",   pinyin:"guànjūn",      pos:"N.",     english:"champion, first place" },
+  { hanzi:"登上",   pinyin:"dēng shàng",   pos:"V.",     english:"board, ascend, mount" },
+  { hanzi:"届",     pinyin:"jiè",          pos:"M.W.",   english:"(measure word for periodic events)" },
+  { hanzi:"以",     pinyin:"yǐ",           pos:"Prep.",  english:"with, by means of, at (a score)" },
+  { hanzi:"秒",     pinyin:"miǎo",         pos:"N.",     english:"second (unit of time)" },
+  { hanzi:"有趣",   pinyin:"yǒuqù",        pos:"Adj.",   english:"interesting, amusing, fun" },
+  { hanzi:"队伍",   pinyin:"duìwu",        pos:"N.",     english:"team, group, procession" },
+  { hanzi:"观众",   pinyin:"guānzhòng",    pos:"N.",     english:"spectator, audience, viewer" },
+  { hanzi:"渴",     pinyin:"kě",           pos:"Adj.",   english:"thirsty" },
+  { hanzi:"不得不", pinyin:"bùdébù",       pos:"Adv.",   english:"have to, have no choice but to" },
+  { hanzi:"通",     pinyin:"tōng",         pos:"V.",     english:"understand; connect; be passable" },
+  { hanzi:"运动场", pinyin:"yùndòngchǎng", pos:"N.",     english:"sports ground, stadium, playground" },
+  { hanzi:"终点",   pinyin:"zhōngdiǎn",    pos:"N.",     english:"finish line, end point, terminal" },
+  { hanzi:"出发",   pinyin:"chūfā",        pos:"V.",     english:"set out, set off, depart" },
+  { hanzi:"纷纷",   pinyin:"fēnfēn",       pos:"Adv.",   english:"one after another, in succession" },
+  { hanzi:"创造",   pinyin:"chuàngzào",    pos:"V.",     english:"create, bring about" },
+  { hanzi:"纪录",   pinyin:"jìlù",         pos:"N.",     english:"record (achievement)" },
+  { hanzi:"孙儿",   pinyin:"sūn\'ér",      pos:"N.",     english:"grandchild" },
+  { hanzi:"难道",   pinyin:"nándào",       pos:"Adv.",   english:"(rhetorical) could it be that; is it really the case that" },
+];
+
+const EXAMPLES_CH9 = [
+  [{"zh":"人民是国家的主人。","py":"Rénmín shì guójiā de zhǔrén.","en":"The people are the masters of the country."},{"zh":"政府要为人民服务。","py":"Zhèngfǔ yào wèi rénmín fúwù.","en":"The government should serve the people."}],
+  [{"zh":"他是一个超级明星，全世界的人都认识他。","py":"Tā shì yī gè chāojí míngxīng, quán shìjiè de rén dōu rènshi tā.","en":"He is a superstar — people all over the world know him."},{"zh":"这款手机的功能超级强大。","py":"Zhè kuǎn shǒujī de gōngnéng chāojí qiángdà.","en":"This mobile phone has super powerful features."}],
+  [{"zh":"她刚生了一个可爱的宝宝。","py":"Tā gāng shēng le yī gè kě\'ài de bǎobao.","en":"She just gave birth to a lovely baby."},{"zh":"这个宝宝一点儿都不爱哭。","py":"Zhège bǎobao yīdiǎnr dōu bù ài kū.","en":"This baby hardly ever cries."}],
+  [{"zh":"听到这个消息，她大吃一惊。","py":"Tīngdào zhège xiāoxi, tā dà chī yī jīng.","en":"Hearing this news, she was greatly surprised."},{"zh":"第一次看到长颈鹿，孩子们都吃惊地张大了嘴巴。","py":"Dì yī cì kàndào chángjǐnglù, háizimen dōu chī jīng de zhāng dà le zuǐba.","en":"Seeing a giraffe for the first time, the children all opened their mouths wide in amazement."}],
+  [{"zh":"他的脚很大，很难买到合适的鞋。","py":"Tā de jiǎo hěn dà, hěn nán mǎidào héshì de xié.","en":"His feet are very big, so it\'s hard to find suitable shoes."},{"zh":"走了一天的路，脚都疼了。","py":"Zǒu le yī tiān de lù, jiǎo dōu téng le.","en":"After walking all day, my feet ache."}],
+  [{"zh":"他的体重比去年增加了不少。","py":"Tā de tǐzhòng bǐ qùnián zēngjiā le bùshǎo.","en":"His body weight has increased quite a bit compared to last year."},{"zh":"医生建议她控制体重。","py":"Yīshēng jiànyì tā kòngzhì tǐzhòng.","en":"The doctor advised her to control her weight."}],
+  [{"zh":"他说的话，我几乎都听不懂。","py":"Tā shuō de huà, wǒ jīhū dōu tīng bu dǒng.","en":"Almost none of what he says can I understand."},{"zh":"这道题几乎所有人都做错了。","py":"Zhè dào tí jīhū suǒyǒu rén dōu zuò cuò le.","en":"Almost everyone got this question wrong."}],
+  [{"zh":"他是一位非常出色的游泳运动员。","py":"Tā shì yī wèi fēicháng chūsè de yóuyǒng yùndòngyuán.","en":"He is an outstanding swimming athlete."},{"zh":"成为一名职业运动员需要多年的训练。","py":"Chéngwéi yī míng zhíyè yùndòngyuán xūyào duō nián de xùnliàn.","en":"Becoming a professional athlete requires years of training."}],
+  [{"zh":"我猜想他今天不会来了。","py":"Wǒ cāixiǎng tā jīntiān bú huì lái le.","en":"I suppose he won\'t come today."},{"zh":"大家都猜想他们会结婚。","py":"Dàjiā dōu cāixiǎng tāmen huì jiéhūn.","en":"Everyone guessed they would get married."}],
+  [{"zh":"你猜猜这是谁送给你的礼物？","py":"Nǐ cāicai zhè shì shuí sòng gěi nǐ de lǐwù?","en":"Can you guess who gave you this present?"},{"zh":"我猜他今年大约三十岁。","py":"Wǒ cāi tā jīnnián dàyuē sānshí suì.","en":"I guess he is about thirty years old."}],
+  [{"zh":"她是一位著名的电影明星。","py":"Tā shì yī wèi zhùmíng de diànyǐng míngxīng.","en":"She is a famous movie star."},{"zh":"他从小就梦想成为一名体育明星。","py":"Tā cóng xiǎo jiù mèngxiǎng chéngwéi yī míng tǐyù míngxīng.","en":"He has dreamed of becoming a sports star since he was young."}],
+  [{"zh":"他离家乡很遥远，只能过年才回去。","py":"Tā lí jiāxiāng hěn yáoyuǎn, zhǐ néng guò nián cái huí qù.","en":"He lives far from his hometown and can only return during the New Year."},{"zh":"那是一个遥远的梦想，但他相信会实现。","py":"Nà shì yī gè yáoyuǎn de mèngxiǎng, dàn tā xiāngxìn huì shíxiàn.","en":"That is a distant dream, but he believes it will come true."}],
+  [{"zh":"他有很高的音乐天赋，五岁就会弹钢琴了。","py":"Tā yǒu hěn gāo de yīnyuè tiānfù, wǔ suì jiù huì tán gāngqín le.","en":"He has great musical talent — he could play piano at age five."},{"zh":"体育天赋固然重要，但努力更重要。","py":"Tǐyù tiānfù gùrán zhòngyào, dàn nǔlì gèng zhòngyào.","en":"Athletic talent is important, but hard work matters even more."}],
+  [{"zh":"学校每周有两节体育课。","py":"Xuéxiào měi zhōu yǒu liǎng jié tǐyù kè.","en":"The school has two physical education classes per week."},{"zh":"他从小就喜欢体育，擅长多种运动。","py":"Tā cóng xiǎo jiù xǐhuān tǐyù, shàncháng duō zhǒng yùndòng.","en":"He has loved sports since childhood and excels at many of them."}],
+  [{"zh":"每天坚持训练，他的水平进步很快。","py":"Měitiān jiānchí xùnliàn, tā de shuǐpíng jìnbù hěn kuài.","en":"By training every day, his level improved rapidly."},{"zh":"这支队伍经过长时间的严格训练，终于赢了比赛。","py":"Zhè zhī duìwu jīngguò cháng shíjiān de yángé xùnliàn, zhōngyú yíng le bǐsài.","en":"This team won the competition after a long period of strict training."}],
+  [{"zh":"战士们的生活条件十分艰苦。","py":"Zhànshìmen de shēnghuó tiáojiàn shífēn jiānkǔ.","en":"The living conditions for the soldiers were extremely harsh."},{"zh":"经历了艰苦的环境，他变得更坚强了。","py":"Jīnglì le jiānkǔ de huánjìng, tā biàn de gèng jiānqiáng le.","en":"Having lived through difficult conditions, he became much stronger."}],
+  [{"zh":"父母对孩子的学习要求非常严格。","py":"Fùmǔ duì háizi de xuéxí yāoqiú fēicháng yángé.","en":"The parents have very strict requirements for their child\'s studies."},{"zh":"这位教练训练运动员十分严格。","py":"Zhè wèi jiàoliàn xùnliàn yùndòngyuán shífēn yángé.","en":"This coach is very strict in training the athletes."}],
+  [{"zh":"他在国外度过了三年的留学生活。","py":"Tā zài guówài dùguò le sān nián de liúxué shēnghuó.","en":"He spent three years studying abroad."},{"zh":"我们在山里度过了一个美好的周末。","py":"Wǒmen zài shān lǐ dùguò le yī gè měihǎo de zhōumò.","en":"We spent a wonderful weekend in the mountains."}],
+  [{"zh":"他跑得飞快，一下子就冲到了终点。","py":"Tā pǎo de fēikuài, yīxiàzi jiù chōng dào le zhōngdiǎn.","en":"He ran very fast and reached the finish line in no time."},{"zh":"时间过得飞快，不知不觉一年就过去了。","py":"Shíjiān guò de fēikuài, bùzhī bùjué yī nián jiù guò qù le.","en":"Time passes so fast — a year goes by without even noticing."}],
+  [{"zh":"他连续三年获得全国冠军。","py":"Tā liánxù sān nián huòdé quánguó guànjūn.","en":"He won the national championship for three consecutive years."},{"zh":"中国队在这次比赛中获得了冠军。","py":"Zhōngguó duì zài zhè cì bǐsài zhōng huòdé le guànjūn.","en":"The Chinese team won the championship in this competition."}],
+  [{"zh":"他登上了世界最高峰——珠穆朗玛峰。","py":"Tā dēng shàng le shìjiè zuì gāo fēng——Zhūmùlǎngmǎ fēng.","en":"He climbed to the top of the world\'s highest peak — Mount Everest."},{"zh":"运动员登上了领奖台。","py":"Yùndòngyuán dēng shàng le lǐngjiǎng tái.","en":"The athlete stepped up onto the podium."}],
+  [{"zh":"这是第三十二届奥运会。","py":"Zhè shì dì sānshí\'èr jiè Àoyùnhuì.","en":"This is the 32nd Olympic Games."},{"zh":"他参加了两届世界杯比赛。","py":"Tā cānjiā le liǎng jiè Shìjiè Bēi bǐsài.","en":"He competed in two FIFA World Cup tournaments."}],
+  [{"zh":"他以第一名的成绩完成了比赛。","py":"Tā yǐ dì yī míng de chéngjì wánchéng le bǐsài.","en":"He finished the competition in first place."},{"zh":"她以优异的成绩考上了名校。","py":"Tā yǐ yōuyì de chéngjì kǎo shàng le míngxiào.","en":"She passed the entrance exam for a prestigious school with excellent results."}],
+  [{"zh":"运动员跑完全程只用了三十六秒。","py":"Yùndòngyuán pǎo wán quán chéng zhǐ yòng le sānshíliù miǎo.","en":"The athlete ran the full distance in just thirty-six seconds."},{"zh":"请等我一秒钟，马上好。","py":"Qǐng děng wǒ yī miǎo zhōng, mǎshàng hǎo.","en":"Please wait just one second — I\'ll be done right away."}],
+  [{"zh":"这本书写得很有趣，我一口气读完了。","py":"Zhè běn shū xiě de hěn yǒuqù, wǒ yī kǒu qì dú wán le.","en":"This book is written in a very interesting way — I read it all in one go."},{"zh":"他是一个非常有趣的人，总能让大家开心。","py":"Tā shì yī gè fēicháng yǒuqù de rén, zǒng néng ràng dàjiā kāixīn.","en":"He is a very interesting person who always makes everyone happy."}],
+  [{"zh":"他站在队伍的最前面。","py":"Tā zhàn zài duìwu de zuì qiánmiàn.","en":"He stood at the very front of the group."},{"zh":"志愿者队伍越来越大。","py":"Zhìyuànzhě duìwu yuèlái yuè dà.","en":"The team of volunteers is growing larger and larger."}],
+  [{"zh":"比赛现场有几万名观众为运动员加油。","py":"Bǐsài xiànchǎng yǒu jǐ wàn míng guānzhòng wèi yùndòngyuán jiāyóu.","en":"Tens of thousands of spectators at the venue cheered for the athletes."},{"zh":"这部电影的观众超过了一亿人。","py":"Zhè bù diànyǐng de guānzhòng chāoguò le yī yì rén.","en":"This film was seen by more than a hundred million viewers."}],
+  [{"zh":"跑了十公里，他渴得要命。","py":"Pǎo le shí gōnglǐ, tā kě de yào mìng.","en":"After running ten kilometres, he was desperately thirsty."},{"zh":"天气太热，我一直觉得渴。","py":"Tiānqì tài rè, wǒ yīzhí juéde kě.","en":"The weather is so hot that I keep feeling thirsty."}],
+  [{"zh":"为了照顾生病的母亲，他不得不辞去了工作。","py":"Wèile zhàogù shēngbìng de mǔqīn, tā bùdébù cí qù le gōngzuò.","en":"To take care of his sick mother, he had no choice but to quit his job."},{"zh":"时间太晚了，我们不得不先走了。","py":"Shíjiān tài wǎn le, wǒmen bùdébù xiān zǒu le.","en":"It\'s getting too late — we have no choice but to leave first."}],
+  [{"zh":"虽然语言不通，但他们用手势交流。","py":"Suīrán yǔyán bù tōng, dàn tāmen yòng shǒushì jiāoliú.","en":"Although they couldn\'t understand each other\'s language, they communicated with gestures."},{"zh":"这条路不通，我们要换一条路走。","py":"Zhè tiáo lù bù tōng, wǒmen yào huàn yī tiáo lù zǒu.","en":"This road is blocked — we need to take a different route."}],
+  [{"zh":"学校的运动场可以容纳两千名观众。","py":"Xuéxiào de yùndòngchǎng kěyǐ róngnà liǎng qiān míng guānzhòng.","en":"The school\'s sports ground can accommodate two thousand spectators."},{"zh":"孩子们在运动场上尽情地玩耍。","py":"Háizimen zài yùndòngchǎng shàng jìnqíng de wánshuǎ.","en":"The children played to their hearts\' content on the sports ground."}],
+  [{"zh":"马拉松的终点在体育场里。","py":"Mǎlāsōng de zhōngdiǎn zài tǐyùchǎng lǐ.","en":"The marathon\'s finish line is inside the stadium."},{"zh":"我们的旅行终点是云南。","py":"Wǒmen de lǚxíng zhōngdiǎn shì Yúnnán.","en":"The final destination of our trip is Yunnan."}],
+  [{"zh":"我们明天早上八点出发。","py":"Wǒmen míngtiān zǎoshang bā diǎn chūfā.","en":"We set off tomorrow morning at eight o\'clock."},{"zh":"旅行队从上海出发，前往北京。","py":"Lǚxíng duì cóng Shànghǎi chūfā, qiánwǎng Běijīng.","en":"The travel group set out from Shanghai, heading for Beijing."}],
+  [{"zh":"得知消息后，同学们纷纷赶来探望。","py":"Dézhī xiāoxi hòu, tóngxuémen fēnfēn gǎnlái tànwàng.","en":"After learning the news, classmates came one after another to visit."},{"zh":"春节前，在外工作的人纷纷回家。","py":"Chūnjié qián, zài wài gōngzuò de rén fēnfēn huí jiā.","en":"Before Spring Festival, people working away from home return one by one."}],
+  [{"zh":"他们创造了新的世界纪录。","py":"Tāmen chuàngzào le xīn de shìjiè jìlù.","en":"They set a new world record."},{"zh":"中国的高铁创造了很多世界第一。","py":"Zhōngguó de gāotiě chuàngzào le hěn duō shìjiè dì yī.","en":"China\'s high-speed rail has created many world firsts."}],
+  [{"zh":"他打破了百米游泳的全国纪录。","py":"Tā dǎpò le bǎi mǐ yóuyǒng de quánguó jìlù.","en":"He broke the national record for the 100-metre swim."},{"zh":"这次比赛创下了参与人数的新纪录。","py":"Zhè cì bǐsài chuàng xià le cānyù rénshù de xīn jìlù.","en":"This competition set a new record for the number of participants."}],
+  [{"zh":"爷爷有三个孙儿，每个周末都来看他。","py":"Yéye yǒu sān gè sūn\'ér, měi gè zhōumò dōu lái kàn tā.","en":"Grandpa has three grandchildren, who come to visit him every weekend."},{"zh":"她最喜欢的事就是陪孙儿们玩。","py":"Tā zuì xǐhuān de shì jiùshì péi sūn\'érmen wán.","en":"Her favourite thing is to spend time playing with her grandchildren."}],
+  [{"zh":"你难道真的不知道这件事吗？","py":"Nǐ nándào zhēn de bù zhīdào zhè jiàn shì ma?","en":"Can it really be that you don\'t know about this?"},{"zh":"这难道不是最好的办法吗？","py":"Zhè nándào bú shì zuì hǎo de bànfǎ ma?","en":"Isn\'t this the best solution?"}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -2947,7 +3192,8 @@ function WORDS() {
   if (currentChapter === 5) return WORDS_CH5;
   if (currentChapter === 6) return WORDS_CH6;
   if (currentChapter === 7) return WORDS_CH7;
-  return WORDS_CH8;
+  if (currentChapter === 8) return WORDS_CH8;
+  return WORDS_CH9;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -2957,7 +3203,8 @@ function EXAMPLES() {
   if (currentChapter === 5) return EXAMPLES_CH5;
   if (currentChapter === 6) return EXAMPLES_CH6;
   if (currentChapter === 7) return EXAMPLES_CH7;
-  return EXAMPLES_CH8;
+  if (currentChapter === 8) return EXAMPLES_CH8;
+  return EXAMPLES_CH9;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -3836,7 +4083,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -4029,7 +4276,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -4426,6 +4673,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:5, words: WORDS_CH5 }, { ch:6, words: WORDS_CH6 },
   { ch:7, words: WORDS_CH7 },
   { ch:8, words: WORDS_CH8 },
+  { ch:9, words: WORDS_CH9 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -4434,12 +4682,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 8 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 9 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 8 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 9 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -4686,7 +4934,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 8 chapters</div>
+      <div class="search-empty">Type to search all 9 chapters</div>
     </div>
   </div>
 </div>
