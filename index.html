@@ -820,6 +820,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 13</span>
     <span class="ch-name">徒步走遍</span>
   </button>
+  <button class="ch-btn" id="ch-btn-14" onclick="switchChapter(14)">
+    <span class="ch-num">Ch 14</span>
+    <span class="ch-name">吃不胖</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -991,6 +995,7 @@ const CHAPTERS = {
   11: { title:'其实你也是富翁', subtitle:'Chapter 11' },
   12: { title:'幸福是拥有一个快乐的厨房', subtitle:'Chapter 12' },
   13: { title:'徒步走遍全中国', subtitle:'Chapter 13' },
+  14: { title:'为什么吃不胖', subtitle:'Chapter 14' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -3021,6 +3026,189 @@ const LESSONS = {
         answer:'一'
       },
     ]
+  },
+  14: {
+    texts: [
+      {
+        num:'§1', title:'为什么吃不胖', en:'Why Don\'t You Get Fat',
+        paragraphs:[
+          {
+            zh:'一次，我陪一位美国朋友参加一个中餐宴会，连续吃了将近一个小时。朋友忽然忍不住问我：你们中国人请客怎么上这么多菜？每一顿饭都这样吗？',
+            py:'Yī cì, wǒ péi yī wèi Měiguó péngyǒu cānjiā yī gè Zhōngcān yànhuì, liánxù chī le jiāngjìn yī gè xiǎoshí. Péngyǒu hūrán rěn bu zhù wèn wǒ: nǐmen Zhōngguórén qǐngkè zěnme shàng zhème duō cài? Měi yī dùn fàn dōu zhèyàng ma?',
+            en:'One time I accompanied an American friend to a Chinese banquet and we ate for nearly an hour. My friend suddenly could not help asking me: Why do Chinese people serve so many dishes when hosting guests? Is every single meal like this?'
+          },
+          {
+            zh:'我解释道：桌上虽然摆了很多道菜，但每个人平均每样只吃一两口。也就是说，菜的品种多，但每个人吃的总量并不多，所以中国人的宴席多样而不油腻。',
+            py:'Wǒ jiěshì dào: zhuō shàng suīrán bǎi le hěn duō dào cài, dàn měi gè rén píngjūn měi yàng zhǐ chī yī liǎng kǒu. Yě jiùshì shuō, cài de pǐnzhǒng duō, dàn měi gè rén chī de zǒngliàng bìng bù duō, suǒyǐ Zhōngguórén de yànxí duōyàng ér bù yóunì.',
+            en:'I explained: although the table is laid with many dishes, each person on average only takes one or two bites of each. In other words, the variety of dishes is wide, but the total amount each person eats is actually not much — so Chinese banquets are diverse yet not greasy.'
+          },
+          {
+            zh:'朋友若有所悟，连连点头，道：这么说，中国人的饮食方式是品种多、每样少，而西方人习惯品种少、每样多。所以中国人显得比较瘦小，而西方人往往人高马大？',
+            py:'Péngyǒu ruò yǒu suǒ wù, liánlián diǎn tóu, dào: zhème shuō, Zhōngguórén de yǐnshí fāngshì shì pǐnzhǒng duō, měi yàng shǎo, ér Xīfāng rén xíguàn pǐnzhǒng shǎo, měi yàng duō. Suǒyǐ Zhōngguórén xiǎnde bǐjiào shòuxiǎo, ér Xīfāng rén wǎngwǎng réngāomǎdà?',
+            en:'My friend seemed to understand, nodding repeatedly, and said: So you\'re saying the Chinese way of eating features many varieties with small portions of each, while Westerners are used to fewer varieties with larger portions of each. So Chinese people tend to look thin and slight, while Westerners are often tall and big?'
+          },
+          {
+            zh:'我哈哈大笑，说：这只是原因之一。中国人做菜很讲究功夫，食材需要反复加工，而且多用蔬菜，少用油腻的东西。所以就算吃了好几道菜，也不容易发胖。',
+            py:'Wǒ hāhā dà xiào, shuō: zhè zhǐshì yuányīn zhī yī. Zhōngguórén zuò cài hěn jiǎngjiū gōngfu, shícái xūyào fǎnfù jiāgōng, érqiě duō yòng shūcài, shǎo yòng yóunì de dōngxi. Suǒyǐ jiùsuàn chī le hǎo jǐ dào cài, yě bù róngyì fā pàng.',
+            en:'I roared with laughter and said: that is only one reason. Chinese cooking places great emphasis on skill and technique — the ingredients require repeated processing, and it uses a lot of vegetables with little greasy content. So even after eating quite a few dishes, it is not easy to gain weight.'
+          },
+          {
+            zh:'朋友听了，又连连点头，笑道：入乡随俗！以后我在中国吃饭，也要学着每道菜只吃一两口！',
+            py:'Péngyǒu tīng le, yòu liánlián diǎn tóu, xiào dào: rù xiāng suí sú! Yǐhòu wǒ zài Zhōngguó chī fàn, yě yào xué zhe měi dào cài zhǐ chī yī liǎng kǒu!',
+            en:'My friend listened and nodded repeatedly again, laughing: When in Rome, do as the Romans do! From now on when I eat in China, I\'ll learn to take only one or two bites of each dish too!'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'东西方', en:'East and West',
+        paragraphs:[
+          {
+            zh:'作为一个在中国城市生活的外国人，我发现，和周围的外国朋友相比，中国人一般显得比较瘦小，而西方人往往人高马大。这两种不同的体型让我好奇了很久，一直思考其中的原因。',
+            py:'Zuòwéi yī gè zài Zhōngguó chéngshì shēnghuó de wàiguórén, wǒ fāxiàn, hé zhōuwéi de wàiguó péngyǒu xiāngbǐ, Zhōngguórén yībān xiǎnde bǐjiào shòuxiǎo, ér Xīfāng rén wǎngwǎng réngāomǎdà. Zhè liǎng zhǒng bùtóng de tǐxíng ràng wǒ hàoqí le hěn jiǔ, yīzhí sīkǎo qízhōng de yuányīn.',
+            en:'As a foreigner living in a Chinese city, I noticed that compared with the foreign friends around me, Chinese people generally tend to look thin and slight, while Westerners are often tall and big. These two different body types made me curious for a long time and I kept pondering the reasons.'
+          },
+          {
+            zh:'刚到中国不久，一天我走在走廊里，一个中国朋友忽然大声问我：你最近是不是胖了？我吓了一跳，出了一身汗。在我们国家，一个人的体重是隐私，不应该这样直接问陌生人或不太熟的人。',
+            py:'Gāng dào Zhōngguó bù jiǔ, yī tiān wǒ zǒu zài zǒuláng lǐ, yī gè Zhōngguó péngyǒu hūrán dà shēng wèn wǒ: nǐ zuìjìn shìbushì pàng le? Wǒ xià le yī tiào, chū le yī shēn hàn. Zài wǒmen guójiā, yī gè rén de tǐzhòng shì yǐnsī, bù yīnggāi zhèyàng zhíjiē wèn mòshēng rén huò bú tài shú de rén.',
+            en:'Not long after arriving in China, one day I was walking in a corridor when a Chinese friend suddenly called out loudly: Have you put on weight lately? I got a fright and broke out in a sweat. In my country, a person\'s weight is private — you should not ask a stranger or someone you don\'t know well so directly.'
+          },
+          {
+            zh:'我鼻子上渗出了汗，抬头看着她，不知道该怎么回答。思考了一下，我撒了个谎，说：嗯，肚子有点不舒服……谢天谢地，她没有再继续追问这个话题。',
+            py:'Wǒ bízi shàng shèn chū le hàn, tái tóu kànzhe tā, bù zhīdào gāi zěnme huídá. Sīkǎo le yīxià, wǒ sā le gè huǎng, shuō: ń, dùzi yǒudiǎn bù shūfu…… Xiè tiān xiè dì, tā méiyǒu zài jìxù zhuī wèn zhège huàtí.',
+            en:'Sweat broke out on my nose. I raised my head and looked at her, not knowing how to reply. After thinking for a moment, I told a white lie and said: Mmm, my stomach is a bit uncomfortable… Thank goodness, she did not continue pressing the topic.'
+          },
+          {
+            zh:'后来，我慢慢想明白了。实际上，中国人这样问，并不是要冒犯你，只是因为在东方文化里，关心别人的身体健康是很自然的事。至少在中国，这是一种友好的表达方式，只是和西方的方式不同而已。',
+            py:'Hòulái, wǒ màn màn xiǎng míngbai le. Shíjì shàng, Zhōngguórén zhèyàng wèn, bìng bù shì yào màofàn nǐ, zhǐshì yīnwèi zài Dōngfāng wénhuà lǐ, guānxīn biérén de shēntǐ jiànkāng shì hěn zìrán de shì. Zhìshǎo zài Zhōngguó, zhè shì yī zhǒng yǒuhǎo de biǎodá fāngshì, zhǐshì hé Xīfāng de fāngshì bùtóng éryǐ.',
+            en:'Later I gradually came to understand. Actually, when Chinese people ask like this, they are not trying to offend you — it is simply because in Eastern culture, caring about another person\'s physical health is a very natural thing. At least in China, this is a friendly way of expressing concern, just different from the Western way.'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'忍不住 (Cannot Help Doing Sth.)',
+        pattern:'忍不住＋V / 忍不住就＋V了',
+        explanation:'"忍不住" means you cannot restrain yourself from doing something even though you may try. It is placed before a verb to show an involuntary or irresistible action.',
+        examples:[
+          {zh:'他忍不住问我：你们为什么上这么多菜？',py:'Tā rěn bu zhù wèn wǒ: nǐmen wèishénme shàng zhème duō cài?',en:'He could not help asking me: Why do you serve so many dishes?'},
+          {zh:'那个笑话太好笑了，我忍不住笑了出来。',py:'Nàgè xiàohua tài hǎoxiào le, wǒ rěn bu zhù xiào le chūlái.',en:'That joke was so funny I could not help bursting out laughing.'},
+          {zh:'看到这么好吃的蛋糕，她忍不住多吃了一块。',py:'Kàndào zhème hǎochī de dàngāo, tā rěn bu zhù duō chī le yī kuài.',en:'Seeing such a delicious cake, she could not help eating one more piece.'},
+        ]
+      },
+      {
+        title:'连续 (Repeatedly, In Succession)',
+        pattern:'连续＋V / 连续＋num＋M.W.＋V',
+        explanation:'"连续" means "continuously" or "in succession" — the same action happens multiple times without interruption. It emphasises the unbroken repetition.',
+        examples:[
+          {zh:'他们连续吃了将近一个小时，菜肴丰盛极了。',py:'Tāmen liánxù chī le jiāngjìn yī gè xiǎoshí, càiyáo fēngshèng jí le.',en:'They ate continuously for nearly an hour — the food was extremely abundant.'},
+          {zh:'她连续工作了十个小时，累得说不出话来。',py:'Tā liánxù gōngzuò le shí gè xiǎoshí, lèi de shuō bu chū huà lái.',en:'She worked continuously for ten hours and was too tired to speak.'},
+          {zh:'他连续三天没睡好，精神很差。',py:'Tā liánxù sān tiān méi shuì hǎo, jīngshén hěn chà.',en:'He did not sleep well for three days in a row and was in poor spirits.'},
+        ]
+      },
+      {
+        title:'多少 (Somewhat, More or Less)',
+        pattern:'多少＋Adj. / 多少＋V一点',
+        explanation:'When used as an adverb (not a question word), "多少" means "somewhat," "to some extent," or "more or less." It softens the degree of a description.',
+        examples:[
+          {zh:'东西方文化不同，但多少有些相似的地方。',py:'Dōng Xī fāng wénhuà bùtóng, dàn duōshǎo yǒu xiē xiāngsì de dìfāng.',en:'Eastern and Western cultures are different, but they are somewhat similar in some respects.'},
+          {zh:'她听了以后，多少有点儿失望。',py:'Tā tīng le yǐhòu, duōshǎo yǒu diǎnr shīwàng.',en:'After hearing it, she was somewhat disappointed.'},
+          {zh:'这件事多少影响了他的心情，不过他很快就好了。',py:'Zhè jiàn shì duōshǎo yǐngxiǎng le tā de xīnqíng, búguò tā hěn kuài jiù hǎo le.',en:'This matter somewhat affected his mood, but he recovered quickly.'},
+        ]
+      },
+      {
+        title:'而 (While, Whereas — Contrast)',
+        pattern:'clause A，而＋clause B',
+        explanation:'"而" connects two contrasting or opposing clauses, similar to "while" or "whereas" in English. It always comes at the start of the second clause, not the first.',
+        examples:[
+          {zh:'中国人吃饭品种多、每样少，而西方人往往品种少、每样多。',py:'Zhōngguórén chī fàn pǐnzhǒng duō, měi yàng shǎo, ér Xīfāng rén wǎngwǎng pǐnzhǒng shǎo, měi yàng duō.',en:'Chinese people eat many varieties in small amounts of each, while Westerners tend to eat fewer varieties in larger portions.'},
+          {zh:'南方的冬天比较温暖，而北方的冬天非常寒冷。',py:'Nánfāng de dōngtiān bǐjiào wēnnuǎn, ér Běifāng de dōngtiān fēicháng hánlěng.',en:'Winters in the south are relatively mild, while winters in the north are extremely cold.'},
+          {zh:'他工作很认真，而他的同事总是偷懒。',py:'Tā gōngzuò hěn rènzhēn, ér tā de tóngshì zǒngshì tōulǎn.',en:'He is very diligent at work, while his colleagues always slack off.'},
+        ]
+      },
+      {
+        title:'实际上 (Actually, In Fact)',
+        pattern:'实际上，＋the real situation',
+        explanation:'"实际上" means "actually" or "in fact" — it introduces the real situation, often correcting a misconception or revealing what is truly the case behind appearances.',
+        examples:[
+          {zh:'实际上，中国人宴席上菜虽多，但每人吃的总量并不多。',py:'Shíjì shàng, Zhōngguórén yànxí shàng cài suī duō, dàn měi rén chī de zǒngliàng bìng bù duō.',en:'Actually, although there are many dishes at a Chinese banquet, the total amount each person eats is not much.'},
+          {zh:'他看起来很轻松，实际上压力很大。',py:'Tā kànqǐlái hěn qīngsōng, shíjì shàng yālì hěn dà.',en:'He looks very relaxed; actually he is under a great deal of pressure.'},
+          {zh:'大家以为他不喜欢吃中餐，实际上他非常喜欢。',py:'Dàjiā yǐwéi tā bù xǐhuān chī Zhōngcān, shíjì shàng tā fēicháng xǐhuān.',en:'Everyone thought he did not like Chinese food; actually he likes it very much.'},
+        ]
+      },
+      {
+        title:'好几…… (Quite a Few, Several)',
+        pattern:'好几＋M.W. / 好几个＋N',
+        explanation:'"好几……" means "quite a few" or "several" — an indefinite quantity suggesting more than a small number, often more than expected. It always precedes a measure word.',
+        examples:[
+          {zh:'他们吃了好几道菜，每道菜都很好吃。',py:'Tāmen chī le hǎo jǐ dào cài, měi dào cài dōu hěn hǎochī.',en:'They ate quite a few courses, and every dish was delicious.'},
+          {zh:'这个问题我已经解释了好几次，他还是不明白。',py:'Zhège wèntí wǒ yǐjīng jiěshì le hǎo jǐ cì, tā háishì bù míngbai.',en:'I have already explained this problem quite a few times and he still does not understand.'},
+          {zh:'她在中国住了好几年，中文说得很流利。',py:'Tā zài Zhōngguó zhù le hǎo jǐ nián, Zhōngwén shuō de hěn liúlì.',en:'She has lived in China for quite a few years and speaks Chinese very fluently.'},
+        ]
+      },
+      {
+        title:'谢天谢地 (Thank Goodness)',
+        pattern:'谢天谢地，＋expression of relief',
+        explanation:'"谢天谢地" literally means "thank heaven and earth" — equivalent to "thank goodness" or "thank God." It expresses relief that something bad was avoided or something good happened.',
+        examples:[
+          {zh:'谢天谢地，她没有继续问那个让我难堪的问题。',py:'Xiè tiān xiè dì, tā méiyǒu jìxù wèn nàgè ràng wǒ nánkān de wèntí.',en:'Thank goodness she did not keep asking that question that put me in an awkward position.'},
+          {zh:'谢天谢地，考试终于结束了！',py:'Xiè tiān xiè dì, kǎoshì zhōngyú jiéshù le!',en:'Thank goodness the exam is finally over!'},
+          {zh:'钱包找到了，谢天谢地！',py:'Qiánbāo zhǎodào le, xiè tiān xiè dì!',en:'The wallet has been found — thank goodness!'},
+        ]
+      },
+      {
+        title:'至少 (At Least, Not Less Than)',
+        pattern:'至少＋num＋M.W. / 至少＋V',
+        explanation:'"至少" means "at least" — it sets a minimum quantity or condition. The actual amount may be more, but will definitely not be less than stated.',
+        examples:[
+          {zh:'至少在中国，直接问别人体重是一种表达关心的方式。',py:'Zhìshǎo zài Zhōngguó, zhíjiē wèn biérén tǐzhòng shì yī zhǒng biǎodá guānxīn de fāngshì.',en:'At least in China, directly asking about someone\'s weight is a way of expressing concern.'},
+          {zh:'学好一门外语至少需要几年的时间。',py:'Xué hǎo yī mén wàiyǔ zhìshǎo xūyào jǐ nián de shíjiān.',en:'Mastering a foreign language takes at least a few years.'},
+          {zh:'她每天至少走一万步，非常注意锻炼身体。',py:'Tā měitiān zhìshǎo zǒu yīwàn bù, fēicháng zhùyì duànliàn shēntǐ.',en:'She walks at least ten thousand steps every day and pays great attention to exercise.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'他____问我：你们中国人宴席上怎么有这么多菜？',
+        options:['忍不住','哈哈大笑','谢天谢地','吓一跳'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'中国宴席上菜虽然多，但每人吃的____并不多。',
+        options:['总量','功夫','材料','项目'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'中国人吃饭品种多、每样少，____西方人往往品种少、每样多。',
+        options:['而','但','所以','因为'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____，中国人直接问你的体重，是在关心你，没有恶意。',
+        options:['实际上','谢天谢地','入乡随俗','忽然'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'____在中国，关心别人的身体状况是很正常的事情。',
+        options:['至少','多少','连续','忍不住'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "谢天谢地" 造句：考试终于结束了，___！',
+        answer:'谢天谢地'
+      },
+      {
+        type:'fill',
+        prompt:'用 "好几" 完成句子：这道题我已经解释了___次了。',
+        answer:'好几'
+      },
+    ]
   }
 };
 
@@ -4179,6 +4367,94 @@ const EXAMPLES_CH13 = [
   [{"zh":"我们要为未来做好准备，努力学习新技术。","py":"Wǒmen yào wèi wèilái zuò hǎo zhǔnbèi, nǔlì xuéxí xīn jìshù.","en":"We need to prepare for the future and work hard to learn new technologies."},{"zh":"他对未来充满信心，相信一切都会变得更好。","py":"Tā duì wèilái chōngmǎn xìnxīn, xiāngxìn yīqiē dōu huì biàn de gèng hǎo.","en":"He is full of confidence about the future and believes that everything will get better."}],
 ];
 
+const WORDS_CH14 = [
+  { hanzi:"宴请",     pinyin:"yànqǐng",         pos:"V.",      english:"entertain at a banquet, fete" },
+  { hanzi:"中餐",     pinyin:"zhōngcān",         pos:"N.",      english:"Chinese cuisine, Chinese food" },
+  { hanzi:"宴会",     pinyin:"yànhuì",           pos:"N.",      english:"banquet, feast" },
+  { hanzi:"忍不住",   pinyin:"rěn bu zhù",       pos:"V.",      english:"cannot help doing sth." },
+  { hanzi:"连续",     pinyin:"liánxù",           pos:"Adv.",    english:"repeatedly, in succession, continuously" },
+  { hanzi:"顿",       pinyin:"dùn",              pos:"M.W.",    english:"(measure word for meals)" },
+  { hanzi:"而",       pinyin:"ér",               pos:"Conj.",   english:"while, whereas (contrast)" },
+  { hanzi:"多少",     pinyin:"duōshǎo",          pos:"Adv.",    english:"somewhat, more or less, to some extent" },
+  { hanzi:"道",       pinyin:"dào",              pos:"V.",      english:"say (formal)" },
+  { hanzi:"显得",     pinyin:"xiǎnde",           pos:"V.",      english:"appear (to be), look, seem" },
+  { hanzi:"瘦小",     pinyin:"shòuxiǎo",         pos:"Adj.",    english:"thin and small, slight" },
+  { hanzi:"人高马大", pinyin:"rén gāo mǎ dà",    pos:"Idiom.", english:"tall and big, large-framed" },
+  { hanzi:"总量",     pinyin:"zǒngliàng",        pos:"N.",      english:"total sum, total amount" },
+  { hanzi:"解释",     pinyin:"jiěshì",           pos:"V.",      english:"explain" },
+  { hanzi:"点头",     pinyin:"diǎntóu",          pos:"V.",      english:"nod (one\'s head)" },
+  { hanzi:"骨头",     pinyin:"gǔtóu",            pos:"N.",      english:"bone" },
+  { hanzi:"鱼刺",     pinyin:"yúcì",             pos:"N.",      english:"fishbone, fish spine" },
+  { hanzi:"功夫",     pinyin:"gōngfu",           pos:"N.",      english:"time, skill, effort" },
+  { hanzi:"加工",     pinyin:"jiāgōng",          pos:"V.",      english:"process, work on" },
+  { hanzi:"哈哈大笑", pinyin:"hāhā dà xiào",     pos:"V.O.",   english:"laugh heartily, roar with laughter" },
+  { hanzi:"入乡随俗", pinyin:"rù xiāng suí sú",  pos:"Idiom.", english:"When in Rome, do as the Romans do" },
+  { hanzi:"东方",     pinyin:"dōngfāng",         pos:"N.",      english:"the East, Orient" },
+  { hanzi:"直接",     pinyin:"zhíjiē",           pos:"Adj.",    english:"direct, immediate" },
+  { hanzi:"实际上",   pinyin:"shíjì shàng",      pos:"Adv.",    english:"actually, in fact" },
+  { hanzi:"看病",     pinyin:"kàn bìng",         pos:"V.",      english:"see a doctor" },
+  { hanzi:"走廊",     pinyin:"zǒuláng",          pos:"N.",      english:"corridor, passage" },
+  { hanzi:"忽然",     pinyin:"hūrán",            pos:"Adv.",    english:"suddenly" },
+  { hanzi:"大声",     pinyin:"dà shēng",         pos:"Adj.",    english:"loud, aloud" },
+  { hanzi:"吓一跳",   pinyin:"xià yī tiào",      pos:"V.O.",   english:"get startled, be frightened" },
+  { hanzi:"陌生人",   pinyin:"mòshēng rén",      pos:"N.",      english:"stranger" },
+  { hanzi:"陌生",     pinyin:"mòshēng",          pos:"Adj.",    english:"strange, unfamiliar" },
+  { hanzi:"周围",     pinyin:"zhōuwéi",          pos:"N.",      english:"surroundings, around" },
+  { hanzi:"关心",     pinyin:"guān xīn",         pos:"V.",      english:"care about, be concerned about" },
+  { hanzi:"撒谎",     pinyin:"sā huǎng",         pos:"V.",      english:"lie, tell a lie" },
+  { hanzi:"汗",       pinyin:"hàn",              pos:"N.",      english:"sweat" },
+  { hanzi:"好奇",     pinyin:"hàoqí",            pos:"Adj.",    english:"curious" },
+  { hanzi:"思考",     pinyin:"sīkǎo",            pos:"V.",      english:"think deeply, ponder over" },
+  { hanzi:"抬头",     pinyin:"tái tóu",          pos:"V.",      english:"raise one\'s head" },
+  { hanzi:"鼻子",     pinyin:"bízi",             pos:"N.",      english:"nose" },
+  { hanzi:"谢天谢地", pinyin:"xiè tiān xiè dì",  pos:"Idiom.", english:"thank God, thank goodness" },
+  { hanzi:"至少",     pinyin:"zhìshǎo",          pos:"Adv.",    english:"at least, not less than" },
+];
+
+const EXAMPLES_CH14 = [
+  [{"zh":"公司宴请了重要的客户，安排了一顿丰盛的晚餐。","py":"Gōngsī yànqǐng le zhòngyào de kèhù, ānpái le yī dùn fēngshèng de wǎncān.","en":"The company entertained important clients and arranged a sumptuous dinner."},{"zh":"他宴请朋友，特意选了一家有名的中餐馆。","py":"Tā yànqǐng péngyǒu, tèyì xuǎn le yī jiā yǒumíng de Zhōngcān guǎn.","en":"He treated his friends to a meal and specially chose a famous Chinese restaurant."}],
+  [{"zh":"她非常喜欢中餐，尤其喜欢上海菜。","py":"Tā fēicháng xǐhuān Zhōngcān, yóuqí xǐhuān Shànghǎi cài.","en":"She loves Chinese food, especially Shanghai cuisine."},{"zh":"出国以后，他最想念的就是家乡的中餐。","py":"Chū guó yǐhòu, tā zuì xiǎngniàn de jiùshì jiāxiāng de Zhōngcān.","en":"After going abroad, what he missed most was the Chinese food from his hometown."}],
+  [{"zh":"公司举办了一场盛大的宴会，庆祝成立二十周年。","py":"Gōngsī jǔbàn le yī chǎng shèngdà de yànhuì, qìngzhù chénglì èrshí zhōunián.","en":"The company held a grand banquet to celebrate its twentieth anniversary."},{"zh":"参加宴会的人很多，气氛非常热闹。","py":"Cānjiā yànhuì de rén hěn duō, qìfēn fēicháng rènào.","en":"Many people attended the banquet and the atmosphere was very lively."}],
+  [{"zh":"看到那么好吃的甜点，她忍不住多吃了几口。","py":"Kàndào nàme hǎochī de tiándiǎn, tā rěn bu zhù duō chī le jǐ kǒu.","en":"Seeing such delicious desserts, she could not help eating a few more bites."},{"zh":"这个故事太有趣了，我忍不住一口气读完了。","py":"Zhège gùshi tài yǒuqù le, wǒ rěn bu zhù yī kǒuqì dú wán le.","en":"This story was so interesting I could not help reading it all in one go."}],
+  [{"zh":"他连续工作了三天，终于完成了这个项目。","py":"Tā liánxù gōngzuò le sān tiān, zhōngyú wánchéng le zhège xiàngmù.","en":"He worked continuously for three days and finally completed this project."},{"zh":"她连续参加了好几场面试，非常疲劳。","py":"Tā liánxù cānjiā le hǎo jǐ chǎng miànshì, fēicháng píláo.","en":"She attended quite a few interviews in succession and was very tired."}],
+  [{"zh":"我们今天吃了三顿饭，每顿都很丰盛。","py":"Wǒmen jīntiān chī le sān dùn fàn, měi dùn dōu hěn fēngshèng.","en":"We had three meals today and each one was very hearty."},{"zh":"妈妈每天做三顿饭，非常辛苦。","py":"Māma měitiān zuò sān dùn fàn, fēicháng xīnkǔ.","en":"Mum cooks three meals a day — it is very hard work."}],
+  [{"zh":"她喜欢安静，而他喜欢热闹，两人性格很不同。","py":"Tā xǐhuān ānjìng, ér tā xǐhuān rènào, liǎng rén xìnggé hěn bùtóng.","en":"She likes quiet while he likes bustle — the two of them have very different personalities."},{"zh":"城市生活节奏很快，而乡村生活比较悠闲。","py":"Chéngshì shēnghuó jiézòu hěn kuài, ér xiāngcūn shēnghuó bǐjiào yōuxián.","en":"City life has a very fast pace, while rural life is relatively leisurely."}],
+  [{"zh":"他多少有点儿紧张，但还是勇敢地上台发言了。","py":"Tā duōshǎo yǒu diǎnr jǐnzhāng, dàn háishì yǒnggǎn de shàngtái fāyán le.","en":"He was somewhat nervous, but still bravely went on stage to speak."},{"zh":"这件事多少影响了她的情绪，她沉默了好一会儿。","py":"Zhè jiàn shì duōshǎo yǐngxiǎng le tā de qíngxù, tā chénmò le hǎo yīhuìr.",  "en":"This matter somewhat affected her mood and she was silent for a good while."}],
+  [{"zh":"她微笑着道：谢谢大家的支持，我非常感激。","py":"Tā wēixiào zhe dào: xièxiè dàjiā de zhīchí, wǒ fēicháng gǎnjī.","en":"She smiled and said: thank you all for your support, I am very grateful."},{"zh":"他想了想，道：这件事还需要再考虑一下。","py":"Tā xiǎng le xiǎng, dào: zhè jiàn shì hái xūyào zài kǎolǜ yīxià.","en":"He thought for a moment and said: this matter still needs some more consideration."}],
+  [{"zh":"他打扮得很年轻，显得比实际年龄小十岁。","py":"Tā dǎban de hěn niánqīng, xiǎnde bǐ shíjì niánlíng xiǎo shí suì.","en":"He dressed very young and appeared ten years younger than his actual age."},{"zh":"最近他显得很疲劳，可能工作压力太大了。","py":"Zuìjìn tā xiǎnde hěn píláo, kěnéng gōngzuò yālì tài dà le.","en":"Lately he has appeared very tired — the work pressure is probably too great."}],
+  [{"zh":"她身材瘦小，但做事非常能干，大家都很佩服她。","py":"Tā shēncái shòuxiǎo, dàn zuòshì fēicháng nénggàn, dàjiā dōu hěn pèifú tā.","en":"She is thin and slight, but very capable in what she does — everyone admires her."},{"zh":"这只小猫很瘦小，但跑起来非常快。","py":"Zhè zhī xiǎo māo hěn shòuxiǎo, dàn pǎo qǐlái fēicháng kuài.","en":"This little cat is thin and small but runs extremely fast."}],
+  [{"zh":"他身材人高马大，在人群中一眼就能看到他。","py":"Tā shēncái réngāomǎdà, zài rénqún zhōng yī yǎn jiù néng kàndào tā.","en":"He is tall and big — you can spot him at a glance in a crowd."},{"zh":"他虽然人高马大，但性格非常温和，从不欺负人。","py":"Tā suīrán réngāomǎdà, dàn xìnggé fēicháng wēnhé, cóng bù qīfu rén.","en":"Although he is tall and big, his personality is very gentle and he never bullies anyone."}],
+  [{"zh":"全国的人口总量已经超过十四亿了。","py":"Quánguó de rénkǒu zǒngliàng yǐjīng chāoguò shísì yì le.","en":"The total national population has already exceeded 1.4 billion."},{"zh":"这次活动的总量预算是五十万，请大家节省使用。","py":"Zhè cì huódòng de zǒngliàng yùsuàn shì wǔshí wàn, qǐng dàjiā jiéshěng shǐyòng.","en":"The total budget for this event is 500,000 — please everyone use it sparingly."}],
+  [{"zh":"老师耐心地解释了这道题，同学们终于明白了。","py":"Lǎoshī nàixīn de jiěshì le zhè dào tí, tóngxuémen zhōngyú míngbai le.","en":"The teacher patiently explained this problem and the students finally understood."},{"zh":"他解释了迟到的原因，大家都表示理解。","py":"Tā jiěshì le chídào de yuányīn, dàjiā dōu biǎoshì lǐjiě.","en":"He explained the reason for being late and everyone expressed understanding."}],
+  [{"zh":"她点头表示同意，然后微笑着走开了。","py":"Tā diǎn tóu biǎoshì tóngyì, ránhòu wēixiào zhe zǒu kāi le.","en":"She nodded to show agreement, then walked away with a smile."},{"zh":"老师问完问题，没有一个同学点头，大家都不明白。","py":"Lǎoshī wèn wán wèntí, méiyǒu yī gè tóngxué diǎn tóu, dàjiā dōu bù míngbai.","en":"After the teacher finished asking the question, not a single student nodded — nobody understood."}],
+  [{"zh":"吃鱼的时候要小心骨头，不要被卡住了。","py":"Chī yú de shíhòu yào xiǎoxīn gǔtóu, bùyào bèi qiǎ zhù le.","en":"Be careful of bones when eating fish — don\'t let them get stuck."},{"zh":"他的手骨头受伤了，需要休息几个星期。","py":"Tā de shǒu gǔtóu shòushāng le, xūyào xiūxi jǐ gè xīngqī.","en":"He injured the bone in his hand and needs to rest for a few weeks."}],
+  [{"zh":"吃鱼时被鱼刺卡住了，非常不舒服。","py":"Chī yú shí bèi yúcì qiǎ zhù le, fēicháng bù shūfu.","en":"Getting a fishbone stuck while eating fish is very uncomfortable."},{"zh":"她帮孩子把鱼刺全部去掉，才让他吃鱼。","py":"Tā bāng háizi bǎ yúcì quánbù qù diào, cái ràng tā chī yú.","en":"She removed all the fishbones for the child before letting him eat the fish."}],
+  [{"zh":"这道菜非常费功夫，要提前准备好几个小时。","py":"Zhè dào cài fēicháng fèi gōngfu, yào tíqián zhǔnbèi hǎo jǐ gè xiǎoshí.","en":"This dish takes a great deal of effort — you have to prepare it several hours in advance."},{"zh":"学好中文需要下功夫，不能偷懒。","py":"Xué hǎo Zhōngwén xūyào xià gōngfu, bù néng tōulǎn.","en":"Learning Chinese well requires putting in real effort — you cannot be lazy."}],
+  [{"zh":"食品加工厂把新鲜的水果加工成果汁出售。","py":"Shípǐn jiāgōng chǎng bǎ xīnxiān de shuǐguǒ jiāgōng chéng guǒzhī chūshòu.","en":"The food processing factory processes fresh fruit into juice for sale."},{"zh":"这些食材经过特殊加工，保留了更多的营养成分。","py":"Zhèxiē shícái jīngguò tèshū jiāgōng, bǎoliú le gèng duō de yíngyǎng chéngfèn.","en":"These ingredients have been specially processed to retain more nutritional content."}],
+  [{"zh":"看到老朋友，他高兴得哈哈大笑，拍了拍对方的肩膀。","py":"Kàndào lǎo péngyǒu, tā gāoxìng de hāhā dà xiào, pāi le pāi duìfāng de jiānbǎng.","en":"Seeing his old friend, he roared with happy laughter and patted the other person\'s shoulder."},{"zh":"那个笑话把大家都逗笑了，整个房间里哈哈大笑。","py":"Nàgè xiàohua bǎ dàjiā dōu dòu xiào le, zhěnggè fángjiān lǐ hāhā dà xiào.","en":"That joke made everyone laugh — the whole room roared with laughter."}],
+  [{"zh":"他来中国以后，慢慢学会了入乡随俗，适应了当地的生活。","py":"Tā lái Zhōngguó yǐhòu, mànmàn xuéhuì le rù xiāng suí sú, shìyìng le dāngdì de shēnghuó.","en":"After coming to China, he gradually learned to do as the Romans do and adapted to local life."},{"zh":"入乡随俗是一种很好的处世态度，让人更容易融入新环境。","py":"Rù xiāng suí sú shì yī zhǒng hěn hǎo de chǔshì tàidu, ràng rén gèng róngyì róngrù xīn huánjìng.","en":"When in Rome, do as the Romans do is a very good attitude toward life — it makes it easier to blend into a new environment."}],
+  [{"zh":"东方文化注重集体和谐，西方文化更强调个人自由。","py":"Dōngfāng wénhuà zhùzhòng jítǐ héxié, Xīfāng wénhuà gèng qiángdiào gèrén zìyóu.","en":"Eastern culture emphasises collective harmony, while Western culture places more emphasis on individual freedom."},{"zh":"他在东方生活了多年，深深爱上了东方的饮食文化。","py":"Tā zài Dōngfāng shēnghuó le duō nián, shēnshēn àishàng le Dōngfāng de yǐnshí wénhuà.","en":"He has lived in the East for many years and has deeply fallen in love with Eastern food culture."}],
+  [{"zh":"他性格直接，有什么就说什么，从不绕弯子。","py":"Tā xìnggé zhíjiē, yǒu shénme jiù shuō shénme, cóng bù rào wānzi.","en":"He has a direct personality — he says what he thinks and never beats around the bush."},{"zh":"直接表达你的想法，对方更容易理解你。","py":"Zhíjiē biǎodá nǐ de xiǎngfǎ, duìfāng gèng róngyì lǐjiě nǐ.","en":"Express your thoughts directly — the other person will find it easier to understand you."}],
+  [{"zh":"他看起来很轻松，实际上心里很担心。","py":"Tā kànqǐlái hěn qīngsōng, shíjì shàng xīnlǐ hěn dānxīn.","en":"He looks very relaxed; actually he is very worried inside."},{"zh":"大家以为他是新来的，实际上他已经在这里工作五年了。","py":"Dàjiā yǐwéi tā shì xīn lái de, shíjì shàng tā yǐjīng zài zhèlǐ gōngzuò wǔ nián le.","en":"Everyone thought he was a newcomer; actually he has already been working here for five years."}],
+  [{"zh":"她感冒了，需要去医院看病，休息几天。","py":"Tā gǎnmào le, xūyào qù yīyuàn kàn bìng, xiūxi jǐ tiān.","en":"She has a cold and needs to go to the hospital to see a doctor and rest for a few days."},{"zh":"在中国看病需要先挂号，再等医生叫号。","py":"Zài Zhōngguó kàn bìng xūyào xiān guà hào, zài děng yīshēng jiào hào.","en":"To see a doctor in China you first need to register, then wait for the doctor to call your number."}],
+  [{"zh":"走廊里很安静，只听见远处有人在说话。","py":"Zǒuláng lǐ hěn ānjìng, zhǐ tīngjian yuǎnchù yǒu rén zài shuōhuà.","en":"The corridor was very quiet — only the sound of someone talking in the distance could be heard."},{"zh":"她在走廊里遇到了久别重逢的老朋友，非常高兴。","py":"Tā zài zǒuláng lǐ yùdào le jiǔ bié chóng féng de lǎo péngyǒu, fēicháng gāoxìng.","en":"She ran into an old friend she had not seen for a long time in the corridor and was very happy."}],
+  [{"zh":"她忽然想起来还没关窗户，赶紧跑回去关上了。","py":"Tā hūrán xiǎng qǐlái hái méi guān chuānghù, gǎnjǐn pǎo huíqù guān shàng le.","en":"She suddenly remembered she had not closed the window and hurried back to close it."},{"zh":"忽然下起了大雨，大家都赶紧跑进室内。","py":"Hūrán xià qǐ le dà yǔ, dàjiā dōu gǎnjǐn pǎo jìn shìnèi.","en":"It suddenly started raining heavily and everyone hurried indoors."}],
+  [{"zh":"请不要大声说话，这里有人在休息。","py":"Qǐng bùyào dà shēng shuōhuà, zhèlǐ yǒu rén zài xiūxi.","en":"Please don\'t speak loudly — someone is resting here."},{"zh":"他大声叫了好几声，但没有人回应。","py":"Tā dà shēng jiào le hǎo jǐ shēng, dàn méiyǒu rén huíyìng.","en":"He called out loudly several times but no one responded."}],
+  [{"zh":"他走进黑暗的房间，突然有什么东西碰了他，吓了一跳。","py":"Tā zǒu jìn hēi\'àn de fángjiān, tūrán yǒu shénme dōngxi pèng le tā, xià le yī tiào.","en":"He walked into the dark room and something suddenly touched him — he got a fright."},{"zh":"她忽然大声叫了一声，把我吓了一跳。","py":"Tā hūrán dà shēng jiào le yī shēng, bǎ wǒ xià le yī tiào.","en":"She suddenly let out a loud cry and gave me a fright."}],
+  [{"zh":"不要随便和陌生人走，要注意安全。","py":"Bùyào suíbiàn hé mòshēng rén zǒu, yào zhùyì ānquán.","en":"Don\'t casually go anywhere with strangers — pay attention to safety."},{"zh":"她虽然是陌生人，但热情地帮助了我们，非常感激。","py":"Tā suīrán shì mòshēng rén, dàn rèqíng de bāngzhù le wǒmen, fēicháng gǎnjī.","en":"Although she was a stranger, she enthusiastically helped us — we were very grateful."}],
+  [{"zh":"他觉得这个地方很陌生，完全不知道该去哪里。","py":"Tā juéde zhège dìfāng hěn mòshēng, wánquán bù zhīdào gāi qù nǎlǐ.","en":"He found this place completely unfamiliar and had no idea where to go."},{"zh":"刚到新学校的时候，她对一切都感到陌生。","py":"Gāng dào xīn xuéxiào de shíhòu, tā duì yīqiē dōu gǎndào mòshēng.","en":"When she first arrived at the new school, she found everything unfamiliar."}],
+  [{"zh":"学校周围有很多餐厅和书店，生活很方便。","py":"Xuéxiào zhōuwéi yǒu hěn duō cāntīng hé shūdiàn, shēnghuó hěn fāngbiàn.","en":"There are many restaurants and bookshops around the school — life is very convenient."},{"zh":"他仔细观察了一下周围，确认没有危险才离开。","py":"Tā zǐxì guānchá le yīxià zhōuwéi, quèrèn méiyǒu wēixiǎn cái líkāi.","en":"He carefully observed his surroundings, confirmed there was no danger, then left."}],
+  [{"zh":"父母非常关心孩子的学习和生活，经常打电话问候。","py":"Fùmǔ fēicháng guānxīn háizi de xuéxí hé shēnghuó, jīngcháng dǎ diànhuà wènhòu.","en":"Parents care greatly about their children\'s studies and life and often call to ask how they are."},{"zh":"她不只关心自己，也关心身边每一个人。","py":"Tā bù zhǐ guānxīn zìjǐ, yě guānxīn shēnbiān měi yī gè rén.","en":"She does not only care about herself — she also cares about every person around her."}],
+  [{"zh":"他撒了个谎，说自己生病了，其实是不想去开会。","py":"Tā sā le gè huǎng, shuō zìjǐ shēngbìng le, qíshí shì bù xiǎng qù kāihuì.","en":"He told a lie, saying he was sick, when actually he just did not want to attend the meeting."},{"zh":"诚实是最重要的品质，不要随便撒谎。","py":"Chéngshí shì zuì zhòngyào de pǐnzhí, bùyào suíbiàn sā huǎng.","en":"Honesty is the most important quality — don\'t casually tell lies."}],
+  [{"zh":"天气太热，他走了一会儿就出了很多汗。","py":"Tiānqì tài rè, tā zǒu le yīhuìr jiù chū le hěn duō hàn.","en":"The weather was too hot — after walking for a while he was sweating a great deal."},{"zh":"运动以后流汗是很正常的，要记得补充水分。","py":"Yùndòng yǐhòu liú hàn shì hěn zhèngcháng de, yào jìde bǔchōng shuǐfèn.","en":"Sweating after exercise is very normal — remember to replenish fluids."}],
+  [{"zh":"孩子对什么都很好奇，总是问各种各样的问题。","py":"Háizi duì shénme dōu hěn hàoqí, zǒngshì wèn gè zhǒng gè yàng de wèntí.","en":"Children are curious about everything and always ask all sorts of questions."},{"zh":"她对东方文化非常好奇，决定来中国留学。","py":"Tā duì Dōngfāng wénhuà fēicháng hàoqí, juédìng lái Zhōngguó liúxué.","en":"She was very curious about Eastern culture and decided to come to China to study."}],
+  [{"zh":"请花一些时间思考这个问题，不要急着回答。","py":"Qǐng huā yīxiē shíjiān sīkǎo zhège wèntí, bùyào jí zhe huídá.","en":"Please take some time to think deeply about this question — don\'t rush to answer."},{"zh":"他一边散步，一边思考人生的意义。","py":"Tā yībiān sànbù, yībiān sīkǎo rénshēng de yìyì.","en":"He went for a walk while pondering the meaning of life."}],
+  [{"zh":"他抬头看了看天空，觉得今天会下雨。","py":"Tā tái tóu kàn le kàn tiānkōng, juéde jīntiān huì xià yǔ.","en":"He raised his head and looked at the sky, feeling that it would rain today."},{"zh":"她低着头走路，忽然抬头看到了一个老朋友。","py":"Tā dī zhe tóu zǒulù, hūrán tái tóu kàndào le yī gè lǎo péngyǒu.","en":"She was walking with her head down when she suddenly raised her head and saw an old friend."}],
+  [{"zh":"他的鼻子很灵，一进门就闻到了饭菜的香味。","py":"Tā de bízi hěn líng, yī jìnmén jiù wéndào le fàncài de xiāngwèi.","en":"He has a sharp nose — the moment he entered he smelled the fragrant aroma of food."},{"zh":"天气太冷了，他的鼻子都红了。","py":"Tiānqì tài lěng le, tā de bízi dōu hóng le.","en":"The weather was too cold and his nose had turned red."}],
+  [{"zh":"谢天谢地，他终于赶上了最后一班地铁。","py":"Xiè tiān xiè dì, tā zhōngyú gǎn shàng le zuìhòu yī bān dìtiě.","en":"Thank goodness he finally caught the last metro."},{"zh":"钥匙找到了，谢天谢地，不用换锁了！","py":"Yàoshi zhǎodào le, xiè tiān xiè dì, bù yòng huàn suǒ le!","en":"The key has been found — thank goodness, no need to change the lock!"}],
+  [{"zh":"这道题至少需要思考五分钟才能回答出来。","py":"Zhè dào tí zhìshǎo xūyào sīkǎo wǔ fēnzhōng cái néng huídá chūlái.","en":"This problem requires at least five minutes of thought before you can answer it."},{"zh":"她每天至少喝八杯水，非常注意健康。","py":"Tā měitiān zhìshǎo hē bā bēi shuǐ, fēicháng zhùyì jiànkāng.","en":"She drinks at least eight glasses of water every day and pays great attention to her health."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -4193,7 +4469,8 @@ function WORDS() {
   if (currentChapter === 10) return WORDS_CH10;
   if (currentChapter === 11) return WORDS_CH11;
   if (currentChapter === 12) return WORDS_CH12;
-  return WORDS_CH13;
+  if (currentChapter === 13) return WORDS_CH13;
+  return WORDS_CH14;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -4208,7 +4485,8 @@ function EXAMPLES() {
   if (currentChapter === 10) return EXAMPLES_CH10;
   if (currentChapter === 11) return EXAMPLES_CH11;
   if (currentChapter === 12) return EXAMPLES_CH12;
-  return EXAMPLES_CH13;
+  if (currentChapter === 13) return EXAMPLES_CH13;
+  return EXAMPLES_CH14;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -5087,7 +5365,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13, WORDS_CH14];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -5280,7 +5558,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13, WORDS_CH14];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -5682,6 +5960,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:11, words: WORDS_CH11 },
   { ch:12, words: WORDS_CH12 },
   { ch:13, words: WORDS_CH13 },
+  { ch:14, words: WORDS_CH14 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -5690,12 +5969,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 13 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 14 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 13 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 14 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -5942,7 +6221,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 13 chapters</div>
+      <div class="search-empty">Type to search all 14 chapters</div>
     </div>
   </div>
 </div>
