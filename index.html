@@ -812,6 +812,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 11</span>
     <span class="ch-name">其实你也是富翁</span>
   </button>
+  <button class="ch-btn" id="ch-btn-12" onclick="switchChapter(12)">
+    <span class="ch-num">Ch 12</span>
+    <span class="ch-name">快乐的厨房</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -2690,6 +2694,169 @@ const LESSONS = {
         answer:'既然'
       },
     ]
+  },
+  12: {
+    texts: [
+      {
+        num:'§1', title:'幸福是拥有一个快乐的厨房', en:'Happiness Is Having a Happy Kitchen',
+        paragraphs:[
+          {
+            zh:'尽管每天在单位里很忙很累，但下班回家后我还是喜欢走进厨房。',
+            py:'Jǐnguǎn měitiān zài dānwèi lǐ hěn máng hěn lèi, dàn xià bān huí jiā hòu wǒ háishì xǐhuān zǒu jìn chúfáng.',
+            en:'Despite being busy and tired at work every day, I still like to walk into the kitchen after getting home from work.'
+          },
+          {
+            zh:'我知道，肯定有不少人会笑我。那些笑我的肯定都是女人，而且是自以为优秀的女人。在她们眼里，一个现代女性，喜欢在厨房里忙忙碌碌，是没有出息的。',
+            py:'Wǒ zhīdào, kěndìng yǒu bù shǎo rén huì xiào wǒ. Nàxiē xiào wǒ de kěndìng dōu shì nǚrén, érqiě shì zìyǐwéi yōuxiù de nǚrén. Zài tāmen yǎnlǐ, yī gè xiàndài nǚxìng, xǐhuān zài chúfáng lǐ mángmánglùlù, shì méiyǒu chūxi de.',
+            en:'I know that quite a few people will laugh at me. Those who laugh at me are surely all women — and women who think of themselves as outstanding at that. In their eyes, a modern woman who enjoys bustling about in the kitchen has no future.'
+          },
+          {
+            zh:'不过，我还是喜欢走进厨房，因为我喜欢我们家厨房里那种温馨、和谐的气氛。每天晚上，我做菜的时候，先生和女儿也先后回家了。他们往往也会进来，一边看我做菜，一边聊聊一天的工作，有时，他们也帮我干点儿活儿。厨房里欢声笑语不断，这是一天里最热闹的时候。',
+            py:'Búguò, wǒ háishì xǐhuān zǒu jìn chúfáng, yīnwèi wǒ xǐhuān wǒmen jiā chúfáng lǐ nà zhǒng wēnxīn, héxié de qìfēn. Měitiān wǎnshang, wǒ zuò cài de shíhòu, xiānsheng hé nǚ\'ér yě xiānhòu huí jiā le. Tāmen wǎngwǎng yě huì jìnlái, yībiān kàn wǒ zuò cài, yībiān liáoliao yītiān de gōngzuò, yǒushí, tāmen yě bāng wǒ gàn diǎnr huór. Chúfáng lǐ huān shēng xiào yǔ bùduàn, zhè shì yītiān lǐ zuì rènào de shíhòu.',
+            en:'But I still like walking into the kitchen, because I enjoy the cosy, harmonious atmosphere in our kitchen. Every evening when I am cooking, my husband and daughter come home one after another. They often come in too, watching me cook while chatting about the day\'s work; sometimes they help me with a few chores. The kitchen is filled with cheerful chatting and laughing — it is the liveliest time of the day.'
+          },
+          {
+            zh:'其实，除了少数几样拿手菜，我做菜的水平并不高，可当饭菜端上桌的时候，全家人都吃得津津有味。看着他们满意的样子，我就忘记了一天的疲劳。',
+            py:'Qíshí, chúle shǎoshù jǐ yàng náshǒu cài, wǒ zuò cài de shuǐpíng bìng bù gāo, kě dāng fàncài duān shàng zhuō de shíhòu, quán jiā rén dōu chī de jīnjīn yǒuwèi. Kànzhe tāmen mǎnyì de yàngzi, wǒ jiù wàngjì le yītiān de píláo.',
+            en:'In fact, apart from a few dishes I am good at, my cooking is not that skilled — yet when the food is carried to the table, the whole family eats with great relish. Seeing them satisfied, I forget the fatigue of the whole day.'
+          },
+          {
+            zh:'我爱厨房，我把对家人的感情都做进饭菜里，让他们慢慢品尝。我把全家人的欢声笑语做进饭菜里，让他们吃得津津有味。爱厨房的女人，其实更是爱家、爱生活的人。拥有一个快乐的厨房，就是拥有幸福。',
+            py:'Wǒ ài chúfáng, wǒ bǎ duì jiārén de gǎnqíng dōu zuò jìn fàncài lǐ, ràng tāmen màn màn pǐncháng. Wǒ bǎ quán jiā rén de huān shēng xiào yǔ zuò jìn fàncài lǐ, ràng tāmen chī de jīnjīn yǒuwèi. Ài chúfáng de nǚrén, qíshí gèng shì ài jiā, ài shēnghuó de rén. Yōngyǒu yī gè kuàilè de chúfáng, jiùshì yōngyǒu xìngfú.',
+            en:'I love the kitchen. I put all my feelings for my family into the food, letting them savour it slowly. I put the whole family\'s cheerful laughter into the food, letting them eat with great relish. A woman who loves the kitchen is in fact a person who loves her home and loves life even more. To possess a happy kitchen is to possess happiness.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'全职先生', en:'The Full-Time Husband',
+        paragraphs:[
+          {
+            zh:'宋先生的妻子张女士是一家保险公司的经理，十分能干，工作很忙，收入也很高。有了孩子以后，张女士就更辛苦了。为了让妻子一心一意干事业，宋先生干脆辞了职，在家里做起了"全职先生"。他整天在家里忙忙碌碌，不但要洗衣、做饭、搞卫生、带孩子，而且还要照顾七十多岁的老母亲，一点儿也不轻松。',
+            py:'Sòng xiānsheng de qīzi Zhāng nǚshì shì yī jiā bǎoxiǎn gōngsī de jīnglǐ, shífēn nénggàn, gōngzuò hěn máng, shōurù yě hěn gāo. Yǒu le háizi yǐhòu, Zhāng nǚshì jiù gèng xīnkǔ le. Wèile ràng qīzi yīxīnyīyì gàn shìyè, Sòng xiānsheng gāncuì cí le zhí, zài jiālǐ zuò qǐ le "quánzhí xiānsheng". Tā zhěngtiān zài jiālǐ mángmánglùlù, búdàn yào xǐyī, zuòfàn, gǎo wèishēng, dài háizi, érqiě hái yào zhàogù qīshí duō suì de lǎo mǔqīn, yīdiǎnr yě bù qīngsōng.',
+            en:'Mr. Song\'s wife Ms. Zhang is the manager of an insurance company — very capable, very busy, and with a high income. After having a child, Ms. Zhang\'s life became even harder. So that his wife could devote herself wholeheartedly to her career, Mr. Song simply quit his job and became a "full-time husband" at home. He bustles about all day long — not only does he have to do laundry, cook, clean, and look after the child, but he also has to care for his elderly mother in her seventies. It is not easy at all.'
+          },
+          {
+            zh:'做"全职先生"比做"全职太太"需要更大的勇气。宋先生说，不管谁在外面挣钱，在家里做家务，对这个家庭来说，其实意义都是一样的。在家里做全职先生，他不觉得丢面子。只要夫妻俩互相理解、互相尊重，一家人和谐快乐，自己就满足了，别人说什么都无所谓。',
+            py:'Zuò "quánzhí xiānsheng" bǐ zuò "quánzhí tàitai" xūyào gèng dà de yǒngqì. Sòng xiānsheng shuō, bùguǎn shéi zài wàimiàn zhèng qián, zài jiālǐ zuò jiāwù, duì zhège jiātíng lái shuō, qíshí yìyì dōu shì yīyàng de. Zài jiālǐ zuò quánzhí xiānsheng, tā bù juéde diū miànzi. Zhǐyào fūqī liǎ hùxiāng lǐjiě, hùxiāng zūnzhòng, yījiā rén héxié kuàilè, zìjǐ jiù mǎnzú le, biérén shuō shénme dōu wúsuǒwèi.',
+            en:'Being a "full-time husband" takes greater courage than being a "full-time wife." Mr. Song says that regardless of who earns money outside and who does housework at home, for this family the meaning is actually the same. Being a full-time husband at home, he does not feel he has lost face. As long as husband and wife understand and respect each other, and the family is harmonious and happy, he is content — whatever others say does not matter.'
+          },
+          {
+            zh:'张女士对丈夫的支持非常感激。她说："我不觉得我先生待在家里是没出息的，他其实很有能力的。等孩子上了幼儿园，他肯定能重新找到一份工作，而且干得很成功。"',
+            py:'Zhāng nǚshì duì zhàngfu de zhīchí fēicháng gǎnjī. Tā shuō: "Wǒ bù juéde wǒ xiānsheng dāi zài jiālǐ shì méi chūxi de, tā qíshí hěn yǒu nénglì de. Děng háizi shàng le yòu\'éryuán, tā kěndìng néng chóngxīn zhǎodào yī fèn gōngzuò, érqiě gàn de hěn chénggōng."',
+            en:'Ms. Zhang is very grateful for her husband\'s support. She says: "I don\'t think my husband staying home means he has no prospects — he is actually very capable. Once the child starts kindergarten, he will definitely be able to find a new job, and do very well at it."'
+          },
+          {
+            zh:'星期天，宋先生休息，他什么家务都不做。白天，两口子一起带上孩子去公园玩，晚上，张女士请全家人到饭馆去吃晚饭。不过，每次吃完饭付账的时候，宋先生总是悄悄地把钱从太太手里夺过来，自己"抢"着去付账。',
+            py:'Xīngqītiān, Sòng xiānsheng xiūxi, tā shénme jiāwù dōu bù zuò. Báitiān, liǎngkǒuzi yīqǐ dài shàng háizi qù gōngyuán wán, wǎnshang, Zhāng nǚshì qǐng quán jiā rén dào fànguǎn qù chī wǎnfàn. Búguò, měi cì chī wán fàn fù zhàng de shíhòu, Sòng xiānsheng zǒngshì qiāoqiāo de bǎ qián cóng tàitai shǒu lǐ duó guòlái, zìjǐ "qiǎng" zhe qù fù zhàng.',
+            en:'On Sundays Mr. Song rests and does no housework at all. During the day the couple take their child to the park together; in the evening Ms. Zhang takes the whole family to a restaurant for dinner. But every time when it comes to paying the bill, Mr. Song always quietly snatches the money from his wife\'s hand and "races" to pay himself.'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'尽管 (Although, Despite)',
+        pattern:'尽管＋clause, 但是/却/然而＋result',
+        explanation:'"尽管" means "although" or "despite the fact that" — equivalent to 虽然 but stronger, always paired with 但是, 却, or 然而 in the second clause.',
+        examples:[
+          {zh:'尽管每天很忙很累，但她还是坚持锻炼。',py:'Jǐnguǎn měitiān hěn máng hěn lèi, dàn tā háishì jiānchí duànliàn.',en:'Despite being busy and tired every day, she still persists in exercising.'},
+          {zh:'尽管天气很冷，他们却坚持出发了。',py:'Jǐnguǎn tiānqì hěn lěng, tāmen què jiānchí chūfā le.',en:'Although the weather was very cold, they set off nonetheless.'},
+          {zh:'尽管困难很多，我们仍然完成了任务。',py:'Jǐnguǎn kùnnan hěn duō, wǒmen réngrán wánchéng le rènwu.',en:'Despite many difficulties, we still completed the task.'},
+        ]
+      },
+      {
+        title:'有出息／没出息 (Have / Have No Prospects)',
+        pattern:'有出息 or 没出息',
+        explanation:'"有出息" means to have a promising future or prospects; "没出息" means to have no prospects or to be a disappointment — often used to describe ambition or achievement.',
+        examples:[
+          {zh:'他们觉得一个女人喜欢做家务是没出息的。',py:'Tāmen juéde yī gè nǚrén xǐhuān zuò jiāwù shì méi chūxi de.',en:'They think a woman who enjoys doing housework has no prospects.'},
+          {zh:'你这么努力学习，将来一定很有出息。',py:'Nǐ zhème nǔlì xuéxí, jiānglái yīdìng hěn yǒu chūxi.',en:'You study so hard — you will definitely have a great future.'},
+          {zh:'父母都希望自己的孩子有出息。',py:'Fùmǔ dōu xīwàng zìjǐ de háizi yǒu chūxi.',en:'All parents hope their children will have a bright future.'},
+        ]
+      },
+      {
+        title:'先后 (In Succession)',
+        pattern:'先后＋V',
+        explanation:'"先后" means "one after another" or "in succession" — it emphasizes that things happened sequentially, not simultaneously.',
+        examples:[
+          {zh:'先生和女儿也先后回家了。',py:'Xiānsheng hé nǚ\'ér yě xiānhòu huí jiā le.',en:'Her husband and daughter also came home one after another.'},
+          {zh:'三位同学先后发言，各自分享了自己的想法。',py:'Sān wèi tóngxué xiānhòu fāyán, gèzì fēnxiǎng le zìjǐ de xiǎngfǎ.',en:'Three classmates spoke one after another, each sharing their own ideas.'},
+          {zh:'几家公司先后提出了合作申请。',py:'Jǐ jiā gōngsī xiānhòu tíchū le hézuò shēnqǐng.',en:'Several companies submitted cooperation applications in succession.'},
+        ]
+      },
+      {
+        title:'并 (Actually, Definitely — Before Negatives)',
+        pattern:'并＋不/没有＋V/Adj',
+        explanation:'"并" placed before 不 or 没有 emphasizes that something is contrary to expectation — "actually not," "definitely not." It adds emphasis and often corrects a mistaken assumption.',
+        examples:[
+          {zh:'我做菜的水平并不高。',py:'Wǒ zuò cài de shuǐpíng bìng bù gāo.',en:'My cooking skills are actually not that high.'},
+          {zh:'这件事并不像你说的那么简单。',py:'Zhè jiàn shì bìng bù xiàng nǐ shuō de nàme jiǎndān.',en:'This matter is actually not as simple as you said.'},
+          {zh:'他并没有忘记这件事，只是没说出来。',py:'Tā bìng méiyǒu wàngjì zhè jiàn shì, zhǐshì méi shuō chūlái.',en:'He actually has not forgotten this matter — he just did not say so.'},
+        ]
+      },
+      {
+        title:'无所谓 (Be Indifferent, It Does Not Matter)',
+        pattern:'别人说什么都无所谓 / 无所谓A还是B',
+        explanation:'"无所谓" means "it does not matter" or "I am indifferent" — used to express that the speaker is unconcerned about something, or that a distinction makes no difference.',
+        examples:[
+          {zh:'别人说什么都无所谓，只要家人支持就行。',py:'Biérén shuō shénme dōu wúsuǒwèi, zhǐyào jiārén zhīchí jiù xíng.',en:'Whatever others say does not matter — as long as the family is supportive, that is enough.'},
+          {zh:'无所谓赢还是输，重要的是参与。',py:'Wúsuǒwèi yíng háishì shū, zhòngyào de shì cānyù.',en:'Winning or losing doesn\'t matter — what is important is participating.'},
+          {zh:'我无所谓，你们决定吧。',py:'Wǒ wúsuǒwèi, nǐmen juédìng ba.',en:'I don\'t mind — you all decide.'},
+        ]
+      },
+      {
+        title:'悄悄 (Quietly, Secretly)',
+        pattern:'悄悄＋V',
+        explanation:'"悄悄" means doing something quietly or secretly without drawing attention — used as an adverb before a verb.',
+        examples:[
+          {zh:'宋先生总是悄悄地把钱从太太手里夺过来。',py:'Sòng xiānsheng zǒngshì qiāoqiāo de bǎ qián cóng tàitai shǒu lǐ duó guòlái.',en:'Mr. Song always quietly snatches the money from his wife\'s hand.'},
+          {zh:'他悄悄地离开了，没有告诉任何人。',py:'Tā qiāoqiāo de líkāi le, méiyǒu gàosu rènhé rén.',en:'He quietly left without telling anyone.'},
+          {zh:'她悄悄地笑了，不想让别人看见。',py:'Tā qiāoqiāo de xiào le, bù xiǎng ràng biérén kànjiàn.',en:'She smiled quietly, not wanting others to see.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'____每天工作很忙，她还是喜欢在厨房做饭。',
+        options:['尽管','既然','虽然说','因为'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'在她们眼里，一个现代女性喜欢做家务是没有____的。',
+        options:['出息','能力','勇气','感激'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'先生和女儿每天晚上也____回家了。',
+        options:['先后','悄悄','一心一意','无所谓'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'除了几样拿手菜，她做菜的水平____不高。',
+        options:['并','都','很','也'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'只要夫妻俩互相理解尊重，别人说什么都____。',
+        options:['无所谓','不同','支持','感激'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "尽管……但……" 造句：___天气不好，___我们还是出发了。',
+        answer:'尽管'
+      },
+      {
+        type:'fill',
+        prompt:'用 "悄悄" 完成句子：他___地把礼物放在桌上，没让她发现。',
+        answer:'悄悄'
+      },
+    ]
   }
 };
 
@@ -3686,6 +3853,82 @@ const EXAMPLES_CH11 = [
   [{"zh":"他把钱存进了银行，准备买房。","py":"Tā bǎ qián cún jìn le yínháng, zhǔnbèi mǎi fáng.","en":"He deposited the money in the bank, preparing to buy a home."},{"zh":"养成存钱的习惯，对未来很有帮助。","py":"Yǎngchéng cún qián de xíguàn, duì wèilái hěn yǒu bāngzhù.","en":"Developing the habit of saving money is very helpful for the future."}],
 ];
 
+const WORDS_CH12 = [
+  { hanzi:"尽管",     pinyin:"jǐnguǎn",        pos:"Conj.",   english:"although, despite the fact that" },
+  { hanzi:"优秀",     pinyin:"yōuxiù",          pos:"Adj.",    english:"outstanding, excellent" },
+  { hanzi:"女性",     pinyin:"nǚxìng",          pos:"N.",      english:"female (sex), woman" },
+  { hanzi:"忙碌",     pinyin:"mánglù",          pos:"Adj.",    english:"busy, bustle about" },
+  { hanzi:"出息",     pinyin:"chūxi",           pos:"N.",      english:"prospects, promise, future" },
+  { hanzi:"温馨",     pinyin:"wēnxīn",          pos:"Adj.",    english:"cosy, warm" },
+  { hanzi:"和谐",     pinyin:"héxié",           pos:"Adj.",    english:"harmonious" },
+  { hanzi:"先后",     pinyin:"xiānhòu",         pos:"Adv.",    english:"in succession, one after another" },
+  { hanzi:"干活儿",   pinyin:"gàn huór",        pos:"V.",      english:"work, work on a job" },
+  { hanzi:"欢声笑语", pinyin:"huān shēng xiào yǔ", pos:"Idiom.", english:"cheerful chatting and laughing" },
+  { hanzi:"样",       pinyin:"yàng",            pos:"M.W.",    english:"kind, sort" },
+  { hanzi:"拿手",     pinyin:"náshǒu",          pos:"Adj.",    english:"adept, good at" },
+  { hanzi:"并",       pinyin:"bìng",            pos:"Adv.",    english:"actually, definitely (used before negatives)" },
+  { hanzi:"端",       pinyin:"duān",            pos:"V.",      english:"hold sth. level, carry" },
+  { hanzi:"津津有味", pinyin:"jīnjīn yǒu wèi",  pos:"Idiom.", english:"with relish, with keen pleasure" },
+  { hanzi:"忘记",     pinyin:"wàngjì",          pos:"V.",      english:"forget, disremember" },
+  { hanzi:"疲劳",     pinyin:"píláo",           pos:"Adj.",    english:"tired, fatigued" },
+  { hanzi:"品尝",     pinyin:"pǐncháng",        pos:"V.",      english:"taste, savor" },
+  { hanzi:"全职",     pinyin:"quánzhí",         pos:"Adj.",    english:"full-time" },
+  { hanzi:"能干",     pinyin:"nénggàn",         pos:"Adj.",    english:"able, capable" },
+  { hanzi:"一心一意", pinyin:"yī xīn yī yì",   pos:"Idiom.", english:"heart and soul, wholeheartedly" },
+  { hanzi:"搞卫生",   pinyin:"gǎo wèishēng",   pos:"V.",      english:"sanitize, clean" },
+  { hanzi:"勇气",     pinyin:"yǒngqì",          pos:"N.",      english:"courage, nerve" },
+  { hanzi:"丢面子",   pinyin:"diū miànzi",      pos:"V.",      english:"lose face" },
+  { hanzi:"理解",     pinyin:"lǐjiě",           pos:"V.",      english:"understand, comprehend" },
+  { hanzi:"尊重",     pinyin:"zūnzhòng",        pos:"V.",      english:"respect, esteem" },
+  { hanzi:"无所谓",   pinyin:"wúsuǒwèi",        pos:"V.",      english:"be indifferent, it does not matter" },
+  { hanzi:"支持",     pinyin:"zhīchí",          pos:"V.",      english:"support, back up, stand by" },
+  { hanzi:"感激",     pinyin:"gǎnjī",           pos:"V.",      english:"feel grateful, appreciate" },
+  { hanzi:"能力",     pinyin:"nénglì",          pos:"N.",      english:"ability, capacity" },
+  { hanzi:"强",       pinyin:"qiáng",           pos:"Adj.",    english:"strong, powerful" },
+  { hanzi:"两口子",   pinyin:"liǎngkǒuzi",      pos:"N.",      english:"husband and wife, married couple" },
+  { hanzi:"悄悄",     pinyin:"qiāoqiāo",        pos:"Adv.",    english:"quietly, secretly" },
+  { hanzi:"抢",       pinyin:"qiǎng",           pos:"V.",      english:"vie, try to be the first to do sth." },
+  { hanzi:"付账",     pinyin:"fù zhàng",        pos:"V.",      english:"pay a bill" },
+];
+
+const EXAMPLES_CH12 = [
+  [{"zh":"尽管天气很冷，他们还是出发了。","py":"Jǐnguǎn tiānqì hěn lěng, tāmen háishì chūfā le.","en":"Despite the cold weather, they still set off."},{"zh":"尽管很疲劳，她还是坚持完成了工作。","py":"Jǐnguǎn hěn píláo, tā háishì jiānchí wánchéng le gōngzuò.","en":"Despite being tired, she persisted and finished the work."}],
+  [{"zh":"他是一位优秀的老师，学生们都很喜欢他。","py":"Tā shì yī wèi yōuxiù de lǎoshī, xuéshengmen dōu hěn xǐhuān tā.","en":"He is an outstanding teacher and all the students like him very much."},{"zh":"她的成绩优秀，获得了奖学金。","py":"Tā de chéngjì yōuxiù, huòdé le jiǎngxuéjīn.","en":"Her grades were excellent and she received a scholarship."}],
+  [{"zh":"这家公司致力于保护女性的权益。","py":"Zhè jiā gōngsī zhìlì yú bǎohù nǚxìng de quányì.","en":"This company is committed to protecting the rights of women."},{"zh":"现代女性可以独立完成很多事情。","py":"Xiàndài nǚxìng kěyǐ dúlì wánchéng hěn duō shìqing.","en":"Modern women can independently accomplish many things."}],
+  [{"zh":"他最近工作很忙碌，几乎没有时间休息。","py":"Tā zuìjìn gōngzuò hěn mánglù, jīhū méiyǒu shíjiān xiūxi.","en":"He has been very busy with work lately and has almost no time to rest."},{"zh":"她每天忙忙碌碌，但感觉生活很充实。","py":"Tā měitiān mángmánglùlù, dàn gǎnjué shēnghuó hěn chōngshí.","en":"She bustles about every day but feels that life is fulfilling."}],
+  [{"zh":"父母都希望孩子长大后有出息。","py":"Fùmǔ dōu xīwàng háizi zhǎngdà hòu yǒu chūxi.","en":"All parents hope their children will have a bright future when they grow up."},{"zh":"他觉得做家务没有出息，想出去闯一番。","py":"Tā juéde zuò jiāwù méiyǒu chūxi, xiǎng chūqù chuǎng yī fān.","en":"He felt that doing housework had no prospects and wanted to go out and make his mark."}],
+  [{"zh":"这个小屋布置得很温馨，让人感到舒适。","py":"Zhège xiǎo wū bùzhì de hěn wēnxīn, ràng rén gǎndào shūshì.","en":"This little room is decorated very cosily, making people feel comfortable."},{"zh":"一家人在一起，气氛非常温馨。","py":"Yī jiā rén zài yīqǐ, qìfēn fēicháng wēnxīn.","en":"When the whole family is together, the atmosphere is very warm and cosy."}],
+  [{"zh":"这个团队合作非常和谐，大家都很配合。","py":"Zhège tuánduì hézuò fēicháng héxié, dàjiā dōu hěn pèihé.","en":"This team works together very harmoniously and everyone cooperates well."},{"zh":"她希望家里的气氛能够和谐快乐。","py":"Tā xīwàng jiālǐ de qìfēn nénggòu héxié kuàilè.","en":"She hopes the atmosphere at home can be harmonious and happy."}],
+  [{"zh":"同学们先后走进了教室，坐好等老师来。","py":"Tóngxuémen xiānhòu zǒu jìn le jiàoshì, zuò hǎo děng lǎoshī lái.","en":"The classmates entered the classroom one after another and sat down waiting for the teacher."},{"zh":"三位嘉宾先后发表了讲话。","py":"Sān wèi jiābīn xiānhòu fābiǎo le jiǎnghuà.","en":"Three guests made speeches one after another."}],
+  [{"zh":"周末他帮父母干活儿，打扫了整个院子。","py":"Zhōumò tā bāng fùmǔ gàn huór, dǎsǎo le zhěnggè yuànzi.","en":"On the weekend he helped his parents with work and swept the entire courtyard."},{"zh":"农村的孩子从小就知道干活儿。","py":"Nóngcūn de háizi cóng xiǎo jiù zhīdào gàn huór.","en":"Children in the countryside know how to work from a young age."}],
+  [{"zh":"宴会上欢声笑语不断，气氛十分热烈。","py":"Yànhuì shàng huān shēng xiào yǔ bùduàn, qìfēn shífēn rèliè.","en":"The banquet was filled with cheerful chatting and laughing, with a very lively atmosphere."},{"zh":"孩子们玩得很开心，到处都是欢声笑语。","py":"Háizimen wán de hěn kāixīn, dàochù dōu shì huān shēng xiào yǔ.","en":"The children played happily and there was cheerful laughter everywhere."}],
+  [{"zh":"这家店有十几样点心，每样都很好吃。","py":"Zhè jiā diàn yǒu shí jǐ yàng diǎnxīn, měi yàng dōu hěn hǎochī.","en":"This shop has more than a dozen kinds of dim sum, and every kind is delicious."},{"zh":"他买了好几样礼物，准备送给家人。","py":"Tā mǎi le hǎo jǐ yàng lǐwù, zhǔnbèi sòng gěi jiārén.","en":"He bought several kinds of gifts to give to his family."}],
+  [{"zh":"她最拿手的菜是红烧肉，每次都做得很好。","py":"Tā zuì náshǒu de cài shì hóngshāo ròu, měi cì dōu zuò de hěn hǎo.","en":"Her best dish is red-braised pork — she always makes it very well."},{"zh":"他拿手的是唱歌，每次聚会都表演。","py":"Tā náshǒu de shì chànggē, měi cì jùhuì dōu biǎoyǎn.","en":"His forte is singing — he performs at every gathering."}],
+  [{"zh":"他并不喜欢这个计划，只是没有说出来。","py":"Tā bìng bù xǐhuān zhège jìhuà, zhǐshì méiyǒu shuō chūlái.","en":"He actually does not like this plan — he just did not say so."},{"zh":"这件事并没有你想象的那么复杂。","py":"Zhè jiàn shì bìng méiyǒu nǐ xiǎngxiàng de nàme fùzá.","en":"This matter is actually not as complicated as you imagine."}],
+  [{"zh":"服务员把菜端上桌，客人们开始用餐。","py":"Fúwùyuán bǎ cài duān shàng zhuō, kèrenmen kāishǐ yòngcān.","en":"The waiter carried the dishes to the table and the guests began to eat."},{"zh":"她小心地端着一碗热汤，慢慢走过来。","py":"Tā xiǎoxīn de duānzhe yī wǎn rè tāng, mànmàn zǒu guòlái.","en":"She carefully carried a bowl of hot soup and walked over slowly."}],
+  [{"zh":"他吃得津津有味，一直没有停下来说话。","py":"Tā chī de jīnjīn yǒuwèi, yīzhí méiyǒu tíng xiàlái shuōhuà.","en":"He ate with great relish and never stopped to talk."},{"zh":"孩子们津津有味地听老师讲故事。","py":"Háizimen jīnjīn yǒuwèi de tīng lǎoshī jiǎng gùshi.","en":"The children listened to the teacher tell stories with keen interest."}],
+  [{"zh":"我忘记了带钥匙，只好打电话叫人来开门。","py":"Wǒ wàngjì le dài yàoshi, zhǐhǎo dǎ diànhuà jiào rén lái kāimén.","en":"I forgot to bring my keys and had no choice but to call someone to open the door."},{"zh":"时间长了，很多事情都容易忘记。","py":"Shíjiān cháng le, hěn duō shìqing dōu róngyì wàngjì.","en":"As time passes, many things are easily forgotten."}],
+  [{"zh":"长时间工作让他感到非常疲劳。","py":"Cháng shíjiān gōngzuò ràng tā gǎndào fēicháng píláo.","en":"Working for a long time made him feel very fatigued."},{"zh":"她声音疲劳，医生建议她多休息。","py":"Tā shēngyīn píláo, yīshēng jiànyì tā duō xiūxi.","en":"Her voice was tired; the doctor advised her to rest more."}],
+  [{"zh":"他品尝了厨师做的新菜，觉得味道很好。","py":"Tā pǐncháng le chúshī zuò de xīn cài, juéde wèidào hěn hǎo.","en":"He tasted the new dish the chef made and found it delicious."},{"zh":"旅行时，她喜欢品尝当地的特色食物。","py":"Lǚxíng shí, tā xǐhuān pǐncháng dāngdì de tèsè shíwù.","en":"When travelling, she likes to savour local specialty foods."}],
+  [{"zh":"她是一名全职妈妈，专门在家照顾孩子。","py":"Tā shì yī míng quánzhí māma, zhuānmén zài jiā zhàogù háizi.","en":"She is a full-time mother who stays home to take care of the children."},{"zh":"他辞职后成了全职先生，负责家里的事务。","py":"Tā cízhí hòu chéngle quánzhí xiānsheng, fùzé jiālǐ de shìwù.","en":"After quitting his job he became a full-time husband, responsible for household matters."}],
+  [{"zh":"她很能干，一个人把公司管理得井井有条。","py":"Tā hěn nénggàn, yī gè rén bǎ gōngsī guǎnlǐ de jǐngjǐng yǒutiáo.","en":"She is very capable and manages the company single-handedly in an orderly manner."},{"zh":"他虽然年轻，但做事很能干。","py":"Tā suīrán niánqīng, dàn zuòshì hěn nénggàn.","en":"He is young but very capable in what he does."}],
+  [{"zh":"她一心一意地学习，终于考上了名牌大学。","py":"Tā yīxīnyīyì de xuéxí, zhōngyú kǎo shàng le míngpái dàxué.","en":"She studied wholeheartedly and finally passed the entrance exam for a prestigious university."},{"zh":"只有一心一意做好一件事，才能成功。","py":"Zhǐyǒu yīxīnyīyì zuò hǎo yī jiàn shì, cái néng chénggōng.","en":"Only by doing one thing wholeheartedly can you succeed."}],
+  [{"zh":"周末他搞卫生，把屋子打扫得干干净净。","py":"Zhōumò tā gǎo wèishēng, bǎ wūzi dǎsǎo de gāngānjìngjìng.","en":"On the weekend he cleaned the house and swept it spotlessly clean."},{"zh":"学校要求学生轮流搞卫生，保持教室整洁。","py":"Xuéxiào yāoqiú xuésheng lúnliú gǎo wèishēng, bǎochí jiàoshì zhěngjié.","en":"The school requires students to take turns cleaning to keep the classroom tidy."}],
+  [{"zh":"他鼓起勇气，向老板提出了加薪的请求。","py":"Tā gǔ qǐ yǒngqì, xiàng lǎobǎn tíchū le jiāxīn de qǐngqiú.","en":"He summoned the courage to ask his boss for a pay raise."},{"zh":"面对困难时，我们需要有勇气去克服它。","py":"Miànduì kùnnan shí, wǒmen xūyào yǒu yǒngqì qù kèfú tā.","en":"When facing difficulties, we need the courage to overcome them."}],
+  [{"zh":"他在众人面前出错，觉得很丢面子。","py":"Tā zài zhòngrén miànqián chū cuò, juéde hěn diū miànzi.","en":"He made a mistake in front of everyone and felt very embarrassed."},{"zh":"输了比赛并不丢面子，重要的是努力过。","py":"Shū le bǐsài bìng bù diū miànzi, zhòngyào de shì nǔlì guò.","en":"Losing a competition is not losing face — what matters is having made the effort."}],
+  [{"zh":"他理解父母的苦心，决定好好学习。","py":"Tā lǐjiě fùmǔ de kǔxīn, juédìng hǎohǎo xuéxí.","en":"He understood his parents\' hard work and decided to study seriously."},{"zh":"我能理解你的感受，这件事确实很难。","py":"Wǒ néng lǐjiě nǐ de gǎnshòu, zhè jiàn shì quèshí hěn nán.","en":"I can understand your feelings — this is indeed very difficult."}],
+  [{"zh":"我们应该尊重老人，给他们让座。","py":"Wǒmen yīnggāi zūnzhòng lǎorén, gěi tāmen ràng zuò.","en":"We should respect the elderly and give up our seats for them."},{"zh":"他非常尊重同事的意见，从不独断专行。","py":"Tā fēicháng zūnzhòng tóngshì de yìjiàn, cóng bù dúduàn zhuānyíng.","en":"He greatly respects his colleagues\' opinions and never acts arbitrarily."}],
+  [{"zh":"去哪里吃饭对我来说无所谓，你决定吧。","py":"Qù nǎlǐ chīfàn duì wǒ lái shuō wúsuǒwèi, nǐ juédìng ba.","en":"It doesn\'t matter to me where we eat — you decide."},{"zh":"他对别人的批评无所谓，照样做自己的事。","py":"Tā duì biérén de pīpíng wúsuǒwèi, zhàoyàng zuò zìjǐ de shì.","en":"He is indifferent to others\' criticism and continues doing his own thing."}],
+  [{"zh":"感谢大家的支持，我们一定会做得更好。","py":"Gǎnxiè dàjiā de zhīchí, wǒmen yīdìng huì zuò de gèng hǎo.","en":"Thank you all for your support — we will definitely do even better."},{"zh":"他一直支持妻子的工作，帮她分担家务。","py":"Tā yīzhí zhīchí qīzi de gōngzuò, bāng tā fēndān jiāwù.","en":"He has always supported his wife\'s work and helped her share the household chores."}],
+  [{"zh":"她非常感激老师的帮助，特地写了感谢信。","py":"Tā fēicháng gǎnjī lǎoshī de bāngzhù, tèdì xiě le gǎnxiè xìn.","en":"She was very grateful for the teacher\'s help and specially wrote a thank-you letter."},{"zh":"我感激你一直陪伴和支持我。","py":"Wǒ gǎnjī nǐ yīzhí péibàn hé zhīchí wǒ.","en":"I am grateful that you have always accompanied and supported me."}],
+  [{"zh":"她有能力独自解决这个问题，不需要帮助。","py":"Tā yǒu nénglì dúzì jiějué zhège wèntí, bù xūyào bāngzhù.","en":"She has the ability to solve this problem on her own without help."},{"zh":"通过训练，他的工作能力大大提高了。","py":"Tōngguò xùnliàn, tā de gōngzuò nénglì dàdà tígāo le.","en":"Through training, his work ability improved greatly."}],
+  [{"zh":"他的意志力很强，再难的事也能坚持下去。","py":"Tā de yìzhìlì hěn qiáng, zài nán de shì yě néng jiānchí xiàqù.","en":"His willpower is very strong — no matter how hard things get, he persists."},{"zh":"这支球队实力很强，赢得了冠军。","py":"Zhè zhī qiúduì shílì hěn qiáng, yíngdé le guànjūn.","en":"This sports team has great strength and won the championship."}],
+  [{"zh":"他们是一对恩爱的两口子，从不吵架。","py":"Tāmen shì yī duì ēn\'ài de liǎngkǒuzi, cóng bù chāojià.","en":"They are an affectionate married couple who never quarrel."},{"zh":"两口子一起出去旅行，感情越来越好。","py":"Liǎngkǒuzi yīqǐ chūqù lǚxíng, gǎnqíng yuèlái yuè hǎo.","en":"The couple went travelling together and grew closer and closer."}],
+  [{"zh":"她悄悄地把礼物放在桌上，等他回来发现。","py":"Tā qiāoqiāo de bǎ lǐwù fàng zài zhuō shàng, děng tā huílái fāxiàn.","en":"She quietly placed the gift on the table and waited for him to come home and discover it."},{"zh":"他悄悄地离开了派对，没有告别任何人。","py":"Tā qiāoqiāo de líkāi le pàiduì, méiyǒu gàobié rènhé rén.","en":"He quietly left the party without saying goodbye to anyone."}],
+  [{"zh":"两个人都抢着付账，最后还是他赢了。","py":"Liǎng gè rén dōu qiǎngzhe fù zhàng, zuìhòu háishì tā yíng le.","en":"Both of them competed to pay the bill and he ended up winning."},{"zh":"她抢先举手回答了老师的问题。","py":"Tā qiǎng xiān jǔ shǒu huídá le lǎoshī de wèntí.","en":"She was the first to raise her hand and answer the teacher\'s question."}],
+  [{"zh":"吃完饭他主动去付账，不让朋友花钱。","py":"Chī wán fàn tā zhǔdòng qù fù zhàng, bù ràng péngyǒu huā qián.","en":"After eating he proactively went to pay the bill, not letting his friend spend money."},{"zh":"这次的账单由公司统一付账。","py":"Zhè cì de zhàngdān yóu gōngsī tǒngyī fù zhàng.","en":"This time\'s bill was paid by the company."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -3698,7 +3941,8 @@ function WORDS() {
   if (currentChapter === 8) return WORDS_CH8;
   if (currentChapter === 9) return WORDS_CH9;
   if (currentChapter === 10) return WORDS_CH10;
-  return WORDS_CH11;
+  if (currentChapter === 11) return WORDS_CH11;
+  return WORDS_CH12;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -3711,7 +3955,8 @@ function EXAMPLES() {
   if (currentChapter === 8) return EXAMPLES_CH8;
   if (currentChapter === 9) return EXAMPLES_CH9;
   if (currentChapter === 10) return EXAMPLES_CH10;
-  return EXAMPLES_CH11;
+  if (currentChapter === 11) return EXAMPLES_CH11;
+  return EXAMPLES_CH12;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -4590,7 +4835,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -4783,7 +5028,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -5183,6 +5428,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:9, words: WORDS_CH9 },
   { ch:10, words: WORDS_CH10 },
   { ch:11, words: WORDS_CH11 },
+  { ch:12, words: WORDS_CH12 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -5191,12 +5437,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 11 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 12 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 11 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 12 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -5443,7 +5689,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 11 chapters</div>
+      <div class="search-empty">Type to search all 12 chapters</div>
     </div>
   </div>
 </div>
