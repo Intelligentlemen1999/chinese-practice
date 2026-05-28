@@ -816,6 +816,10 @@ textarea#my-sentence::placeholder { color:#3a384a; }
     <span class="ch-num">Ch 12</span>
     <span class="ch-name">快乐的厨房</span>
   </button>
+  <button class="ch-btn" id="ch-btn-13" onclick="switchChapter(13)">
+    <span class="ch-num">Ch 13</span>
+    <span class="ch-name">徒步走遍</span>
+  </button>
 </div>
 
 <div id="srs-stats" class="srs-stats"></div>
@@ -985,6 +989,8 @@ const CHAPTERS = {
   9: { title:'姚明的故事', subtitle:'Chapter 9' },
   10: { title:'养宠物的老人', subtitle:'Chapter 10' },
   11: { title:'其实你也是富翁', subtitle:'Chapter 11' },
+  12: { title:'幸福是拥有一个快乐的厨房', subtitle:'Chapter 12' },
+  13: { title:'徒步走遍全中国', subtitle:'Chapter 13' },
 };
 
 /* ─────────────────── LESSON DATA ─────────────────── */
@@ -2857,6 +2863,164 @@ const LESSONS = {
         answer:'悄悄'
       },
     ]
+  },
+  13: {
+    texts: [
+      {
+        num:'§1', title:'徒步走遍全中国', en:'Walking Across All of China on Foot',
+        paragraphs:[
+          {
+            zh:'余纯顺是一个探险家。他的理想是徒步走遍中国960万平方公里，使每个省市都留下他的足迹。',
+            py:'Yú Chūnshùn shì yī gè tànxiǎnjiā. Tā de lǐxiǎng shì túbù zǒu biàn Zhōngguó 960 wàn píngfāng gōnglǐ, shǐ měi gè shěngshì dōu liú xià tā de zújī.',
+            en:'Yu Chunshun is an explorer. His aspiration was to walk on foot across all of China\'s 9.6 million square kilometres, leaving his footprints in every province and city.'
+          },
+          {
+            zh:'从1988年7月1日起，余纯顺开始了"徒步走遍全中国"。他克服了千难万险，有时一天走33个小时，从南到北，从东到西，一共走了42万公里。了不起的是，他用一年半时间，一步一步地穿越了被称为"世界第三极"的青藏高原，克服了严重的高原反应，完成了这一项目。',
+            py:'Cóng 1988 nián 7 yuè 1 rì qǐ, Yú Chūnshùn kāishǐ le "túbù zǒu biàn quán Zhōngguó". Tā kèfú le qiān nán wàn xiǎn, yǒushí yī tiān zǒu 33 gè xiǎoshí, cóng nán dào běi, cóng dōng dào xī, yīgòng zǒu le 42 wàn gōnglǐ. Liǎobuqǐ de shì, tā yòng yī nián bàn shíjiān, yī bù yī bù de chuānyuè le bèi chēng wèi "shìjiè dì-sān jí" de Qīngzàng Gāoyuán, kèfú le yánzhòng de gāoyuán fǎnyìng, wánchéng le zhè yī xiàngmù.',
+            en:'Starting from July 1, 1988, Yu Chunshun began his "walk across all of China on foot." He overcame countless difficulties and dangers, sometimes walking 33 hours in a single day, from south to north and east to west, covering 420,000 kilometres in total. Remarkably, in a year and a half, he crossed step by step the Tibetan Plateau — known as the "world\'s third pole" — overcame severe altitude sickness, and completed this project.'
+          },
+          {
+            zh:'一路上，他写了几百万字的日记，拍了很多照片，详细记录了各地的自然现象和民情习惯，留下了宝贵的材料。',
+            py:'Yīlù shàng, tā xiě le jǐ bǎi wàn zì de rìjì, pāi le hěn duō zhàopiàn, xiángxì jìlù le gèdì de zìrán xiànxiàng hé mínqíng xíguàn, liú xià le bǎoguì de cáiliào.',
+            en:'Along the way, he wrote a diary of several million characters, took many photos, and made detailed records of the natural phenomena and local customs of every place he visited, leaving behind invaluable materials.'
+          },
+          {
+            zh:'余纯顺说，每天晚上，仰望星空，虽然也会想念家乡，但第二天早上太阳升起来的时候，他还是坚持走了下去。他的意志坚定，让人佩服。',
+            py:'Yú Chūnshùn shuō, měitiān wǎnshang, yǎngwàng xīngkōng, suīrán yě huì xiǎngniàn jiāxiāng, dàn dì-èr tiān zǎoshang tàiyáng shēng qǐlái de shíhòu, tā háishì jiānchí zǒu le xiàqù. Tā de yìzhì jiāndìng, ràng rén pèifú.',
+            en:'Yu Chunshun said that every evening, gazing up at the starry sky, he would miss his hometown — but the next morning when the sun rose, he persisted and walked on. His strong will was admirable.'
+          }
+        ]
+      },
+      {
+        num:'§2', title:'北极国际村', en:'The International Village at the North Pole',
+        paragraphs:[
+          {
+            zh:'在挪威有一个地方叫新奥尔松。新奥尔松有一个国际性的科学考察基地。基地只有三十几人，来自世界各地，一个观测站就是一个考察中心，是世界上最小的小镇之一。',
+            py:'Zài Nuówēi yǒu yī gè dìfāng jiào Xīn\'ào\'ěrsōng. Xīn\'ào\'ěrsōng yǒu yī gè guójì xìng de kēxué kǎochá jīdì. Jīdì zhǐ yǒu sānshí jǐ rén, láizì shìjiè gèdì, yī gè guāncèzhàn jiùshì yī gè kǎochá zhōngxīn, shì shìjiè shàng zuì xiǎo de xiǎo zhèn zhī yī.',
+            en:'In Norway there is a place called Ny-Ålesund. Ny-Ålesund has an international scientific research base. The base has only thirty-odd people from all over the world. One observation station is one research centre — it is one of the smallest towns in the world.'
+          },
+          {
+            zh:'新奥尔松科学考察基地是一个小小的世界。里面有来自世界各地三十多个国家的科学家，加上来回飞翔的海鸟，基地里非常热闹。村民们来自不同的国家，语言不同，生活方式不同，却有着相同的理想——探索自然，探索未来。他们之间的关系非常友好。',
+            py:'Xīn\'ào\'ěrsōng kēxué kǎochá jīdì shì yī gè xiǎo xiǎo de shìjiè. Lǐmiàn yǒu láizì shìjiè gèdì sānshí duō gè guójiā de kēxuéjiā, jiā shàng láihuí fēixiáng de hǎiniǎo, jīdì lǐ fēicháng rènào. Cūnmínmen láizì bùtóng de guójiā, yǔyán bùtóng, shēnghuó fāngshì bùtóng, què yǒuzhe xiāngtóng de lǐxiǎng — tànsuo zìrán, tànsuo wèilái. Tāmen zhījiān de guānxi fēicháng yǒuhǎo.',
+            en:'The Ny-Ålesund scientific research base is a tiny world. Inside are scientists from more than thirty countries across the globe, and with seabirds flying back and forth, the base is very lively. The villagers come from different countries, speak different languages, and have different ways of life — yet they share the same aspiration: to explore nature and explore the future. The relationships among them are very friendly.'
+          },
+          {
+            zh:'各队员们在考察活动中都必须尊重自然，尽量减少人类活动对环境的影响。因此，首先，各国的考察项目不能相互影响；其次，大家要保持良好的合作意识；第三，必须为各国科学家创造合作和交流的条件。基地有几幢楼房，大家住在一起，安静而和谐。',
+            py:'Gè duìyuánmen zài kǎochá huódòng zhōng dōu bìxū zūnzhòng zìrán, jǐnliàng jiǎnshǎo rénlèi huódòng duì huánjìng de yǐngxiǎng. Yīncǐ, shǒuxiān, gè guó de kǎochá xiàngmù bùnéng hùxiāng yǐngxiǎng; qícì, dàjiā yào bǎochí liánghǎo de hézuò yìshí; dì-sān, bìxū wèi gè guó kēxuéjiā chuàngzào hézuò hé jiāoliú de tiáojiàn. Jīdì yǒu jǐ zhuàng lóufáng, dàjiā zhù zài yīqǐ, ānjìng ér héxié.',
+            en:'All team members must respect nature during research activities and do their best to minimise the impact of human activity on the environment. Therefore, first of all, the research projects of each country must not interfere with each other; secondly, everyone must maintain a good spirit of cooperation; thirdly, conditions for cooperation and exchange among scientists from all countries must be created. The base has a few buildings where everyone lives together, quietly and harmoniously.'
+          },
+          {
+            zh:'1909年，美国的罗博特·皮尔里成为人类历史上第一个到达北极的人。今天，一个个新时代的"皮尔里"从世界各国来到这里，探索自然，探索未来。',
+            py:'1909 nián, Měiguó de Luóbótè Pí\'ěrlǐ chénwéi rénlèi lìshǐ shàng dì-yī gè dàodá Běijí de rén. Jīntiān, yī gè gè xīn shídài de "Pí\'ěrlǐ" cóng shìjiè gè guó lái dào zhèlǐ, tànsuo zìrán, tànsuo wèilái.',
+            en:'In 1909, American Robert Peary became the first person in human history to reach the North Pole. Today, one "Peary" after another from a new era comes here from countries all over the world to explore nature and explore the future.'
+          }
+        ]
+      }
+    ],
+    grammar: [
+      {
+        title:'了不起 (Amazing, Extraordinary)',
+        pattern:'真了不起 / 了不起的是……',
+        explanation:'"了不起" is an adjective meaning "amazing," "extraordinary," or "remarkable." It expresses high admiration for someone\'s achievement or ability.',
+        examples:[
+          {zh:'了不起的是，他用一年半时间穿越了青藏高原。',py:'Liǎobuqǐ de shì, tā yòng yī nián bàn shíjiān chuānyuè le Qīngzàng Gāoyuán.',en:'What is remarkable is that he crossed the Tibetan Plateau in just a year and a half.'},
+          {zh:'他一个人完成了这么大的项目，真了不起！',py:'Tā yī gè rén wánchéng le zhème dà de xiàngmù, zhēn liǎobuqǐ!',en:'He completed such a huge project all by himself — truly remarkable!'},
+          {zh:'你能克服这么多困难，你真是了不起。',py:'Nǐ néng kèfú zhème duō kùnnan, nǐ zhēnshì liǎobuqǐ.',en:'You are truly amazing to be able to overcome so many difficulties.'},
+        ]
+      },
+      {
+        title:'来自 (Come From)',
+        pattern:'来自＋place / source',
+        explanation:'"来自" means "come from." The character "自" is a preposition meaning "from," so "来自" literally means "come from." It can refer to people, things, or ideas originating from a place.',
+        examples:[
+          {zh:'村民们来自不同的国家，却有着相同的理想。',py:'Cūnmínmen láizì bùtóng de guójiā, què yǒuzhe xiāngtóng de lǐxiǎng.',en:'The villagers come from different countries but share the same aspiration.'},
+          {zh:'这个消息来自政府，应该是可靠的。',py:'Zhège xiāoxi láizì zhèngfǔ, yīnggāi shì kěkào de.',en:'This news comes from the government and should be reliable.'},
+          {zh:'班上的同学来自世界各地，大家友好相处。',py:'Bān shàng de tóngxué láizì shìjiè gèdì, dàjiā yǒuhǎo xiāngchǔ.',en:'The classmates in the class come from all over the world and get along in a friendly way.'},
+        ]
+      },
+      {
+        title:'一X一X (One After Another, Step by Step)',
+        pattern:'一＋X＋一＋X',
+        explanation:'"一X一X" uses the same word twice with "一" before each to express that an action is repeated one unit at a time — "step by step," "one by one," or "again and again." X can be a noun (measure word) or verb.',
+        examples:[
+          {zh:'他一步一步地穿越了青藏高原，克服了高原反应。',py:'Tā yī bù yī bù de chuānyuè le Qīngzàng Gāoyuán, kèfú le gāoyuán fǎnyìng.',en:'He crossed the Tibetan Plateau step by step, overcoming altitude sickness.'},
+          {zh:'老师一遍一遍地解释，直到同学都听懂了。',py:'Lǎoshī yī biàn yī biàn de jiěshì, zhídào tóngxué dōu tīng dǒng le.',en:'The teacher explained again and again until the students all understood.'},
+          {zh:'她把衣服一件一件地叠好，放进箱子里。',py:'Tā bǎ yīfu yī jiàn yī jiàn de dié hǎo, fàng jìn xiāngzi lǐ.',en:'She folded the clothes one by one and put them into the box.'},
+        ]
+      },
+      {
+        title:'尽量 (To the Best of One\'s Ability)',
+        pattern:'尽量＋V / 尽量＋少/多＋V',
+        explanation:'"尽量" is an adverb meaning "to the greatest extent possible" or "as much as one can." It precedes a verb or adjective and shows an effort to do something as fully as possible.',
+        examples:[
+          {zh:'各队员尽量减少人类活动对环境的影响。',py:'Gè duìyuán jǐnliàng jiǎnshǎo rénlèi huódòng duì huánjìng de yǐngxiǎng.',en:'Each team member does their best to minimise the impact of human activity on the environment.'},
+          {zh:'学汉语要尽量多开口说，不要怕说错。',py:'Xué Hànyǔ yào jǐnliàng duō kāikǒu shuō, bùyào pà shuō cuò.',en:'When learning Chinese, try to speak as much as possible and don\'t be afraid of making mistakes.'},
+          {zh:'我尽量早一点出发，不想让大家等太久。',py:'Wǒ jǐnliàng zǎo yīdiǎn chūfā, bù xiǎng ràng dàjiā děng tài jiǔ.',en:'I\'ll set off as early as I can — I don\'t want to keep everyone waiting too long.'},
+        ]
+      },
+      {
+        title:'首先……其次……第三…… (Enumeration in Order)',
+        pattern:'首先＋point; 其次＋point; 第三/最后/此外＋point',
+        explanation:'"首先……其次……" is used to list several points in order of priority or sequence — "first of all… secondly… thirdly/finally." It is more formal and logical than just using 然后.',
+        examples:[
+          {zh:'考察基地要求：首先，尊重自然；其次，保持合作；第三，创造交流条件。',py:'Kǎochá jīdì yāoqiú: shǒuxiān, zūnzhòng zìrán; qícì, bǎochí hézuò; dì-sān, chuàngzào jiāoliú tiáojiàn.',en:'The research base requires: first, respect nature; secondly, maintain cooperation; thirdly, create conditions for exchange.'},
+          {zh:'学好中文要：首先，每天坚持学习；其次，多开口说话；第三，多听多读。',py:'Xué hǎo Zhōngwén yào: shǒuxiān, měitiān jiānchí xuéxí; qícì, duō kāikǒu shuōhuà; dì-sān, duō tīng duō dú.',en:'To learn Chinese well: first, study every day without fail; secondly, speak out more; thirdly, listen and read a lot.'},
+          {zh:'首先，我要感谢大家的支持；其次，我要感谢家人的理解。',py:'Shǒuxiān, wǒ yào gǎnxiè dàjiā de zhīchí; qícì, wǒ yào gǎnxiè jiārén de lǐjiě.',en:'First of all, I want to thank everyone for their support; secondly, I want to thank my family for their understanding.'},
+        ]
+      },
+      {
+        title:'千难万险 (Countless Difficulties and Dangers)',
+        pattern:'克服千难万险 / 历经千难万险',
+        explanation:'"千难万险" is a four-character idiom meaning "a thousand difficulties and ten thousand dangers" — used to express that the obstacles faced are enormous and numerous.',
+        examples:[
+          {zh:'他克服了千难万险，完成了徒步走遍全中国的理想。',py:'Tā kèfú le qiān nán wàn xiǎn, wánchéng le túbù zǒu biàn quán Zhōngguó de lǐxiǎng.',en:'He overcame countless difficulties and dangers to fulfil his dream of walking across all of China on foot.'},
+          {zh:'历经千难万险之后，探险队终于到达了目的地。',py:'Lìjīng qiān nán wàn xiǎn zhīhòu, tànxiǎn duì zhōngyú dàodá le mùdìdì.',en:'After experiencing countless hardships, the exploration team finally reached their destination.'},
+          {zh:'创业过程中千难万险，但他从未放弃。',py:'Chuàngyè guòchéng zhōng qiān nán wàn xiǎn, dàn tā cóng wèi fàngqì.',en:'The process of starting a business was full of countless difficulties, but he never gave up.'},
+        ]
+      },
+    ],
+    exercises: [
+      {
+        type:'mc',
+        question:'余纯顺的理想是____走遍中国960万平方公里。',
+        options:['徒步','自费','探索','了不起'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'他____了千难万险，一个人穿越了青藏高原。',
+        options:['克服','完成','记录','考察'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'新奥尔松基地里的科学家____世界各地，有着相同的理想。',
+        options:['来自','到达','探索','仰望'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'他____减少人类活动对自然环境的影响。',
+        options:['尽量','首先','其次','详细'],
+        answer:0
+      },
+      {
+        type:'mc',
+        question:'科考基地要求____尊重自然，____保持合作，____创造条件。',
+        options:['首先……其次……第三','尽管……但……也','虽然……可是……都','一……一……一'],
+        answer:0
+      },
+      {
+        type:'fill',
+        prompt:'用 "了不起" 造句：他一个人完成了这次考察，真___！',
+        answer:'了不起'
+      },
+      {
+        type:'fill',
+        prompt:'用 "一X一X" 完成句子：他___步___步地爬上了山顶。',
+        answer:'一'
+      },
+    ]
   }
 };
 
@@ -3929,6 +4093,92 @@ const EXAMPLES_CH12 = [
   [{"zh":"吃完饭他主动去付账，不让朋友花钱。","py":"Chī wán fàn tā zhǔdòng qù fù zhàng, bù ràng péngyǒu huā qián.","en":"After eating he proactively went to pay the bill, not letting his friend spend money."},{"zh":"这次的账单由公司统一付账。","py":"Zhè cì de zhàngdān yóu gōngsī tǒngyī fù zhàng.","en":"This time\'s bill was paid by the company."}],
 ];
 
+const WORDS_CH13 = [
+  { hanzi:"徒步",     pinyin:"túbù",              pos:"Adv.",    english:"on foot" },
+  { hanzi:"探险家",   pinyin:"tànxiǎnjiā",         pos:"N.",      english:"explorer" },
+  { hanzi:"理想",     pinyin:"lǐxiǎng",            pos:"N./Adj.", english:"aspiration, ideal" },
+  { hanzi:"遇难",     pinyin:"yù nán",             pos:"V.",      english:"die in an accident" },
+  { hanzi:"自费",     pinyin:"zìfèi",              pos:"Adj.",    english:"at one\'s own expense, self-funded" },
+  { hanzi:"克服",     pinyin:"kèfú",               pos:"V.",      english:"overcome, surmount" },
+  { hanzi:"千难万险", pinyin:"qiān nán wàn xiǎn",  pos:"Idiom.", english:"numerous difficulties and dangers" },
+  { hanzi:"乡村",     pinyin:"xiāngcūn",           pos:"N.",      english:"village, countryside" },
+  { hanzi:"完成",     pinyin:"wánchéng",           pos:"V.",      english:"accomplish, complete" },
+  { hanzi:"项目",     pinyin:"xiàngmù",            pos:"N.",      english:"item, project, sports event" },
+  { hanzi:"了不起",   pinyin:"liǎobuqǐ",           pos:"Adj.",    english:"amazing, terrific, extraordinary" },
+  { hanzi:"考察",     pinyin:"kǎochá",             pos:"V.",      english:"make an on-the-spot investigation" },
+  { hanzi:"日记",     pinyin:"rìjì",               pos:"N.",      english:"diary, journal" },
+  { hanzi:"详细",     pinyin:"xiángxì",            pos:"Adj.",    english:"detailed, minute" },
+  { hanzi:"记录",     pinyin:"jìlù",               pos:"V./N.",   english:"take notes, record" },
+  { hanzi:"民情",     pinyin:"mínqíng",            pos:"N.",      english:"condition of the people, public sentiment" },
+  { hanzi:"材料",     pinyin:"cáiliào",            pos:"N.",      english:"data, material" },
+  { hanzi:"仰望",     pinyin:"yǎngwàng",           pos:"V.",      english:"look up at, gaze upward" },
+  { hanzi:"星空",     pinyin:"xīngkōng",           pos:"N.",      english:"starry sky" },
+  { hanzi:"基地",     pinyin:"jídì",               pos:"N.",      english:"base" },
+  { hanzi:"幢",       pinyin:"zhuàng",             pos:"M.W.",    english:"(measure word for buildings)" },
+  { hanzi:"村民",     pinyin:"cūnmín",             pos:"N.",      english:"villager" },
+  { hanzi:"来自",     pinyin:"lái zì",             pos:"Prep.",   english:"come from" },
+  { hanzi:"相同",     pinyin:"xiāngtóng",          pos:"Adj.",    english:"identical, same" },
+  { hanzi:"马夫",     pinyin:"mǎfū",               pos:"N.",      english:"groom, horse keeper" },
+  { hanzi:"队员",     pinyin:"duìyuán",            pos:"N.",      english:"team member" },
+  { hanzi:"安静",     pinyin:"ānjìng",             pos:"Adj.",    english:"quiet, peaceful" },
+  { hanzi:"海鸟",     pinyin:"hǎiniǎo",            pos:"N.",      english:"seabird" },
+  { hanzi:"友好",     pinyin:"yǒuhǎo",             pos:"Adj.",    english:"friendly, amicable" },
+  { hanzi:"首先",     pinyin:"shǒuxiān",           pos:"Adv.",    english:"first of all, above all" },
+  { hanzi:"尽量",     pinyin:"jǐnliàng",           pos:"Adv.",    english:"to the full, to the best of one\'s ability" },
+  { hanzi:"其次",     pinyin:"qícì",               pos:"Adv.",    english:"next, secondly" },
+  { hanzi:"合作",     pinyin:"hézuò",              pos:"V./N.",   english:"cooperate, cooperation" },
+  { hanzi:"观测站",   pinyin:"guāncèzhàn",         pos:"N.",      english:"observation station" },
+  { hanzi:"研究",     pinyin:"yánjīu",             pos:"V.",      english:"research, study" },
+  { hanzi:"科学家",   pinyin:"kēxuéjiā",           pos:"N.",      english:"scientist" },
+  { hanzi:"人类",     pinyin:"rénlèi",             pos:"N.",      english:"human being, mankind" },
+  { hanzi:"到达",     pinyin:"dàodá",              pos:"V.",      english:"arrive, get to, reach" },
+  { hanzi:"探索",     pinyin:"tànsuo",             pos:"V.",      english:"explore, seek" },
+  { hanzi:"未来",     pinyin:"wèilái",             pos:"N.",      english:"future" },
+];
+
+const EXAMPLES_CH13 = [
+  [{"zh":"他徒步旅行了三个月，走遍了很多乡村。","py":"Tā túbù lǚxíng le sān gè yuè, zǒu biàn le hěn duō xiāngcūn.","en":"He travelled on foot for three months and walked through many villages."},{"zh":"徒步爬山比坐缆车辛苦，但风景更美。","py":"Túbù pá shān bǐ zuò lǎnchē xīnkǔ, dàn fēngjǐng gèng měi.","en":"Hiking up the mountain on foot is more tiring than taking the cable car, but the scenery is more beautiful."}],
+  [{"zh":"她是一位有名的探险家，去过世界上最危险的地方。","py":"Tā shì yī wèi yǒumíng de tànxiǎnjiā, qùguò shìjiè shàng zuì wēixiǎn de dìfāng.","en":"She is a famous explorer who has been to the most dangerous places in the world."},{"zh":"成为一名探险家是他从小的理想。","py":"Chéngwéi yī míng tànxiǎnjiā shì tā cóngxiǎo de lǐxiǎng.","en":"Becoming an explorer has been his dream since childhood."}],
+  [{"zh":"她的理想是成为一名医生，帮助更多的人。","py":"Tā de lǐxiǎng shì chéngwéi yī míng yīshēng, bāngzhù gèng duō de rén.","en":"Her aspiration is to become a doctor and help more people."},{"zh":"他从小就有一个理想——走遍全世界。","py":"Tā cóngxiǎo jiù yǒu yī gè lǐxiǎng — zǒu biàn quán shìjiè.","en":"He has had a dream since childhood — to travel around the entire world."}],
+  [{"zh":"那次事故中有几名工人遇难，令人非常痛心。","py":"Nà cì shìgù zhōng yǒu jǐ míng gōngrén yù nán, lìng rén fēicháng tòngxīn.","en":"In that accident, several workers died, which was very heartbreaking."},{"zh":"探险是有风险的，历史上有不少探险家遇难。","py":"Tànxiǎn shì yǒu fēngxiǎn de, lìshǐ shàng yǒu bù shǎo tànxiǎnjiā yù nán.","en":"Exploration is risky — throughout history many explorers have lost their lives."}],
+  [{"zh":"他自费出国留学，没有花家里一分钱。","py":"Tā zìfèi chūguó liúxué, méiyǒu huā jiālǐ yī fēn qián.","en":"He studied abroad at his own expense without spending a single cent of his family\'s money."},{"zh":"这次考察是自费的，所以费用由队员们自己承担。","py":"Zhè cì kǎochá shì zìfèi de, suǒyǐ fèiyòng yóu duìyuánmen zìjǐ chéngdān.","en":"This investigation was self-funded, so the costs were borne by the team members themselves."}],
+  [{"zh":"尽管困难很多，他还是克服了所有障碍。","py":"Jǐnguǎn kùnnan hěn duō, tā háishì kèfú le suǒyǒu zhàng\'ài.","en":"Despite many difficulties, he overcame all obstacles."},{"zh":"只要有决心，任何困难都可以克服。","py":"Zhǐyào yǒu juéxīn, rènhé kùnnan dōu kěyǐ kèfú.","en":"As long as one has determination, any difficulty can be overcome."}],
+  [{"zh":"他历经千难万险，终于完成了这次探险。","py":"Tā lìjīng qiān nán wàn xiǎn, zhōngyú wánchéng le zhè cì tànxiǎn.","en":"He went through countless difficulties and dangers and finally completed this expedition."},{"zh":"创业过程千难万险，但他从未放弃。","py":"Chuàngyè guòchéng qiān nán wàn xiǎn, dàn tā cóng wèi fàngqì.","en":"The process of starting a business was full of countless hardships, but he never gave up."}],
+  [{"zh":"他出生在一个偏远的乡村，后来考上了大学。","py":"Tā chūshēng zài yī gè piānyuǎn de xiāngcūn, hòulái kǎo shàng le dàxué.","en":"He was born in a remote village and later passed the university entrance exam."},{"zh":"周末我们去乡村郊游，呼吸新鲜空气。","py":"Zhōumò wǒmen qù xiāngcūn jiāoyóu, hūxī xīnxiān kōngqì.","en":"On weekends we go on excursions to the countryside to breathe fresh air."}],
+  [{"zh":"她完成了论文，终于可以毕业了。","py":"Tā wánchéng le lùnwén, zhōngyú kěyǐ bìyè le.","en":"She completed her thesis and could finally graduate."},{"zh":"只要完成这个项目，他就可以休假了。","py":"Zhǐyào wánchéng zhège xiàngmù, tā jiù kěyǐ xiūjià le.","en":"Once he completes this project he can go on holiday."}],
+  [{"zh":"他们正在研究一个重要的科学项目。","py":"Tāmen zhèngzài yánjīu yī gè zhòngyào de kēxué xiàngmù.","en":"They are researching an important scientific project."},{"zh":"这次运动会有很多比赛项目，你要参加哪一个？","py":"Zhè cì yùndònghuì yǒu hěn duō bǐsài xiàngmù, nǐ yào cānjiā nǎ yī gè?","en":"There are many events in this sports meet — which one do you want to take part in?"}],
+  [{"zh":"他一个人走遍了全中国，真是了不起！","py":"Tā yī gè rén zǒu biàn le quán Zhōngguó, zhēnshì liǎobuqǐ!","en":"He walked through all of China all by himself — truly remarkable!"},{"zh":"这个孩子能说三种语言，了不起！","py":"Zhège háizi néng shuō sān zhǒng yǔyán, liǎobuqǐ!","en":"This child can speak three languages — amazing!"}],
+  [{"zh":"他们去云南考察当地的少数民族文化。","py":"Tāmen qù Yúnnán kǎochá dāngdì de shǎoshù mínzú wénhuà.","en":"They went to Yunnan to conduct on-the-spot research into the local minority cultures."},{"zh":"科学家们在南极考察了三个月，收集了很多数据。","py":"Kēxuéjiāmen zài Nánjí kǎochá le sān gè yuè, shōují le hěn duō shùjù.","en":"The scientists conducted research in Antarctica for three months and collected a lot of data."}],
+  [{"zh":"她坚持每天写日记，已经写了十年了。","py":"Tā jiānchí měitiān xiě rìjì, yǐjīng xiě le shí nián le.","en":"She persists in writing in her diary every day and has been doing so for ten years."},{"zh":"旅行时写日记，可以记录下美好的时光。","py":"Lǚxíng shí xiě rìjì, kěyǐ jìlù xià měihǎo de shíguāng.","en":"Writing a diary when travelling allows you to record the wonderful moments."}],
+  [{"zh":"请把这件事说得详细一点，我没太明白。","py":"Qǐng bǎ zhè jiàn shì shuō de xiángxì yīdiǎn, wǒ méi tài míngbai.","en":"Please explain this matter in more detail — I didn\'t quite understand."},{"zh":"他详细地介绍了公司的情况和发展计划。","py":"Tā xiángxì de jièshào le gōngsī de qíngkuàng hé fāzhǎn jìhuà.","en":"He introduced the company\'s situation and development plans in detail."}],
+  [{"zh":"他记录了会议上所有重要的发言。","py":"Tā jìlù le huìyì shàng suǒyǒu zhòngyào de fāyán.","en":"He recorded all the important speeches at the meeting."},{"zh":"这本书记录了他二十年的探险经历。","py":"Zhè běn shū jìlù le tā èrshí nián de tànxiǎn jīnglì.","en":"This book records his twenty years of exploration experience."}],
+  [{"zh":"他走遍了全国各地，了解了当地的民情。","py":"Tā zǒu biàn le quánguó gèdì, liǎojiě le dāngdì de mínqíng.","en":"He travelled throughout the country and came to understand the local public sentiment."},{"zh":"政府官员经常下乡，了解民情，听取意见。","py":"Zhèngfǔ guānyuán jīngcháng xià xiāng, liǎojiě mínqíng, tīngqǔ yìjiàn.","en":"Government officials often go to the countryside to understand public sentiment and listen to opinions."}],
+  [{"zh":"他收集了很多研究材料，准备写一篇论文。","py":"Tā shōují le hěn duō yánjīu cáiliào, zhǔnbèi xiě yī piān lùnwén.","en":"He collected a great deal of research material in preparation for writing a paper."},{"zh":"做菜需要各种各样的材料，缺一样就不行。","py":"Zuò cài xūyào gè zhǒng gè yàng de cáiliào, quē yī yàng jiù bù xíng.","en":"Cooking requires all kinds of ingredients — if one is missing it won\'t work."}],
+  [{"zh":"孩子仰望着天空，好奇地问：天上有什么？","py":"Háizi yǎngwàngzhe tiānkōng, hàoqí de wèn: tiān shàng yǒu shénme?","en":"The child gazed up at the sky and asked curiously: What is up there?"},{"zh":"每天晚上仰望星空，让他感到心情平静。","py":"Měitiān wǎnshang yǎngwàng xīngkōng, ràng tā gǎndào xīnqíng píngjìng.","en":"Gazing up at the starry sky every evening made him feel calm."}],
+  [{"zh":"在沙漠里，夜晚的星空非常美，一颗一颗的星星清晰可见。","py":"Zài shāmò lǐ, yèwǎn de xīngkōng fēicháng měi, yī kē yī kē de xīngxīng qīngxī kějiàn.","en":"In the desert, the starry sky at night is very beautiful — every single star is clearly visible."},{"zh":"他仰望星空，心里想着远方的家人。","py":"Tā yǎngwàng xīngkōng, xīnlǐ xiǎngzhe yuǎnfāng de jiārén.","en":"He gazed up at the starry sky, thinking of his family far away."}],
+  [{"zh":"这个军事基地是严格保密的，外人不得进入。","py":"Zhège jūnshì jīdì shì yángé bǎomì de, wàirén bùdé jìnrù.","en":"This military base is strictly classified — outsiders are not allowed to enter."},{"zh":"研究基地建在山里，远离城市的喧嚣。","py":"Yánjīu jīdì jiàn zài shān lǐ, yuǎnlí chéngshì de xuānnào.","en":"The research base was built in the mountains, far from the noise of the city."}],
+  [{"zh":"这幢大楼是公司的新办公室，刚建好不久。","py":"Zhè zhuàng dàlóu shì gōngsī de xīn bàngōngshì, gāng jiàn hǎo bù jiǔ.","en":"This building is the company\'s new office, which was just completed not long ago."},{"zh":"小区里有几幢楼，每幢楼都有二十层。","py":"Xiǎoqū lǐ yǒu jǐ zhuàng lóu, měi zhuàng lóu dōu yǒu èrshí céng.","en":"The residential compound has several buildings, each twenty storeys tall."}],
+  [{"zh":"村民们自发组织起来，一起修建了这条路。","py":"Cūnmínmen zìfā zǔzhī qǐlái, yīqǐ xiūjiàn le zhè tiáo lù.","en":"The villagers organised themselves spontaneously and built this road together."},{"zh":"新来的市长走访了附近的村民，了解大家的需求。","py":"Xīn lái de shìzhǎng zǒufǎng le fùjìn de cūnmín, liǎojiě dàjiā de xūqiú.","en":"The newly arrived mayor visited nearby villagers to understand their needs."}],
+  [{"zh":"这些学生来自不同的国家，但大家都会说中文。","py":"Zhèxiē xuésheng láizì bùtóng de guójiā, dàn dàjiā dōu huì shuō Zhōngwén.","en":"These students come from different countries but everyone can speak Chinese."},{"zh":"她来自上海，但已经在北京生活了十年。","py":"Tā láizì Shànghǎi, dàn yǐjīng zài Běijīng shēnghuó le shí nián.","en":"She comes from Shanghai but has been living in Beijing for ten years."}],
+  [{"zh":"两国人民有着相同的愿望，希望和平共处。","py":"Liǎng guó rénmín yǒuzhe xiāngtóng de yuànwàng, xīwàng hépíng gòngchǔ.","en":"The peoples of the two countries share the same wish — to live together in peace."},{"zh":"他们俩的爱好相同，都喜欢登山和探险。","py":"Tāmen liǎ de àihào xiāngtóng, dōu xǐhuān dēng shān hé tànxiǎn.","en":"The two of them have the same hobbies — they both like mountaineering and exploration."}],
+  [{"zh":"马夫照料着这些马，每天喂草料和水。","py":"Mǎfū zhàoliào zhe zhèxiē mǎ, měitiān wèi cǎoliào hé shuǐ.","en":"The groom tends the horses, feeding them hay and water every day."},{"zh":"过去，长途旅行都靠马夫驾车带路。","py":"Guòqù, chángtú lǚxíng dōu kào mǎfū jià chē dài lù.","en":"In the past, long-distance travel relied on horse keepers to drive the carriage and show the way."}],
+  [{"zh":"我们队有十名队员，每个人都非常努力。","py":"Wǒmen duì yǒu shí míng duìyuán, měi gè rén dōu fēicháng nǔlì.","en":"Our team has ten members and everyone works very hard."},{"zh":"队员们在艰苦的条件下坚持完成了考察任务。","py":"Duìyuánmen zài jiānkǔ de tiáojiàn xià jiānchí wánchéng le kǎochá rènwu.","en":"The team members persisted in completing the investigation mission under difficult conditions."}],
+  [{"zh":"图书馆里很安静，大家都专心看书。","py":"Túshūguǎn lǐ hěn ānjìng, dàjiā dōu zhuānxīn kàn shū.","en":"The library is very quiet and everyone is focused on reading."},{"zh":"孩子睡觉了，请保持安静，不要吵醒他。","py":"Háizi shuìjiào le, qǐng bǎochí ānjìng, bùyào chǎo xǐng tā.","en":"The child is asleep — please keep quiet and don\'t wake him."}],
+  [{"zh":"海边有很多海鸟，它们在海面上自由飞翔。","py":"Hǎi biān yǒu hěn duō hǎiniǎo, tāmen zài hǎimiàn shàng zìyóu fēixiáng.","en":"There are many seabirds by the sea, flying freely over the ocean surface."},{"zh":"这种海鸟很少见，是保护动物。","py":"Zhè zhǒng hǎiniǎo hěn shǎojiàn, shì bǎohù dòngwù.","en":"This type of seabird is rarely seen and is a protected animal."}],
+  [{"zh":"两国之间的关系非常友好，经常互相往来。","py":"Liǎng guó zhījiān de guānxi fēicháng yǒuhǎo, jīngcháng hùxiāng wǎnglái.","en":"The relationship between the two countries is very friendly and they frequently visit each other."},{"zh":"她对待每一个学生都非常友好，从不偏心。","py":"Tā duìdài měi yī gè xuésheng dōu fēicháng yǒuhǎo, cóng bù piānxīn.","en":"She treats every student in a very friendly manner and is never partial."}],
+  [{"zh":"首先，我要感谢老师多年来的悉心教导。","py":"Shǒuxiān, wǒ yào gǎnxiè lǎoshī duō nián lái de xīxīn jiàodǎo.","en":"First of all, I want to thank the teacher for years of dedicated guidance."},{"zh":"要解决这个问题，首先要找出问题的根本原因。","py":"Yào jiějué zhège wèntí, shǒuxiān yào zhǎo chū wèntí de gēnběn yuányīn.","en":"To solve this problem, first of all you need to identify the root cause."}],
+  [{"zh":"出门前请尽量把手机充满电，以防万一。","py":"Chū mén qián qǐng jǐnliàng bǎ shǒujī chōng mǎn diàn, yǐ fáng wànyī.","en":"Before going out, try your best to fully charge your phone just in case."},{"zh":"开会时，请尽量简短地表达你的意见。","py":"Kāi huì shí, qǐng jǐnliàng jiǎnduǎn de biǎodá nǐ de yìjiàn.","en":"During the meeting, please try to express your opinions as briefly as possible."}],
+  [{"zh":"首先要做好准备工作，其次才能顺利开始。","py":"Shǒuxiān yào zuò hǎo zhǔnbèi gōngzuò, qícì cái néng shùnlì kāishǐ.","en":"First you need to do the preparatory work well, and only then can things start smoothly."},{"zh":"质量首先要保证，其次再考虑价格问题。","py":"Zhìliàng shǒuxiān yào bǎozhèng, qícì zài kǎolǜ jiàgé wèntí.","en":"Quality must be guaranteed first; only secondly is the price issue considered."}],
+  [{"zh":"两国科学家合作研究，取得了重大突破。","py":"Liǎng guó kēxuéjiā hézuò yánjīu, qǔdé le zhòngdà tūpò.","en":"Scientists from the two countries cooperated on research and achieved a major breakthrough."},{"zh":"这个项目需要各部门密切合作才能完成。","py":"Zhège xiàngmù xūyào gè bùmén mìqiē hézuò cái néng wánchéng.","en":"This project requires close cooperation among all departments to be completed."}],
+  [{"zh":"气象观测站每天收集气温和气压的数据。","py":"Qìxiàng guāncèzhàn měitiān shōují qìwēn hé qìyā de shùjù.","en":"The meteorological observation station collects temperature and air pressure data every day."},{"zh":"科学家在北极建立了一个观测站，研究气候变化。","py":"Kēxuéjiā zài Běijí jiànlì le yī gè guāncèzhàn, yánjīu qìhòu biànhuà.","en":"Scientists established an observation station at the North Pole to study climate change."}],
+  [{"zh":"他正在研究一种可以治疗癌症的新药物。","py":"Tā zhèngzài yánjīu yī zhǒng kěyǐ zhìliáo áizhèng de xīn yàowù.","en":"He is researching a new drug that can treat cancer."},{"zh":"大学里有很多研究室，专门研究不同的课题。","py":"Dàxué lǐ yǒu hěn duō yánjīu shì, zhuānmén yánjīu bùtóng de kètí.","en":"Universities have many research rooms specially dedicated to studying different topics."}],
+  [{"zh":"她是一位著名的科学家，在物理领域有很多发现。","py":"Tā shì yī wèi zhùmíng de kēxuéjiā, zài wùlǐ lǐngyù yǒu hěn duō fāxiàn.","en":"She is a famous scientist with many discoveries in the field of physics."},{"zh":"科学家们相信，未来人类可以移居火星。","py":"Kēxuéjiāmen xiāngxìn, wèilái rénlèi kěyǐ yíjū Huǒxīng.","en":"Scientists believe that in the future, mankind will be able to settle on Mars."}],
+  [{"zh":"人类应该保护自然环境，不要破坏生态系统。","py":"Rénlèi yīnggāi bǎohù zìrán huánjìng, bùyào pòhuài shēngtài xìtǒng.","en":"Mankind should protect the natural environment and not damage the ecosystem."},{"zh":"这是人类历史上第一次登上月球的壮举。","py":"Zhè shì rénlèi lìshǐ shàng dì-yī cì dēng shàng yuèqiú de zhuàngjǔ.","en":"This was the first time in human history that anyone set foot on the moon — a heroic feat."}],
+  [{"zh":"飞机已经到达北京首都国际机场，请准备下机。","py":"Fēijī yǐjīng dàodá Běijīng Shǒudū Guójì Jīchǎng, qǐng zhǔnbèi xià jī.","en":"The plane has arrived at Beijing Capital International Airport — please prepare to disembark."},{"zh":"经过漫长的旅途，他终于到达了目的地。","py":"Jīngguò màncháng de lǚtú, tā zhōngyú dàodá le mùdìdì.","en":"After a long journey, he finally reached his destination."}],
+  [{"zh":"科学家们正在探索宇宙的奥秘，寻找生命的起源。","py":"Kēxuéjiāmen zhèngzài tànsuo yǔzhòu de àomì, xúnzhǎo shēngmìng de qǐyuán.","en":"Scientists are exploring the mysteries of the universe, searching for the origins of life."},{"zh":"这次北极之行让他有机会探索那片神秘的土地。","py":"Zhè cì Běijí zhī xíng ràng tā yǒu jīhuì tànsuo nà piàn shénmì de tǔdì.","en":"This trip to the North Pole gave him the opportunity to explore that mysterious land."}],
+  [{"zh":"我们要为未来做好准备，努力学习新技术。","py":"Wǒmen yào wèi wèilái zuò hǎo zhǔnbèi, nǔlì xuéxí xīn jìshù.","en":"We need to prepare for the future and work hard to learn new technologies."},{"zh":"他对未来充满信心，相信一切都会变得更好。","py":"Tā duì wèilái chōngmǎn xìnxīn, xiāngxìn yīqiē dōu huì biàn de gèng hǎo.","en":"He is full of confidence about the future and believes that everything will get better."}],
+];
+
 let currentChapter = 2;
 function WORDS() {
   if (currentChapter === 1) return WORDS_CH1;
@@ -3942,7 +4192,8 @@ function WORDS() {
   if (currentChapter === 9) return WORDS_CH9;
   if (currentChapter === 10) return WORDS_CH10;
   if (currentChapter === 11) return WORDS_CH11;
-  return WORDS_CH12;
+  if (currentChapter === 12) return WORDS_CH12;
+  return WORDS_CH13;
 }
 function EXAMPLES() {
   if (currentChapter === 1) return EXAMPLES_CH1;
@@ -3956,7 +4207,8 @@ function EXAMPLES() {
   if (currentChapter === 9) return EXAMPLES_CH9;
   if (currentChapter === 10) return EXAMPLES_CH10;
   if (currentChapter === 11) return EXAMPLES_CH11;
-  return EXAMPLES_CH12;
+  if (currentChapter === 12) return EXAMPLES_CH12;
+  return EXAMPLES_CH13;
 }
 
 /* ─────────────────── TONE COLORS ─────────────────── */
@@ -4835,7 +5087,7 @@ function buildWlGrid() {
   if (wlShowAll) {
     if (toolbar) toolbar.style.display = 'none';
     if (footer)  footer.style.display  = 'none';
-    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12];
+    const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13];
     const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
     chWords.forEach((words, ci) => {
       const ch = ci + 1;
@@ -5028,7 +5280,7 @@ function openStats()  { buildStats(); document.getElementById('stats-modal').cla
 function closeStats() { document.getElementById('stats-modal').classList.remove('open'); }
 
 function buildStats() {
-  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12];
+  const chWords = [WORDS_CH1, WORDS_CH2, WORDS_CH3, WORDS_CH4, WORDS_CH5, WORDS_CH6, WORDS_CH7, WORDS_CH8, WORDS_CH9, WORDS_CH10, WORDS_CH11, WORDS_CH12, WORDS_CH13];
   const chNames = ['上海的地铁', '为什么不快乐', '塞翁失马', '狼和鹿', '丽江的画', '终于结婚了'];
   let tot = { new:0, learning:0, review:0, mastered:0 };
 
@@ -5429,6 +5681,7 @@ const ALL_CHAPTERS_DATA = [
   { ch:10, words: WORDS_CH10 },
   { ch:11, words: WORDS_CH11 },
   { ch:12, words: WORDS_CH12 },
+  { ch:13, words: WORDS_CH13 },
 ];
 function openSearch() {
   document.getElementById('search-modal').classList.add('open');
@@ -5437,12 +5690,12 @@ function openSearch() {
 function closeSearch() {
   document.getElementById('search-modal').classList.remove('open');
   document.getElementById('search-input').value = '';
-  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 12 chapters</div>';
+  document.getElementById('search-results').innerHTML = '<div class="search-empty">Type to search all 13 chapters</div>';
 }
 function doSearch() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const res = document.getElementById('search-results');
-  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 12 chapters</div>'; return; }
+  if (!q) { res.innerHTML = '<div class="search-empty">Type to search all 13 chapters</div>'; return; }
   const hits = [];
   ALL_CHAPTERS_DATA.forEach(({ch, words}) => {
     words.forEach((w, i) => {
@@ -5689,7 +5942,7 @@ renderStreak();
       <input id="search-input" type="text" placeholder="Hanzi, pinyin, or English…" oninput="doSearch()" autocomplete="off" autocorrect="off" spellcheck="false">
     </div>
     <div class="search-results" id="search-results">
-      <div class="search-empty">Type to search all 12 chapters</div>
+      <div class="search-empty">Type to search all 13 chapters</div>
     </div>
   </div>
 </div>
